@@ -17,6 +17,14 @@
   set text(font: "Roboto", size: 11pt, fill: rgb("663366"))
   set cite(style: "ieee")
 
+  // Set the header style
+  set heading(numbering: "1.")
+  show heading.where(level: 1): h => {text(strong(upper(h)), size: 18pt)}
+  show heading.where(level: 2): h => {text(strong(upper(h)), size: 14pt, fill: rgb("E4047C"))}
+  show heading.where(level: 3): h => {text(upper(h), size: 12pt, fill: rgb("1F3763"))}
+  show heading.where(level: 4): h => {text(emph(upper(h)), size: 11pt, fill: rgb("2F5496"))}
+  show heading.where(level: 5): h => {text(emph(upper(h)), size: 11pt, fill: rgb("2F5496"), font: "Calibri")}
+
 
   // Show the page's contents
   body
