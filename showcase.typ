@@ -1,4 +1,4 @@
-#import "fhict-template.typ": fhict_doc
+#import "fhict-template.typ": *
 
 #show: fhict_doc.with(
   title: "Showcase",
@@ -30,3 +30,5 @@
 ===== level 5
 
 #lorem(100)
+
+#todo(lorem(100))

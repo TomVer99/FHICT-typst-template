@@ -1,3 +1,5 @@
+#let fontys_purple_1 = rgb("663366")
+
 #let fhict_doc(
   title: "Document Title",
 
@@ -14,7 +16,7 @@
   set document(title: title, author: authors.map(author => author.name))
 
   // Set the document's style
-  set text(font: "Roboto", size: 11pt, fill: rgb("663366"))
+  set text(font: "Roboto", size: 11pt, fill: fontys_purple_1)
   set cite(style: "ieee")
 
   // Set the header style
@@ -62,7 +64,7 @@
             height: 30pt,
             inset: 10pt,
             fill: white,
-            text(20pt, fill: rgb("663366"), font: "Roboto")[
+            text(20pt, fill: fontys_purple_1, font: "Roboto")[
                 *#upper(subtitle)*
             ]
         )
@@ -80,7 +82,7 @@
             height: 20pt + ((authors.len() - 1) * 15pt),
             inset: 10pt,
             fill: white,
-            text(10pt, fill: rgb("663366"), font: "Roboto")[
+            text(10pt, fill: fontys_purple_1, font: "Roboto")[
                 *#authors.map(author => author.name).join(",\n")*
             ]
         )
@@ -112,7 +114,7 @@
             image("assets/Picture2.png", height: 200%)
         )
         #place(right + horizon, dy: -25pt,
-            text(15pt, fill: rgb("663366"), font: "Roboto")[
+            text(15pt, fill: fontys_purple_1, font: "Roboto")[
                 *#counter(page).display()*
             ]
         )
@@ -123,3 +125,17 @@
   body
 
 }
+
+#let todo(body) = block(
+  above: 2em, stroke: 0.5pt + red,
+  width: 100%, inset: 14pt
+)[
+  #set text(font: "Roboto", fill: red)
+  #place(
+    top + left,
+    dy: -6pt - 14pt,
+    dx: 6pt - 14pt,
+    block(fill: white, inset: 2pt)[*DRAFT*]
+  )
+  #body
+]
