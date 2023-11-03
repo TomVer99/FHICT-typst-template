@@ -22,7 +22,7 @@
   show heading.where(level: 1): h => {text(strong(upper(h)), size: 18pt)}
   show heading.where(level: 2): h => {text(strong(upper(h)), size: 14pt, fill: rgb("E4047C"))}
   show heading.where(level: 3): h => {text(upper(h), size: 12pt, fill: rgb("1F3763"))}
-  show heading.where(level: 4): h => {text(emph(upper(h)), size: 11pt, fill: rgb("2F5496"))}
+  show heading.where(level: 4): h => {text(upper(h), size: 11pt, fill: rgb("2F5496"))}
   show heading.where(level: 5): h => {text(emph(upper(h)), size: 11pt, fill: rgb("2F5496"), font: "Calibri")}
 
   // Set the page style
