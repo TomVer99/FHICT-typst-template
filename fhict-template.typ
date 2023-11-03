@@ -25,6 +25,19 @@
   show heading.where(level: 4): h => {text(emph(upper(h)), size: 11pt, fill: rgb("2F5496"))}
   show heading.where(level: 5): h => {text(emph(upper(h)), size: 11pt, fill: rgb("2F5496"), font: "Calibri")}
 
+  // Set the page style
+  set page("a4",
+    footer: [
+        #place(left + horizon, dy: -25pt,
+            image("assets/Picture2.png", height: 200%)
+        )
+        #place(right + horizon, dy: -25pt,
+            text(15pt, fill: rgb("663366"), font: "Roboto")[
+                *#counter(page).display()*
+            ]
+        )
+    ]
+  )
 
   // Show the page's contents
   body
