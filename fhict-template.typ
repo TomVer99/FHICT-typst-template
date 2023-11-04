@@ -9,7 +9,7 @@
 
   bibliography-file: none,
 
-  introduction: none,
+  summary: none,
 
   body
 ) = {
@@ -122,10 +122,10 @@
     ]
   )
 
-  // Show the introduction
-  if introduction != none {
-    heading("Introduction", level: 1)
-    introduction
+  // Show the summary
+  if summary != none {
+    heading("summary", outlined: false, numbering: none)
+    summary
     pagebreak()
   }
 

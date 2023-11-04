@@ -17,7 +17,7 @@
       email: "test2@test2.nl",
     )
   ),
-  introduction: [
+  summary: [
     This is a document that is meant to showcase the FHICT template.
   ],
   bibliography-file: "my-sources.bib",
