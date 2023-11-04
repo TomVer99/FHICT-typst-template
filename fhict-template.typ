@@ -1,4 +1,8 @@
 #let fontys_purple_1 = rgb("663366")
+#let fontys_purple_2 = rgb("B59DB5")
+#let fontys_pink_1   = rgb("E4047C")
+#let fontys_blue_1   = rgb("1F3763")
+#let fontys_blue_2   = rgb("2F5496")
 
 #let fhict_doc(
   title: "Document Title",
@@ -30,10 +34,10 @@
   // Set the header style
   set heading(numbering: "1.")
   show heading.where(level: 1): h => {text(strong(upper(h)), size: 18pt, fill: fontys_purple_1)}
-  show heading.where(level: 2): h => {text(strong(upper(h)), size: 14pt, fill: rgb("E4047C"))}
-  show heading.where(level: 3): h => {text(upper(h), size: 12pt, fill: rgb("1F3763"))}
-  show heading.where(level: 4): h => {text(upper(h), size: 11pt, fill: rgb("2F5496"))}
-  show heading.where(level: 5): h => {text(emph(upper(h)), size: 11pt, fill: rgb("2F5496"), font: "Calibri")}
+  show heading.where(level: 2): h => {text(strong(upper(h)), size: 14pt, fill: fontys_pink_1)}
+  show heading.where(level: 3): h => {text(upper(h), size: 12pt, fill: fontys_blue_1)}
+  show heading.where(level: 4): h => {text(upper(h), size: 11pt, fill: fontys_blue_2)}
+  show heading.where(level: 5): h => {text(emph(upper(h)), size: 11pt, fill: fontys_blue_2, font: "Calibri")}
 
   // Set the listing style
   show figure.where(kind: raw): it => {
@@ -47,7 +51,7 @@
   background: [
     // Main background triangle
     #place(top + left, path(
-        fill: rgb("B59DB5"),
+        fill: fontys_purple_2,
         closed: true,
         (0%, 0%),
         (5%, 0%),
@@ -67,7 +71,7 @@
         box(
             height: 40pt,
             inset: 10pt,
-            fill: rgb("E4047C"),
+            fill: fontys_pink_1,
             text(30pt, fill: white, font: "Roboto")[
                 *#upper(title)*
             ]
@@ -105,7 +109,7 @@
         box(
             width: 40%,
             height: 35pt,
-            fill: rgb("E4047C"),
+            fill: fontys_pink_1,
             place(left + horizon, dx: 10pt,
                 text(30pt, fill: white, font: "Roboto")[
                     *#datetime.today().display()*
@@ -152,7 +156,7 @@
     columns: (auto, auto, auto, 1fr),
     inset: 7pt,
     align: horizon,
-    fill: (_, row) => if row==0 { rgb("663366") } else { white },
+    fill: (_, row) => if row==0 { fontys_purple_1 } else { white },
     [#text(fill: white)[*VERSION*]], [#text(fill: white)[*DATE*]], [#text(fill: white)[*AUTHOR*]], [#text(fill: white)[*CHANGES*]],
     ..for version in version-history { ([#version.version], [#version.date], [#version.author], [#version.changes],) }
     )
