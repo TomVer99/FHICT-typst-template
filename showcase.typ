@@ -25,15 +25,21 @@
   bibliography-file: "my-sources.bib",
 )
 
-= level 1
+= Examples
 
-== level 2
+== Headings Example
 
 === level 3
 
 ==== level 4
 
 ===== level 5
+
+====== level 6
+
+Level 6 and higher are not supported in the custom syntax. They will still work, but will have the default styling.
+
+== Text example
 
 #lorem(100)
 
@@ -68,7 +74,14 @@ This is a figure with code. This will be shown in the list of listings if enable
   There is currently a package in developement that will allow for better code blocks. Until then, the code blocks will be rather plain and not very pretty.
 ])
 
+=== Citations
 
 This is a citation #cite(<FHICT-typst-template>).
 
-#todo(lorem(100))
+=== Todo
+
+#todo([
+  This is a DRAFT / TODO box. This box can be used to indicate that (part of) the document is not finished yet.
+
+  Keep in mind this box is not breakable, so it will not be split over multiple pages.
+])
