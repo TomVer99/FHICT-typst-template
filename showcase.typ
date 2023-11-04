@@ -17,6 +17,20 @@
       email: "test2@test2.nl",
     )
   ),
+  version-history: (
+    (
+      version: "1.0.0",
+      date: "2020-01-01",
+      author: "Jeroen Van De Lange",
+      changes: "Initial version",
+    ),
+    (
+      version: "1.0.1",
+      date: "2020-01-02",
+      author: "Jeroen Van De Lange",
+      changes: "Added a new feature",
+    ),
+  ),
   summary: [
     This is a document that is meant to showcase the FHICT template.
   ],

@@ -7,6 +7,8 @@
 
   authors: (),
 
+  version-history: none,
+
   bibliography-file: none,
 
   summary: none,
@@ -131,6 +133,20 @@
     ]
   )
   counter(page).update(1)
+
+  // Show the version history
+  if version-history != none {
+    heading("version history", outlined: false, numbering: none)
+    table(
+    columns: (auto, auto, auto, 1fr),
+    inset: 7pt,
+    align: horizon,
+    fill: (_, row) => if row==0 { rgb("663366") } else { white },
+    [#text(fill: white)[*VERSION*]], [#text(fill: white)[*DATE*]], [#text(fill: white)[*AUTHOR*]], [#text(fill: white)[*CHANGES*]],
+    ..for version in version-history { ([#version.version], [#version.date], [#version.author], [#version.changes],) }
+    )
+    pagebreak()
+  }
 
   // Show the summary
   if summary != none {
