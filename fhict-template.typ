@@ -169,12 +169,13 @@
   show: codly-init.with()
   codly(languages: (
       rust: (name: "Rust", color: code_name_color),
+      rs: (name: "Rust", color: code_name_color),
       cmake: (name: "CMake", color: code_name_color),
       cpp: (name: "C++", color: code_name_color),
       c: (name: "C", color: code_name_color),
-      python: (name: "Python", color: code_name_color),
+      py: (name: "Python", color: code_name_color),
       java: (name: "Java", color: code_name_color),
-      javascript: (name: "JavaScript", color: code_name_color),
+      js: (name: "JavaScript", color: code_name_color),
       sh: (name: "Shell", color: code_name_color),
       bash: (name: "Bash", color: code_name_color),
       json: (name: "JSON", color: code_name_color),
