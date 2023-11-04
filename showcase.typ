@@ -17,6 +17,9 @@
       email: "test2@test2.nl",
     )
   ),
+  introduction: [
+    This is a document that is meant to showcase the FHICT template.
+  ]
 )
 
 = level 1

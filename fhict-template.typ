@@ -9,6 +9,8 @@
 
   bibliography-file: none,
 
+  introduction: none,
+
   body
 ) = {
 
@@ -118,6 +120,13 @@
         )
     ]
   )
+
+  if introduction != none {
+    heading("Introduction", level: 1)
+    introduction
+    pagebreak()
+  }
+
 
   // Show the page's contents
   body
