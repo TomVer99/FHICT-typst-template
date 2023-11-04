@@ -1,5 +1,15 @@
 #let fontys_purple_1 = rgb("663366")
 
+#let toc(
+  depth: 3,
+) = {
+  outline(
+    title: "Table of Contents",
+    depth: depth,
+    indent: n => [#h(1em)] * n,
+  )
+}
+
 #let fhict_doc(
   title: "Document Title",
 
@@ -127,6 +137,8 @@
     pagebreak()
   }
 
+  toc()
+  pagebreak()
 
   // Show the page's contents
   body
