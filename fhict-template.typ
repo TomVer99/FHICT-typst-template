@@ -113,6 +113,7 @@
   ]
   )
 
+  // Show the cover page
   box()
   pagebreak()
 
@@ -131,17 +132,25 @@
     ]
   )
 
+  // Show the introduction
   if introduction != none {
     heading("Introduction", level: 1)
     introduction
     pagebreak()
   }
 
+  // Show the table of contents
   toc()
   pagebreak()
 
   // Show the page's contents
   body
+
+  // Show the bibliography
+  pagebreak()
+  if bibliography-file != none {
+    bibliography(bibliography-file, title: "References", style: "ieee")
+  }
 
 }
 

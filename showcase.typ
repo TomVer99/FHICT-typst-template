@@ -19,7 +19,8 @@
   ),
   introduction: [
     This is a document that is meant to showcase the FHICT template.
-  ]
+  ],
+  bibliography-file: "my-sources.bib",
 )
 
 = level 1
@@ -33,5 +34,7 @@
 ===== level 5
 
 #lorem(100)
+
+This is a citation #cite(<FHICT-typst-template>).
 
 #todo(lorem(100))
