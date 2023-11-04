@@ -31,6 +31,13 @@
   show heading.where(level: 4): h => {text(upper(h), size: 11pt, fill: rgb("2F5496"))}
   show heading.where(level: 5): h => {text(emph(upper(h)), size: 11pt, fill: rgb("2F5496"), font: "Calibri")}
 
+  // Set the listing style
+  show figure.where(kind: raw): it => {
+    set align(left)
+    it.body
+    it.caption
+  }
+
   // Set Cover Page
   set page("a4",
   background: [

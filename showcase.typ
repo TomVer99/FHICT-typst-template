@@ -63,9 +63,9 @@ This is a figure with code. This will be shown in the list of listings if enable
 
 #figure(
   ```cpp
-    int main() {
-      return 0;
-    }
+  int main() {
+    return 0;
+  }
   ```,
   caption: "Code example",
 )
