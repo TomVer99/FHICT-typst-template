@@ -141,8 +141,8 @@
   body
 
   // Show the bibliography
-  pagebreak()
   if bibliography-file != none {
+    pagebreak()
     bibliography(bibliography-file, title: "References", style: "ieee")
   }
 
