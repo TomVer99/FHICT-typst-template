@@ -16,12 +16,12 @@
   set document(title: title, author: authors.map(author => author.name))
 
   // Set the document's style
-  set text(font: "Roboto", size: 11pt, fill: fontys_purple_1)
+  set text(font: "Roboto", size: 11pt, fill: black)
   set cite(style: "ieee")
 
   // Set the header style
   set heading(numbering: "1.")
-  show heading.where(level: 1): h => {text(strong(upper(h)), size: 18pt)}
+  show heading.where(level: 1): h => {text(strong(upper(h)), size: 18pt, fill: fontys_purple_1)}
   show heading.where(level: 2): h => {text(strong(upper(h)), size: 14pt, fill: rgb("E4047C"))}
   show heading.where(level: 3): h => {text(upper(h), size: 12pt, fill: rgb("1F3763"))}
   show heading.where(level: 4): h => {text(upper(h), size: 11pt, fill: rgb("2F5496"))}
@@ -71,6 +71,7 @@
     )
     // Authors
     // TODO: Option with email
+    #set text(fill: fontys_purple_1)
     #place(left + horizon, dy: 60pt + (
           (authors.len() - 1) * 15pt
       ), dx: 40pt,
@@ -83,6 +84,7 @@
             ]
         )
     )
+    #set text(fill: black)
     // Date
     #place(right + horizon, dy: 330pt,
         box(
