@@ -10,6 +10,7 @@
   bibliography-file: none,
 
   summary: none,
+  table-of-figures: none,
 
   body
 ) = {
@@ -137,6 +138,16 @@
     indent: n => [#h(1em)] * n,
   )
   pagebreak()
+
+  // Show the table of figures if requested
+  if table-of-figures != none {
+    outline(
+      title: "Table Of Figures",
+      target: figure.where(kind: image),
+    )
+    pagebreak()
+  }
+
 
   // Set the page style for body pages
   set page("a4",
