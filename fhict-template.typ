@@ -15,6 +15,8 @@
   table-of-figures: none,
   table-of-listings: none,
 
+  watermark: none,
+
   body
 ) = {
 
@@ -111,6 +113,15 @@
             )
         )
     )
+  ],
+  foreground: [
+    #if watermark != none [
+    #place(center + horizon, rotate(24deg,
+        text(60pt, fill: rgb(0, 0, 0, 70), font: "Roboto")[
+            *#upper(watermark)*
+        ]
+    ))
+    ]
   ]
   )
 

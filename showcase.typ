@@ -37,6 +37,7 @@
   table-of-figures: true,
   table-of-listings: true,
   bibliography-file: "my-sources.bib",
+  // watermark: "THIS IS A WATERMARK",
 )
 
 = Examples
