@@ -74,11 +74,11 @@ This is a figure with code. This will be shown in the list of listings if enable
   There is currently a package in developement that will allow for better code blocks. Until then, the code blocks will be rather plain and not very pretty.
 ])
 
-=== Citations
+== Citations
 
 This is a citation #cite(<FHICT-typst-template>).
 
-=== Todo
+== Todo
 
 #todo([
   This is a DRAFT / TODO box. This box can be used to indicate that (part of) the document is not finished yet.
