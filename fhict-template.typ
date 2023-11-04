@@ -11,6 +11,7 @@
 
   summary: none,
   table-of-figures: none,
+  table-of-listings: none,
 
   body
 ) = {
@@ -148,6 +149,14 @@
     pagebreak()
   }
 
+  // Show the table of listings if requested
+  if table-of-listings != none {
+    outline(
+      title: "Table Of Listings",
+      target: figure.where(kind: raw),
+    )
+    pagebreak()
+  }
 
   // Set the page style for body pages
   set page("a4",

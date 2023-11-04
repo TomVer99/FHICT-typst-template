@@ -21,6 +21,7 @@
     This is a document that is meant to showcase the FHICT template.
   ],
   table-of-figures: true,
+  table-of-listings: true,
   bibliography-file: "my-sources.bib",
 )
 
@@ -49,6 +50,23 @@ This is a figure with an image. This will be shown in the list of figures if ena
   ),
   caption: "Figure example",
 )
+
+=== Code
+
+This is a figure with code. This will be shown in the list of listings if enabled.
+
+#figure(
+  ```cpp
+    int main() {
+      return 0;
+    }
+  ```,
+  caption: "Code example",
+)
+
+#todo([
+  There is currently a package in developement that will allow for better code blocks. Until then, the code blocks will be rather plain and not very pretty.
+])
 
 
 This is a citation #cite(<FHICT-typst-template>).
