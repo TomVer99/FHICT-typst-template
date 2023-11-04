@@ -13,7 +13,7 @@
       email: "test@test2.nl",
     ),
     (
-      name: "Jeroen Van De Lange",
+      name: "Jeroen Van De Lange Ook",
       email: "test2@test2.nl",
     )
   ),
