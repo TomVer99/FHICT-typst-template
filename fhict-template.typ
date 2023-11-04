@@ -70,20 +70,16 @@
         )
     )
     // Authors
-    // TODO: list the email
-    #place(left + horizon, dy: 48pt + (
-        if authors.len() == 1 {
-          5pt
-        } else {
-          (authors.len() - 1) * 10pt
-        }
+    // TODO: Option with email
+    #place(left + horizon, dy: 60pt + (
+          (authors.len() - 1) * 15pt
       ), dx: 40pt,
         box(
-            height: 20pt + ((authors.len() - 1) * 15pt),
+            height: 35pt + ((authors.len() - 1) * 30pt),
             inset: 10pt,
             fill: white,
-            text(10pt, fill: fontys_purple_1, font: "Roboto")[
-                *#authors.map(author => author.name).join(",\n")*
+            text(10pt)[
+                #authors.map(author => strong(author.name) + linebreak() + "      " + link("mailto:" + author.email)).join(",\n")
             ]
         )
     )
