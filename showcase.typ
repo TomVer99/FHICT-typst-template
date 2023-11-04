@@ -5,7 +5,7 @@
   subtitle: "FHICT Template Showcase",
   authors: (
     (
-      name: "Tom V",
+      name: "Tom V.",
       email: "not@my.mail",
     ),
   ),
@@ -13,7 +13,7 @@
     (
       version: "1.0",
       date: "2023-11-04",
-      author: "Tom V",
+      author: "Tom V.",
       changes: "Initial version",
     ),
   ),
