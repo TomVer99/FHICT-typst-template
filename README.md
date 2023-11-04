@@ -14,6 +14,7 @@ Creating well-structured and visually appealing documents is crucial in academic
     - Roman numerals for pages before the body.
     - Arabic numerals for pages in the body.
   - Automatic table of contents.
+  - Automatic styling of code blocks (for supported languages).
   - Automatic table of figures (Optional).
   - Automatic table of listings (Optional).
   - Automatic styling of version history table (Optional).
