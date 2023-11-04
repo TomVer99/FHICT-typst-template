@@ -107,7 +107,7 @@
   box()
   pagebreak()
 
-  // Set the page style
+  // Set the page style for non body pages
   set page("a4",
     background: [],
     footer: [
@@ -116,11 +116,12 @@
         )
         #place(right + horizon, dy: -25pt,
             text(15pt, fill: fontys_purple_1, font: "Roboto")[
-                *#counter(page).display()*
+                *#counter(page).display("I")*
             ]
         )
     ]
   )
+  counter(page).update(1)
 
   // Show the summary
   if summary != none {
@@ -136,6 +137,22 @@
     indent: n => [#h(1em)] * n,
   )
   pagebreak()
+
+  // Set the page style for body pages
+  set page("a4",
+    background: [],
+    footer: [
+        #place(left + horizon, dy: -25pt,
+            image("assets/Picture2.png", height: 200%)
+        )
+        #place(right + horizon, dy: -25pt,
+            text(15pt, fill: fontys_purple_1, font: "Roboto")[
+                *#counter(page).display()*
+            ]
+        )
+    ]
+  )
+  counter(page).update(1)
 
   // Show the page's contents
   body
