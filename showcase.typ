@@ -5,34 +5,20 @@
   subtitle: "FHICT Template Showcase",
   authors: (
     (
-      name: "Jeroen Van De Lange",
-      email: "test@test.nl",
+      name: "Tom V",
+      email: "not@my.mail",
     ),
-    (
-      name: "Jeroen Bransen",
-      email: "test@test2.nl",
-    ),
-    (
-      name: "Jeroen Van De Lange Ook",
-      email: "test2@test2.nl",
-    )
   ),
   version-history: (
     (
-      version: "1.0.0",
-      date: "2020-01-01",
-      author: "Jeroen Van De Lange",
+      version: "1.0",
+      date: "2023-11-04",
+      author: "Tom V",
       changes: "Initial version",
-    ),
-    (
-      version: "1.0.1",
-      date: "2020-01-02",
-      author: "Jeroen Van De Lange",
-      changes: "Added a new feature",
     ),
   ),
   summary: [
-    This is a document that is meant to showcase the FHICT template.
+    This document will show all the features of the FHICT Template.
   ],
   table-of-figures: true,
   table-of-listings: true,
