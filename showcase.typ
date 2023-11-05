@@ -147,12 +147,10 @@ If any one author does not have an email address, the email addresses will not b
   caption: "Authors Option with Missing Email",
 )
 
-#todo([
-  It is planned to add support for email / no email for a case by case basis, but this is not yet implemented.
-])
+You can also chose to not set any authors. In this case, no authors will be shown on the cover page.
 
 #todo([
-  It is planned to add support for no authors, but this is not yet implemented.
+  It is planned to add support for email / no email for a case by case basis, but this is not yet implemented.
 ])
 
 == Version History
@@ -206,6 +204,7 @@ On top of the Table of Contents, the template also supports a Table of Figures a
   caption: "Table of Figures Option",
 )
 
+#pagebreak()
 == Watermark
 
 The watermark can be set by using the following option:
