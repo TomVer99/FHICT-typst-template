@@ -192,6 +192,7 @@ It is possible to add a summary to the document. This can be done by setting the
   caption: "Summary Option",
 )
 
+#pagebreak()
 == Table of ...
 
 On top of the Table of Contents, the template also supports a Table of Figures and a Table of Listings. These can be enabled by setting the following options:
@@ -204,7 +205,15 @@ On top of the Table of Contents, the template also supports a Table of Figures a
   caption: "Table of Figures Option",
 )
 
-#pagebreak()
+You can disable these by settings the options to false, or leaving them out entirely.
+
+#figure(
+  ```typst
+  table-of-figures: false,
+  ```,
+  caption: "TOF / TOL disabled Option",
+)
+
 == Watermark
 
 The watermark can be set by using the following option:
