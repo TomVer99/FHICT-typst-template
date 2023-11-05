@@ -51,7 +51,7 @@
   definition: none,
 ) = {
   if (term != none) and (definition != none) {
-    terms.update(it => (..it, (strong(term), definition)))
+    terms.update(it => (..it, (term, definition)))
   }
 }
 
@@ -62,7 +62,9 @@
       align: horizon,
       columns: (auto, 1fr),
       [#text(fill: white)[#strong("Term")]], [#text(fill: white)[#strong("Definition")]],
-      ..terms.flatten(),
+
+      ..terms.map( item => (text()[#strong(item.at(0))], item.at(1))).flatten(),
+
       fill: (column, row) => if row==0 { fontys_purple_1 } else { white },
     )
   })
