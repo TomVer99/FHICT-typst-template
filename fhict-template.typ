@@ -92,20 +92,37 @@
         )
     )
     // Authors
-    // TODO: Option with email
     #set text(fill: fontys_purple_1)
-    #place(left + horizon, dy: 60pt + (
+    #if authors != none {
+      if authors.all(x => "email" in x) {
+        place(left + horizon, dy: 60pt + (
           (authors.len() - 1) * 15pt
-      ), dx: 40pt,
+        ), dx: 40pt,
         box(
-            height: 35pt + ((authors.len() - 1) * 30pt),
-            inset: 10pt,
-            fill: white,
-            text(10pt)[
-                #authors.map(author => strong(author.name) + linebreak() + "      " + link("mailto:" + author.email)).join(",\n")
-            ]
-        )
-    )
+          height: 35pt + ((authors.len() - 1) * 30pt),
+          inset: 10pt,
+          fill: white,
+          text(10pt)[
+              #authors.map(author => strong(author.name) + linebreak() + "      " + link("mailto:" + author.email)).join(",\n")
+          ]))
+      } else {
+        place(left + horizon, dy: 48pt + (
+          if authors.len() == 1 {
+            5pt
+          } else {
+            (authors.len() - 1) * 10pt
+          }
+        ), dx: 40pt,
+        box(
+          inset: 10pt,
+          fill: white,
+          height: 20pt + ((authors.len() - 1) * 15pt),
+          text(10pt, fill: fontys_purple_1, font: "Roboto")[
+            *#authors.map(author => author.name).join(",\n")*
+          ]))
+      }
+    }
+
     #set text(fill: black)
     // Date
     #place(right + horizon, dy: 330pt,
@@ -181,6 +198,7 @@
       json: (name: "JSON", color: code_name_color),
       xml: (name: "XML", color: code_name_color),
       yaml: (name: "YAML", color: code_name_color),
+      typst: (name: "Typst", color: code_name_color),
     ),
     width-numbers: none,
     display-icon: false,
