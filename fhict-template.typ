@@ -181,6 +181,7 @@
       json: (name: "JSON", color: code_name_color),
       xml: (name: "XML", color: code_name_color),
       yaml: (name: "YAML", color: code_name_color),
+      typst: (name: "Typst", color: code_name_color),
     ),
     width-numbers: none,
     display-icon: false,
