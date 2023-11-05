@@ -6,7 +6,6 @@
   authors: (
     (
       name: "Tom V.",
-      email: "not@my.mail",
     ),
   ),
   version-history: (
@@ -130,6 +129,23 @@ The authors can be set by using the following option:
 )
 
 At least one author is required, otherwise the cover page will contain an empty white square.
+
+If any one author does not have an email address, the email address will not be shown on the cover page.
+
+#figure(
+  ```typst
+  authors: (
+    (
+      name: "YOUR NAME",
+    ),
+    (
+      name: "YOUR NAME",
+      email: "YOUR EMAIL",
+    ),
+  ),
+  ```,
+  caption: "Authors Option with Missing Email",
+)
 
 #todo([
   It is planned to add support for no authors, but this is not yet implemented.
