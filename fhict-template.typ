@@ -12,7 +12,7 @@
 
   subtitle: "Document Subtitle",
 
-  authors: (),
+  authors: none,
 
   version-history: none,
 
@@ -28,7 +28,11 @@
 ) = {
 
   // Set metadata
-  set document(title: title, author: authors.map(author => author.name))
+  if authors == none {
+    set document(title: title)    
+  } else {
+    set document(title: title, author: authors.map(author => author.name))
+  }
 
   // Set the document's style
   set text(font: "Roboto", size: 11pt, fill: black)
