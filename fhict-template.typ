@@ -44,6 +44,30 @@
   )
 }
 
+#let terms = state("terms")
+
+#let term(
+  term: none,
+  definition: none,
+) = {
+  if (term != none) and (definition != none) {
+    terms.update(it => (..it, (strong(term), definition)))
+  }
+}
+
+#let print_terms() = {
+  terms.display( (terms) => {
+    table(
+      inset: 7pt,
+      align: horizon,
+      columns: (auto, 1fr),
+      [#text(fill: white)[#strong("Term")]], [#text(fill: white)[#strong("Definition")]],
+      ..terms.flatten(),
+      fill: (column, row) => if row==0 { fontys_purple_1 } else { white },
+    )
+  })
+}
+
 #let fhict_doc(
   title: "Document Title",
 

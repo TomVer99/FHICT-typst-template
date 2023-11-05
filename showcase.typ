@@ -25,6 +25,16 @@
   // watermark: "THIS IS A WATERMARK",
 )
 
+#term(
+  term: "AUB",
+  definition: "Alstublieft",
+)
+
+#term(
+  term: "WIP",
+  definition: "Work In Progress",
+)
+
 = Examples
 
 == Headings Example
@@ -299,3 +309,6 @@ The bibliography can be set by using the following option:
 )
 
 You will need to use a .bib file for this. The template will automatically generate the bibliography based on the citations in the document.
+
+#pagebreak()
+#print_terms()
