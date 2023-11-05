@@ -93,6 +93,68 @@ This is a citation #cite(<FHICT-typst-template>).
 ])
 
 #pagebreak()
+== Tables
+
+There is a helper function called `fhict_table` that can be used to create tables. This function takes two manditory arguments: `columns` and `content`, and two optional arguments: `top_colored` and `left_colored`.
+
+The `columns` argument is a list of column widths.
+
+The `content` argument is a list of rows. Each row is a list of cells. Each cell is a string.
+
+#fhict_table(
+  columns: (auto, auto, auto, 1fr),
+  content: (
+    ("Header 1", "Header 2", "Header 3", "Header 4"),
+    ("Cell 1", "Cell 2", "Cell 3", "Cell 4"),
+    ("Cell 1", "Cell 2", "", "Cell 4"),
+  ),
+)
+
+The table above is made with the following code:
+
+#figure(
+  ```typst
+  #fhict_table(
+    columns: (auto, auto, auto, 1fr),
+    content: (
+      ("Header 1", "Header 2", "Header 3", "Header 4"),
+      ("Cell 1", "Cell 2", "Cell 3", "Cell 4"),
+      ("Cell 1", "Cell 2", "", "Cell 4"),
+    ),
+  )
+  ```,
+  caption: "Table example",
+)
+
+The `top_colored` argument is `true` by default, and will color the top row of the table.
+
+The `left_colored` argument is `false` by default, and will color the left column of the table.
+
+You can combine these two arguments to create a table like this:
+
+#fhict_table(
+  columns: (auto, auto, auto, 1fr),
+  content: (
+    ("Header 1", "Header 2", "Header 3", "Header 4"),
+    ("Cell 1", "Cell 2", "Cell 3", "Cell 4"),
+    ("Cell 1", "Cell 2", "", "Cell 4"),
+  ),
+  left_colored: true,
+)
+
+Or disable both to create a table like this:
+
+#fhict_table(
+  columns: (auto, auto, auto, 1fr),
+  content: (
+    ("Header 1", "Header 2", "Header 3", "Header 4"),
+    ("Cell 1", "Cell 2", "Cell 3", "Cell 4"),
+    ("Cell 1", "Cell 2", "", "Cell 4"),
+  ),
+  top_colored: false,
+)
+
+#pagebreak()
 
 = Document options
 
