@@ -7,6 +7,43 @@
 #let fontys_blue_2   = rgb("2F5496")
 #let code_name_color = fontys_blue_2.lighten(35%)
 
+#let fhict_table(
+  columns: (),
+  content: (),
+  top_colored: true,
+  left_colored: false,
+) = {
+  table(
+    columns: columns,
+    inset: 7pt,
+    align: horizon,
+    fill: (
+      if top_colored and left_colored {
+        (column, row) => if column==0 or row==0 { fontys_purple_1 } else { white }
+      } else if top_colored {
+        (_, row) => if row==0 { fontys_purple_1 } else { white }
+      } else if left_colored {
+        (column, _) => if column==0 { fontys_purple_1 } else { white }
+      }
+    ),
+    ..for row in content {
+      if (row == content.at(0)) and top_colored {
+        for item in row {
+          (text(fill: white)[#strong(item)],)
+        }
+      } else {
+        for item in row {
+          if (item == row.at(0)) and left_colored {
+            (text(fill: white)[#strong(item)],)
+          } else {
+            ([#item],)
+          }
+        }
+      }
+    }
+  )
+}
+
 #let fhict_doc(
   title: "Document Title",
 
@@ -176,13 +213,17 @@
   // Show the version history
   if version-history != none {
     heading("version history", outlined: false, numbering: none)
-    table(
-    columns: (auto, auto, auto, 1fr),
-    inset: 7pt,
-    align: horizon,
-    fill: (_, row) => if row==0 { fontys_purple_1 } else { white },
-    [#text(fill: white)[*VERSION*]], [#text(fill: white)[*DATE*]], [#text(fill: white)[*AUTHOR*]], [#text(fill: white)[*CHANGES*]],
-    ..for version in version-history { ([#version.version], [#version.date], [#version.author], [#version.changes],) }
+    fhict_table(
+      columns: (auto, auto, auto, 1fr),
+      content: (
+        ("Version", "Date", "Author", "Changes"),
+        ..version-history.map(version => (
+          version.version,
+          version.date,
+          version.author,
+          version.changes,
+        )),
+      ),
     )
     pagebreak()
   }

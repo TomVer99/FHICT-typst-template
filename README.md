@@ -34,6 +34,9 @@ Creating well-structured and visually appealing documents is crucial in academic
   - Document title.
   - Document subtitle.
   - Date.
+- Helper functions.
+  - Todo block.
+  - Table.
 
 ## Getting Started
 
