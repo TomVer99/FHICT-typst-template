@@ -1,8 +1,11 @@
+#import "assets/codly.typ": *
+
 #let fontys_purple_1 = rgb("663366")
 #let fontys_purple_2 = rgb("B59DB5")
 #let fontys_pink_1   = rgb("E4047C")
 #let fontys_blue_1   = rgb("1F3763")
 #let fontys_blue_2   = rgb("2F5496")
+#let code_name_color = fontys_blue_2.lighten(35%)
 
 #let fhict_doc(
   title: "Document Title",
@@ -162,6 +165,26 @@
     )
     pagebreak()
   }
+
+  show: codly-init.with()
+  codly(languages: (
+      rust: (name: "Rust", color: code_name_color),
+      rs: (name: "Rust", color: code_name_color),
+      cmake: (name: "CMake", color: code_name_color),
+      cpp: (name: "C++", color: code_name_color),
+      c: (name: "C", color: code_name_color),
+      py: (name: "Python", color: code_name_color),
+      java: (name: "Java", color: code_name_color),
+      js: (name: "JavaScript", color: code_name_color),
+      sh: (name: "Shell", color: code_name_color),
+      bash: (name: "Bash", color: code_name_color),
+      json: (name: "JSON", color: code_name_color),
+      xml: (name: "XML", color: code_name_color),
+      yaml: (name: "YAML", color: code_name_color),
+    ),
+    width-numbers: none,
+    display-icon: false,
+  )
 
   // Show the summary
   if summary != none {
