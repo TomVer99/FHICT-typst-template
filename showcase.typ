@@ -130,7 +130,7 @@ The authors can be set by using the following option:
 
 At least one author is required, otherwise the cover page will contain an empty white square.
 
-If any one author does not have an email address, the email address will not be shown on the cover page.
+If any one author does not have an email address, the email addresses will not be shown at all on the cover page.
 
 #figure(
   ```typst
@@ -146,6 +146,10 @@ If any one author does not have an email address, the email address will not be 
   ```,
   caption: "Authors Option with Missing Email",
 )
+
+#todo([
+  It is planned to add support for email / no email for a case by case basis, but this is not yet implemented.
+])
 
 #todo([
   It is planned to add support for no authors, but this is not yet implemented.
