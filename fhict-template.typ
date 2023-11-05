@@ -224,7 +224,7 @@
   pagebreak()
 
   // Show the table of figures if requested
-  if table-of-figures != none {
+  if (table-of-figures != none) and (table-of-figures != false) {
     outline(
       title: "Table Of Figures",
       target: figure.where(kind: image),
@@ -233,7 +233,7 @@
   }
 
   // Show the table of listings if requested
-  if table-of-listings != none {
+  if (table-of-listings != none) and (table-of-listings != false) {
     outline(
       title: "Table Of Listings",
       target: figure.where(kind: raw),
