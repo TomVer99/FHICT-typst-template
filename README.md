@@ -29,6 +29,8 @@ Creating well-structured and visually appealing documents is crucial in academic
 - Included cover page.
   - FHICT Style.
   - Authors.
+    - Name.
+    - Email (Optional).
   - Document title.
   - Document subtitle.
   - Date.
