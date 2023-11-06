@@ -53,7 +53,7 @@
   if (term != none) and (definition != none) {
     terms.update(it => (..it, (term, definition)))
   } else if (term != none) and (definition == none) {
-    return term
+    return [#link(label("Glossary"))[#box(term)]]
   }
 }
 
@@ -325,14 +325,16 @@
     if terms != none {
       pagebreak()
       heading("Glossary", numbering: none)
+      [#figure(
       table(
         inset: 7pt,
-        align: horizon,
+        align: horizon + left,
         columns: (auto, 1fr),
         [#text(fill: white)[#strong("Term")]], [#text(fill: white)[#strong("Definition")]],
         ..terms.map( item => (text()[#strong(item.at(0))], item.at(1))).flatten(),
         fill: (column, row) => if row==0 { fontys_purple_1 } else { white },
-      )
+      ))
+      <Glossary>]
     }
   })
 }
