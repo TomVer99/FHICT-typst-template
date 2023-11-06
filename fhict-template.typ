@@ -10,6 +10,10 @@
 #let fhict_table(
   columns: (),
   content: (),
+  background_color_heading: fontys_purple_1,
+  background_color: white,
+  text_color_heading: white,
+  text_color: black,
   top_colored: true,
   left_colored: false,
 ) = {
@@ -19,24 +23,24 @@
     align: horizon,
     fill: (
       if top_colored and left_colored {
-        (column, row) => if column==0 or row==0 { fontys_purple_1 } else { white }
+        (column, row) => if column==0 or row==0 { background_color_heading } else { background_color }
       } else if top_colored {
-        (_, row) => if row==0 { fontys_purple_1 } else { white }
+        (_, row) => if row==0 { background_color_heading } else { background_color }
       } else if left_colored {
-        (column, _) => if column==0 { fontys_purple_1 } else { white }
+        (column, _) => if column==0 { background_color_heading } else { background_color }
       }
     ),
     ..for row in content {
       if (row == content.at(0)) and top_colored {
         for item in row {
-          (text(fill: white)[#strong(item)],)
+          (text(fill: text_color_heading)[#strong(item)],)
         }
       } else {
         for item in row {
           if (item == row.at(0)) and left_colored {
-            (text(fill: white)[#strong(item)],)
+            (text(fill: text_color_heading)[#strong(item)],)
           } else {
-            ([#item],)
+            (text(fill: text_color)[#item],)
           }
         }
       }
