@@ -43,6 +43,7 @@ Creating well-structured and visually appealing documents is crucial in academic
 - Helper functions.
   - Todo block.
   - Table.
+    - Custom colors settable.
 - Configurable citation style.
   - Standard IEEE.
 
