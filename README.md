@@ -20,6 +20,7 @@ Creating well-structured and visually appealing documents is crucial in academic
   - Automatic table of contents.
   - Automatic styling of code blocks.
     - Language displayed in the code block (for supported languages).
+  - Automatic Glossary (If terms are defined).
   - Automatic table of figures (Optional).
   - Automatic table of listings (Optional).
   - Automatic styling of version history table (Optional).
