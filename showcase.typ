@@ -165,6 +165,44 @@ Or disable both to create a table like this:
 )
 
 #pagebreak()
+
+You can also configure the color of the table by using the `background_color_heading`, `background_color`, `text_color_heading` and `text_color` arguments.
+
+You can for example make a table like this:
+
+#fhict_table(
+  columns: (auto, auto, auto, 1fr),
+  content: (
+    ("Header 1", "Header 2", "Header 3", "Header 4"),
+    ("Cell 1", "Cell 2", "Cell 3", "Cell 4"),
+    ("Cell 1", "Cell 2", "", "Cell 4"),
+  ),
+  background_color_heading: rgb("4272f5"),
+  text_color_heading: rgb("f5a142"),
+  background_color: rgb("f54242"),
+  text_color: rgb("42f5a1"),
+)
+
+Here is the code snippet for this table:
+
+#figure(
+  ```typst
+#fhict_table(
+  columns: (auto, auto, auto, 1fr),
+  content: (
+    ("Header 1", "Header 2", "Header 3", "Header 4"),
+    ("Cell 1", "Cell 2", "Cell 3", "Cell 4"),
+    ("Cell 1", "Cell 2", "", "Cell 4"),
+  ),
+  background_color_heading: rgb("4272f5"),
+  text_color_heading: rgb("f5a142"),
+  background_color: rgb("f54242"),
+  text_color: rgb("42f5a1"),
+)
+  ```,
+  caption: "Table example with custom colors",
+)
+
 == Terms / Glossary
 
 You can define terms and their definitions by using the `#term` helper function.
