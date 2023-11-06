@@ -338,3 +338,16 @@ The bibliography can be set by using the following option:
 )
 
 You will need to use a .bib file for this. The template will automatically generate the bibliography based on the citations in the document.
+
+== Citation style
+
+The citation style can be set by using the following option:
+
+#figure(
+  ```typst
+  citation-style: "YOUR CITATION STYLE",
+  ```,
+  caption: "Citation Style Option",
+)
+
+The standard style is `ieee`.
