@@ -44,6 +44,19 @@
   )
 }
 
+#let terms = state("terms")
+
+#let term(
+  term,
+  definition: none,
+) = {
+  if (term != none) and (definition != none) {
+    terms.update(it => (..it, (term, definition)))
+  } else if (term != none) and (definition == none) {
+    return term
+  }
+}
+
 #let fhict_doc(
   title: "Document Title",
 
@@ -307,6 +320,21 @@
     bibliography(bibliography-file, title: "References", style: "ieee")
   }
 
+  // Show the Glossary
+  terms.display( (terms) => {
+    if terms != none {
+      pagebreak()
+      heading("Glossary", numbering: none)
+      table(
+        inset: 7pt,
+        align: horizon,
+        columns: (auto, 1fr),
+        [#text(fill: white)[#strong("Term")]], [#text(fill: white)[#strong("Definition")]],
+        ..terms.map( item => (text()[#strong(item.at(0))], item.at(1))).flatten(),
+        fill: (column, row) => if row==0 { fontys_purple_1 } else { white },
+      )
+    }
+  })
 }
 
 #let todo(body) = block(
