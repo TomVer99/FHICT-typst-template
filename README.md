@@ -10,6 +10,11 @@ This is a document template for creating professional-looking documents with Typ
 
 Creating well-structured and visually appealing documents is crucial in academic and professional settings. This template is designed to help FHICT students and faculty produce professional looking documents.
 
+## Requirements
+
+- Roboto font installed on your system.
+- Typst builder installed on your system (Explained in `Getting Started`).
+
 ## Features
 
 - Consistent formatting for titles, headings, subheadings, and paragraphs.
