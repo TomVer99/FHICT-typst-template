@@ -26,12 +26,12 @@
 )
 
 #term(
-  term: "AUB",
-  definition: "Alstublieft",
+  "FHICT",
+  definition: "Fontys Hogeschool ICT",
 )
 
 #term(
-  term: "WIP",
+  "WIP",
   definition: "Work In Progress",
 )
 
@@ -165,7 +165,38 @@ Or disable both to create a table like this:
 )
 
 #pagebreak()
+== Terms / Glossary
 
+You can define terms and their definitions by using the `#term` helper function.
+
+#figure(
+  ```typst
+  #term(
+    "FHICT",
+    definition: "Fontys Hogeschool ICT",
+  )
+  ```,
+  caption: "Term example",
+)
+
+You can then use these terms in the document by using the same `#term` helper function, but without the `definition` argument. This will insert your term into the document, like this:
+
+#term("FHICT")
+
+#figure(
+  ```typst
+  #term("FHICT")
+  ```,
+  caption: "Term usage example",
+)
+
+#todo([
+  It is planned to implement links between the terms in the document and the Glossary at the end of the document, but this is not yet implemented. So the use of `#term` without the `definition` argument is not yet very useful.
+])
+
+If no terms are defined, the Glossary will not be shown.
+
+#pagebreak()
 = Document options
 
 == Title and Subtitle
@@ -309,6 +340,3 @@ The bibliography can be set by using the following option:
 )
 
 You will need to use a .bib file for this. The template will automatically generate the bibliography based on the citations in the document.
-
-#pagebreak()
-#print_terms()
