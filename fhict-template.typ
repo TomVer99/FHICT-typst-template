@@ -67,6 +67,7 @@
   version-history: none,
 
   bibliography-file: none,
+  citation-style: "ieee",
 
   summary: none,
   table-of-figures: none,
@@ -86,7 +87,7 @@
 
   // Set the document's style
   set text(font: "Roboto", size: 11pt, fill: black)
-  set cite(style: "ieee")
+  set cite(style: citation-style)
 
   // Set the header style
   set heading(numbering: "1.")
