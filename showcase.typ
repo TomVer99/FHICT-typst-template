@@ -183,16 +183,14 @@ You can then use these terms in the document by using the same `#term` helper fu
 
 #term("FHICT")
 
+The text will then be clickable, and will take the reader to the glossary.
+
 #figure(
   ```typst
   #term("FHICT")
   ```,
   caption: "Term usage example",
 )
-
-#todo([
-  It is planned to implement links between the terms in the document and the Glossary at the end of the document, but this is not yet implemented. So the use of `#term` without the `definition` argument is not yet very useful.
-])
 
 If no terms are defined, the Glossary will not be shown.
 
