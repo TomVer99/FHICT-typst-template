@@ -389,3 +389,16 @@ The citation style can be set by using the following option:
 )
 
 The standard style is `ieee`.
+
+== Disabling Table of Contents
+
+For certain extremely small documents, it might be desirable to disable the Table of Contents. This can be done by setting the following option:
+
+#figure(
+  ```typst
+  disable-toc: true,
+  ```,
+  caption: "Table of Contents Option",
+)
+
+For normal documents, this option should not be used.
