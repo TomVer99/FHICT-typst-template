@@ -73,6 +73,7 @@
   bibliography-file: none,
   citation-style: "ieee",
 
+  disable-toc: false,
   summary: none,
   table-of-figures: none,
   table-of-listings: none,
@@ -275,12 +276,15 @@
   }
 
   // Show the table of contents
-  outline(
-    title: "Table of Contents",
-    depth: 3,
-    indent: n => [#h(1em)] * n,
-  )
-  pagebreak()
+    
+  if disable-toc == false {
+    outline(
+      title: "Table of Contents",
+      depth: 3,
+      indent: n => [#h(1em)] * n,
+    )
+    pagebreak()
+  }
 
   // Show the table of figures if requested
   if (table-of-figures != none) and (table-of-figures != false) {
