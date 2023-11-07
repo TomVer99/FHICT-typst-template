@@ -402,3 +402,31 @@ For certain extremely small documents, it might be desirable to disable the Tabl
 )
 
 For normal documents, this option should not be used.
+
+#pagebreak()
+= Default Included Packages
+
+== Codly
+
+This package makes code blocks look nicer.
+
+For example, a C++ code block will look like this:
+
+#figure(
+  ```cpp
+  int main() {
+    return 0;
+  }
+  ```,
+  caption: "Codly C++ Example",
+)
+
+Instead of something like this:
+
+#figure(
+raw(
+"int main() {
+  return 0;
+}\n "),
+  caption: "Raw C++ Example",
+)
