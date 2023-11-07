@@ -1,4 +1,4 @@
-#import "assets/codly.typ": *
+#import "@preview/codly:0.1.0": *
 
 #let fontys_purple_1 = rgb("663366")
 #let fontys_purple_2 = rgb("B59DB5")
