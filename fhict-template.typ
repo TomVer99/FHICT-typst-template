@@ -276,7 +276,6 @@
   }
 
   // Show the table of contents
-    
   if disable-toc == false {
     outline(
       title: "Table of Contents",
