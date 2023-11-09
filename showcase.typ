@@ -233,6 +233,49 @@ The text will then be clickable, and will take the reader to the glossary.
 If no terms are defined, the Glossary will not be shown.
 
 #pagebreak()
+== Boxes
+=== colorful-boxes
+<BoxesA>
+
+#colorbox(
+  title: lorem(5),
+  color: "red",
+  radius: 2pt,
+  width: auto
+)[
+  #lorem(20)
+]
+
+#slantedColorbox(
+  title: lorem(5),
+  color: "green",
+  radius: 2pt,
+  width: auto
+)[
+  #lorem(20)
+]
+
+#outlinebox(
+  title: lorem(5),
+  color: "blue",
+  radius: 2pt,
+  width: auto
+)[
+  #lorem(20)
+]
+
+#outlinebox(
+  title: lorem(5),
+  color: "red",
+  radius: 2pt,
+  width: auto,
+  centering: true
+)[
+  #lorem(20)
+]
+
+
+#pagebreak()
 = Document options
 
 == Title and Subtitle
@@ -430,3 +473,9 @@ raw(
 }\n "),
   caption: "Raw C++ Example",
 )
+
+== colorful-boxes
+
+This package adds support for colored boxes.
+
+Examples can be seen here in the #link(label("BoxesA"))[Boxes] section.
