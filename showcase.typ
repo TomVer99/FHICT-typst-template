@@ -274,6 +274,46 @@ If no terms are defined, the Glossary will not be shown.
   #lorem(20)
 ]
 
+=== showybox
+<BoxesB>
+
+#showybox(
+  frame: (
+    border-color: red.darken(50%),
+    title-color: red.lighten(60%),
+    body-color: red.lighten(80%)
+  ),
+  title-style: (
+    color: black,
+    weight: "regular",
+    align: center
+  ),
+  shadow: (
+    offset: 3pt,
+  ),
+  title: "Red-ish showybox with separated sections!",
+  lorem(20),
+  lorem(12)
+)
+
+#showybox(
+  frame: (
+    dash: "dashed",
+    border-color: red.darken(40%)
+  ),
+  body-style: (
+    align: center
+  ),
+  sep: (
+    dash: "dashed"
+  ),
+  shadow: (
+	  offset: (x: 2pt, y: 3pt),
+    color: yellow.lighten(70%)
+  ),
+  [#lorem(20)],
+  [#lorem(25)]
+)
 
 #pagebreak()
 = Document options
@@ -479,3 +519,9 @@ raw(
 This package adds support for colored boxes.
 
 Examples can be seen here in the #link(label("BoxesA"))[Boxes] section.
+
+== showybox
+
+This package adds support for colored boxes.
+
+Examples can be seen here in the #link(label("BoxesB"))[Boxes] section.
