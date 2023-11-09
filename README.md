@@ -46,6 +46,10 @@ Creating well-structured and visually appealing documents is crucial in academic
     - Custom colors settable.
 - Configurable citation style.
   - Standard IEEE.
+- Multiple packages included by default.
+  - `codly` for code blocks.
+  - `colorful-boxes` for colorful boxes.
+  - `showybox` for colorful boxes.
 
 ## Getting Started
 
