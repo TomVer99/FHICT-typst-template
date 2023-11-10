@@ -541,18 +541,27 @@ This package adds support for colored boxes.
 
 Examples can be seen here in the #link(label("BoxesB"))[Boxes] section.
 
-Test line 1 @kuleuven
+Test line 1.1 @fhict
 
-Test line 2 #gls("kuleuven")
+Test line 1.1 @wip
 
-Test line 3 no ref
+Test line 2.1 #gls("fhict")
 
+Test line 2.1 #gls("wip")
+
+#pagebreak()
+#heading("Glossary", numbering: none)
 #print-glossary(
 (
   (
-    key: "kuleuven",
-    short: "KU Leuven",
-    long: "Katholieke Universiteit Leuven",
-    desc: [Fugiat do fugiat est minim ullamco est eu duis   minim nisi tempor adipisicing do _sunt_. #gls("vub")],
+    key: "fhict",
+    short: "FHICT",
+    long: "Fontys Hogeschool ICT",
+    desc: [Fontys University of Applied Sciences],
+  ),
+  (
+    key: "wip",
+    short: "W.I.P.",
+    long: "Work In Progress",
   ),
 ))
