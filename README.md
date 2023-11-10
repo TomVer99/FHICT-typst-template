@@ -51,6 +51,7 @@ Creating well-structured and visually appealing documents is crucial in academic
   - `codly` for code blocks.
   - `colorful-boxes` for colorful boxes.
   - `showybox` for colorful boxes.
+  - `glossarium` for glossary.
 
 ## Getting Started
 
