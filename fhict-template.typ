@@ -238,10 +238,10 @@
                 *#counter(page).display("I")*
             ]
         )
-    ]
+    ],
+    numbering: "I"
   )
   counter(page).update(1)
-  set page(numbering: "I")
 
   // Show the version history
   if version-history != none {
@@ -329,10 +329,10 @@
                 *#counter(page).display()*
             ]
         )
-    ]
+    ],
+    numbering: "1"
   )
   counter(page).update(1)
-  set page(numbering: "1")
 
   // Show the page's contents
   body
