@@ -565,3 +565,7 @@ Examples can be seen here in the #link(label("BoxesA"))[Boxes] section.
 This package adds support for colored boxes.
 
 Examples can be seen here in the #link(label("BoxesB"))[Boxes] section.
+
+== Glossarium
+
+This package handles the glossary.
