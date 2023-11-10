@@ -65,7 +65,6 @@
 
 #let fhict_doc(
   title: "Document Title",
-
   subtitle: "Document Subtitle",
 
   authors: none,
@@ -76,6 +75,8 @@
   citation-style: "ieee",
 
   disable-toc: false,
+  disable-chapter-numbering: false,
+
   summary: none,
   table-of-figures: none,
   table-of-listings: none,
@@ -97,7 +98,15 @@
   set cite(style: citation-style)
 
   // Set the header style
-  set heading(numbering: "1.")
+  let numbering_set = none
+  if disable-chapter-numbering == false {
+    numbering_set = "1."
+  } else {
+    numbering_set = none
+  }
+
+  set heading(numbering: numbering_set)
+
   show heading.where(level: 1): h => {text(strong(upper(h)), size: 18pt, fill: fontys_purple_1)}
   show heading.where(level: 2): h => {text(strong(upper(h)), size: 14pt, fill: fontys_pink_1)}
   show heading.where(level: 3): h => {text(upper(h), size: 12pt, fill: fontys_blue_1)}

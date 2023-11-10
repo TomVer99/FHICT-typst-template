@@ -22,6 +22,8 @@
   table-of-figures: true,
   table-of-listings: true,
   bibliography-file: "my-sources.bib",
+  // disable-toc: true,
+  // disable-chapter-numbering: true,
   // watermark: "THIS IS A WATERMARK",
 )
 
@@ -485,6 +487,19 @@ For certain extremely small documents, it might be desirable to disable the Tabl
 )
 
 For normal documents, this option should not be used.
+
+#pagebreak()
+
+== Disabling Chapter Numbering
+
+For certain extremely small documents, it might be desirable to disable the chapter numbering. This can be done by setting the following option:
+
+#figure(
+  ```typst
+  disable-chapter-numbering: true,
+  ```,
+  caption: "Chapter Numbering Option",
+)
 
 #pagebreak()
 = Default Included Packages

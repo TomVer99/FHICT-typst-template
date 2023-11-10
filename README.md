@@ -22,6 +22,7 @@ Creating well-structured and visually appealing documents is crucial in academic
   - Automatic page numbering.
     - Roman numerals for pages before the body.
     - Arabic numerals for pages in the body.
+  - Automatic heading numbering (can be disabled).
   - Automatic table of contents (can be disabled).
   - Automatic styling of code blocks.
     - Language displayed in the code block (for supported languages).
