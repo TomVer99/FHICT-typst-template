@@ -540,3 +540,19 @@ Examples can be seen here in the #link(label("BoxesA"))[Boxes] section.
 This package adds support for colored boxes.
 
 Examples can be seen here in the #link(label("BoxesB"))[Boxes] section.
+
+Test line 1 @kuleuven
+
+Test line 2 #gls("kuleuven")
+
+Test line 3 no ref
+
+#print-glossary(
+(
+  (
+    key: "kuleuven",
+    short: "KU Leuven",
+    long: "Katholieke Universiteit Leuven",
+    desc: [Fugiat do fugiat est minim ullamco est eu duis   minim nisi tempor adipisicing do _sunt_. #gls("vub")],
+  ),
+))
