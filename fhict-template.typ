@@ -1,6 +1,7 @@
 #import "@preview/codly:0.1.0": *
 #import "@preview/colorful-boxes:1.2.0": *
 #import "@preview/showybox:2.0.1": *
+#import "@preview/glossarium:0.2.3": make-glossary, print-glossary, gls, glspl
 
 #let fontys_purple_1 = rgb("663366")
 #let fontys_purple_2 = rgb("B59DB5")
@@ -50,19 +51,6 @@
   )
 }
 
-#let terms = state("terms")
-
-#let term(
-  term,
-  definition: none,
-) = {
-  if (term != none) and (definition != none) {
-    terms.update(it => (..it, (term, definition)))
-  } else if (term != none) and (definition == none) {
-    return [#link(label("Glossary"))[#box(term)]]
-  }
-}
-
 #let fhict_doc(
   title: "Document Title",
   subtitle: "Document Subtitle",
@@ -70,6 +58,9 @@
   authors: none,
 
   version-history: none,
+
+  glossary-terms: none,
+  glossary-front: false,
 
   bibliography-file: none,
   citation-style: "ieee",
@@ -85,6 +76,7 @@
 
   body
 ) = {
+  show: make-glossary
 
   // Set metadata
   if authors == none {
@@ -236,7 +228,8 @@
                 *#counter(page).display("I")*
             ]
         )
-    ]
+    ],
+    numbering: "I"
   )
   counter(page).update(1)
 
@@ -296,6 +289,18 @@
     pagebreak()
   }
 
+  // Show the Glossary in the front
+  if glossary-terms != none and glossary-front == true {
+    heading("Glossary", numbering: none, outlined: false)
+    print-glossary(
+    (
+      glossary-terms
+    ),
+    show-all: true
+    )
+    pagebreak()
+  }
+
   // Show the table of figures if requested
   if (table-of-figures != none) and (table-of-figures != false) {
     outline(
@@ -326,7 +331,8 @@
                 *#counter(page).display()*
             ]
         )
-    ]
+    ],
+    numbering: "1"
   )
   counter(page).update(1)
 
@@ -339,23 +345,17 @@
     bibliography(bibliography-file, title: "References", style: "ieee")
   }
 
-  // Show the Glossary
-  terms.display( (terms) => {
-    if terms != none {
-      pagebreak()
-      heading("Glossary", numbering: none)
-      [#figure(
-      table(
-        inset: 7pt,
-        align: horizon + left,
-        columns: (auto, 1fr),
-        [#text(fill: white)[#strong("Term")]], [#text(fill: white)[#strong("Definition")]],
-        ..terms.map( item => (text()[#strong(item.at(0))], item.at(1))).flatten(),
-        fill: (column, row) => if row==0 { fontys_purple_1 } else { white },
-      ))
-      <Glossary>]
-    }
-  })
+  // Show the Glossary in the back
+  if glossary-terms != none and glossary-front == false {
+    pagebreak()
+    heading("Glossary", numbering: none)
+    print-glossary(
+    (
+      glossary-terms
+    ),
+    show-all: true
+    )
+  }
 }
 
 #let todo(body) = block(

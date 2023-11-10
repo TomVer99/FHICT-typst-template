@@ -25,16 +25,20 @@
   // disable-toc: true,
   // disable-chapter-numbering: true,
   // watermark: "THIS IS A WATERMARK",
-)
-
-#term(
-  "FHICT",
-  definition: "Fontys Hogeschool ICT",
-)
-
-#term(
-  "WIP",
-  definition: "Work In Progress",
+  // glossary-front: true,
+  glossary-terms:(
+    (
+      key: "fhict",
+      short: "FHICT",
+      long: "Fontys Hogeschool ICT",
+      desc: [Fontys University of Applied Sciences],
+    ),
+    (
+      key: "wip",
+      short: "W.I.P.",
+      long: "Work In Progress",
+    ),
+  )
 )
 
 = Examples
@@ -205,34 +209,19 @@ Here is the code snippet for this table:
   caption: "Table example with custom colors",
 )
 
-== Terms / Glossary
+== Using Terms
 
-You can define terms and their definitions by using the `#term` helper function.
+You can quote a term by using one of the following syntaxes:
 
-#figure(
-  ```typst
-  #term(
-    "FHICT",
-    definition: "Fontys Hogeschool ICT",
-  )
-  ```,
-  caption: "Term example",
-)
+- `#gls("term")`
+- `#glspl("term")`
+- `@term`
 
-You can then use these terms in the document by using the same `#term` helper function, but without the `definition` argument. This will insert your term into the document, like this:
+If you use a term for the first time, it will display the long version of the term. If you use it again, it will display the short version of the term.
 
-#term("FHICT")
+For example, the term `#gls("fhict")` will be shown as #gls("fhict"). But the second time you use it, it will be shown as #gls("fhict").
 
-The text will then be clickable, and will take the reader to the glossary.
-
-#figure(
-  ```typst
-  #term("FHICT")
-  ```,
-  caption: "Term usage example",
-)
-
-If no terms are defined, the Glossary will not be shown.
+And `@wip` will be shown as @wip. But the second time you use it, it will be shown as @wip.
 
 #pagebreak()
 == Boxes
@@ -501,6 +490,42 @@ For certain extremely small documents, it might be desirable to disable the chap
   caption: "Chapter Numbering Option",
 )
 
+== Glossary
+
+=== Setting terms
+
+You can set terms by using the following option:
+
+#figure(
+  ```typst
+  glossary-terms:(
+    (
+      key: "KEY",
+      short: "SHORT",
+      long: "LONG",
+      desc: [DESCRIPTION],
+    ),
+    ...
+  )
+  ```,
+  caption: "Glossary Option",
+)
+
+`long` and `desc` are optional.
+
+=== Front vs Back
+
+By default the glossary will be shown in the back of the document. You can change this by setting the following option:
+
+#figure(
+  ```typst
+  glossary-front: true,
+  ```,
+  caption: "Glossary Location Option",
+)
+
+If set to `true`, the glossary will be placed after the Table of Contents. If set to `false`, the glossary will be placed after the references.
+
 #pagebreak()
 = Default Included Packages
 
@@ -540,3 +565,7 @@ Examples can be seen here in the #link(label("BoxesA"))[Boxes] section.
 This package adds support for colored boxes.
 
 Examples can be seen here in the #link(label("BoxesB"))[Boxes] section.
+
+== Glossarium
+
+This package handles the glossary.
