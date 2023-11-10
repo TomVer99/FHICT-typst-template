@@ -86,6 +86,7 @@
 
   body
 ) = {
+  show: make-glossary
 
   // Set metadata
   if authors == none {
@@ -240,6 +241,7 @@
     ]
   )
   counter(page).update(1)
+  set page(numbering: "1")
 
   // Show the version history
   if version-history != none {
@@ -332,8 +334,6 @@
   counter(page).update(1)
 
   // Show the page's contents
-  show: make-glossary
-  
   body
 
   // Show the bibliography
