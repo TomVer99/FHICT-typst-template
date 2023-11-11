@@ -51,9 +51,12 @@
   )
 }
 
-#let grey_box(content) = {
-  rect(fill: luma(240), width: 100%, stroke: (left: 0.25em))[
-    #content
+#let text_box(background-color: luma(240), stroke-color: black, text-color: black, content) = {
+  rect(fill: background-color, width: 100%, stroke: (left: 0.25em + stroke-color))[
+    #text(
+      fill: text-color,
+      content
+    )
   ]
 }
 
