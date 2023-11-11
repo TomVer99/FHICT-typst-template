@@ -51,6 +51,12 @@
   )
 }
 
+#let grey_box(content) = {
+  rect(fill: luma(240), width: 100%, stroke: (left: 0.25em))[
+    #content
+  ]
+}
+
 #let fhict_doc(
   title: "Document Title",
   subtitle: "Document Subtitle",
