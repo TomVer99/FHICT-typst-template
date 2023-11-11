@@ -306,6 +306,14 @@ And `@wip` will be shown as @wip. But the second time you use it, it will be sho
   [#lorem(25)]
 )
 
+=== Custom Boxes
+
+#grey_box[
+  I am a grey box!
+
+  You can use me for a less intrusive box.
+]
+
 #pagebreak()
 = Document options
 
