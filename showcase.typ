@@ -306,13 +306,37 @@ And `@wip` will be shown as @wip. But the second time you use it, it will be sho
   [#lorem(25)]
 )
 
+#pagebreak()
 === Custom Boxes
 
-#grey_box[
+#text_box[
   I am a grey box!
-
   You can use me for a less intrusive box.
+
+  Put whatever you want in here. $I = V / R$
 ]
+
+#text_box(background-color: fontys_purple_2,
+stroke-color: fontys_purple_1, text-color: fontys_blue_1)[
+  You can also customize the color of the background, stroke and text.
+]
+
+#figure(
+  ```typst
+  #text_box[
+    I am a grey box!
+    You can use me for a less intrusive box.
+
+    Put whatever you want in here. $I = V / R$
+  ]
+
+  #text_box(background-color: fontys_purple_2,
+  stroke-color: fontys_purple_1, text-color: fontys_blue_1)[
+    You can also customize the color of the background, stroke and text.
+  ]
+  ```,
+  caption: "Custom Boxes Example",
+)
 
 #pagebreak()
 = Document options
