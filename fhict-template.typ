@@ -51,6 +51,15 @@
   )
 }
 
+#let text_box(background-color: luma(240), stroke-color: black, text-color: black, content) = {
+  rect(fill: background-color, width: 100%, stroke: (left: 0.25em + stroke-color))[
+    #text(
+      fill: text-color,
+      content
+    )
+  ]
+}
+
 #let fhict_doc(
   title: "Document Title",
   subtitle: "Document Subtitle",
