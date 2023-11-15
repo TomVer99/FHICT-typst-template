@@ -70,6 +70,7 @@ Not sure how to do the last 3 steps? Check out the [showcase document](showcase.
 
 - The [Typst Documentation](https://typst.app/docs/) is a great resource for learning how to use Typst.
 - The bibliography file is written in [BibTeX](http://www.bibtex.org/Format/). You can use [BibTeX Editor](https://truben.no/latex/bibtex/) to easily create and edit your bibliography.
+- You can use sub files to split your document into multiple files. This is especially useful for large documents.
 
 ## Contributing
 
