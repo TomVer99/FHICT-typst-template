@@ -66,6 +66,10 @@ To get started with this Typst document template, follow these steps:
 
 Not sure how to do the last 3 steps? Check out the [showcase document](showcase.typ) for a reference.
 
+## Helpful Links / Resources
+
+- The [Typst Documentation](https://typst.app/docs/) is a great resource for learning how to use Typst.
+
 ## Contributing
 
 I welcome contributions to improve and expand this document template. If you have ideas, suggestions, or encounter issues, please consider contributing by:
