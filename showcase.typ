@@ -483,6 +483,10 @@ The bibliography can be set by using the following option:
 
 You will need to use a .bib file for this. The template will automatically generate the bibliography based on the citations in the document.
 
+#text_box[
+  Note that the path to the bibliography file is relative to the _template_ document, not the document you are writing.
+]
+
 == Citation style
 
 The citation style can be set by using the following option:
