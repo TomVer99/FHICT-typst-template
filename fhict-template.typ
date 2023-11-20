@@ -1,7 +1,7 @@
 #import "@preview/codly:0.1.0": *
 #import "@preview/colorful-boxes:1.2.0": *
 #import "@preview/showybox:2.0.1": *
-#import "@preview/glossarium:0.2.3": make-glossary, print-glossary, gls, glspl
+#import "@preview/glossarium:0.2.4": make-glossary, print-glossary, gls, glspl
 
 #let fontys_purple_1 = rgb("663366")
 #let fontys_purple_2 = rgb("B59DB5")
