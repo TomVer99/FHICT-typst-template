@@ -2,7 +2,7 @@
 
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/TomVer99/FHICT-typst-template?style=flat-square)
 ![GitHub Repo stars](https://img.shields.io/github/stars/TomVer99/FHICT-typst-template?style=flat-square)
-![Maintenance](https://img.shields.io/maintenance/Yes/2023?style=flat-square)
+![Maintenance](https://img.shields.io/maintenance/Yes/2024?style=flat-square)
 
 This is a document template for creating professional-looking documents with Typst, tailored for FHICT (Fontys Hogeschool ICT).
 
