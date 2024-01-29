@@ -1,4 +1,4 @@
-#import "@preview/codly:0.1.0": *
+#import "@preview/codly:0.2.0": *
 #import "@preview/colorful-boxes:1.2.0": *
 #import "@preview/showybox:2.0.1": *
 #import "@preview/glossarium:0.2.4": make-glossary, print-glossary, gls, glspl
