@@ -10,6 +10,20 @@
 #let fontys_blue_2   = rgb("2F5496")
 #let code_name_color = fontys_blue_2.lighten(35%)
 
+#let censored_state = state("style", "0")
+
+#let sensitive(textl) = locate(loc => {
+  if (censored_state.at(loc) == 1) {
+    text(
+      textl.replace(regex("."), "█"),
+      fill: black,
+      font: "Arial"
+    )
+  } else {
+    textl
+  }
+})
+
 #let fhict_table(
   columns: (),
   content: (),
@@ -82,6 +96,7 @@
   table-of-listings: none,
 
   watermark: none,
+  censored: 0,
 
   body
 ) = {
@@ -120,6 +135,9 @@
     it.body
     it.caption
   }
+
+  // Set states
+  censored_state.update(censored)
 
   // Set Cover Page
   set page("a4",
