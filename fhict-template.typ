@@ -77,7 +77,7 @@
   disable-toc: false,
   disable-chapter-numbering: false,
 
-  summary: none,
+  pre-toc: none,
   table-of-figures: none,
   table-of-listings: none,
 
@@ -277,14 +277,16 @@
       yaml: (name: "YAML", color: code_name_color),
       typst: (name: "Typst", color: code_name_color),
     ),
-    width-numbers: none,
+    enable-numbers: false,
     display-icon: false,
   )
 
-  // Show the summary
-  if summary != none {
-    heading("summary", outlined: false, numbering: none)
-    summary
+  // Show the pre-toc
+  if pre-toc != none {
+    // Disable heading numbering and appearing in the TOC
+    set heading(numbering: none, outlined: false)
+    pre-toc
+    set heading(numbering: numbering_set, outlined: true)
     pagebreak()
   }
 
