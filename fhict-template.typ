@@ -234,11 +234,14 @@
         )
         #place(right + horizon, dy: -25pt,
             text(15pt, fill: fontys_purple_1, font: "Roboto")[
-                *#counter(page).display("I")*
+                #if (version-history != none) or (pre-toc != none) or (disable-toc == false) or (disable-toc == false) or (glossary-terms != none and glossary-front == true) or ((table-of-figures != none) and (table-of-figures != false)) or ((table-of-listings != none) and (table-of-listings != false)) {
+                  [*#counter(page).display("I")*]
+                } else {
+                  [*#counter(page).display()*]
+                }
             ]
         )
-    ],
-    numbering: "I"
+    ]
   )
   counter(page).update(1)
 
