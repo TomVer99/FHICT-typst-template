@@ -43,8 +43,9 @@
       short: "W.I.P.",
       long: "Work In Progress",
     ),
+  ),
+  censored: 1,
   )
-)
 
 = Examples
 
@@ -342,6 +343,20 @@ stroke-color: fontys_purple_1, text-color: fontys_blue_1)[
   ```,
   caption: "Custom Boxes Example",
 )
+
+== sensitive information
+
+You can censor sensitive information by using the `#sensitive` function. Each character will be replaced by a black rectangle, making it impossible to read or copy the text.
+
+#sensitive("I am sensitive information")
+
+```typst
+#sensitive("I am sensitive information")
+```
+
+You can set if the text should be censored or not by setting the `censored` option in the document options.
+
+`1` means censored, `0` means not censored.
 
 #pagebreak()
 = Document options
