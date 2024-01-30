@@ -1,2 +1,3 @@
-fhict-template.pdf
-/assets/*.pdf
+*.pdf
+!showcase.pdf
+!starter.pdf
