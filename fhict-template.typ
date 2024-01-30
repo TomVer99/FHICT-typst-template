@@ -10,7 +10,21 @@
 #let fontys_blue_2   = rgb("2F5496")
 #let code_name_color = fontys_blue_2.lighten(35%)
 
+// States
 #let censored_state = state("style", "0")
+
+// Misc functions
+#let hlink(url, content: none) = {
+  link(url)[
+    #underline[#text([
+      #if content == none {
+        url
+      } else {
+        content
+      }
+    ], fill: fontys_blue_2)]
+  ]
+}
 
 #let sensitive(textl) = locate(loc => {
   if (censored_state.at(loc) == 1) {
@@ -74,6 +88,7 @@
   ]
 }
 
+// Document
 #let fhict_doc(
   title: "Document Title",
   subtitle: "Document Subtitle",
