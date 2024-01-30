@@ -5,14 +5,14 @@
   subtitle: "FHICT Template Showcase",
   authors: (
     (
-      name: "Tom V.",
+      name: [Tom #sensitive("V.")],
     ),
   ),
   version-history: (
     (
       version: "1.0",
       date: "2023-11-04",
-      author: "Tom V.",
+      author: [Tom #sensitive("V.")],
       changes: "Initial version",
     ),
   ),
