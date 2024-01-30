@@ -10,7 +10,21 @@
 #let fontys_blue_2   = rgb("2F5496")
 #let code_name_color = fontys_blue_2.lighten(35%)
 
+// States
 #let censored_state = state("style", "0")
+
+// Misc functions
+#let hlink(url, content: none) = {
+  link(url)[
+    #underline[#text([
+      #if content == none {
+        url
+      } else {
+        content
+      }
+    ], fill: fontys_blue_2)]
+  ]
+}
 
 #let sensitive(textl) = locate(loc => {
   if (censored_state.at(loc) == 1) {
@@ -74,6 +88,7 @@
   ]
 }
 
+// Document
 #let fhict_doc(
   title: "Document Title",
   subtitle: "Document Subtitle",
@@ -106,7 +121,7 @@
   if authors == none {
     set document(title: title)    
   } else {
-    set document(title: title, author: authors.map(author => author.name))
+    // set document(title: title, author: authors.map(author => author.name))
   }
 
   // Set the document's style
@@ -135,9 +150,6 @@
     it.body
     it.caption
   }
-
-  // Set states
-  censored_state.update(censored)
 
   // Set Cover Page
   set page("a4",
@@ -182,6 +194,7 @@
         )
     )
     // Authors
+    #censored_state.update(censored)
     #set text(fill: fontys_purple_1)
     #if authors != none {
       if authors.all(x => "email" in x) {
@@ -240,6 +253,7 @@
   )
 
   // Show the cover page
+  censored_state.update(censored)
   box()
   pagebreak()
 
