@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD033 -->
+
 # FHICT Typst Document Template
 
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/TomVer99/FHICT-typst-template?style=flat-square)
