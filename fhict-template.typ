@@ -88,6 +88,21 @@
   ]
 }
 
+#let lined_box(title, body, line-color: red) = block(
+  above: 2em, stroke: 0.5pt + line-color,
+  width: 100%, inset: 14pt,
+  breakable: false
+)[
+  #set text(font: "Roboto", fill: line-color)
+  #place(
+    top + left,
+    dy: -6pt - 14pt,
+    dx: 6pt - 14pt,
+    block(fill: white, inset: 2pt)[*#title*]
+  )
+  #body
+]
+
 // Document
 #let fhict_doc(
   title: "Document Title",
@@ -403,18 +418,3 @@
     )
   }
 }
-
-#let todo(body) = block(
-  above: 2em, stroke: 0.5pt + red,
-  width: 100%, inset: 14pt,
-  breakable: false
-)[
-  #set text(font: "Roboto", fill: red)
-  #place(
-    top + left,
-    dy: -6pt - 14pt,
-    dx: 6pt - 14pt,
-    block(fill: white, inset: 2pt)[*DRAFT*]
-  )
-  #body
-]
