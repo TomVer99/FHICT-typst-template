@@ -121,7 +121,7 @@
   if authors == none {
     set document(title: title)    
   } else {
-    set document(title: title, author: authors.map(author => author.name))
+    // set document(title: title, author: authors.map(author => author.name))
   }
 
   // Set the document's style
