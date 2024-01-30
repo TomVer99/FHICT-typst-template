@@ -1,4 +1,5 @@
-#import "./../template/fhict-template.typ": *
+#import "./../../template/fhict-template.typ": *
+#import "./terms.typ": term_list
 
 #show: fhict_doc.with(
   title: "Showcase",
@@ -16,14 +17,7 @@
       changes: "Initial version",
     ),
   ),
-  pre-toc: [
-    = Summary
-    This document will show all the features of the FHICT Template.
-
-    In this `pre-toc` section you can do anything you want, but it will not be shown in the Table of Contents.
-
-    = Im a Heading that comes before the Table of Contents
-  ],
+  pre-toc: [#include "./pre-toc.typ"],
   table-of-figures: true,
   table-of-listings: true,
   bibliography-file: "my-sources.bib",
@@ -31,19 +25,7 @@
   // disable-chapter-numbering: true,
   // watermark: "THIS IS A WATERMARK",
   // glossary-front: true,
-  glossary-terms:(
-    (
-      key: "fhict",
-      short: "FHICT",
-      long: "Fontys Hogeschool ICT",
-      desc: [Fontys University of Applied Sciences],
-    ),
-    (
-      key: "wip",
-      short: "W.I.P.",
-      long: "Work In Progress",
-    ),
-  ),
+  glossary-terms: term_list,
   censored: 1,
 )
 
@@ -73,7 +55,7 @@ This is a figure with an image. This will be shown in the list of figures if ena
 
 #figure(
   image(
-    "./../template/assets/Picture1.png",
+    "./../../template/assets/Picture1.png",
     width: 50%,
   ),
   caption: "Figure example",

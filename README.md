@@ -34,7 +34,7 @@ To get started with this Typst document template, follow these steps:
 5. **Set the available options**: Set the available options in the template file to your liking.
 6. **Start writing**: Start writing your document.
 
-Not sure how to do the last 3 steps? Check out the [showcase document](./examples/showcase.typ) for a reference or grab the [starter](./examples/starter.typ) file to get a pre made starting point.
+Not sure how to do the last 3 steps? Check out the [showcase document](./examples/showcase/showcase.typ) for a reference or grab the [starter](./examples/starter/starter.typ) folder to get a pre made starting point.
 
 ## Helpful Links / Resources
 

@@ -1,4 +1,6 @@
-#import "./../template/fhict-template.typ": *
+// CHANGE THIS TO THE CORRECT PATH
+#import "./../../template/fhict-template.typ": *
+#import "./terms.typ": term_list
 
 #show: fhict_doc.with(
   title: "",
@@ -16,7 +18,7 @@
       changes: "",
     ),
   ),
-  pre-toc: [
-  ],
+  pre-toc: [#include "./pre-toc.typ"],
   bibliography-file: "my-sources.bib",
+  glossary-terms: term_list,
 )
