@@ -19,39 +19,9 @@ Creating well-structured and visually appealing documents is crucial in academic
 
 - Consistent formatting for titles, headings, subheadings, and paragraphs.
 - Clean and professional document layout.
-  - Automatic page numbering.
-    - Roman numerals for pages before the body.
-    - Arabic numerals for pages in the body.
-  - Automatic heading numbering (can be disabled).
-  - Automatic table of contents (can be disabled).
-  - Automatic styling of code blocks.
-    - Language displayed in the code block (for supported languages).
-  - Automatic Glossary (If terms are defined).
-  - Automatic table of figures (Optional).
-  - Automatic table of listings (Optional).
-  - Automatic styling of version history table (Optional).
-  - Automatic styling of references (Optional).
-  - Automatic styling summary (Optional).
-- Watermark (Optional).
-- Included cover page.
-  - FHICT Style.
-  - Authors.
-    - Name.
-    - Email (Optional).
-  - Document title.
-  - Document subtitle.
-  - Date.
+- FHICT Style.
+- Configurable document options.
 - Helper functions.
-  - Todo block.
-  - Table.
-    - Custom colors settable.
-- Configurable citation style.
-  - Standard IEEE.
-- Multiple packages included by default.
-  - `codly` for code blocks.
-  - `colorful-boxes` for colorful boxes.
-  - `showybox` for colorful boxes.
-  - `glossarium` for glossary.
 
 ## Getting Started
 
@@ -68,19 +38,14 @@ Not sure how to do the last 3 steps? Check out the [showcase document](showcase.
 
 ## Helpful Links / Resources
 
+- The [Template wiki](https://github.com/TomVer99/FHICT-typst-template/wiki) contains a list of all available options and helper functions among other things.
 - The [Typst Documentation](https://typst.app/docs/) is a great resource for learning how to use Typst.
 - The bibliography file is written in [BibTeX](http://www.bibtex.org/Format/). You can use [BibTeX Editor](https://truben.no/latex/bibtex/) to easily create and edit your bibliography.
 - You can use sub files to split your document into multiple files. This is especially useful for large documents.
 
 ## Contributing
 
-I welcome contributions to improve and expand this document template. If you have ideas, suggestions, or encounter issues, please consider contributing by:
-
-1. Forking the repository.
-2. Making your changes or additions.
-3. Creating a pull request describing your changes and why they are beneficial.
-
-or create an issue to report a bug or suggest an enhancement.
+I welcome contributions to improve and expand this document template. If you have ideas, suggestions, or encounter issues, please consider contributing by creating a pull request or issue.
 
 ## Disclaimer
 
