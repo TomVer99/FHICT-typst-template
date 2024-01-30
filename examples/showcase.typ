@@ -1,4 +1,4 @@
-#import "fhict-template.typ": *
+#import "./../template/fhict-template.typ": *
 
 #show: fhict_doc.with(
   title: "Showcase",
@@ -45,7 +45,7 @@
     ),
   ),
   censored: 1,
-  )
+)
 
 = Examples
 
@@ -73,7 +73,7 @@ This is a figure with an image. This will be shown in the list of figures if ena
 
 #figure(
   image(
-    "assets/Picture1.png",
+    "./../template/assets/Picture1.png",
     width: 50%,
   ),
   caption: "Figure example",
