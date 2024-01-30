@@ -151,9 +151,6 @@
     it.caption
   }
 
-  // Set states
-  censored_state.update(censored)
-
   // Set Cover Page
   set page("a4",
   background: [
@@ -197,6 +194,7 @@
         )
     )
     // Authors
+    #censored_state.update(censored)
     #set text(fill: fontys_purple_1)
     #if authors != none {
       if authors.all(x => "email" in x) {
@@ -255,6 +253,7 @@
   )
 
   // Show the cover page
+  censored_state.update(censored)
   box()
   pagebreak()
 
