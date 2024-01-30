@@ -106,14 +106,6 @@ This is a figure with code. This will be shown in the list of listings if enable
 
 This is a citation #cite(<FHICT-typst-template>).
 
-== Todo
-
-#todo([
-  This is a DRAFT / TODO box. This box can be used to indicate that (part of) the document is not finished yet.
-
-  Keep in mind this box is not breakable, so it will not be split over multiple pages.
-])
-
 #pagebreak()
 == Tables
 
@@ -344,6 +336,16 @@ stroke-color: fontys_purple_1, text-color: fontys_blue_1)[
   caption: "Custom Boxes Example",
 )
 
+== lined_box
+
+#lined_box("lined_box", [
+  This is a lined_box. This box can be used to indicate anything you want.
+])
+
+#lined_box("lined_box, but black", [
+  You can also change the color of the lines.
+], line-color: black)
+
 == sensitive information
 
 You can censor sensitive information by using the `#sensitive` function. Each character will be replaced by a black rectangle, making it impossible to read or copy the text.
@@ -358,6 +360,7 @@ You can set if the text should be censored or not by setting the `censored` opti
 
 `1` means censored, `0` means not censored.
 
+#pagebreak()
 == Links
 
 You can create links by using the `#hlink` function. This function takes two arguments: `url` and `content`. The `url` argument is the url the link should point to. The `content` argument is the text that should be shown in the document and is optional. If the `content` argument is not set, the `url` argument will be used as the content.
@@ -430,9 +433,9 @@ If any one author does not have an email address, the email addresses will not b
 
 You can also chose to not set any authors. In this case, no authors will be shown on the cover page.
 
-#todo([
-  It is planned to add support for email / no email for a case by case basis, but this is not yet implemented.
-])
+// #todo([
+//   It is planned to add support for email / no email for a case by case basis, but this is not yet implemented.
+// ])
 
 == Version History
 
