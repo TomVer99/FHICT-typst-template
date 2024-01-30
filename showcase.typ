@@ -358,6 +358,22 @@ You can set if the text should be censored or not by setting the `censored` opti
 
 `1` means censored, `0` means not censored.
 
+== Links
+
+You can create links by using the `#hlink` function. This function takes two arguments: `url` and `content`. The `url` argument is the url the link should point to. The `content` argument is the text that should be shown in the document and is optional. If the `content` argument is not set, the `url` argument will be used as the content.
+
+The following code will create two links, one with the content "Google" and one with the content "www.google.com". Both links will point to the same url.
+
+```typst
+#hlink("www.google.com", content: "Google")
+
+#hlink("www.google.com")
+```
+
+#hlink("www.google.com", content: "Google")
+
+#hlink("www.google.com")
+
 #pagebreak()
 = Document options
 
