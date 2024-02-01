@@ -13,8 +13,9 @@ This is a document template for creating professional-looking documents with Typ
 
 Creating well-structured and visually appealing documents is crucial in academic and professional settings. This template is designed to help FHICT students and faculty produce professional looking documents.
 
-<p align="center">
-  <img src="./img/showcase.png" alt="Showcase" width="50%">
+<p>
+  <img src="./img/showcase-l.png" alt="Showcase" width="49%">
+  <img src="./img/showcase-r.png" alt="Showcase" width="49%">
 </p>
 
 ## Requirements
