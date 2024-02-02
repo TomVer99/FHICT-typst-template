@@ -4,6 +4,8 @@
 #show: fhict_doc.with(
   title: "Showcase",
   subtitle: "FHICT Template Showcase",
+  // subtitle: "FHICT Template Showcase more word more word more word",
+  // subtitle-lines: 2,
   authors: (
     (
       name: [Tom #sensitive("V.")],
