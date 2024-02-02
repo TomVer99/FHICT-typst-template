@@ -107,6 +107,7 @@
 #let fhict_doc(
   title: "Document Title",
   subtitle: "Document Subtitle",
+  subtitle-lines: 1,
 
   authors: none,
 
@@ -198,9 +199,9 @@
         )
     )
     // Sub title
-    #place(left + horizon, dy: 20pt, dx: 40pt,
+    #place(left + horizon, dy: 20pt + ((22pt * (subtitle-lines - 1)) / 2), dx: 40pt,
         box(
-            height: 30pt,
+            height: 30pt + (22pt * (subtitle-lines - 1)),
             inset: 10pt,
             fill: white,
             text(20pt, fill: fontys_purple_1, font: "Roboto")[
@@ -213,9 +214,10 @@
     #set text(fill: fontys_purple_1)
     #if authors != none {
       if authors.all(x => "email" in x) {
-        place(left + horizon, dy: 60pt + (
+        place(left + horizon,
+        dy: 60pt + (
           (authors.len() - 1) * 15pt
-        ), dx: 40pt,
+        ) + (22pt * (subtitle-lines - 1)), dx: 40pt,
         box(
           height: 35pt + ((authors.len() - 1) * 30pt),
           inset: 10pt,
@@ -230,7 +232,7 @@
           } else {
             (authors.len() - 1) * 10pt
           }
-        ), dx: 40pt,
+        ) + (22pt * (subtitle-lines - 1)), dx: 40pt,
         box(
           inset: 10pt,
           fill: white,
