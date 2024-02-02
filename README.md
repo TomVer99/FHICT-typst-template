@@ -1,16 +1,22 @@
+<!-- markdownlint-disable MD033 -->
+
 # FHICT Typst Document Template
 
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/TomVer99/FHICT-typst-template?style=flat-square)
 ![GitHub Repo stars](https://img.shields.io/github/stars/TomVer99/FHICT-typst-template?style=flat-square)
 
 ![Maintenance](https://img.shields.io/maintenance/Yes/2024?style=flat-square)
-[![WiKi Maintenance](https://img.shields.io/badge/wiki_maintained-Yes-44CC11?style=flat-square)](https://github.com/TomVer99/FHICT-typst-template/wiki)
 
 This is a document template for creating professional-looking documents with Typst, tailored for FHICT (Fontys Hogeschool ICT).
 
 ## Introduction
 
 Creating well-structured and visually appealing documents is crucial in academic and professional settings. This template is designed to help FHICT students and faculty produce professional looking documents.
+
+<p>
+  <img src="./img/showcase-l.png" alt="Showcase" width="49%">
+  <img src="./img/showcase-r.png" alt="Showcase" width="49%">
+</p>
 
 ## Requirements
 
