@@ -136,7 +136,7 @@
   let meta_authors = ""
 
   // Set metadata
-  if authors != none {
+  if authors != none and censored == 0 {
     if type(authors.at(0).name) == dictionary {
       meta_authors = authors.map(author => author.name.string)
     } else {
@@ -232,8 +232,11 @@
           inset: 10pt,
           fill: white,
           text(10pt)[
-              #authors.map(author => strong(author.name) + linebreak() + "      " + link("mailto:" + author.email)).join(",\n")
-          ]))
+            #if type(authors.at(0).name) == dictionary {
+              authors.map(author => strong(author.name.content) + linebreak() + "      " + link("mailto:" + author.email)[#author.email]).join(",\n")
+            } else {
+              authors.map(author => strong(author.name) + linebreak() + "      " + link("mailto:" + author.email)).join(",\n")
+            }]))
       } else {
         place(left + horizon, dy: 48pt + (
           if authors.len() == 1 {
