@@ -8,7 +8,9 @@
   // subtitle-lines: 2,
   authors: (
     (
-      name: [Tom #sensitive("V.")],
+      name: (content: [Tom #sensitive("V.")], string: "Tom V."),
+      // name: "Tom. V.",
+      email: "some@mail.com",
     ),
   ),
   version-history: (

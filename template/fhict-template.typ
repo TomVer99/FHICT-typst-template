@@ -133,12 +133,21 @@
 ) = {
   show: make-glossary
 
+  let meta_authors = ""
+
   // Set metadata
-  if authors == none {
-    set document(title: title)    
-  } else {
-    // set document(title: title, author: authors.map(author => author.name))
+  if authors != none and censored == 0 {
+    if type(authors.at(0).name) == dictionary {
+      meta_authors = authors.map(author => author.name.string)
+    } else {
+      meta_authors = authors.map(author => author.name)
+    }
   }
+
+  set document(
+    title: title,
+    author: meta_authors,
+  )
 
   // Set the document's style
   set text(font: "Roboto", fallback: false, size: 11pt, fill: black)
@@ -223,8 +232,11 @@
           inset: 10pt,
           fill: white,
           text(10pt)[
-              #authors.map(author => strong(author.name) + linebreak() + "      " + link("mailto:" + author.email)).join(",\n")
-          ]))
+            #if type(authors.at(0).name) == dictionary {
+              authors.map(author => strong(author.name.content) + linebreak() + "      " + link("mailto:" + author.email)[#author.email]).join(",\n")
+            } else {
+              authors.map(author => strong(author.name) + linebreak() + "      " + link("mailto:" + author.email)).join(",\n")
+            }]))
       } else {
         place(left + horizon, dy: 48pt + (
           if authors.len() == 1 {
@@ -238,7 +250,11 @@
           fill: white,
           height: 20pt + ((authors.len() - 1) * 15pt),
           text(10pt, fill: fontys_purple_1, font: "Roboto")[
-            *#authors.map(author => author.name).join(",\n")*
+            #if type(authors.at(0).name) == dictionary {
+              [*#authors.map(author => author.name.content).join(",\n")*]
+            } else {
+              [*#authors.map(author => author.name).join(",\n")*]
+            }
           ]))
       }
     }
