@@ -10,6 +10,7 @@
     (
       name: (content: [Tom #sensitive("V.")], string: "Tom V."),
       // name: "Tom. V.",
+      email: "some@mail.com",
     ),
   ),
   version-history: (
