@@ -10,6 +10,51 @@
 #let fontys_blue_2   = rgb("2F5496")
 #let code_name_color = fontys_blue_2.lighten(35%)
 
+// author: ntjess
+#let stringify-by-func(it) = {
+  let func = it.func()
+  return if func in (parbreak, pagebreak, linebreak) {
+    "\n"
+  } else if func == smartquote {
+    if it.double { "\"" } else { "'" } // "
+  } else if it.fields() == (:) {
+    // a fieldless element is either specially represented (and caught earlier) or doesn't have text
+    ""
+  } else {
+    panic("Not sure how to handle type `" + repr(func) + "`")
+  }
+}
+
+#let plain-text(it) = {
+  return if type(it) == str {
+    it
+  } else if type(it) == content {
+    let text_str = ""
+    if it.has("children") {
+      for child in it.children {
+        if child.has("text") {
+          text_str = text_str + child.text
+        } else {
+          // The issue is here.
+          // Someone conver this content to a string
+          text_str = text_str + "REDACTED"
+        }
+      }
+    }
+    text_str
+  } else if it == [ ] {
+    " "
+  } else if it.has("children") {
+    it.children.map(plain-text).join()
+  } else if it.has("body") {
+    plain-text(it.body)
+  } else if it.has("text") {
+    it.text
+  } else {
+    stringify-by-func(it)
+  }
+}
+
 // States
 #let censored_state = state("style", "0")
 
@@ -28,13 +73,13 @@
 
 #let sensitive(textl) = locate(loc => {
   if (censored_state.at(loc) == 1) {
-    text(
+    return text(
       textl.replace(regex("."), "█"),
       fill: black,
       font: "Arial"
     )
   } else {
-    textl
+    return textl
   }
 })
 
@@ -233,9 +278,9 @@
           fill: white,
           text(10pt)[
             #if type(authors.at(0).name) == dictionary {
-              authors.map(author => strong(author.name.content) + linebreak() + "      " + link("mailto:" + author.email)[#author.email]).join(",\n")
+              authors.map(author => strong(author.name.content) + linebreak() + "      " + link("mailto:" + plain-text(author.email))[#plain-text(author.email)]).join(",\n")
             } else {
-              authors.map(author => strong(author.name) + linebreak() + "      " + link("mailto:" + author.email)).join(",\n")
+              authors.map(author => strong(author.name) + linebreak() + "      " + link("mailto:" + plain-text(author.email))).join(",\n")
             }]))
       } else {
         place(left + horizon, dy: 48pt + (
