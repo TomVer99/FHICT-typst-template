@@ -378,7 +378,6 @@
     (
       glossary-terms
     ),
-    show-all: true
     )
     pagebreak()
   }
@@ -429,7 +428,6 @@
     (
       glossary-terms
     ),
-    show-all: true
     )
   }
 
