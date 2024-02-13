@@ -1,6 +1,8 @@
 #import "./../../template/fhict-template.typ": *
 #import "./terms.typ": term_list
 
+      // name: "Tom. V.",
+      // email: "some@mail.com",
 #show: fhict_doc.with(
   title: "Showcase",
   subtitle: "FHICT Template Showcase",
@@ -9,8 +11,7 @@
   authors: (
     (
       name: (content: [Tom #sensitive("V.")], string: "Tom V."),
-      // name: "Tom. V.",
-      email: "some@mail.com",
+      email: [#sensitive("some")\@mail.com],
     ),
   ),
   version-history: (
