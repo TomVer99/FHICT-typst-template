@@ -12,4 +12,9 @@
     short: [W.I.P.],
     long: [Work In Progress],
   ),
+  (
+    key: "unused",
+    short: [UNUSED],
+    long: [Unused],
+  )
 )
