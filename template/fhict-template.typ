@@ -421,12 +421,6 @@
   // Show the page's contents
   body
 
-  // Show the bibliography
-  if bibliography-file != none {
-    pagebreak()
-    bibliography(bibliography-file, title: "References", style: "ieee")
-  }
-
   // Show the Glossary in the back
   if glossary-terms != none and glossary-front == false {
     pagebreak()
@@ -437,5 +431,11 @@
     ),
     show-all: true
     )
+  }
+
+  // Show the bibliography
+  if bibliography-file != none {
+    pagebreak()
+    bibliography(bibliography-file, title: "References", style: "ieee")
   }
 }
