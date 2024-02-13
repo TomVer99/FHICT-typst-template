@@ -290,6 +290,12 @@
   box()
   pagebreak()
 
+  let pre_toc_numbering = "1"
+
+  if (version-history != none) or (pre-toc != none) or (disable-toc == false) or (disable-toc == false) or (glossary-terms != none and glossary-front == true) or ((table-of-figures != none) and (table-of-figures != false)) or ((table-of-listings != none) and (table-of-listings != false)) {
+    pre_toc_numbering = "I"
+  }
+
   // Set the page style for non body pages
   set page("a4",
     background: [],
@@ -299,14 +305,11 @@
         )
         #place(right + horizon, dy: -25pt,
             text(15pt, fill: fontys_purple_1, font: "Roboto")[
-                #if (version-history != none) or (pre-toc != none) or (disable-toc == false) or (disable-toc == false) or (glossary-terms != none and glossary-front == true) or ((table-of-figures != none) and (table-of-figures != false)) or ((table-of-listings != none) and (table-of-listings != false)) {
-                  [*#counter(page).display("I")*]
-                } else {
-                  [*#counter(page).display()*]
-                }
+              *#counter(page).display(pre_toc_numbering)*
             ]
         )
-    ]
+    ],
+    numbering: pre_toc_numbering
   )
   counter(page).update(1)
 
