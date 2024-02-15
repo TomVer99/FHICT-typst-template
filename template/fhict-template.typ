@@ -443,7 +443,9 @@
   if appendix != none {
     // Set appendix page style
     counter(heading).update(0)
-    set heading(numbering: "A.")
+    // TODO: Wait for Typst 0.11 to be released
+    set heading(numbering: "A.", outlined: false)
+    show heading.where(level: 1): set heading(outlined: true)
 
     pagebreak()
     appendix
