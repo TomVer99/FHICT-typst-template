@@ -126,6 +126,8 @@
   table-of-figures: none,
   table-of-listings: none,
 
+  appendix: none,
+
   watermark: none,
   censored: 0,
 
@@ -435,5 +437,15 @@
   if bibliography-file != none {
     pagebreak()
     bibliography(bibliography-file, title: "References", style: "ieee")
+  }
+
+  // Show the appendix
+  if appendix != none {
+    // Set appendix page style
+    counter(heading).update(0)
+    set heading(numbering: "A.")
+
+    pagebreak()
+    appendix
   }
 }
