@@ -22,6 +22,11 @@
     ),
   ),
   pre-toc: [#include "./pre-toc.typ"],
+  appendix: [
+    = Test
+    == Test a
+    === Test b
+  ],
   table-of-figures: true,
   table-of-listings: true,
   bibliography-file: "my-sources.bib",
