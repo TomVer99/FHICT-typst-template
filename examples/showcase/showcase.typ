@@ -22,6 +22,13 @@
     ),
   ),
   pre-toc: [#include "./pre-toc.typ"],
+  appendix: [
+    = This is the appendix
+
+    In the appendix, only the top-level headings appear in the table of contents.
+
+    == I will not appear in the table of contents
+  ],
   table-of-figures: true,
   table-of-listings: true,
   bibliography-file: "my-sources.bib",

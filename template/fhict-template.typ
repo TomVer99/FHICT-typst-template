@@ -126,6 +126,8 @@
   table-of-figures: none,
   table-of-listings: none,
 
+  appendix: none,
+
   watermark: none,
   censored: 0,
 
@@ -156,7 +158,7 @@
   // Set the header style
   let numbering_set = none
   if disable-chapter-numbering == false {
-    numbering_set = "1."
+    numbering_set = "1.1"
   } else {
     numbering_set = none
   }
@@ -435,5 +437,17 @@
   if bibliography-file != none {
     pagebreak()
     bibliography(bibliography-file, title: "References", style: "ieee")
+  }
+
+  // Show the appendix
+  if appendix != none {
+    // Set appendix page style
+    counter(heading).update(0)
+    // TODO: Wait for Typst 0.11 to be released
+    set heading(numbering: "A.A", outlined: false)
+    show heading.where(level: 1): set heading(outlined: true)
+
+    pagebreak()
+    appendix
   }
 }
