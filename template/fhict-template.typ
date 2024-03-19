@@ -119,6 +119,7 @@
   bibliography-file: none,
   citation-style: "ieee",
 
+  toc-depth: 3,
   disable-toc: false,
   disable-chapter-numbering: false,
 
@@ -367,7 +368,7 @@
   if disable-toc == false {
     outline(
       title: "Table of Contents",
-      depth: 3,
+      depth: toc-depth,
       indent: n => [#h(1em)] * n,
     )
     pagebreak()
