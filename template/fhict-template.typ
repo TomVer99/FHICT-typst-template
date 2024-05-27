@@ -142,6 +142,8 @@
   watermark: none,
   censored: 0,
 
+  print-extra-white-page: false,
+
   body
 ) = {
   show: make-glossary
