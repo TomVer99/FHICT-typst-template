@@ -332,8 +332,11 @@
     page_intentionally_left_blank()
   }
 
+  context [
+    #let version_history_starting_page = here().page()
+
   // Show the version history
-  if version-history != none {
+    #if version-history != none {
     heading("version history", outlined: false, numbering: none)
     fhict_table(
       columns: (auto, auto, auto, 1fr),
@@ -349,6 +352,12 @@
     )
     pagebreak()
   }
+
+    #let version_histroy_ending_page = here().page()
+    #if calc.rem(version_histroy_ending_page, version_history_starting_page) == 0 or version_histroy_ending_page == version_history_starting_page {
+      page_intentionally_left_blank()
+    }
+  ]
 
   show: codly-init.with()
   codly(languages: (
