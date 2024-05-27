@@ -103,6 +103,16 @@
   #body
 ]
 
+#let page_intentionally_left_blank() = {
+  block(height: 100%, width: 100%)[
+    #align(center + horizon)[
+      #text(fill: black, font: "Arial", size: 12pt)[
+        *This page is intentionally left blank.*
+      ]
+    ]
+  ]
+}
+
 // Document
 #let fhict_doc(
   title: "Document Title",
