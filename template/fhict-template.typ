@@ -335,23 +335,23 @@
   context [
     #let version_history_starting_page = here().page()
 
-  // Show the version history
+    // Show the version history
     #if version-history != none {
-    heading("version history", outlined: false, numbering: none)
-    fhict_table(
-      columns: (auto, auto, auto, 1fr),
-      content: (
-        ("Version", "Date", "Author", "Changes"),
-        ..version-history.map(version => (
-          version.version,
-          version.date,
-          version.author,
-          version.changes,
-        )),
-      ),
-    )
-    pagebreak()
-  }
+      heading("version history", outlined: false, numbering: none)
+      fhict_table(
+        columns: (auto, auto, auto, 1fr),
+        content: (
+          ("Version", "Date", "Author", "Changes"),
+          ..version-history.map(version => (
+            version.version,
+            version.date,
+            version.author,
+            version.changes,
+          )),
+        ),
+      )
+      pagebreak()
+    }
 
     #let version_histroy_ending_page = here().page()
     #if calc.rem(version_histroy_ending_page, version_history_starting_page) == 0 or version_histroy_ending_page == version_history_starting_page {
@@ -385,7 +385,7 @@
       #let toc_starting_page = here().page()
 
       // Show the pre-toc
-    // Disable heading numbering and appearing in the TOC
+      // Disable heading numbering and appearing in the TOC
       #set heading(numbering: none, outlined: false)
       #pre-toc
       #set heading(numbering: numbering_set, outlined: true)
@@ -404,10 +404,10 @@
 
       // Show the table of contents
       #outline(
-      title: "Table of Contents",
-      depth: toc-depth,
-      indent: n => [#h(1em)] * n,
-    )
+        title: "Table of Contents",
+        depth: toc-depth,
+        indent: n => [#h(1em)] * n,
+      )
       #pagebreak()
 
       #let toc_ending_page = here().page()
@@ -417,6 +417,7 @@
     ]
   }
 
+  // TODO: blank page
   // Show the Glossary in the front
   if glossary-terms != none and glossary-front == true {
     heading("Glossary", numbering: none, outlined: false)
@@ -428,6 +429,7 @@
     pagebreak()
   }
 
+  // TODO: blank page
   // Show the table of figures if requested
   if (table-of-figures != none) and (table-of-figures != false) {
     outline(
@@ -437,6 +439,7 @@
     pagebreak()
   }
 
+  // TODO: blank page
   // Show the table of listings if requested
   if (table-of-listings != none) and (table-of-listings != false) {
     outline(
@@ -466,6 +469,7 @@
   // Show the page's contents
   body
 
+  // TODO: blank page
   // Show the Glossary in the back
   if glossary-terms != none and glossary-front == false {
     pagebreak()
@@ -477,12 +481,14 @@
     )
   }
 
+  // TODO: blank page
   // Show the bibliography
   if bibliography-file != none {
     pagebreak()
     bibliography(bibliography-file, title: "References", style: "ieee")
   }
 
+  // TODO: blank page
   // Show the appendix
   if appendix != none {
     // Set appendix page style
