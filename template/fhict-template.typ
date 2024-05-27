@@ -328,6 +328,10 @@
   )
   counter(page).update(1)
 
+  if print-extra-white-page == true {
+    page_intentionally_left_blank()
+  }
+
   // Show the version history
   if version-history != none {
     heading("version history", outlined: false, numbering: none)
