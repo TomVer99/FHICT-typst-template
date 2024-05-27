@@ -380,23 +380,41 @@
     display-icon: false,
   )
 
-  // Show the pre-toc
   if pre-toc != none {
+    context [
+      #let toc_starting_page = here().page()
+
+      // Show the pre-toc
     // Disable heading numbering and appearing in the TOC
-    set heading(numbering: none, outlined: false)
-    pre-toc
-    set heading(numbering: numbering_set, outlined: true)
-    pagebreak()
+      #set heading(numbering: none, outlined: false)
+      #pre-toc
+      #set heading(numbering: numbering_set, outlined: true)
+      #pagebreak()
+
+      #let toc_ending_page = here().page()
+      #if calc.rem(toc_ending_page, toc_starting_page) == 0 or toc_ending_page == toc_starting_page {
+        page_intentionally_left_blank()
+      }
+    ]
   }
 
-  // Show the table of contents
   if disable-toc == false {
-    outline(
+    context [
+      #let toc_starting_page = here().page()
+
+      // Show the table of contents
+      #outline(
       title: "Table of Contents",
       depth: toc-depth,
       indent: n => [#h(1em)] * n,
     )
-    pagebreak()
+      #pagebreak()
+
+      #let toc_ending_page = here().page()
+      #if calc.rem(toc_ending_page, toc_starting_page) == 0 or toc_ending_page == toc_starting_page {
+        page_intentionally_left_blank()
+      }
+    ]
   }
 
   // Show the Glossary in the front
