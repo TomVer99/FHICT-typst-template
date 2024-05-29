@@ -12,6 +12,7 @@
 
 // States
 #let censored_state = state("style", "0")
+#let page_number = state("style", "1")
 
 // Misc functions
 #let hlink(url, content: none) = {
@@ -103,15 +104,20 @@
   #body
 ]
 
-#let page_intentionally_left_blank() = {
-  block(height: 100%, width: 100%)[
-    #align(center + horizon)[
-      #text(fill: black, font: "Arial", size: 12pt)[
-        *This page is intentionally left blank.*
+#let page_intentionally_left_blank(newpage: true) = locate(loc => {
+  if calc.even(loc.page()) {
+    block(height: 95%, width: 100%)[
+      #align(center + horizon)[
+        #text(fill: black, font: "Arial", size: 12pt)[
+          *This page is intentionally left blank.*
+        ]
       ]
     ]
-  ]
-}
+    if newpage {
+      pagebreak()
+    }
+  }
+})
 
 // Document
 #let fhict_doc(
@@ -332,32 +338,24 @@
     page_intentionally_left_blank()
   }
 
-  context [
-    #let version_history_starting_page = here().page()
-
-    // Show the version history
-    #if version-history != none {
-      heading("version history", outlined: false, numbering: none)
-      fhict_table(
-        columns: (auto, auto, auto, 1fr),
-        content: (
-          ("Version", "Date", "Author", "Changes"),
-          ..version-history.map(version => (
-            version.version,
-            version.date,
-            version.author,
-            version.changes,
-          )),
-        ),
-      )
-      pagebreak()
-    }
-
-    #let version_histroy_ending_page = here().page()
-    #if calc.rem(version_histroy_ending_page, version_history_starting_page) == 0 or version_histroy_ending_page == version_history_starting_page {
-      if print-extra-white-page == true { page_intentionally_left_blank() }
-    }
-  ]
+  // Show the version history
+  if version-history != none {
+    heading("version history", outlined: false, numbering: none)
+    fhict_table(
+      columns: (auto, auto, auto, 1fr),
+      content: (
+        ("Version", "Date", "Author", "Changes"),
+        ..version-history.map(version => (
+          version.version,
+          version.date,
+          version.author,
+          version.changes,
+        )),
+      ),
+    )
+    pagebreak()
+    if print-extra-white-page == true { page_intentionally_left_blank() }
+  }
 
   show: codly-init.with()
   codly(languages: (
@@ -381,97 +379,57 @@
   )
 
   if pre-toc != none {
-    context [
-      #let toc_starting_page = here().page()
-
-      // Show the pre-toc
-      // Disable heading numbering and appearing in the TOC
-      #set heading(numbering: none, outlined: false)
-      #pre-toc
-      #set heading(numbering: numbering_set, outlined: true)
-      #pagebreak()
-
-      #let toc_ending_page = here().page()
-      #if calc.rem(toc_ending_page, toc_starting_page) == 0 or toc_ending_page == toc_starting_page {
-        if print-extra-white-page == true { page_intentionally_left_blank() }
-      }
-    ]
+    // Show the pre-toc
+    // Disable heading numbering and appearing in the TOC
+    set heading(numbering: none, outlined: false)
+    pre-toc
+    set heading(numbering: numbering_set, outlined: true)
+    pagebreak()
+    if print-extra-white-page == true { page_intentionally_left_blank() }
   }
 
   if disable-toc == false {
-    context [
-      #let toc_starting_page = here().page()
-
-      // Show the table of contents
-      #outline(
-        title: "Table of Contents",
-        depth: toc-depth,
-        indent: n => [#h(1em)] * n,
-      )
-      #pagebreak()
-
-      #let toc_ending_page = here().page()
-      #if calc.rem(toc_ending_page, toc_starting_page) == 0 or toc_ending_page == toc_starting_page {
-        if print-extra-white-page == true { page_intentionally_left_blank() }
-      }
-    ]
+    // Show the table of contents
+    outline(
+      title: "Table of Contents",
+      depth: toc-depth,
+      indent: n => [#h(1em)] * n,
+    )
+    pagebreak()
+    if print-extra-white-page == true { page_intentionally_left_blank() }
   }
 
   // Show the Glossary in the front
   if glossary-terms != none and glossary-front == true {
-    context [
-      #let glossary_starting_page = here().page()
-
-      #heading("Glossary", numbering: none, outlined: false)
-      #print-glossary(
-      (
-        glossary-terms
-      ),
-      )
-      #pagebreak()
-
-      #let glossary_ending_page = here().page()
-      #if calc.rem(glossary_ending_page, glossary_starting_page) == 0 or glossary_ending_page == glossary_starting_page {
-        if print-extra-white-page == true { page_intentionally_left_blank() }
-      }
-    ]
+    heading("Glossary", numbering: none, outlined: false)
+    print-glossary(
+    (
+      glossary-terms
+    ),
+    )
+    pagebreak()
+    if print-extra-white-page == true { page_intentionally_left_blank() }
   }
 
   // Show the table of figures if requested
-  context[
-    #let table_of_figures_starting_page = here().page()
-
-    #if (table-of-figures != none) and (table-of-figures != false) {
-      outline(
-        title: "Table Of Figures",
-        target: figure.where(kind: image),
-      )
-      pagebreak()
-    }
-
-    #let table_of_figures_ending_page = here().page()
-    #if calc.rem(table_of_figures_ending_page, table_of_figures_starting_page) == 0 or table_of_figures_ending_page == table_of_figures_starting_page {
-      if print-extra-white-page == true { page_intentionally_left_blank() }
-    }
-  ]
-
+  if (table-of-figures != none) and (table-of-figures != false) {
+    outline(
+      title: "Table Of Figures",
+      target: figure.where(kind: image),
+    )
+    pagebreak()
+    if print-extra-white-page == true { page_intentionally_left_blank(); page_intentionally_left_blank() }
+  }
+  
   // Show the table of listings if requested
-  context [
-    #let table_of_listings_starting_page = here().page()
-
-    #if (table-of-listings != none) and (table-of-listings != false) {
-      outline(
-        title: "Table Of Listings",
-        target: figure.where(kind: raw),
-      )
-      pagebreak()
-    }
-
-    #let table_of_listings_ending_page = here().page()
-    #if calc.rem(table_of_listings_ending_page, table_of_listings_starting_page) == 0 or table_of_listings_ending_page == table_of_listings_starting_page {
-      if print-extra-white-page == true { page_intentionally_left_blank() }
-    }
-  ]
+  if (table-of-listings != none) and (table-of-listings != false) {
+    outline(
+      title: "Table Of Listings",
+      target: figure.where(kind: raw),
+    )
+    pagebreak()
+    if print-extra-white-page == true { page_intentionally_left_blank(); page_intentionally_left_blank(newpage: false); }
+  }
 
   // Set the page style for body pages
   set page("a4",
@@ -491,55 +449,28 @@
   counter(page).update(1)
 
   // Show the page's contents
-  context [
-    #let body_starting_page = here().page()
-    
-    #body
-
-    #let body_ending_page = here().page()
-    #if calc.rem(body_ending_page, body_starting_page) == 0 or body_ending_page == body_starting_page {
-      if print-extra-white-page == true { pagebreak(); page_intentionally_left_blank() }
-    }
-  ]
+  body
+  pagebreak()
+  if print-extra-white-page == true { page_intentionally_left_blank() }
 
   // Show the Glossary in the back
-  context [
-    #let glossary_starting_page = here().page()
-
-    #if glossary-terms != none and glossary-front == false {
-      pagebreak()
-      heading("Glossary", numbering: none)
-      print-glossary(
-      (
-        glossary-terms
-      ),
-      )
-    }
-
-    #let glossary_ending_page = here().page()
-    #if calc.rem(glossary_ending_page, glossary_starting_page) == 0 or glossary_ending_page == glossary_starting_page {
-      // Add an extra white page if the glossary is not the last element in the document
-      // AND the print-extra-white-page flag is set to true
-      if print-extra-white-page == true and bibliography-file != none { pagebreak(); page_intentionally_left_blank() }
-    }
-  ]
+  if glossary-terms != none and glossary-front == false {
+    heading("Glossary", numbering: none)
+    print-glossary(
+    (
+      glossary-terms
+    ),
+    )
+    pagebreak()
+    if print-extra-white-page == true { page_intentionally_left_blank() }
+  }
 
   // Show the bibliography
-  context [
-    #let bibliography_starting_page = here().page()
-
-    #if bibliography-file != none {
-      pagebreak()
-      bibliography(bibliography-file, title: "References", style: "ieee")
-    }
-
-    #let bibliography_ending_page = here().page()
-    #if calc.rem(bibliography_ending_page, bibliography_starting_page) == 0 or bibliography_ending_page == bibliography_starting_page {
-      // Add an extra white page if the bibliography is not the last element in the document
-      // AND the print-extra-white-page flag is set to true
-      if print-extra-white-page == true and appendix != none { pagebreak(); page_intentionally_left_blank() }
-    }
-  ]
+  if bibliography-file != none {
+    bibliography(bibliography-file, title: "References", style: "ieee")
+    pagebreak()
+    if print-extra-white-page == true { page_intentionally_left_blank() }
+  }
 
   // Show the appendix
   if appendix != none {
@@ -548,7 +479,6 @@
     set heading(numbering: "A.A", outlined: false)
     show heading.where(level: 1): set heading(outlined: true)
 
-    pagebreak()
     appendix
   }
 }

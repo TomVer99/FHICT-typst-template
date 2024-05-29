@@ -73,6 +73,52 @@ This is a figure with an image. This will be shown in the list of figures if ena
   caption: "Figure example",
 )
 
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+#figure(image("./../../template/assets/Picture1.png",width: 1%,),caption: "Figure example",)
+
 #pagebreak()
 === Code
 
@@ -259,6 +305,12 @@ And `@wip` will be shown as @wip. But the second time you use it, it will be sho
 
 === showybox
 <BoxesB>
+
+= Test
+= Test
+= Test
+= Test
+= Test
 
 #showybox(
   frame: (
