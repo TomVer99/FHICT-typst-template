@@ -417,16 +417,24 @@
     ]
   }
 
-  // TODO: blank page
   // Show the Glossary in the front
   if glossary-terms != none and glossary-front == true {
-    heading("Glossary", numbering: none, outlined: false)
-    print-glossary(
-    (
-      glossary-terms
-    ),
-    )
-    pagebreak()
+    context [
+      #let glossary_starting_page = here().page()
+
+      #heading("Glossary", numbering: none, outlined: false)
+      #print-glossary(
+      (
+        glossary-terms
+      ),
+      )
+      #pagebreak()
+
+      #let glossary_ending_page = here().page()
+      #if calc.rem(glossary_ending_page, glossary_starting_page) == 0 or glossary_ending_page == glossary_starting_page {
+        page_intentionally_left_blank()
+      }
+    ]
   }
 
   // TODO: blank page
@@ -469,17 +477,25 @@
   // Show the page's contents
   body
 
-  // TODO: blank page
   // Show the Glossary in the back
-  if glossary-terms != none and glossary-front == false {
-    pagebreak()
-    heading("Glossary", numbering: none)
-    print-glossary(
-    (
-      glossary-terms
-    ),
-    )
-  }
+  context [
+    #let glossary_starting_page = here().page()
+
+    #if glossary-terms != none and glossary-front == false {
+      pagebreak()
+      heading("Glossary", numbering: none)
+      print-glossary(
+      (
+        glossary-terms
+      ),
+      )
+    }
+
+    #let glossary_ending_page = here().page()
+    #if calc.rem(glossary_ending_page, glossary_starting_page) == 0 or glossary_ending_page == glossary_starting_page {
+      page_intentionally_left_blank()
+    }
+  ]
 
   // TODO: blank page
   // Show the bibliography
