@@ -514,12 +514,13 @@
         glossary-terms
       ),
       )
-      pagebreak()
     }
 
     #let glossary_ending_page = here().page()
     #if calc.rem(glossary_ending_page, glossary_starting_page) == 0 or glossary_ending_page == glossary_starting_page {
-      if print-extra-white-page == true { page_intentionally_left_blank() }
+      // Add an extra white page if the glossary is not the last element in the document
+      // AND the print-extra-white-page flag is set to true
+      if print-extra-white-page == true and bibliography-file != none { pagebreak(); page_intentionally_left_blank() }
     }
   ]
 
@@ -528,13 +529,15 @@
     #let bibliography_starting_page = here().page()
 
     #if bibliography-file != none {
-      bibliography(bibliography-file, title: "References", style: "ieee")
       pagebreak()
+      bibliography(bibliography-file, title: "References", style: "ieee")
     }
 
     #let bibliography_ending_page = here().page()
     #if calc.rem(bibliography_ending_page, bibliography_starting_page) == 0 or bibliography_ending_page == bibliography_starting_page {
-      if print-extra-white-page == true { page_intentionally_left_blank() }
+      // Add an extra white page if the bibliography is not the last element in the document
+      // AND the print-extra-white-page flag is set to true
+      if print-extra-white-page == true and appendix != none { pagebreak(); page_intentionally_left_blank() }
     }
   ]
 
@@ -545,6 +548,7 @@
     set heading(numbering: "A.A", outlined: false)
     show heading.where(level: 1): set heading(outlined: true)
 
+    pagebreak()
     appendix
   }
 }
