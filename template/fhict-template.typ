@@ -104,20 +104,32 @@
   #body
 ]
 
-#let page_intentionally_left_blank(newpage: true) = locate(loc => {
-  if calc.even(loc.page()) {
-    block(height: 95%, width: 100%)[
-      #align(center + horizon)[
-        #text(fill: black, font: "Arial", size: 12pt)[
-          *This page is intentionally left blank.*
-        ]
+#let page_intentionally_left_blank_sub(newpage, force) = {
+  block(height: 95%, width: 100%)[
+    #align(center + horizon)[
+      #text(fill: black, font: "Arial", size: 12pt)[
+        *This page is intentionally left blank.*
       ]
     ]
-    if newpage {
-      pagebreak()
-    }
+  ]
+  if newpage {
+    pagebreak()
   }
-})
+}
+
+#let page_intentionally_left_blank(newpage: true, force: false, odd: true) = {
+  context [
+    #if odd == true {
+      if calc.odd(counter(page).get().at(0)) or force == true {
+        page_intentionally_left_blank_sub(newpage, force)
+      }
+    } else {
+      if calc.even(counter(page).get().at(0)) or force == true {
+        page_intentionally_left_blank_sub(newpage, force)
+      }
+    }
+  ]
+}
 
 // Document
 #let fhict_doc(
@@ -335,7 +347,7 @@
   counter(page).update(1)
 
   if print-extra-white-page == true {
-    page_intentionally_left_blank()
+    page_intentionally_left_blank(force: true)
   }
 
   // Show the version history
@@ -418,7 +430,7 @@
       target: figure.where(kind: image),
     )
     pagebreak()
-    if print-extra-white-page == true { page_intentionally_left_blank(); page_intentionally_left_blank() }
+    if print-extra-white-page == true { page_intentionally_left_blank() }
   }
   
   // Show the table of listings if requested
@@ -428,10 +440,11 @@
       target: figure.where(kind: raw),
     )
     pagebreak()
-    if print-extra-white-page == true { page_intentionally_left_blank(); page_intentionally_left_blank(newpage: false); }
+    if print-extra-white-page == true { page_intentionally_left_blank(newpage: false) }
   }
 
-  // Set the page style for body pages
+  // Set the page style for body pages'
+  block()
   set page("a4",
     background: [],
     footer: [
@@ -451,7 +464,7 @@
   // Show the page's contents
   body
   pagebreak()
-  if print-extra-white-page == true { page_intentionally_left_blank() }
+  if print-extra-white-page == true { page_intentionally_left_blank(odd: false) }
 
   // Show the Glossary in the back
   if glossary-terms != none and glossary-front == false {
@@ -462,14 +475,14 @@
     ),
     )
     pagebreak()
-    if print-extra-white-page == true { page_intentionally_left_blank() }
+    if print-extra-white-page == true { page_intentionally_left_blank(odd: false) }
   }
 
   // Show the bibliography
   if bibliography-file != none {
     bibliography(bibliography-file, title: "References", style: "ieee")
     pagebreak()
-    if print-extra-white-page == true { page_intentionally_left_blank() }
+    if print-extra-white-page == true { page_intentionally_left_blank(odd: false) }
   }
 
   // Show the appendix
