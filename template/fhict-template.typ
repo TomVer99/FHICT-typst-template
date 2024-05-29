@@ -162,9 +162,9 @@
 
   print-extra-white-page: false,
 
-  secondary-company-color: none,
-  secondary-company-logo: none,
-  secondary-company-logo-height: 6%,
+  secondary-organisation-color: none,
+  secondary-organisation-logo: none,
+  secondary-organisation-logo-height: 6%,
 
   body
 ) = {
@@ -228,10 +228,10 @@
         (5%, 100%),
         (0%, 100%)
     ))
-    #if secondary-company-color != none {
-      // Secondary company triangle
+    #if secondary-organisation-color != none {
+      // Secondary organisation triangle
       place(top + left, path(
-        fill: secondary-company-color,
+        fill: secondary-organisation-color,
         closed: true,
         (10%, 100%),
         (101%, 37%),
@@ -239,11 +239,11 @@
       ))
     }
 
-    #if secondary-company-logo != none {
-      // Secondary company logo
+    #if secondary-organisation-logo != none {
+      // Secondary organisation logo
       place(bottom + right, dx: -30pt, dy: -120pt, image.decode(
-        secondary-company-logo,
-        height: secondary-company-logo-height,
+        secondary-organisation-logo,
+        height: secondary-organisation-logo-height,
       ))
     }
     // For scociety image
@@ -316,7 +316,7 @@
 
     #set text(fill: black)
     // Date
-    #if secondary-company-color == none {
+    #if secondary-organisation-color == none {
       place(right + horizon, dy: 330pt,
         box(
           width: 40%,
@@ -336,7 +336,7 @@
           height: 35pt,
           fill: white,
           place(left + horizon, dx: 10pt,
-            text(30pt, fill: secondary-company-color, font: "Roboto")[
+            text(30pt, fill: secondary-organisation-color, font: "Roboto")[
               *#datetime.today().display()*
             ]
           )

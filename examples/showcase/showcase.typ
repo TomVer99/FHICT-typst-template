@@ -40,9 +40,9 @@
   glossary-terms: term_list,
   censored: 1,
 
-  // secondary-company-logo: read("Company.svg"),
-  // secondary-company-color: rgb("184471"),
-  // secondary-company-logo-height: 3.5cm,
+  // secondary-organisation-logo: read("Company.svg"),
+  // secondary-organisation-color: rgb("184471"),
+  // secondary-organisation-logo-height: 3.5cm,
 )
 
 = Examples
