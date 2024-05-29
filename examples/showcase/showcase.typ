@@ -36,7 +36,7 @@
   // disable-chapter-numbering: true,
   // watermark: "THIS IS A WATERMARK",
   // glossary-front: true,
-  print-extra-white-page: true,
+  // print-extra-white-page: true,
   glossary-terms: term_list,
   censored: 1,
 )
