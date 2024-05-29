@@ -497,14 +497,21 @@
     }
   ]
 
-  // TODO: blank page
   // Show the bibliography
-  if bibliography-file != none {
-    pagebreak()
-    bibliography(bibliography-file, title: "References", style: "ieee")
-  }
+  context [
+    #let bibliography_starting_page = here().page()
 
-  // TODO: blank page
+    #if bibliography-file != none {
+      pagebreak()
+      bibliography(bibliography-file, title: "References", style: "ieee")
+    }
+
+    #let bibliography_ending_page = here().page()
+    #if calc.rem(bibliography_ending_page, bibliography_starting_page) == 0 or bibliography_ending_page == bibliography_starting_page {
+      page_intentionally_left_blank()
+    }
+  ]
+
   // Show the appendix
   if appendix != none {
     // Set appendix page style
