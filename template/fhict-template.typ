@@ -241,7 +241,7 @@
 
     #if secondary-company-logo != none {
       // Secondary company logo
-      place(bottom + right, dx: -30pt, dy: -120pt, image(
+      place(bottom + right, dx: -30pt, dy: -120pt, image.decode(
         secondary-company-logo,
         height: secondary-company-logo-height,
       ))
