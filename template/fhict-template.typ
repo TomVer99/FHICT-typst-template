@@ -162,6 +162,10 @@
 
   print-extra-white-page: false,
 
+  secondary-company-color: none,
+  secondary-company-logo: none,
+  secondary-company-logo-height: 6%,
+
   body
 ) = {
   show: make-glossary
@@ -224,6 +228,24 @@
         (5%, 100%),
         (0%, 100%)
     ))
+    #if secondary-company-color != none {
+      // Secondary company triangle
+      place(top + left, path(
+        fill: secondary-company-color,
+        closed: true,
+        (10%, 100%),
+        (101%, 37%),
+        (101%, 100%)
+      ))
+    }
+
+    #if secondary-company-logo != none {
+      // Secondary company logo
+      place(bottom + right, dx: -30pt, dy: -120pt, image(
+        secondary-company-logo,
+        height: secondary-company-logo-height,
+      ))
+    }
     // For scociety image
     #place(top + left, dx: 70pt, dy: 70pt, image(
         "assets/Picture1.png",
@@ -294,18 +316,33 @@
 
     #set text(fill: black)
     // Date
-    #place(right + horizon, dy: 330pt,
+    #if secondary-company-color == none {
+      place(right + horizon, dy: 330pt,
         box(
-            width: 40%,
-            height: 35pt,
-            fill: fontys_pink_1,
-            place(left + horizon, dx: 10pt,
-                text(30pt, fill: white, font: "Roboto")[
-                    *#datetime.today().display()*
-                ]
-            )
+          width: 40%,
+          height: 35pt,
+          fill: fontys_pink_1,
+          place(left + horizon, dx: 10pt,
+            text(30pt, fill: white, font: "Roboto")[
+              *#datetime.today().display()*
+            ]
+          )
         )
-    )
+      )
+    } else {
+      place(right + horizon, dy: 330pt,
+        box(
+          width: 40%,
+          height: 35pt,
+          fill: white,
+          place(left + horizon, dx: 10pt,
+            text(30pt, fill: secondary-company-color, font: "Roboto")[
+              *#datetime.today().display()*
+            ]
+          )
+        )
+      )
+    }
   ],
   foreground: [
     #if watermark != none [
