@@ -439,8 +439,7 @@
       title: "Table Of Listings",
       target: figure.where(kind: raw),
     )
-    pagebreak()
-    if print-extra-white-page == true { page_intentionally_left_blank(newpage: false) }
+    if print-extra-white-page == true { pagebreak(); page_intentionally_left_blank(newpage: false) }
   }
 
   // Set the page style for body pages'
