@@ -45,13 +45,13 @@ In this case you won't need to download the template file.
 
 == First Document
 
-To create a document using this template, you can use the `fhict_doc` command.
+To create a document using this template, you can use the `fhict-doc` command.
 
 This command has a lot of arguments to customize the document.
 Here is an example of a simple document:
 
 ```typst
-#show: fhict_doc.with(
+#show: fhict-doc.with(
   title: "My Document",
   subtitle: "A simple document",
   authors: (
@@ -65,7 +65,7 @@ Here is an example of a simple document:
 
 = Available commands
 
-#command("fhict_doc",
+#command("fhict-doc",
   arg[title],
   arg[subtitle],
   arg[subtitle-lines],
@@ -247,15 +247,15 @@ Here is an example of a simple document:
 ]
 
 #pagebreak()
-#command("fhict_table",
+#command("fhict-table",
   arg[columns],
   arg[content],
-  arg[background_color_heading],
-  arg[background_color],
-  arg[text_color_heading],
-  arg[text_color],
-  arg[top_colored],
-  arg[left_colored],
+  arg[background-color-heading],
+  arg[background-color],
+  arg[text-color-heading],
+  arg[text-color],
+  arg[top-colored],
+  arg[left-colored],
 )[
   Renders a table in the style of the Fontys Hogeschool ICT.
 
@@ -274,28 +274,28 @@ Here is an example of a simple document:
     ```
   ]
 
-  #argument("background_color_heading", types:"color", default: fontys_purple_1)[
+  #argument("background-color-heading", types:"color", default: fontys-purple-1)[
     The background color of the heading row/column.
   ]
 
-  #argument("background_color", types:"color", default: white)[
+  #argument("background-color", types:"color", default: white)[
     The background color of the other rows/columns.
   ]
 
-  #argument("text_color_heading", types:"color", default: white)[
+  #argument("text-color-heading", types:"color", default: white)[
     The text color of the heading row/column.
   ]
 
-  #argument("text_color", types:"color", default: black)[
+  #argument("text-color", types:"color", default: black)[
     The text color of the other rows/columns.
   ]
 
-  #argument("top_colored", types:"bool", default: true)[
+  #argument("top-colored", types:"bool", default: true)[
     Whether the top row should be colored.
   ]
 
   #colbreak()
-  #argument("left_colored", types:"bool", default: false)[
+  #argument("left-colored", types:"bool", default: false)[
     Whether the left column should be colored.
   ]
 ]
@@ -324,7 +324,7 @@ Here is an example of a simple document:
   ]
 ]
 
-#command("text_box",
+#command("text-box",
   arg[background-color],
   arg[stroke-color],
   arg[text-color],
@@ -350,7 +350,7 @@ Here is an example of a simple document:
 ]
 
 #pagebreak()
-#command("lined_box",
+#command("lined-box",
   arg[title],
   arg[body],
   arg[line-color],

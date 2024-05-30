@@ -1,7 +1,7 @@
 // CHANGE THIS TO THE CORRECT PATH
 #import "./../../template/fhict-template.typ": *
 
-#let term_list = (
+#let term-list = (
   (
     key: "",
     short: [],

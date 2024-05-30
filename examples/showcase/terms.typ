@@ -1,6 +1,6 @@
 #import "./../../template/fhict-template.typ": *
 
-#let term_list = (
+#let term-list = (
   (
     key: "fhict",
     short: [FHICT],
