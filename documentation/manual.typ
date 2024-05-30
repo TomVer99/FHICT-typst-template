@@ -24,15 +24,14 @@
 
 To use this template, you need to have the `roboto` font installed.
 
-== Setting up the template
+== Importing the template
 
-=== Importing the template
-
-To use this template, you first need to create a typst file.
+To use this template, you first need to download the `template.zip` attatched to the release.
+Extract the contents of the zip file to a folder on your computer.
 Afterwards, you can include this template in your file by adding the following line at the top of your file:
 
 ```typst
-#import "fhict-template.typ": *
+#import "some/path/fhict-template.typ": *
 ```
 
 Your path may vary depending on the location of the template file.
@@ -42,7 +41,9 @@ In the future it may also be possible to use:
 #import "@preview/fhict-template:1.5.0": *
 ```
 
-=== First Document
+In this case you won't need to download the template file.
+
+== First Document
 
 To create a document using this template, you can use the `fhict_doc` command.
 
@@ -368,3 +369,10 @@ Here is an example of a simple document:
     The color of the line.
   ]
 ]
+
+= Issues
+
+If you have any issues with this template, you can report them on the GitHub repository.
+Create a new issue and describe the problem you are experiencing.
+Also include the version of the template you are using, and your document if possible.
+If you have a solution to the problem, you can also create a pull request.
