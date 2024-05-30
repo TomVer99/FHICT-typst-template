@@ -1,0 +1,370 @@
+#import "@preview/mantys:0.1.4": *
+
+#import "../template/fhict-template.typ"
+#import "../template/fhict-template.typ": *
+
+#show: mantys.with(
+	name:		"FHICT-Template",
+	title: [Unofficial FHICT Template],
+	subtitle: [An unofficial template for FHICT document generation.],
+	authors:	"TomVer99",
+	url:		"https://github.com/TomVer99/FHICT-typst-template",
+	version:	"1.5.0",
+	date:		"30-05-2024",
+	abstract: 	[
+    This template allows the user to easily generate documents in the style of the Fontys Hogeschool ICT.
+    The template provides a set style and layout for the document.
+    It also provides a set of commands and macros to help the user generate content.
+	],
+)
+
+= Usage
+
+== Pre Requisites
+
+To use this template, you need to have the `roboto` font installed.
+
+== Setting up the template
+
+=== Importing the template
+
+To use this template, you first need to create a typst file.
+Afterwards, you can include this template in your file by adding the following line at the top of your file:
+
+```typst
+#import "fhict-template.typ": *
+```
+
+Your path may vary depending on the location of the template file.
+In the future it may also be possible to use:
+
+```typst
+#import "@preview/fhict-template:1.5.0": *
+```
+
+=== First Document
+
+To create a document using this template, you can use the `fhict_doc` command.
+
+This command has a lot of arguments to customize the document.
+Here is an example of a simple document:
+
+```typst
+#show: fhict_doc.with(
+  title: "My Document",
+  subtitle: "A simple document",
+  authors: (
+    (name: "TomVer99"),
+  ),
+)[
+  = Introduction
+  This is a simple document.
+]
+```
+
+= Available commands
+
+#command("fhict_doc",
+  arg[title],
+  arg[subtitle],
+  arg[subtitle-lines],
+  arg[authors],
+  arg[version-history],
+  arg[glossary-terms],
+  arg[glossary-front],
+  arg[bibliography-file],
+  arg[citation-style],
+  arg[toc-depth],
+  arg[disable-toc],
+  arg[disable-chapter-numbering],
+  arg[pre-toc],
+  arg[table-of-figures],
+  arg[table-of-listings],
+  arg[appendix],
+  arg[watermark],
+  arg[censored],
+  arg[print-extra-white-page],
+  arg[secondary-organisation-color],
+  arg[secondary-organisation-logo],
+  arg[secondary-organisation-logo-height],
+  arg[enable-index],
+  arg[index-columns],
+  barg[body]
+)[
+  Renders a document in the style of the Fontys Hogeschool ICT.
+
+  #argument("title", types:"string", default: "Document Title")[
+    The title of the document.
+  ]
+
+  #argument("subtitle", types:"string", default: "Document Subtitle")[
+    The subtitle of the document.
+  ]
+
+  #argument("subtitle-lines", types:"int", default:1)[
+    The number of lines the subtitle should span.
+  ]
+
+  #colbreak()
+  #argument("authors", types:"dict", default: none)[
+    The author(s) of the document.
+    Has the following structure:
+    ```typst
+    (
+      name: "",
+      email: "",
+    ),
+    ```
+    Name can be a string or complex type. Email must be a string.
+    Email is optional.
+
+    If the `name` attribute is a complex type, it should have the following structure:
+    ```typst
+      name: (content: [Tom #sensitive("V.")], string: "Tom V."),
+    ```
+
+    Appart from using this complex type for sensitive information, there is not much use for it.
+  ]
+
+  #argument("version-history", types:"dict", default: none)[
+    The version history of the document.
+    Has the following structure:
+    ```typst
+    (
+      (
+        version: "",
+        date: "",
+        author: "",
+        changes: "",
+      ),
+      ...
+    )
+    ```
+    All fields can be strings or content.
+  ]
+
+  #argument("glossary-terms", types:"dict", default: none)[
+    A dictionary of glossary terms.
+    Has the following structure:
+    ```typst
+    (
+      (
+        key: "",
+        short: [],
+        long: [],
+        desc: [],
+      ),
+      ...
+    )
+    ```
+    Where all options except `key` are optional.
+  ]
+
+  #argument("glossary-front", types:"bool", default: false)[
+    Whether to show the glossary at the front of the document.
+  ]
+
+  #argument("bibliography-file", types:"bibliography", default: none)[
+    The bibliography element to include in the document.
+    ```typst
+    #bibliography("your file path")
+    ```
+  ]
+
+  #argument("citation-style", types:"string", default: "ieee")[
+    The citation style to use for the bibliography.
+  ]
+
+  #argument("toc-depth", types:"int", default: 3)[
+    The depth of the table of contents.
+  ]
+
+  #argument("disable-toc", types:"bool", default: false)[
+    Whether to disable the table of contents.
+  ]
+
+  #argument("disable-chapter-numbering", types:"bool", default: false)[
+    Whether to disable chapter numbering.
+  ]
+
+  #argument("pre-toc", types:"content", default: none)[
+    Content to show before the table of contents.
+  ]
+
+  #argument("table-of-figures", types:"bool", default: false)[
+    Whether to show a table of figures.
+  ]
+
+  #argument("table-of-listings", types:"bool", default: false)[
+    Whether to show a table of listings.
+  ]
+
+  #argument("appendix", types:"content", default: none)[
+    Content to show in the appendix.
+  ]
+
+  #argument("watermark", types:"string", default: none)[
+    The watermark to show on the document.
+  ]
+
+  #argument("censored", types:"int", default: 0)[
+    Whether to show a censored watermark on the document.
+    `1` for censorship, `0` for no censorship.
+  ]
+
+  #argument("print-extra-white-page", types:"bool", default: false)[
+    Wether to make sure the beginning of sections start on the 'right hand' page.
+    This does not affect chapter headings.
+  ]
+
+  #argument("secondary-organisation-color", types:"color", default: none)[
+    The color of the secondary organisation.
+  ]
+
+  #argument("secondary-organisation-logo", types:"read", default: none)[
+    The logo of the secondary organisation.
+    ```typst
+    #read("your file path")
+    ```
+  ]
+
+  #argument("secondary-organisation-logo-height", types:"size", default: "6%")[
+    The height of the secondary organisation logo.
+  ]
+
+  #argument("enable-index", types:"bool", default: false)[
+    Whether to enable the index.
+  ]
+
+  #argument("index-columns", types:"int", default: 2)[
+    The number of columns in the index.
+  ]
+
+  #argument("body", types:"content")[
+    The content of the document.
+  ]
+]
+
+#pagebreak()
+#command("fhict_table",
+  arg[columns],
+  arg[content],
+  arg[background_color_heading],
+  arg[background_color],
+  arg[text_color_heading],
+  arg[text_color],
+  arg[top_colored],
+  arg[left_colored],
+)[
+  Renders a table in the style of the Fontys Hogeschool ICT.
+
+  #argument("columns", types:"array", default: ())[
+    The spacing of the columns.
+  ]
+
+  #argument("content", types:"array", default: ())[
+    A 2D array of the content of the table.
+    ```typst
+    (
+      (header1, header2, ...),
+      (row1, row2, ...),
+      ...
+    )
+    ```
+  ]
+
+  #argument("background_color_heading", types:"color", default: fontys_purple_1)[
+    The background color of the heading row/column.
+  ]
+
+  #argument("background_color", types:"color", default: white)[
+    The background color of the other rows/columns.
+  ]
+
+  #argument("text_color_heading", types:"color", default: white)[
+    The text color of the heading row/column.
+  ]
+
+  #argument("text_color", types:"color", default: black)[
+    The text color of the other rows/columns.
+  ]
+
+  #argument("top_colored", types:"bool", default: true)[
+    Whether the top row should be colored.
+  ]
+
+  #colbreak()
+  #argument("left_colored", types:"bool", default: false)[
+    Whether the left column should be colored.
+  ]
+]
+
+#pagebreak()
+#command("sensitive", arg[textl])[
+  Renders a sensitive text block.
+
+  #argument("text", types:"string")[
+    The text to render.
+  ]
+]
+
+#command("hlink",
+  arg[url],
+  arg[content],
+)[
+  Renders a hyperlink.
+
+  #argument("url", types:"string")[
+    The URL to link to.
+  ]
+
+  #argument("content", types:"string", default: none)[
+    The text that replaces the URL as the hyperlink.
+  ]
+]
+
+#command("text_box",
+  arg[background-color],
+  arg[stroke-color],
+  arg[text-color],
+  barg[content],
+)[
+  Renders a text box.
+
+  #argument("background-color", types:"color", default: luma(240))[
+    The background color of the text box.
+  ]
+
+  #argument("stroke-color", types:"color", default: black)[
+    The stroke color of the text box.
+  ]
+
+  #argument("text-color", types:"color", default: black)[
+    The text color of the text box.
+  ]
+
+  #argument("content", types:"content")[
+    The content of the text box.
+  ]
+]
+
+#pagebreak()
+#command("lined_box",
+  arg[title],
+  arg[body],
+  arg[line-color],
+)[
+  Renders a box with a line on the left side.
+
+  #argument("title", types:"string")[
+    The title of the box.
+  ]
+
+  #argument("body", types:"content")[
+    The content of the box.
+  ]
+
+  #argument("line-color", types:"color", default: red)[
+    The color of the line.
+  ]
+]
