@@ -39,6 +39,10 @@
   // print-extra-white-page: true,
   glossary-terms: term_list,
   censored: 1,
+
+  // secondary-organisation-logo: read("Company.svg"),
+  // secondary-organisation-color: rgb("184471"),
+  // secondary-organisation-logo-height: 3.5cm,
 )
 
 = Examples

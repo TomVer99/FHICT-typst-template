@@ -162,6 +162,10 @@
 
   print-extra-white-page: false,
 
+  secondary-organisation-color: none,
+  secondary-organisation-logo: none,
+  secondary-organisation-logo-height: 6%,
+
   body
 ) = {
   show: make-glossary
@@ -224,6 +228,24 @@
         (5%, 100%),
         (0%, 100%)
     ))
+    #if secondary-organisation-color != none {
+      // Secondary organisation triangle
+      place(top + left, path(
+        fill: secondary-organisation-color,
+        closed: true,
+        (10%, 100%),
+        (101%, 37%),
+        (101%, 100%)
+      ))
+    }
+
+    #if secondary-organisation-logo != none {
+      // Secondary organisation logo
+      place(bottom + right, dx: -30pt, dy: -120pt, image.decode(
+        secondary-organisation-logo,
+        height: secondary-organisation-logo-height,
+      ))
+    }
     // For scociety image
     #place(top + left, dx: 70pt, dy: 70pt, image(
         "assets/Picture1.png",
@@ -294,18 +316,33 @@
 
     #set text(fill: black)
     // Date
-    #place(right + horizon, dy: 330pt,
+    #if secondary-organisation-color == none {
+      place(right + horizon, dy: 330pt,
         box(
-            width: 40%,
-            height: 35pt,
-            fill: fontys_pink_1,
-            place(left + horizon, dx: 10pt,
-                text(30pt, fill: white, font: "Roboto")[
-                    *#datetime.today().display()*
-                ]
-            )
+          width: 40%,
+          height: 35pt,
+          fill: fontys_pink_1,
+          place(left + horizon, dx: 10pt,
+            text(30pt, fill: white, font: "Roboto")[
+              *#datetime.today().display()*
+            ]
+          )
         )
-    )
+      )
+    } else {
+      place(right + horizon, dy: 330pt,
+        box(
+          width: 40%,
+          height: 35pt,
+          fill: white,
+          place(left + horizon, dx: 10pt,
+            text(30pt, fill: secondary-organisation-color, font: "Roboto")[
+              *#datetime.today().display()*
+            ]
+          )
+        )
+      )
+    }
   ],
   foreground: [
     #if watermark != none [
