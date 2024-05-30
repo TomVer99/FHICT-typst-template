@@ -208,6 +208,7 @@ Here is an example of a simple document:
     The watermark to show on the document.
   ]
 
+  #colbreak()
   #argument("censored", types:"int", default: 0)[
     Whether to show a censored watermark on the document.
     `1` for censorship, `0` for no censorship.
