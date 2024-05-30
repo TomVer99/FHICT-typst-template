@@ -77,7 +77,7 @@ This is a figure with an image. This will be shown in the list of figures if ena
 
 #figure(
   image(
-    "./../../template/assets/Picture1.png",
+    "./../../template/assets/fontys-for-society.png",
     width: 50%,
   ),
   caption: "Figure example",
