@@ -27,17 +27,19 @@
   ]
 }
 
-#let sensitive(textl) = locate(loc => {
-  if (censored_state.at(loc) == 1) {
-    text(
-      textl.replace(regex("."), "█"),
-      fill: black,
-      font: "Arial"
-    )
-  } else {
-    textl
-  }
-})
+#let sensitive(textl) = {
+  context [
+    #if (censored_state.at(here()) == 1) {
+      text(
+        textl.replace(regex("."), "█"),
+        fill: black,
+        font: "Arial"
+      )
+    } else {
+      textl
+    }
+  ]
+}
 
 #let fhict_table(
   columns: (),
