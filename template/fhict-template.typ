@@ -518,7 +518,8 @@
 
   // Show the bibliography
   if bibliography-file != none {
-    bibliography(bibliography-file, title: "References", style: "ieee")
+    set bibliography(title: "References", style: "ieee")
+    bibliography-file
     pagebreak()
     if print-extra-white-page == true { page_intentionally_left_blank(odd: false) }
   }

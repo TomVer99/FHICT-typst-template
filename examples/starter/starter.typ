@@ -20,6 +20,6 @@
   ),
   pre-toc: [#include "./pre-toc.typ"],
   appendix: [#include "./appendix.typ"],
-  bibliography-file: "my-sources.bib",
+  bibliography-file: bibliography("my-sources.bib"),
   glossary-terms: term_list,
 )

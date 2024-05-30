@@ -31,7 +31,7 @@
   ],
   table-of-figures: true,
   table-of-listings: true,
-  bibliography-file: "my-sources.bib",
+  bibliography-file: bibliography("my-sources.bib"),
   // disable-toc: true,
   // disable-chapter-numbering: true,
   // watermark: "THIS IS A WATERMARK",
