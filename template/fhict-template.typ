@@ -13,7 +13,6 @@
 
 // States
 #let censored_state = state("style", "0")
-#let page_number = state("style", "1")
 
 // Misc functions
 #let hlink(url, content: none) = {
