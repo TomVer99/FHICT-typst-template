@@ -169,6 +169,7 @@
   secondary-organisation-logo-height: 6%,
 
   enable-index: false,
+  index-columns: 2,
 
   body
 ) = {
@@ -542,7 +543,7 @@
   // Show the index
   if enable-index == true {
     heading("Index", numbering: none)
-    columns(2)[
+    columns(index-columns)[
       #make-index()
     ]
   }
