@@ -254,7 +254,7 @@
     }
     // For scociety image
     #place(top + left, dx: 70pt, dy: 70pt, image(
-        "assets/Picture1.png",
+        "assets/fontys-for-society.png",
         height: 9%,
     ))
     // Title
@@ -376,8 +376,8 @@
   set page("a4",
     background: [],
     footer: [
-        #place(left + horizon, dy: -25pt,
-            image("assets/Picture2.png", height: 200%)
+        #place(left + horizon, dy: -25pt, dx: -15pt,
+            image("assets/for-society.png", height: 200%)
         )
         #place(right + horizon, dy: -25pt,
             text(15pt, fill: fontys_purple_1, font: "Roboto")[
@@ -490,8 +490,8 @@
   set page("a4",
     background: [],
     footer: [
-        #place(left + horizon, dy: -25pt,
-            image("assets/Picture2.png", height: 200%)
+        #place(left + horizon, dy: -25pt, dx: -15pt,
+            image("assets/for-society.png", height: 200%)
         )
         #place(right + horizon, dy: -25pt,
             text(15pt, fill: fontys_purple_1, font: "Roboto")[
