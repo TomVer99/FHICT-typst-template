@@ -2,6 +2,7 @@
 #import "@preview/colorful-boxes:1.2.0": *
 #import "@preview/showybox:2.0.1": *
 #import "@preview/glossarium:0.2.6": make-glossary, print-glossary, gls, glspl
+#import "@preview/in-dexter:0.3.0": *
 
 #let fontys_purple_1 = rgb("663366")
 #let fontys_purple_2 = rgb("B59DB5")
@@ -12,7 +13,6 @@
 
 // States
 #let censored_state = state("style", "0")
-#let page_number = state("style", "1")
 
 // Misc functions
 #let hlink(url, content: none) = {
@@ -168,11 +168,15 @@
   secondary-organisation-logo: none,
   secondary-organisation-logo-height: 6%,
 
+  enable-index: false,
+  index-columns: 2,
+
   body
 ) = {
   show: make-glossary
 
   let meta_authors = ""
+  let index-main(..args) = index(fmt: strong, ..args)
 
   // Set metadata
   if authors != none and censored == 0 {
@@ -513,7 +517,7 @@
     ),
     )
     pagebreak()
-    if print-extra-white-page == true { page_intentionally_left_blank(odd: false) }
+    if print-extra-white-page == true and (bibliography-file != none or appendix != none) { page_intentionally_left_blank(odd: false) }
   }
 
   // Show the bibliography
@@ -521,7 +525,7 @@
     set bibliography(title: "References", style: "ieee")
     bibliography-file
     pagebreak()
-    if print-extra-white-page == true { page_intentionally_left_blank(odd: false) }
+    if print-extra-white-page == true and appendix != none { page_intentionally_left_blank(odd: false) }
   }
 
   // Show the appendix
@@ -532,5 +536,15 @@
     show heading.where(level: 1): set heading(outlined: true)
 
     appendix
+    if enable-index == true { pagebreak() }
+    if print-extra-white-page == true and enable-index == true { page_intentionally_left_blank(odd: false) }
+  }
+
+  // Show the index
+  if enable-index == true {
+    heading("Index", numbering: none)
+    columns(index-columns)[
+      #make-index()
+    ]
   }
 }
