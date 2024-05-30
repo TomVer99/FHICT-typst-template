@@ -1,8 +1,8 @@
 // CHANGE THIS TO THE CORRECT PATH
 #import "./../../template/fhict-template.typ": *
-#import "./terms.typ": term_list
+#import "./terms.typ": term-list
 
-#show: fhict_doc.with(
+#show: fhict-doc.with(
   title: "",
   subtitle: "",
   authors: (
@@ -21,5 +21,5 @@
   pre-toc: [#include "./pre-toc.typ"],
   appendix: [#include "./appendix.typ"],
   bibliography-file: bibliography("my-sources.bib"),
-  glossary-terms: term_list,
+  glossary-terms: term-list,
 )

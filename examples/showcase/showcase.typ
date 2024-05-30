@@ -1,7 +1,7 @@
 #import "./../../template/fhict-template.typ": *
-#import "./terms.typ": term_list
+#import "./terms.typ": term-list
 
-#show: fhict_doc.with(
+#show: fhict-doc.with(
   title: "Showcase",
   subtitle: "FHICT Template Showcase",
   // subtitle: "FHICT Template Showcase more word more word more word",
@@ -37,7 +37,7 @@
   // watermark: "THIS IS A WATERMARK",
   // glossary-front: true,
   // print-extra-white-page: true,
-  glossary-terms: term_list,
+  glossary-terms: term-list,
   censored: 1,
 
   // secondary-organisation-logo: read("Company.svg"),
@@ -116,13 +116,13 @@ This is a citation #cite(<FHICT-typst-template>).
 == Tables
 #index[Tables]
 
-There is a helper function called `fhict_table` that can be used to create tables. This function takes two manditory arguments: `columns` and `content`, and two optional arguments: `top_colored` and `left_colored`.
+There is a helper function called `fhict-table` that can be used to create tables. This function takes two manditory arguments: `columns` and `content`, and two optional arguments: `top-colored` and `left-colored`.
 
 The `columns` argument is a list of column widths.
 
 The `content` argument is a list of rows. Each row is a list of cells. Each cell is a string.
 
-#fhict_table(
+#fhict-table(
   columns: (auto, auto, auto, 1fr),
   content: (
     ("Header 1", "Header 2", "Header 3", "Header 4"),
@@ -135,7 +135,7 @@ The table above is made with the following code:
 
 #figure(
   ```typst
-  #fhict_table(
+  #fhict-table(
     columns: (auto, auto, auto, 1fr),
     content: (
       ("Header 1", "Header 2", "Header 3", "Header 4"),
@@ -147,68 +147,68 @@ The table above is made with the following code:
   caption: "Table example",
 )
 
-The `top_colored` argument is `true` by default, and will color the top row of the table.
+The `top-colored` argument is `true` by default, and will color the top row of the table.
 
-The `left_colored` argument is `false` by default, and will color the left column of the table.
+The `left-colored` argument is `false` by default, and will color the left column of the table.
 
 You can combine these two arguments to create a table like this:
 
-#fhict_table(
+#fhict-table(
   columns: (auto, auto, auto, 1fr),
   content: (
     ("Header 1", "Header 2", "Header 3", "Header 4"),
     ("Cell 1", "Cell 2", "Cell 3", "Cell 4"),
     ("Cell 1", "Cell 2", "", "Cell 4"),
   ),
-  left_colored: true,
+  left-colored: true,
 )
 
 Or disable both to create a table like this:
 
-#fhict_table(
+#fhict-table(
   columns: (auto, auto, auto, 1fr),
   content: (
     ("Header 1", "Header 2", "Header 3", "Header 4"),
     ("Cell 1", "Cell 2", "Cell 3", "Cell 4"),
     ("Cell 1", "Cell 2", "", "Cell 4"),
   ),
-  top_colored: false,
+  top-colored: false,
 )
 
 #pagebreak()
 
-You can also configure the color of the table by using the `background_color_heading`, `background_color`, `text_color_heading` and `text_color` arguments.
+You can also configure the color of the table by using the `background-color-heading`, `background-color`, `text-color-heading` and `text-color` arguments.
 
 You can for example make a table like this:
 
-#fhict_table(
+#fhict-table(
   columns: (auto, auto, auto, 1fr),
   content: (
     ("Header 1", "Header 2", "Header 3", "Header 4"),
     ("Cell 1", "Cell 2", "Cell 3", "Cell 4"),
     ("Cell 1", "Cell 2", "", "Cell 4"),
   ),
-  background_color_heading: rgb("4272f5"),
-  text_color_heading: rgb("f5a142"),
-  background_color: rgb("f54242"),
-  text_color: rgb("42f5a1"),
+  background-color-heading: rgb("4272f5"),
+  text-color-heading: rgb("f5a142"),
+  background-color: rgb("f54242"),
+  text-color: rgb("42f5a1"),
 )
 
 Here is the code snippet for this table:
 
 #figure(
   ```typst
-#fhict_table(
+#fhict-table(
   columns: (auto, auto, auto, 1fr),
   content: (
     ("Header 1", "Header 2", "Header 3", "Header 4"),
     ("Cell 1", "Cell 2", "Cell 3", "Cell 4"),
     ("Cell 1", "Cell 2", "", "Cell 4"),
   ),
-  background_color_heading: rgb("4272f5"),
-  text_color_heading: rgb("f5a142"),
-  background_color: rgb("f54242"),
-  text_color: rgb("42f5a1"),
+  background-color-heading: rgb("4272f5"),
+  text-color-heading: rgb("f5a142"),
+  background-color: rgb("f54242"),
+  text-color: rgb("42f5a1"),
 )
   ```,
   caption: "Table example with custom colors",
@@ -315,42 +315,42 @@ And `@wip` will be shown as @wip. But the second time you use it, it will be sho
 #pagebreak()
 === Custom Boxes
 
-#text_box[
+#text-box[
   I am a grey box!
   You can use me for a less intrusive box.
 
   Put whatever you want in here. $I = V / R$
 ]
 
-#text_box(background-color: fontys_purple_2,
-stroke-color: fontys_purple_1, text-color: fontys_blue_1)[
+#text-box(background-color: fontys-purple-2,
+stroke-color: fontys-purple-1, text-color: fontys-blue-1)[
   You can also customize the color of the background, stroke and text.
 ]
 
 #figure(
   ```typst
-  #text_box[
+  #text-box[
     I am a grey box!
     You can use me for a less intrusive box.
 
     Put whatever you want in here. $I = V / R$
   ]
 
-  #text_box(background-color: fontys_purple_2,
-  stroke-color: fontys_purple_1, text-color: fontys_blue_1)[
+  #text-box(background-color: fontys-purple-2,
+  stroke-color: fontys-purple-1, text-color: fontys-blue-1)[
     You can also customize the color of the background, stroke and text.
   ]
   ```,
   caption: "Custom Boxes Example",
 )
 
-== lined_box
+== lined-box
 
-#lined_box("lined_box", [
-  This is a lined_box. This box can be used to indicate anything you want.
+#lined-box("lined-box", [
+  This is a lined-box. This box can be used to indicate anything you want.
 ])
 
-#lined_box("lined_box, but black", [
+#lined-box("lined-box, but black", [
   You can also change the color of the lines.
 ], line-color: black)
 
@@ -533,7 +533,7 @@ The bibliography can be set by using the following option:
 
 You will need to use a .bib file for this. The template will automatically generate the bibliography based on the citations in the document.
 
-#text_box[
+#text-box[
   Note that the path to the bibliography file is relative to the _template_ document, not the document you are writing.
 ]
 
