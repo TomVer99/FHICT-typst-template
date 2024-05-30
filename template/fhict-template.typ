@@ -2,6 +2,7 @@
 #import "@preview/colorful-boxes:1.2.0": *
 #import "@preview/showybox:2.0.1": *
 #import "@preview/glossarium:0.2.6": make-glossary, print-glossary, gls, glspl
+#import "@preview/in-dexter:0.3.0": *
 
 #let fontys_purple_1 = rgb("663366")
 #let fontys_purple_2 = rgb("B59DB5")
@@ -173,6 +174,7 @@
   show: make-glossary
 
   let meta_authors = ""
+  let index-main(..args) = index(fmt: strong, ..args)
 
   // Set metadata
   if authors != none and censored == 0 {
@@ -523,6 +525,11 @@
     pagebreak()
     if print-extra-white-page == true { page_intentionally_left_blank(odd: false) }
   }
+
+  // Show the index
+  columns(2)[
+    #make-index()
+  ]
 
   // Show the appendix
   if appendix != none {
