@@ -9,7 +9,7 @@
 	subtitle: [An unofficial template for FHICT document generation.],
 	authors:	"TomVer99",
 	url:		"https://github.com/TomVer99/FHICT-typst-template",
-	version:	"1.5.0",
+	version:	"1.5.1",
 	date:		"30-05-2024",
 	abstract: 	[
     This template allows the user to easily generate documents in the style of the Fontys Hogeschool ICT.
@@ -38,7 +38,7 @@ Your path may vary depending on the location of the template file.
 In the future it may also be possible to use:
 
 ```typst
-#import "@preview/fhict-template:1.5.0": *
+#import "@preview/fhict-template:1.5.1": *
 ```
 
 In this case you won't need to download the template file.
