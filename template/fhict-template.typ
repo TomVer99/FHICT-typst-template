@@ -168,6 +168,8 @@
   secondary-organisation-logo: none,
   secondary-organisation-logo-height: 6%,
 
+  enable-index: false,
+
   body
 ) = {
   show: make-glossary
@@ -514,7 +516,7 @@
     ),
     )
     pagebreak()
-    if print-extra-white-page == true { page_intentionally_left_blank(odd: false) }
+    if print-extra-white-page == true and (bibliography-file != none or appendix != none) { page_intentionally_left_blank(odd: false) }
   }
 
   // Show the bibliography
@@ -522,13 +524,8 @@
     set bibliography(title: "References", style: "ieee")
     bibliography-file
     pagebreak()
-    if print-extra-white-page == true { page_intentionally_left_blank(odd: false) }
+    if print-extra-white-page == true and appendix != none { page_intentionally_left_blank(odd: false) }
   }
-
-  // Show the index
-  columns(2)[
-    #make-index()
-  ]
 
   // Show the appendix
   if appendix != none {
@@ -538,5 +535,15 @@
     show heading.where(level: 1): set heading(outlined: true)
 
     appendix
+    if enable-index == true { pagebreak() }
+    if print-extra-white-page == true and enable-index == true { page_intentionally_left_blank(odd: false) }
+  }
+
+  // Show the index
+  if enable-index == true {
+    heading("Index", numbering: none)
+    columns(2)[
+      #make-index()
+    ]
   }
 }
