@@ -43,11 +43,14 @@
   // secondary-organisation-logo: read("Company.svg"),
   // secondary-organisation-color: rgb("184471"),
   // secondary-organisation-logo-height: 3.5cm,
+
+  enable-index: true,
 )
 
 = Examples
 
 == Headings Example
+#index[Headings]
 
 === level 3
 
@@ -60,12 +63,15 @@
 Level 6 and higher are not supported in the custom syntax. They will still work, but will have the default styling.
 
 == Text example
+#index[Text]
 
 #lorem(100)
 
 == Figures example
+#index[Figures]
 
 === Image
+#index[Image embed]
 
 This is a figure with an image. This will be shown in the list of figures if enabled.
 
@@ -79,6 +85,7 @@ This is a figure with an image. This will be shown in the list of figures if ena
 
 #pagebreak()
 === Code
+#index[Code embed]
 
 This is a figure with code. This will be shown in the list of listings if enabled.
 
@@ -101,11 +108,13 @@ This is a figure with code. This will be shown in the list of listings if enable
 )
 
 == Citations
+#index[Citations]
 
 This is a citation #cite(<FHICT-typst-template>).
 
 #pagebreak()
 == Tables
+#index[Tables]
 
 There is a helper function called `fhict_table` that can be used to create tables. This function takes two manditory arguments: `columns` and `content`, and two optional arguments: `top_colored` and `left_colored`.
 
@@ -206,6 +215,7 @@ Here is the code snippet for this table:
 )
 
 == Using Terms
+#index[Terms]
 
 You can quote a term by using one of the following syntaxes:
 
@@ -345,6 +355,7 @@ stroke-color: fontys_purple_1, text-color: fontys_blue_1)[
 ], line-color: black)
 
 == sensitive information
+#index[Sensitive information] #index[Censoring]
 
 You can censor sensitive information by using the `#sensitive` function. Each character will be replaced by a black rectangle, making it impossible to read or copy the text.
 
@@ -360,6 +371,7 @@ You can set if the text should be censored or not by setting the `censored` opti
 
 #pagebreak()
 == Links
+#index[Links]
 
 You can create links by using the `#hlink` function. This function takes two arguments: `url` and `content`. The `url` argument is the url the link should point to. The `content` argument is the text that should be shown in the document and is optional. If the `content` argument is not set, the `url` argument will be used as the content.
 
@@ -377,6 +389,7 @@ The following code will create two links, one with the content "Google" and one 
 
 #pagebreak()
 = Document options
+#index[Document options]
 
 == Title and Subtitle
 
