@@ -439,7 +439,9 @@
     set heading(numbering: none, outlined: false)
     pre-toc
     set heading(numbering: numbering-set, outlined: true)
-    pagebreak()
+    if disable-toc != false or (glossary-terms != none and glossary-front == true) or table-of-figures == true or table-of-listings == true {
+      pagebreak()
+    }
     if print-extra-white-page == true { page-intentionally-left-blank() }
   }
 
@@ -462,7 +464,9 @@
       depth: toc-depth,
       indent: n => [#h(1em)] * n,
     )
-    pagebreak()
+    if (glossary-terms != none and glossary-front == true) or table-of-figures == true or table-of-listings == true {
+      pagebreak()
+    }
     if print-extra-white-page == true { page-intentionally-left-blank() }
   }
 
@@ -474,22 +478,26 @@
       glossary-terms
     ),
     )
-    pagebreak()
+    if table-of-figures == true or table-of-listings == true {
+      pagebreak()
+    }
     if print-extra-white-page == true { page-intentionally-left-blank() }
   }
 
   // Show the table of figures if requested
-  if (table-of-figures != none) and (table-of-figures != false) {
+  if table-of-figures == true {
     outline(
       title: "Table Of Figures",
       target: figure.where(kind: image),
     )
-    pagebreak()
+    if table-of-listings == true {
+      pagebreak()
+    }
     if print-extra-white-page == true { page-intentionally-left-blank() }
   }
   
   // Show the table of listings if requested
-  if (table-of-listings != none) and (table-of-listings != false) {
+  if table-of-listings == true {
     outline(
       title: "Table Of Listings",
       target: figure.where(kind: raw),
