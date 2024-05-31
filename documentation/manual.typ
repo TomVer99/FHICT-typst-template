@@ -433,6 +433,8 @@ The following documentation will assume you use the terms list as described in t
   ]
 ]
 
+You can also simple use `@term` to insert a term in the document.
+
 == In-Dexter
 
 Library can be found at the #hlink("https://typst.app/universe/package/in-dexter", content: "Typst Universe page").
