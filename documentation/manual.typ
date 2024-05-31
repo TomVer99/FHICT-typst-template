@@ -4,14 +4,14 @@
 #import "../template/fhict-template.typ": *
 
 #show: mantys.with(
-	name:		"FHICT-Template",
-	title: [Unofficial FHICT Template],
+	name:		  "FHICT-Template",
+	title:    [Unofficial FHICT Template],
 	subtitle: [An unofficial template for FHICT document generation.],
 	authors:	"TomVer99",
-	url:		"https://github.com/TomVer99/FHICT-typst-template",
+	url:		  "https://github.com/TomVer99/FHICT-typst-template",
 	version:	"1.5.1",
-	date:		"30-05-2024",
-	abstract: 	[
+	date:		  datetime.today(),
+	abstract: [
     This template allows the user to easily generate documents in the style of the Fontys Hogeschool ICT.
     The template provides a set style and layout for the document.
     It also provides a set of commands and macros to help the user generate content.
@@ -65,6 +65,7 @@ Here is an example of a simple document:
 
 = Available commands
 
+<fhict-doc>
 #command("fhict-doc",
   arg[title],
   arg[subtitle],
@@ -368,6 +369,83 @@ Here is an example of a simple document:
 
   #argument("line-color", types:"color", default: red)[
     The color of the line.
+  ]
+]
+
+= 3rd Party Libraries
+
+This template uses the following 3rd party libraries:
+
+- `codly:0.2.0`
+- `colorful-boxes:1.2.0`
+- `showybox:2.0.1`
+- `glossarium:0.2.6`
+- `in-dexter:0.3.0`
+
+== Codly
+
+Library can be found at the #hlink("https://typst.app/universe/package/codly", content: "Typst Universe page").
+
+This library improves the code rendering in the document. There are no additional commands to use this library.
+
+== Colorful Boxes
+
+Library can be found at the #hlink("https://typst.app/universe/package/colorful-boxes", content: "Typst Universe page").
+
+This library provides a couple of commands to render colorful boxes in the document.
+
+More information can be found on the Typst Universe page.
+
+== Showybox
+
+Library can be found at the #hlink("https://typst.app/universe/package/showybox", content: "Typst Universe page").
+
+This library provides a couple of commands to render colorful boxes in the document.
+
+More information can be found on the Typst Universe page.
+
+#pagebreak()
+== Glossarium
+
+Library can be found at the #hlink("https://typst.app/universe/package/glossarium", content: "Typst Universe page").
+
+This library provides functionality to manage and render a glossary in the document. There are two commands of interest in this library: `gls` and `glspl`.
+
+The following documentation will assume you use the terms list as described in the fhict-doc command in @fhict-doc.
+
+#command("gls",
+  barg[body]
+)[
+  Inserts a glossary term.
+
+  #argument("body", types:"string")[
+    The term to insert.
+  ]
+]
+
+#command("glspl",
+  barg[body]
+)[
+  Inserts a glossary term in plural form.
+
+  #argument("body", types:"string")[
+    The term to insert.
+  ]
+]
+
+== In-Dexter
+
+Library can be found at the #hlink("https://typst.app/universe/package/in-dexter", content: "Typst Universe page").
+
+This library provides functionality to manage and render an index in the document. There is one command of interest in this library: `index`.
+
+#command("index",
+  barg[title],
+)[
+  Inserts an index location in the document. It does not render anything in the document itself.
+
+  #argument("title", types:"string")[
+    The title of the index.
   ]
 ]
 
