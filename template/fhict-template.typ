@@ -534,6 +534,10 @@
     counter(heading).update(0)
     set heading(numbering: "A.A", outlined: false)
     show heading.where(level: 1): set heading(outlined: true)
+    show heading.where(level: 1): it => block(text(strong[#upper[
+      #if it.numbering != none [ Appendix #counter(heading).display(it.numbering): ]
+      #it.body
+    ]], size: 18pt, fill: fontys-purple-1))
 
     appendix
     if enable-index == true { pagebreak() }
@@ -542,6 +546,7 @@
 
   // Show the index
   if enable-index == true {
+    show heading.where(level: 1): h => {text(strong(upper(h)), size: 18pt, fill: fontys-purple-1)}
     heading("Index", numbering: none)
     columns(index-columns)[
       #make-index()
