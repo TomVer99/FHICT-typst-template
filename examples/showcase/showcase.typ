@@ -28,6 +28,8 @@
     In the appendix, only the top-level headings appear in the table of contents.
 
     == I will not appear in the table of contents
+
+    = Second appendix
   ],
   table-of-figures: true,
   table-of-listings: true,
