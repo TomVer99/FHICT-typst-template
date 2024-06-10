@@ -193,7 +193,7 @@
   )
 
   // Set the document's style
-  set text(font: "Roboto", fallback: false, size: 11pt, fill: black)
+  set text(font: "Roboto", size: 11pt, fill: black)
   set cite(style: citation-style)
 
   // Set the header style
