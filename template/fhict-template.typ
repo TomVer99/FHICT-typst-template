@@ -525,7 +525,9 @@
 
   // Show the page's contents
   body
-  pagebreak()
+  if (glossary-terms != none and glossary-front == false) or bibliography-file != none or appendix != none or enable-index == true{
+    pagebreak()
+  }
   if print-extra-white-page == true { page-intentionally-left-blank(odd: false) }
 
   // Show the Glossary in the back
