@@ -507,7 +507,7 @@
   }
 
   // Set the page style for body pages'
-  block()
+  // block()
   set page("a4",
     background: [],
     footer: [
