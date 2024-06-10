@@ -468,7 +468,7 @@
     if (glossary-terms != none and glossary-front == true) or table-of-figures == true or table-of-listings == true {
       pagebreak()
     }
-    if print-extra-white-page == true { page-intentionally-left-blank() }
+    if print-extra-white-page == true { pagebreak(); page-intentionally-left-blank() }
   }
 
   // Show the Glossary in the front
