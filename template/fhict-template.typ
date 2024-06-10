@@ -438,10 +438,11 @@
     // Disable heading numbering and appearing in the TOC
     set heading(numbering: none, outlined: false)
     pre-toc
+    pagebreak()
     set heading(numbering: numbering-set, outlined: true)
-    if disable-toc != false or (glossary-terms != none and glossary-front == true) or table-of-figures == true or table-of-listings == true {
-      pagebreak()
-    }
+    // if disable-toc == false or (glossary-terms != none and glossary-front == true) or table-of-figures == true or table-of-listings == true {
+    //   pagebreak()
+    // }
     if print-extra-white-page == true { page-intentionally-left-blank() }
   }
 
