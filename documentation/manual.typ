@@ -71,6 +71,7 @@ Here is an example of a simple document:
   arg[subtitle],
   arg[subtitle-lines],
   arg[language],
+  arg[available-languages],
   arg[authors],
   arg[version-history],
   arg[glossary-terms],
@@ -108,11 +109,19 @@ Here is an example of a simple document:
     The number of lines the subtitle should span.
   ]
 
+  #colbreak()
+  
   #argument("language", types:"string", default: "en")[
     The language of the document.
   ]
 
-  #colbreak()
+  #argument("available-languages", types:"array", default: none)[
+    The available languages for the document.
+    ```typst
+    ("en", "nl", ...)
+    ```
+  ]
+
   #argument("authors", types:"dict", default: none)[
     The author(s) of the document.
     Has the following structure:
@@ -150,6 +159,7 @@ Here is an example of a simple document:
     All fields can be strings or content.
   ]
 
+  #colbreak()
   #argument("glossary-terms", types:"dict", default: none)[
     A dictionary of glossary terms.
     Has the following structure:
@@ -198,6 +208,7 @@ Here is an example of a simple document:
     Content to show before the table of contents.
   ]
 
+  #colbreak()
   #argument("table-of-figures", types:"bool", default: false)[
     Whether to show a table of figures.
   ]
@@ -214,7 +225,6 @@ Here is an example of a simple document:
     The watermark to show on the document.
   ]
 
-  #colbreak()
   #argument("censored", types:"int", default: 0)[
     Whether to show a censored watermark on the document.
     `1` for censorship, `0` for no censorship.
