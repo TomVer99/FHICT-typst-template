@@ -139,6 +139,8 @@
   subtitle: "Document Subtitle",
   subtitle-lines: 1,
 
+  language: "en",
+
   authors: none,
 
   version-history: none,
@@ -177,6 +179,11 @@
 
   let meta-authors = ""
   let index-main(..args) = index(fmt: strong, ..args)
+
+  // Load language data
+  let language-data = yaml("assets/language.yml")
+  let language-dict = language-data.at(upper(language)).at("localization")
+  set text(lang: language)
 
   // Set metadata
   if authors != none and censored == 0 {
@@ -395,11 +402,11 @@
 
   // Show the version history
   if version-history != none {
-    heading("version history", outlined: false, numbering: none)
+    heading(language-dict.at("version-history"), outlined: false, numbering: none)
     fhict-table(
       columns: (auto, auto, auto, 1fr),
       content: (
-        ("Version", "Date", "Author", "Changes"),
+        (language-dict.at("version"), language-dict.at("date"), language-dict.at("author"), language-dict.at("changes")),
         ..version-history.map(version => (
           version.version,
           version.date,
@@ -461,7 +468,7 @@
       }
     }
     outline(
-      title: "Table of Contents",
+      title: language-dict.at("table-of-contents"),
       depth: toc-depth,
       indent: n => [#h(1em)] * n,
     )
@@ -473,7 +480,7 @@
 
   // Show the Glossary in the front
   if glossary-terms != none and glossary-front == true {
-    heading("Glossary", numbering: none, outlined: false)
+    heading(language-dict.at("glossary"), numbering: none, outlined: false)
     print-glossary(
     (
       glossary-terms
@@ -488,7 +495,7 @@
   // Show the table of figures if requested
   if table-of-figures == true {
     outline(
-      title: "Table Of Figures",
+      title: language-dict.at("table-of-figures"),
       target: figure.where(kind: image),
     )
     if table-of-listings == true {
@@ -500,7 +507,7 @@
   // Show the table of listings if requested
   if table-of-listings == true {
     outline(
-      title: "Table Of Listings",
+      title: language-dict.at("table-of-listings"),
       target: figure.where(kind: raw),
     )
     if print-extra-white-page == true { pagebreak(); page-intentionally-left-blank(newpage: false) }
@@ -526,6 +533,7 @@
 
   // Show the page's contents
   body
+
   if (glossary-terms != none and glossary-front == false) or bibliography-file != none or appendix != none or enable-index == true{
     pagebreak()
   }
@@ -533,7 +541,7 @@
 
   // Show the Glossary in the back
   if glossary-terms != none and glossary-front == false {
-    heading("Glossary", numbering: none)
+    heading(language-dict.at("glossary"), numbering: none)
     print-glossary(
     (
       glossary-terms
@@ -545,7 +553,7 @@
 
   // Show the bibliography
   if bibliography-file != none {
-    set bibliography(title: "References", style: "ieee")
+    set bibliography(title: language-dict.at("references"), style: "ieee")
     bibliography-file
     pagebreak()
     if print-extra-white-page == true and appendix != none { page-intentionally-left-blank(odd: false) }
@@ -570,7 +578,7 @@
   // Show the index
   if enable-index == true {
     show heading.where(level: 1): h => {text(strong(upper(h)), size: 18pt, fill: fontys-purple-1)}
-    heading("Index", numbering: none)
+    heading(language-dict.at("index"), numbering: none)
     columns(index-columns)[
       #make-index()
     ]

@@ -1,0 +1,53 @@
+NL:
+  flag-file: NL-flag.svg
+  language-en: Dutch
+  language: Nederlands
+  localization:
+    this-doc-is-avail: "Dit document is beschikbaar in"
+    version-history: "Versiegeschiedenis"
+    version: "Versie"
+    date: "Datum"
+    author: "Auteur"
+    changes: "Wijzigingen"
+    table-of-contents: "Inhoudsopgave"
+    table-of-listings: "Lijst van codefragmenten"
+    table-of-figures: "Lijst van figuren"
+    glossary: "Woordenlijst"
+    index: "Index"
+    references: "Referenties"
+
+EN:
+  flag-file: EN-flag.svg
+  language-en: English
+  language: English
+  localization:
+    this-doc-is-avail: "This document is available in"
+    version-history: "Version history"
+    version: "Version"
+    date: "Date"
+    author: "Author"
+    changes: "Changes"
+    table-of-contents: "Table of contents"
+    table-of-listings: ""
+    table-of-figures: ""
+    glossary: "Glossary"
+    index: "Index"
+    references: "References"
+
+DE:
+  flag-file: DE-flag.svg
+  language-en: German
+  language: Deutsch
+  localization:
+    this-doc-is-avail: "Dieses Dokument ist verfügbar in"
+    version-history: "Versionsgeschichte"
+    version: "Version"
+    date: "Datum"
+    author: "Autor"
+    changes: "Änderungen"
+    table-of-contents: "Verzeichnis der Inhalte"
+    table-of-listings: ""
+    table-of-figures: ""
+    glossary: "Glossar"
+    index: "Inhaltsverzeichnis"
+    references: "Referenzen"
