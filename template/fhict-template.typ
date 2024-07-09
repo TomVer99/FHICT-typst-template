@@ -140,6 +140,7 @@
   subtitle-lines: 1,
 
   language: "en",
+  available-languages: none,
 
   authors: none,
 
@@ -264,6 +265,51 @@
         "assets/fontys-for-society.png",
         height: 9%,
     ))
+    // TODO: Language boxes
+    #if available-languages != none {
+      // Language boxes
+      place(left + horizon, dy: 322pt, dx: -10pt,
+        box(
+          width: 37%,
+          height: 2em - 3pt,
+          fill: fontys-pink-1,
+          radius: 10pt,
+          place(left + top, dx: 10pt + 10pt, dy: 5pt,
+            [
+            #text(12pt, fill: white, font: "Roboto")[
+              *#language-dict.at("this-doc-is-avail"):*
+          ]])
+        )
+      )
+      // Place flags
+      place(left + horizon, dy: 350pt, dx: 10pt,
+        for l-language in language-data.keys() {
+          if lower(l-language) in available-languages {
+            let path = ""
+            path = "assets/" + l-language + "-flag.svg"
+            box(height: 25pt + 5pt, width: 37.5pt + 5pt + 2.5pt, fill: fontys-pink-1.lighten(50%), radius: 1pt)[
+              #place(center + horizon,
+                image(path, height: 25pt, width: 37.5pt)
+              )
+            ]
+            h(5pt)
+          }
+        }
+      )
+      // Place other flag covers
+      place(left + horizon, dy: 350pt, dx: 10pt,
+        for l-language in language-data.keys() {
+          if lower(l-language) in available-languages {
+            if l-language == upper(language) {
+              box(height: 25pt + 5pt, width: 37.5pt + 5pt + 2.5pt, fill: rgb(255,255,255,0), radius: 1pt)
+            } else {
+              box(height: 25pt + 5pt, width: 37.5pt + 5pt + 2.5pt, fill: rgb(255,255,255,100), radius: 1pt)
+            }
+            h(5pt)
+          }
+        }
+      )
+    }
     // Title
     #place(left + horizon, dy: -20pt, dx: 40pt,
         box(
