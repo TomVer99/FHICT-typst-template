@@ -9,7 +9,7 @@
 	subtitle: [An unofficial template for FHICT document generation.],
 	authors:	"TomVer99",
 	url:		  "https://github.com/TomVer99/FHICT-typst-template",
-	version:	"1.5.1",
+	version:	"0.10.2",
 	date:		  datetime.today(),
 	abstract: [
     This template allows the user to easily generate documents in the style of the Fontys Hogeschool ICT.
@@ -70,6 +70,7 @@ Here is an example of a simple document:
   arg[title],
   arg[subtitle],
   arg[subtitle-lines],
+  arg[language],
   arg[authors],
   arg[version-history],
   arg[glossary-terms],
@@ -105,6 +106,10 @@ Here is an example of a simple document:
 
   #argument("subtitle-lines", types:"int", default:1)[
     The number of lines the subtitle should span.
+  ]
+
+  #argument("language", types:"string", default: "en")[
+    The language of the document.
   ]
 
   #colbreak()
