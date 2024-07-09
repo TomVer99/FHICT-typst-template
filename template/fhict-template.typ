@@ -265,9 +265,8 @@
         "assets/fontys-for-society.png",
         height: 9%,
     ))
-    // TODO: Language boxes
+    // Language boxes
     #if available-languages != none {
-      // Language boxes
       place(left + horizon, dy: 322pt, dx: -10pt,
         box(
           width: 37%,
