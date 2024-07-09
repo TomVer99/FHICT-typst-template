@@ -51,3 +51,21 @@ DE:
     glossary: "Glossar"
     index: "Inhaltsverzeichnis"
     references: "Referenzen"
+
+FR:
+  flag-file: FR-flag.svg
+  language-en: French
+  language: Français
+  localization:
+    this-doc-is-avail: "Ce document est disponible en"
+    version-history: "Historique des versions"
+    version: "Version"
+    date: "Date"
+    author: "Auteur"
+    changes: "Changements"
+    table-of-contents: "Table des matières"
+    table-of-listings: "Tableau des listes"
+    table-of-figures: "Tableau des chiffres"
+    glossary: "Glossaire"
+    index: "Index"
+    references: "Références"
