@@ -69,3 +69,21 @@ FR:
     glossary: "Glossaire"
     index: "Index"
     references: "Références"
+
+ES:
+  flag-file: ES-flag.svg
+  language-en: Spanish
+  language: Español
+  localization:
+    this-doc-is-avail: "Este documento está disponible en"
+    version-history: "Historial de versiones"
+    version: "Versión"
+    date: "Fecha"
+    author: "Autor"
+    changes: "Cambios"
+    table-of-contents: "Índice"
+    table-of-listings: "Tabla de listados"
+    table-of-figures: "Tabla de cifras"
+    glossary: "Glosario"
+    index: "Índice"
+    references: "Referencias"
