@@ -28,8 +28,8 @@ EN:
     author: "Author"
     changes: "Changes"
     table-of-contents: "Table of contents"
-    table-of-listings: ""
-    table-of-figures: ""
+    table-of-listings: "Table of listings"
+    table-of-figures: "Table of figures"
     glossary: "Glossary"
     index: "Index"
     references: "References"
@@ -46,8 +46,26 @@ DE:
     author: "Autor"
     changes: "Änderungen"
     table-of-contents: "Verzeichnis der Inhalte"
-    table-of-listings: ""
-    table-of-figures: ""
+    table-of-listings: "Tabelle der Auflistungen"
+    table-of-figures: "Tabelle der Zahlen"
     glossary: "Glossar"
     index: "Inhaltsverzeichnis"
     references: "Referenzen"
+
+FR:
+  flag-file: FR-flag.svg
+  language-en: French
+  language: Français
+  localization:
+    this-doc-is-avail: "Ce document est disponible en"
+    version-history: "Historique des versions"
+    version: "Version"
+    date: "Date"
+    author: "Auteur"
+    changes: "Changements"
+    table-of-contents: "Table des matières"
+    table-of-listings: "Tableau des listes"
+    table-of-figures: "Tableau des chiffres"
+    glossary: "Glossaire"
+    index: "Index"
+    references: "Références"
