@@ -10,7 +10,7 @@
     ),
   ),
   // language: "nl",
-  // language: "de",
+  available-languages: ("en", "nl"),
   version-history: (
     (
       version: "1.0",
