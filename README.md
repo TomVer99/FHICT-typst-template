@@ -55,6 +55,15 @@ To get started with this Typst document template, follow these steps:
 
 I welcome contributions to improve and expand this document template. If you have ideas, suggestions, or encounter issues, please consider contributing by creating a pull request or issue.
 
+### Adding a new language
+
+Currently, the template supports the following languages: `Dutch` `(nl)`, `English` `(en)`, `German` `(de)`, `French` `(fr)`, and `Spanish` `(es)`. If you want to add a new language, you can do so by following these steps:
+
+1. Add the language to the `language.yml` file in the `assets` folder. Copy the `en` section and replace the values with the new language.
+2. Add a flag `XX-flag.svg` to the `assets` folder.
+3. Update the README with the new language.
+4. Create a pull request with the changes.
+
 ## Disclaimer
 
 This template / repository is not endorsed by, directly affiliated with, maintained, authorized or sponsored by Fontys Hogeschool ICT. It is provided as-is, without any warranty or guarantee of any kind. Use at your own risk.
