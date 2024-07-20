@@ -2,7 +2,7 @@
 #import "@preview/colorful-boxes:1.2.0": *
 #import "@preview/showybox:2.0.1": *
 #import "@preview/glossarium:0.4.1": make-glossary, print-glossary, gls, glspl
-#import "@preview/in-dexter:0.3.0": *
+#import "@preview/in-dexter:0.4.2": *
 
 #let fontys-purple-1 = rgb("663366")
 #let fontys-purple-2 = rgb("B59DB5")
