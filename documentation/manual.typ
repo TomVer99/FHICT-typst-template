@@ -22,26 +22,22 @@
 
 == Pre Requisites
 
-To use this template, you need to have the `roboto` font installed.
+To use this template, you need to have the `roboto` font installed and a way to render Typst documents.
 
 == Importing the template
 
-To use this template, you first need to download the `template.zip` attatched to the release.
-Extract the contents of the zip file to a folder on your computer.
-Afterwards, you can include this template in your file by adding the following line at the top of your file:
+There are two ways to import the template.
+
+The first way is to download the template file and import it using the `#import` command with a relative path to the local file.
 
 ```typst
-#import "some/path/fhict-template.typ": *
+#import "./../fhict-template.typ": *
 ```
-
-Your path may vary depending on the location of the template file.
-In the future it may also be possible to use:
+The second way is to import the template from the Typst Universe. If you have a method to render Typst documents that supports the Typst Universe, you can import the template using the following command:
 
 ```typst
 #import "@preview/fhict-template:1.5.1": *
 ```
-
-In this case you won't need to download the template file.
 
 == First Document
 
