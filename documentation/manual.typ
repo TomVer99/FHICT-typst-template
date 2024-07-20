@@ -22,26 +22,22 @@
 
 == Pre Requisites
 
-To use this template, you need to have the `roboto` font installed.
+To use this template, you need to have the `roboto` font installed and a way to render Typst documents.
 
 == Importing the template
 
-To use this template, you first need to download the `template.zip` attatched to the release.
-Extract the contents of the zip file to a folder on your computer.
-Afterwards, you can include this template in your file by adding the following line at the top of your file:
+There are two ways to import the template.
+
+The first way is to download the template file and import it using the `#import` command with a relative path to the local file.
 
 ```typst
-#import "some/path/fhict-template.typ": *
+#import "./../fhict-template.typ": *
 ```
-
-Your path may vary depending on the location of the template file.
-In the future it may also be possible to use:
+The second way is to import the template from the Typst Universe. If you have a method to render Typst documents that supports the Typst Universe, you can import the template using the following command:
 
 ```typst
 #import "@preview/fhict-template:1.5.1": *
 ```
-
-In this case you won't need to download the template file.
 
 == First Document
 
@@ -162,19 +158,7 @@ Here is an example of a simple document:
   #colbreak()
   #argument("glossary-terms", types:"dict", default: none)[
     A dictionary of glossary terms.
-    Has the following structure:
-    ```typst
-    (
-      (
-        key: "",
-        short: [],
-        long: [],
-        desc: [],
-      ),
-      ...
-    )
-    ```
-    Where all options except `key` are optional.
+    For information on what fields are available, check the #hlink("https://typst.app/universe/package/glossarium", content: "Glossarium documentation").
   ]
 
   #argument("glossary-front", types:"bool", default: false)[
@@ -389,14 +373,6 @@ Here is an example of a simple document:
 
 = 3rd Party Libraries
 
-This template uses the following 3rd party libraries:
-
-- `codly:0.2.0`
-- `colorful-boxes:1.2.0`
-- `showybox:2.0.1`
-- `glossarium:0.2.6`
-- `in-dexter:0.3.0`
-
 == Codly
 
 Library can be found at the #hlink("https://typst.app/universe/package/codly", content: "Typst Universe page").
@@ -422,33 +398,11 @@ More information can be found on the Typst Universe page.
 #pagebreak()
 == Glossarium
 
+#emph[Current version: 0.4.1]
+
 Library can be found at the #hlink("https://typst.app/universe/package/glossarium", content: "Typst Universe page").
 
-This library provides functionality to manage and render a glossary in the document. There are two commands of interest in this library: `gls` and `glspl`.
-
-The following documentation will assume you use the terms list as described in the fhict-doc command in @fhict-doc.
-
-#command("gls",
-  barg[body]
-)[
-  Inserts a glossary term.
-
-  #argument("body", types:"string")[
-    The term to insert.
-  ]
-]
-
-#command("glspl",
-  barg[body]
-)[
-  Inserts a glossary term in plural form.
-
-  #argument("body", types:"string")[
-    The term to insert.
-  ]
-]
-
-You can also simple use `@term` to insert a term in the document.
+This library provides functionality to manage and render and manage a glossary in the document. For more information on how to use this library, check the documentation on the Typst Universe page.
 
 == In-Dexter
 
