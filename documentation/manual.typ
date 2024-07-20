@@ -375,9 +375,11 @@ Here is an example of a simple document:
 
 == Codly
 
+#emph[Current version: 1.0.0]
+
 Library can be found at the #hlink("https://typst.app/universe/package/codly", content: "Typst Universe page").
 
-This library improves the code rendering in the document. There are no additional commands to use this library.
+This library improves the code rendering in the document. There are no additional commands to use this library. More information can be found on the Typst Universe page.
 
 == Colorful Boxes
 

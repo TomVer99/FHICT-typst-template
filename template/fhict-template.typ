@@ -1,4 +1,4 @@
-#import "@preview/codly:0.2.0": *
+#import "@preview/codly:1.0.0": *
 #import "@preview/colorful-boxes:1.2.0": *
 #import "@preview/showybox:2.0.1": *
 #import "@preview/glossarium:0.4.1": make-glossary, print-glossary, gls, glspl
@@ -481,7 +481,7 @@
       yaml: (name: "YAML", color: code-name-color),
       typst: (name: "Typst", color: code-name-color),
     ),
-    enable-numbers: false,
+    number-format: none,
     display-icon: false,
   )
 
