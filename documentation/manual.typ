@@ -408,19 +408,13 @@ This library provides functionality to manage and render and manage a glossary i
 
 == In-Dexter
 
+#emph[Current version: 0.4.2]
+
 Library can be found at the #hlink("https://typst.app/universe/package/in-dexter", content: "Typst Universe page").
 
-This library provides functionality to manage and render an index in the document. There is one command of interest in this library: `index`.
+This library provides functionality to manage and render an index in the document.
 
-#command("index",
-  barg[title],
-)[
-  Inserts an index location in the document. It does not render anything in the document itself.
-
-  #argument("title", types:"string")[
-    The title of the index.
-  ]
-]
+For more information on how to use this library, check the documentation on the Typst Universe page.
 
 = Issues
 
