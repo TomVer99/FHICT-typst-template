@@ -30,7 +30,7 @@
 = Examples
 
 == Headings Example
-#index[Headings]
+#index-main[Headings]
 
 === level 3
 
