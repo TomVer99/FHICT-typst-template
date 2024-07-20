@@ -389,15 +389,6 @@ This library provides a couple of commands to render colorful boxes in the docum
 
 More information can be found on the Typst Universe page.
 
-== Showybox
-
-Library can be found at the #hlink("https://typst.app/universe/package/showybox", content: "Typst Universe page").
-
-This library provides a couple of commands to render colorful boxes in the document.
-
-More information can be found on the Typst Universe page.
-
-#pagebreak()
 == Glossarium
 
 #emph[Current version: 0.4.1]
