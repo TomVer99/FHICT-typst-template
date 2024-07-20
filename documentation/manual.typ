@@ -162,19 +162,7 @@ Here is an example of a simple document:
   #colbreak()
   #argument("glossary-terms", types:"dict", default: none)[
     A dictionary of glossary terms.
-    Has the following structure:
-    ```typst
-    (
-      (
-        key: "",
-        short: [],
-        long: [],
-        desc: [],
-      ),
-      ...
-    )
-    ```
-    Where all options except `key` are optional.
+    For information on what fields are available, check the #hlink("https://typst.app/universe/package/glossarium", content: "Glossarium documentation").
   ]
 
   #argument("glossary-front", types:"bool", default: false)[
@@ -389,14 +377,6 @@ Here is an example of a simple document:
 
 = 3rd Party Libraries
 
-This template uses the following 3rd party libraries:
-
-- `codly:0.2.0`
-- `colorful-boxes:1.2.0`
-- `showybox:2.0.1`
-- `glossarium:0.2.6`
-- `in-dexter:0.3.0`
-
 == Codly
 
 Library can be found at the #hlink("https://typst.app/universe/package/codly", content: "Typst Universe page").
@@ -422,33 +402,11 @@ More information can be found on the Typst Universe page.
 #pagebreak()
 == Glossarium
 
+#emph[Current version: 0.4.1]
+
 Library can be found at the #hlink("https://typst.app/universe/package/glossarium", content: "Typst Universe page").
 
-This library provides functionality to manage and render a glossary in the document. There are two commands of interest in this library: `gls` and `glspl`.
-
-The following documentation will assume you use the terms list as described in the fhict-doc command in @fhict-doc.
-
-#command("gls",
-  barg[body]
-)[
-  Inserts a glossary term.
-
-  #argument("body", types:"string")[
-    The term to insert.
-  ]
-]
-
-#command("glspl",
-  barg[body]
-)[
-  Inserts a glossary term in plural form.
-
-  #argument("body", types:"string")[
-    The term to insert.
-  ]
-]
-
-You can also simple use `@term` to insert a term in the document.
+This library provides functionality to manage and render and manage a glossary in the document. For more information on how to use this library, check the documentation on the Typst Universe page.
 
 == In-Dexter
 
