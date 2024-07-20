@@ -381,14 +381,6 @@ Library can be found at the #hlink("https://typst.app/universe/package/codly", c
 
 This library improves the code rendering in the document. There are no additional commands to use this library. More information can be found on the Typst Universe page.
 
-== Colorful Boxes
-
-Library can be found at the #hlink("https://typst.app/universe/package/colorful-boxes", content: "Typst Universe page").
-
-This library provides a couple of commands to render colorful boxes in the document.
-
-More information can be found on the Typst Universe page.
-
 == Glossarium
 
 #emph[Current version: 0.4.1]
