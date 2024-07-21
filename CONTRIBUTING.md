@@ -8,6 +8,14 @@ I'd love your input! I want to make contributing to this project as easy and tra
 - Proposing new features
 - Discussing documentation
 
+<!-- Code of conduct -->
+
+<!--
+## Code of Conduct
+
+I am committed to providing a welcoming and inclusive experience for everyone. Please take a moment to read the Code of Conduct [link to Code of Conduct].
+-->
+
 ## I Develop with Github
 
 I use github to host code, to track issues and feature requests, as well as accept pull requests.
