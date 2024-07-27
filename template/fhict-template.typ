@@ -373,11 +373,10 @@
             }
             #text(size: 8pt)[
               #for assessor in assessors [
-                #if "title" in assessor and "name" in assessor and "email" in assessor {
-                  strong(assessor.title) + strong(": ") + link("mailto:" + assessor.email)[#assessor.name] + ", "
-                } else if "title" in assessor and "name" in assessor {
-                  strong(assessor.title) + strong(": ") + assessor.name + ", "
-                } else if "name" in assessor and "email" in assessor {
+                #if "title" in assessor {
+                  strong(assessor.title) + strong(":")
+                }
+                #if "name" in assessor and "email" in assessor {
                   link("mailto:" + assessor.email)[#assessor.name] + ", "
                 } else if "name" in assessor {
                   assessor.name + ", "
