@@ -343,60 +343,38 @@
       dy: 461pt + (22pt * (subtitle-lines - 1)),
       dx: 40pt,
         [
-          #if (authors != none) {
-            box(
-              height: auto,
-              inset: 7pt,
-              fill: white,
-              [
+          #grid(
+            columns: (25%, 63.7% - 5%),
+            rows: (auto),
+            stroke: none,
+            gutter: 5pt,
+            rect(height: auto, width: 100%, stroke: none, fill: white, inset: 7pt,)[
                 #if authors-title != none {
                   text(11pt)[*#authors-title:*#linebreak()]
                 }
                 #if authors.all(x => "email" in x) {
                   if type(authors.at(0).name) == dictionary {
-                    authors.map(author => strong(author.name.content) + linebreak() + text(size: 6pt)[#{"   " * 6}#link("mailto:" + author.email)[#author.email]]).join(",\n")
+                    authors.map(author => strong(author.name.content) + linebreak() + text(size: 6pt)[#{"   " * 4}#link("mailto:" + author.email)[#author.email]]).join("\n")
                   } else {
-                    authors.map(author => author.name + linebreak() + text(size: 7pt)[#{"   " * 6}#link("mailto:" + author.email)[#author.email]]).join(",\n")
+                    authors.map(author => author.name + linebreak() + text(size: 7pt)[#{"   " * 4}#link("mailto:" + author.email)[#author.email]]).join("\n")
                   }
                 } else {
                   if type(authors.at(0).name) == dictionary {
-                    [#authors.map(author => author.name.content).join(",\n")]
+                    [#authors.map(author => author.name.content).join("\n")]
                   } else {
-                    [#authors.map(author => author.name).join(",\n")]
+                    [#authors.map(author => author.name).join("\n")]
                   }
                 }
+            ],
+            rect(height: auto, width: auto, stroke: none, fill: white, inset: 7pt,)[
+              #if assessors-title != none {
+                text(11pt)[*#assessors-title:*#linebreak()]
+              }
+              #text(size: 8pt)[
+                #assessors.map(assessors => strong(assessors.title) + ": " + assessors.name).join(", ")
               ]
-            )
-          }
-
-          #if (authors != none) and (assessors != none) {
-            v(-4pt)
-          }
-
-          #if (assessors != none) {
-            box(
-              height: auto,
-              inset: 7pt,
-              fill: white,
-              [
-                #if assessors-title != none {
-                  text(11pt)[*#assessors-title:*#linebreak()]
-                }
-                #for assessor in assessors {
-                  if "email" in assessor.keys() and "title" in assessor.keys() {
-                    strong(assessor.title) + linebreak() + "      " + [#assessor.name] + linebreak() + text(size: 7pt)[#{"   " * 6}#link("mailto:" + assessor.email)[#assessor.email] #linebreak()]
-                  } else if "email" in assessor.keys() {
-                    assessor.name + linebreak() + text(size: 7pt)[#{"   " * 6}#link("mailto:" + assessor.email)[#assessor.email] #linebreak()]
-                  } else if "title" in assessor.keys() {
-                    assessor.title + linebreak() + "      " + [#assessor.name]
-                  } else {
-                    strong(assessor.name)
-                  }
-                  
-                }
-              ]
-            )
-          }
+            ]
+          )
         ]
       )
     }
