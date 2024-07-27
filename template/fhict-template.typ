@@ -372,7 +372,17 @@
               text(11pt)[*#assessors-title:*#linebreak()]
             }
             #text(size: 8pt)[
-              #assessors.map(assessors => strong(assessors.title) + ": " + assessors.name).join(", ")
+              #for assessor in assessors [
+                #if "title" in assessor and "name" in assessor and "email" in assessor {
+                  strong(assessor.title) + strong(": ") + link("mailto:" + assessor.email)[#assessor.name] + ", "
+                } else if "title" in assessor and "name" in assessor {
+                  strong(assessor.title) + strong(": ") + assessor.name + ", "
+                } else if "name" in assessor and "email" in assessor {
+                  link("mailto:" + assessor.email)[#assessor.name] + ", "
+                } else if "name" in assessor {
+                  assessor.name + ", "
+                }
+              ]
             ]
           ]
         },
