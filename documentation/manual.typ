@@ -9,7 +9,7 @@
 	subtitle: [An unofficial template for FHICT document generation.],
 	authors:	"TomVer99",
 	url:		  "https://github.com/TomVer99/FHICT-typst-template",
-	version:	"0.11.0",
+	version:	"0.11.1",
 	date:		  datetime.today(),
 	abstract: [
     This template allows the user to easily generate documents in the style of the Fontys Hogeschool ICT.
@@ -68,7 +68,10 @@ Here is an example of a simple document:
   arg[subtitle-lines],
   arg[language],
   arg[available-languages],
+  arg[authors-title],
   arg[authors],
+  arg[assessors-title],
+  arg[assessors],
   arg[version-history],
   arg[glossary-terms],
   arg[glossary-front],
@@ -118,6 +121,10 @@ Here is an example of a simple document:
     ```
   ]
 
+  #argument("authors-title", types:"string", default: none)[
+    The title of the authors section.
+  ]
+
   #argument("authors", types:"dict", default: none)[
     The author(s) of the document.
     Has the following structure:
@@ -138,6 +145,26 @@ Here is an example of a simple document:
     Appart from using this complex type for sensitive information, there is not much use for it.
   ]
 
+  #argument("assessors-title", types:"string", default: none)[
+    The title of the assessors section.
+  ]
+
+  #argument("assessors", types:"dict", default: none)[
+    The assessors of the document.
+    Has the following structure:
+    ```typst
+    (
+      (
+        title: "",
+        name: "",
+        email: "",
+      ),
+      ...
+    )
+    ```
+    All fields need to be strings.
+  ]
+
   #argument("version-history", types:"dict", default: none)[
     The version history of the document.
     Has the following structure:
@@ -155,7 +182,6 @@ Here is an example of a simple document:
     All fields can be strings or content.
   ]
 
-  #colbreak()
   #argument("glossary-terms", types:"dict", default: none)[
     A dictionary of glossary terms.
     For information on what fields are available, check the #hlink("https://typst.app/universe/package/glossarium", content: "Glossarium documentation").
@@ -188,11 +214,11 @@ Here is an example of a simple document:
     Whether to disable chapter numbering.
   ]
 
+  #colbreak()
   #argument("pre-toc", types:"content", default: none)[
     Content to show before the table of contents.
   ]
 
-  #colbreak()
   #argument("table-of-figures", types:"bool", default: false)[
     Whether to show a table of figures.
   ]
