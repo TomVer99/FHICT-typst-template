@@ -65,7 +65,6 @@ Here is an example of a simple document:
 #command("fhict-doc",
   arg[title],
   arg[subtitle],
-  arg[subtitle-lines],
   arg[language],
   arg[available-languages],
   arg[authors-title],
@@ -104,12 +103,7 @@ Here is an example of a simple document:
     The subtitle of the document.
   ]
 
-  #argument("subtitle-lines", types:"int", default:1)[
-    The number of lines the subtitle should span.
-  ]
-
   #colbreak()
-  
   #argument("language", types:"string", default: "en")[
     The language of the document.
   ]
