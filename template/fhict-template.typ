@@ -140,7 +140,10 @@
   language: "en",
   available-languages: none,
 
+  authors-title: none,
   authors: none,
+  assessors-title: none,
+  assessors: none,
 
   version-history: none,
 
@@ -332,43 +335,72 @@
     // Authors
     #censored-state.update(censored)
     #set text(fill: fontys-purple-1)
-    #if authors != none {
-      if authors.all(x => "email" in x) {
-        place(left + horizon,
-        dy: 60pt + (
-          (authors.len() - 1) * 15pt
-        ) + (22pt * (subtitle-lines - 1)), dx: 40pt,
-        box(
-          height: 35pt + ((authors.len() - 1) * 30pt),
-          inset: 10pt,
-          fill: white,
-          text(10pt)[
-            #if type(authors.at(0).name) == dictionary {
-              authors.map(author => strong(author.name.content) + linebreak() + "      " + link("mailto:" + author.email)[#author.email]).join(",\n")
-            } else {
-              authors.map(author => strong(author.name) + linebreak() + "      " + link("mailto:" + author.email)).join(",\n")
-            }]))
-      } else {
-        place(left + horizon, dy: 48pt + (
-          if authors.len() == 1 {
-            5pt
-          } else {
-            (authors.len() - 1) * 10pt
+
+    // Authors & Assessors
+    #if authors != none or assessors != none {
+      set text(size: 9pt)
+      place(left + top,
+      dy: 461pt + (22pt * (subtitle-lines - 1)),
+      dx: 40pt,
+        [
+          #if (authors != none) {
+            box(
+              height: auto,
+              inset: 7pt,
+              fill: white,
+              [
+                #if authors-title != none {
+                  text(11pt)[*#authors-title:*#linebreak()]
+                }
+                #if authors.all(x => "email" in x) {
+                  if type(authors.at(0).name) == dictionary {
+                    authors.map(author => strong(author.name.content) + linebreak() + text(size: 6pt)[#{"   " * 6}#link("mailto:" + author.email)[#author.email]]).join(",\n")
+                  } else {
+                    authors.map(author => author.name + linebreak() + text(size: 7pt)[#{"   " * 6}#link("mailto:" + author.email)[#author.email]]).join(",\n")
+                  }
+                } else {
+                  if type(authors.at(0).name) == dictionary {
+                    [#authors.map(author => author.name.content).join(",\n")]
+                  } else {
+                    [#authors.map(author => author.name).join(",\n")]
+                  }
+                }
+              ]
+            )
           }
-        ) + (22pt * (subtitle-lines - 1)), dx: 40pt,
-        box(
-          inset: 10pt,
-          fill: white,
-          height: 20pt + ((authors.len() - 1) * 15pt),
-          text(10pt, fill: fontys-purple-1, font: "Roboto")[
-            #if type(authors.at(0).name) == dictionary {
-              [*#authors.map(author => author.name.content).join(",\n")*]
-            } else {
-              [*#authors.map(author => author.name).join(",\n")*]
-            }
-          ]))
-      }
+
+          #if (authors != none) and (assessors != none) {
+            v(-4pt)
+          }
+
+          #if (assessors != none) {
+            box(
+              height: auto,
+              inset: 7pt,
+              fill: white,
+              [
+                #if assessors-title != none {
+                  text(11pt)[*#assessors-title:*#linebreak()]
+                }
+                #for assessor in assessors {
+                  if "email" in assessor.keys() and "title" in assessor.keys() {
+                    strong(assessor.title) + linebreak() + "      " + [#assessor.name] + linebreak() + text(size: 7pt)[#{"   " * 6}#link("mailto:" + assessor.email)[#assessor.email] #linebreak()]
+                  } else if "email" in assessor.keys() {
+                    assessor.name + linebreak() + text(size: 7pt)[#{"   " * 6}#link("mailto:" + assessor.email)[#assessor.email] #linebreak()]
+                  } else if "title" in assessor.keys() {
+                    assessor.title + linebreak() + "      " + [#assessor.name]
+                  } else {
+                    strong(assessor.name)
+                  }
+                  
+                }
+              ]
+            )
+          }
+        ]
+      )
     }
+    #set text(size: 11pt)
 
     #set text(fill: black)
     // Date
