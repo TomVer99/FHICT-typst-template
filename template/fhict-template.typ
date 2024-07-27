@@ -443,6 +443,19 @@
   // Set the page style for non body pages
   set page("a4",
     background: [],
+    header: [
+      #place(right + horizon, dy: 15pt)[
+        #text(10pt, fill: fontys-purple-1, font: "Roboto")[
+          #upper[*#title*]
+        ]
+      ]
+      #place(left + horizon, dy: 12.5pt, dx: -8pt,
+        image("assets/for-society.png", height: 110%)
+      )
+      #place(left + bottom,
+        line(length: 100%, stroke: 1pt + fontys-purple-1)
+      )
+    ],
     footer: [
         #place(left + horizon, dy: -25pt, dx: -15pt,
             image("assets/for-society.png", height: 200%)
