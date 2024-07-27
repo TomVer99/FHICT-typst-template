@@ -134,13 +134,15 @@
 // Document
 #let fhict-doc(
   title: "Document Title",
-  subtitle: "Document Subtitle",
-  subtitle-lines: 1,
+  subtitle: none,
 
   language: "en",
   available-languages: none,
 
+  authors-title: none,
   authors: none,
+  assessors-title: none,
+  assessors: none,
 
   version-history: none,
 
@@ -307,70 +309,86 @@
         }
       )
     }
-    // Title
-    #place(left + horizon, dy: -20pt, dx: 40pt,
-        box(
-            height: 40pt,
-            inset: 10pt,
-            fill: fontys-pink-1,
-            text(30pt, fill: white, font: "Roboto")[
-                *#upper(title)*
-            ]
-        )
-    )
-    // Sub title
-    #place(left + horizon, dy: 20pt + ((22pt * (subtitle-lines - 1)) / 2), dx: 40pt,
-        box(
-            height: 30pt + (22pt * (subtitle-lines - 1)),
-            inset: 10pt,
-            fill: white,
-            text(20pt, fill: fontys-purple-1, font: "Roboto")[
-                *#upper(subtitle)*
-            ]
-        )
-    )
-    // Authors
+
+    // Title, Subtitle, Authors, Assessors
     #censored-state.update(censored)
     #set text(fill: fontys-purple-1)
-    #if authors != none {
-      if authors.all(x => "email" in x) {
-        place(left + horizon,
-        dy: 60pt + (
-          (authors.len() - 1) * 15pt
-        ) + (22pt * (subtitle-lines - 1)), dx: 40pt,
-        box(
-          height: 35pt + ((authors.len() - 1) * 30pt),
-          inset: 10pt,
-          fill: white,
-          text(10pt)[
-            #if type(authors.at(0).name) == dictionary {
-              authors.map(author => strong(author.name.content) + linebreak() + "      " + link("mailto:" + author.email)[#author.email]).join(",\n")
-            } else {
-              authors.map(author => strong(author.name) + linebreak() + "      " + link("mailto:" + author.email)).join(",\n")
-            }]))
-      } else {
-        place(left + horizon, dy: 48pt + (
-          if authors.len() == 1 {
-            5pt
-          } else {
-            (authors.len() - 1) * 10pt
-          }
-        ) + (22pt * (subtitle-lines - 1)), dx: 40pt,
-        box(
-          inset: 10pt,
-          fill: white,
-          height: 20pt + ((authors.len() - 1) * 15pt),
-          text(10pt, fill: fontys-purple-1, font: "Roboto")[
-            #if type(authors.at(0).name) == dictionary {
-              [*#authors.map(author => author.name.content).join(",\n")*]
-            } else {
-              [*#authors.map(author => author.name).join(",\n")*]
+    #place(left + top, dy: 380pt, dx: 40pt,
+      grid(columns: (25%, 60%), rows: (auto), stroke: none, gutter: 5pt,
+        if (title != none) {
+          grid.cell(
+            colspan: 2,
+            box(
+              height: auto,
+              inset: 10pt,
+              fill: fontys-pink-1,
+              text(30pt, fill: white, font: "Roboto")[
+                  *#upper(title)*
+              ]
+            )
+          )
+        } else {
+          grid.cell(colspan: 2)
+        },
+        if (subtitle != none) {
+          grid.cell(colspan: 2,
+            box(
+              height: auto,
+              inset: 10pt,
+              fill: white,
+              text(20pt, fill: fontys-purple-1, font: "Roboto")[
+                  *#upper(subtitle)*
+              ]
+            )
+          )
+        } else {
+          grid.cell(colspan: 2, [#h(-20pt)])
+        },
+        if (authors != none) {
+          rect(height: auto, width: 100%, stroke: none, fill: white, inset: 7pt,)[
+            #set text(size: 9pt)
+            #if authors-title != none {
+              text(11pt)[*#authors-title:*#linebreak()]
             }
-          ]))
-      }
-    }
+            #if authors.all(x => "email" in x) {
+              if type(authors.at(0).name) == dictionary {
+                authors.map(author => strong(author.name.content) + linebreak() + text(size: 6pt)[#{"   " * 4}#link("mailto:" + author.email)[#author.email]]).join("\n")
+              } else {
+                authors.map(author => author.name + linebreak() + text(size: 7pt)[#{"   " * 4}#link("mailto:" + author.email)[#author.email]]).join("\n")
+              }
+            } else {
+              if type(authors.at(0).name) == dictionary {
+                [#authors.map(author => author.name.content).join("\n")]
+              } else {
+                [#authors.map(author => author.name).join("\n")]
+              }
+            }
+          ]
+        },
+        if (assessors != none) {
+          rect(height: auto, width: auto, stroke: none, fill: white, inset: 7pt,)[
+            #set text(size: 9pt)
+            #if assessors-title != none {
+              text(11pt)[*#assessors-title:*#linebreak()]
+            }
+            #text(size: 8pt)[
+              #for assessor in assessors [
+                #if "title" in assessor {
+                  strong(assessor.title) + strong(":")
+                }
+                #if "name" in assessor and "email" in assessor {
+                  link("mailto:" + assessor.email)[#assessor.name] + ", "
+                } else if "name" in assessor {
+                  assessor.name + ", "
+                }
+              ]
+            ]
+          ]
+        },
+      )
+    )
+    #set text(size: 11pt, fill: black)
 
-    #set text(fill: black)
     // Date
     #if secondary-organisation-color == none {
       place(right + horizon, dy: 330pt,
