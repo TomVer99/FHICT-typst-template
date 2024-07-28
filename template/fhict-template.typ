@@ -1,6 +1,7 @@
 #import "@preview/codly:1.0.0": *
 #import "@preview/glossarium:0.4.1": make-glossary, print-glossary, gls, glspl
 #import "@preview/in-dexter:0.4.2": *
+#import "@preview/hydra:0.5.1": hydra
 
 #let fontys-purple-1 = rgb("663366")
 #let fontys-purple-2 = rgb("B59DB5")
@@ -449,8 +450,15 @@
           #upper[*#title*]
         ]
       ]
-      #place(left + horizon, dy: 12.5pt, dx: -8pt,
-        image("assets/for-society.png", height: 110%)
+      #place(left + horizon, dy: 15pt,
+        [#context[
+          #let chapter = hydra(1)
+          #if chapter != none {
+            text(10pt, fill: fontys-purple-1, font: "Roboto")[
+              *#upper(chapter)*
+            ]
+          }
+        ]]
       )
       #place(left + bottom,
         line(length: 100%, stroke: 1pt + fontys-purple-1)
