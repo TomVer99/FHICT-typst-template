@@ -106,6 +106,7 @@ Here is an example of a simple document:
   arg[toc-depth],
   arg[disable-toc],
   arg[disable-chapter-numbering],
+  arg[chapter-on-new-page],
   arg[pre-toc],
   arg[table-of-figures],
   arg[table-of-listings],
@@ -237,6 +238,10 @@ Here is an example of a simple document:
     Whether to disable chapter numbering.
   ]
 
+  #argument("chapter-on-new-page", types:"bool", default: false)[
+    Whether to start each chapter on a new page.
+  ]
+
   #argument("pre-toc", types:"content", default: none)[
     Content to show before the table of contents.
   ]
@@ -253,11 +258,11 @@ Here is an example of a simple document:
     Content to show in the appendix.
   ]
 
+  #colbreak()
   #argument("watermark", types:"string", default: none)[
     The watermark to show on the document.
   ]
 
-  #colbreak()
   #argument("censored", types:"int", default: 0)[
     Whether to show a censored watermark on the document.
     `1` for censorship, `0` for no censorship.
@@ -279,7 +284,7 @@ Here is an example of a simple document:
     ```
   ]
 
-  #argument("secondary-organisation-logo-height", types:"size", default: "6%")[
+  #argument("secondary-organisation-logo-height", types:"size", default: 6%)[
     The height of the secondary organisation logo.
   ]
 

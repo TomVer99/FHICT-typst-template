@@ -10,6 +10,7 @@
     ),
   ),
   // language: "nl",
+  // chapter-on-new-page: true,
   available-languages: ("en", "nl", "de", "fr", "es"),
   version-history: (
     (
