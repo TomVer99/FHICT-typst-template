@@ -1,6 +1,7 @@
 #import "@preview/codly:1.0.0": *
 #import "@preview/glossarium:0.4.1": make-glossary, print-glossary, gls, glspl
 #import "@preview/in-dexter:0.4.2": *
+#import "@preview/hydra:0.5.1": hydra
 
 #let fontys-purple-1 = rgb("663366")
 #let fontys-purple-2 = rgb("B59DB5")
@@ -345,7 +346,7 @@
           grid.cell(colspan: 2, [#h(-20pt)])
         },
         if (authors != none) {
-          rect(height: auto, width: 100%, stroke: none, fill: white, inset: 7pt,)[
+          rect(height: auto, width: if (assessors == none) {auto} else {100%}, stroke: none, fill: white, inset: 7pt,)[
             #set text(size: 9pt)
             #if authors-title != none {
               text(11pt)[*#authors-title:*#linebreak()]
@@ -443,15 +444,38 @@
   // Set the page style for non body pages
   set page("a4",
     background: [],
-    footer: [
-        #place(left + horizon, dy: -25pt, dx: -15pt,
-            image("assets/for-society.png", height: 200%)
-        )
-        #place(right + horizon, dy: -25pt,
-            text(15pt, fill: fontys-purple-1, font: "Roboto")[
-              *#counter(page).display(pre-toc-numbering)*
+    header: [
+      #place(right + horizon, dy: 15pt)[
+        #text(10pt, fill: fontys-purple-1, font: "Roboto")[
+          #upper[*#title*]
+        ]
+      ]
+      #place(left + horizon, dy: 15pt,
+        [#context[
+          #let chapter = hydra(1)
+          #if chapter != none {
+            text(10pt, fill: fontys-purple-1, font: "Roboto")[
+              *#upper(chapter)*
             ]
-        )
+          }
+        ]]
+      )
+      #place(left + bottom,
+        line(length: 100%, stroke: 1pt + fontys-purple-1)
+      )
+    ],
+    footer: [
+      #place(left + horizon, dy: -10pt, dx: -15pt,
+        image("assets/for-society.png", height: 200%)
+      )
+      #place(right + horizon, dy: -10pt,
+        text(15pt, fill: fontys-purple-1, font: "Roboto")[
+          *#counter(page).display(pre-toc-numbering)*
+        ]
+      )
+      #place(left + top,
+        line(length: 100%, stroke: 1pt + fontys-purple-1)
+      )
     ],
     numbering: pre-toc-numbering
   )
@@ -579,14 +603,17 @@
   set page("a4",
     background: [],
     footer: [
-        #place(left + horizon, dy: -25pt, dx: -15pt,
-            image("assets/for-society.png", height: 200%)
-        )
-        #place(right + horizon, dy: -25pt,
-            text(15pt, fill: fontys-purple-1, font: "Roboto")[
-                *#counter(page).display()*
-            ]
-        )
+      #place(left + horizon, dy: -10pt, dx: -15pt,
+        image("assets/for-society.png", height: 200%)
+      )
+      #place(right + horizon, dy: -10pt,
+        text(15pt, fill: fontys-purple-1, font: "Roboto")[
+          *#counter(page).display()*
+        ]
+      )
+      #place(left + top,
+        line(length: 100%, stroke: 1pt + fontys-purple-1)
+      )
     ],
     numbering: "1"
   )
