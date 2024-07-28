@@ -346,7 +346,7 @@
           grid.cell(colspan: 2, [#h(-20pt)])
         },
         if (authors != none) {
-          rect(height: auto, width: 100%, stroke: none, fill: white, inset: 7pt,)[
+          rect(height: auto, width: if (assessors == none) {auto} else {100%}, stroke: none, fill: white, inset: 7pt,)[
             #set text(size: 9pt)
             #if authors-title != none {
               text(11pt)[*#authors-title:*#linebreak()]
