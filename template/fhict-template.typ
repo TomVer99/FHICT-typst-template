@@ -141,6 +141,7 @@
   toc-depth: 3,
   disable-toc: false,
   disable-chapter-numbering: false,
+  chapter-on-new-page: false,
 
   pre-toc: none,
   table-of-figures: none,
@@ -200,8 +201,7 @@
 
   set heading(numbering: numbering-set)
 
-  // show heading.where(level: 1): h => pagebreak(weak: true) + {text(strong(upper(h)), size: 18pt, fill: fontys-purple-1)}
-  show heading.where(level: 1): h => {text(strong(upper(h)), size: 18pt, fill: fontys-purple-1)}
+  show heading.where(level: 1): h => if(chapter-on-new-page == true) {pagebreak(weak: true)} + {text(strong(upper(h)), size: 18pt, fill: fontys-purple-1)}
   show heading.where(level: 2): h => {text(strong(upper(h)), size: 14pt, fill: fontys-pink-1)}
   show heading.where(level: 3): h => {text(upper(h), size: 12pt, fill: fontys-blue-1)}
   show heading.where(level: 4): h => {text(upper(h), size: 11pt, fill: fontys-blue-2)}
