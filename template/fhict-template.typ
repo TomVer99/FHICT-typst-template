@@ -40,6 +40,32 @@
   ]
 }
 
+// 1: Fill the top row and left column
+// 2: Fill the top row
+// 3: Fill the left column
+// 4: No fill
+#let ftable(style: 2, columns: (), ..tablec) = {
+  set table(
+    inset: 7pt,
+    align: horizon,
+    fill: (x, y) => if (x == 0 and (style == 1 or style == 3)) or (y == 0 and (style == 1 or style == 2)) { fontys-purple-1 },
+  )
+
+  show table.cell: it => {
+    if (it.x == 0 and (style == 1 or style == 3)) or (it.y == 0 and (style == 1 or style == 2)) {
+      set text(white)
+      strong(it)
+    } else {
+      it
+    }
+  }
+
+  table(
+    columns: columns,
+    ..tablec
+  )
+}
+
 #let fhict-table(
   columns: (),
   content: (),
@@ -215,6 +241,7 @@
 
   set heading(numbering: numbering-set)
 
+  // show heading.where(level: 1): h => pagebreak(weak: true) + {text(strong(upper(h)), size: 18pt, fill: fontys-purple-1)}
   show heading.where(level: 1): h => {text(strong(upper(h)), size: 18pt, fill: fontys-purple-1)}
   show heading.where(level: 2): h => {text(strong(upper(h)), size: 14pt, fill: fontys-pink-1)}
   show heading.where(level: 3): h => {text(upper(h), size: 12pt, fill: fontys-blue-1)}
