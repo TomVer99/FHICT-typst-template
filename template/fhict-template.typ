@@ -465,14 +465,17 @@
       )
     ],
     footer: [
-        #place(left + horizon, dy: -25pt, dx: -15pt,
-            image("assets/for-society.png", height: 200%)
-        )
-        #place(right + horizon, dy: -25pt,
-            text(15pt, fill: fontys-purple-1, font: "Roboto")[
-              *#counter(page).display(pre-toc-numbering)*
-            ]
-        )
+      #place(left + horizon, dy: -10pt, dx: -15pt,
+        image("assets/for-society.png", height: 200%)
+      )
+      #place(right + horizon, dy: -10pt,
+        text(15pt, fill: fontys-purple-1, font: "Roboto")[
+          *#counter(page).display(pre-toc-numbering)*
+        ]
+      )
+      #place(left + top,
+        line(length: 100%, stroke: 1pt + fontys-purple-1)
+      )
     ],
     numbering: pre-toc-numbering
   )
@@ -600,14 +603,17 @@
   set page("a4",
     background: [],
     footer: [
-        #place(left + horizon, dy: -25pt, dx: -15pt,
-            image("assets/for-society.png", height: 200%)
-        )
-        #place(right + horizon, dy: -25pt,
-            text(15pt, fill: fontys-purple-1, font: "Roboto")[
-                *#counter(page).display()*
-            ]
-        )
+      #place(left + horizon, dy: -10pt, dx: -15pt,
+        image("assets/for-society.png", height: 200%)
+      )
+      #place(right + horizon, dy: -10pt,
+        text(15pt, fill: fontys-purple-1, font: "Roboto")[
+          *#counter(page).display()*
+        ]
+      )
+      #place(left + top,
+        line(length: 100%, stroke: 1pt + fontys-purple-1)
+      )
     ],
     numbering: "1"
   )
