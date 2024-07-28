@@ -40,44 +40,29 @@
   ]
 }
 
-#let fhict-table(
-  columns: (),
-  content: (),
-  background-color-heading: fontys-purple-1,
-  background-color: white,
-  text-color-heading: white,
-  text-color: black,
-  top-colored: true,
-  left-colored: false,
-) = {
-  table(
-    columns: columns,
+// 1: Fill the top row and left column
+// 2: Fill the top row
+// 3: Fill the left column
+// 4: No fill
+#let ftable(style: 2, columns: none, ..tablec) = {
+  set table(
     inset: 7pt,
     align: horizon,
-    fill: (
-      if top-colored and left-colored {
-        (column, row) => if column==0 or row==0 { background-color-heading } else { background-color }
-      } else if top-colored {
-        (_, row) => if row==0 { background-color-heading } else { background-color }
-      } else if left-colored {
-        (column, _) => if column==0 { background-color-heading } else { background-color }
-      }
-    ),
-    ..for row in content {
-      if (row == content.at(0)) and top-colored {
-        for item in row {
-          (text(fill: text-color-heading)[#strong(item)],)
-        }
-      } else {
-        for item in row {
-          if (item == row.at(0)) and left-colored {
-            (text(fill: text-color-heading)[#strong(item)],)
-          } else {
-            (text(fill: text-color)[#item],)
-          }
-        }
-      }
+    fill: (x, y) => if (x == 0 and (style == 1 or style == 3)) or (y == 0 and (style == 1 or style == 2)) { fontys-purple-1 },
+  )
+
+  show table.cell: it => {
+    if (it.x == 0 and (style == 1 or style == 3)) or (it.y == 0 and (style == 1 or style == 2)) {
+      set text(white)
+      strong(it)
+    } else {
+      it
     }
+  }
+
+  table(
+    columns: columns,
+    ..tablec
   )
 }
 
@@ -215,6 +200,7 @@
 
   set heading(numbering: numbering-set)
 
+  // show heading.where(level: 1): h => pagebreak(weak: true) + {text(strong(upper(h)), size: 18pt, fill: fontys-purple-1)}
   show heading.where(level: 1): h => {text(strong(upper(h)), size: 18pt, fill: fontys-purple-1)}
   show heading.where(level: 2): h => {text(strong(upper(h)), size: 14pt, fill: fontys-pink-1)}
   show heading.where(level: 3): h => {text(upper(h), size: 12pt, fill: fontys-blue-1)}
@@ -488,17 +474,12 @@
   // Show the version history
   if version-history != none {
     heading(language-dict.at("version-history"), outlined: false, numbering: none)
-    fhict-table(
+    ftable(
       columns: (auto, auto, auto, 1fr),
-      content: (
-        (language-dict.at("version"), language-dict.at("date"), language-dict.at("author"), language-dict.at("changes")),
-        ..version-history.map(version => (
-          version.version,
-          version.date,
-          version.author,
-          version.changes,
-        )),
-      ),
+      [#language-dict.at("version")], [#language-dict.at("date")], [#language-dict.at("author")], [#language-dict.at("changes")],
+      ..for entry in version-history {
+        ([#entry.version], [#entry.date], [#entry.author], [#entry.changes])
+      }
     )
     pagebreak()
     if print-extra-white-page == true { page-intentionally-left-blank() }

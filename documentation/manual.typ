@@ -1,4 +1,5 @@
 #import "@preview/mantys:0.1.4": *
+#import "@preview/codly:1.0.0": *
 
 #import "../template/fhict-template.typ"
 #import "../template/fhict-template.typ": *
@@ -16,6 +17,32 @@
     The template provides a set style and layout for the document.
     It also provides a set of commands and macros to help the user generate content.
 	],
+)
+
+
+#let fontys-blue-2   = rgb("2F5496")
+#let code-name-color = fontys-blue-2.lighten(35%)
+
+#show: codly-init.with()
+#codly(
+  languages: (
+    rust: (name: "Rust", color: code-name-color),
+    rs: (name: "Rust", color: code-name-color),
+    cmake: (name: "CMake", color: code-name-color),
+    cpp: (name: "C++", color: code-name-color),
+    c: (name: "C", color: code-name-color),
+    py: (name: "Python", color: code-name-color),
+    java: (name: "Java", color: code-name-color),
+    js: (name: "JavaScript", color: code-name-color),
+    sh: (name: "Shell", color: code-name-color),
+    bash: (name: "Bash", color: code-name-color),
+    json: (name: "JSON", color: code-name-color),
+    xml: (name: "XML", color: code-name-color),
+    yaml: (name: "YAML", color: code-name-color),
+    typst: (name: "Typst", color: code-name-color),
+  ),
+  number-format: none,
+  display-icon: false,
 )
 
 = Usage
@@ -139,6 +166,7 @@ Here is an example of a simple document:
     Appart from using this complex type for sensitive information, there is not much use for it.
   ]
 
+  #colbreak()
   #argument("assessors-title", types:"string", default: none)[
     The title of the assessors section.
   ]
@@ -185,6 +213,7 @@ Here is an example of a simple document:
     Whether to show the glossary at the front of the document.
   ]
 
+  #colbreak()
   #argument("bibliography-file", types:"bibliography", default: none)[
     The bibliography element to include in the document.
     ```typst
@@ -208,7 +237,6 @@ Here is an example of a simple document:
     Whether to disable chapter numbering.
   ]
 
-  #colbreak()
   #argument("pre-toc", types:"content", default: none)[
     Content to show before the table of contents.
   ]
@@ -229,6 +257,7 @@ Here is an example of a simple document:
     The watermark to show on the document.
   ]
 
+  #colbreak()
   #argument("censored", types:"int", default: 0)[
     Whether to show a censored watermark on the document.
     `1` for censorship, `0` for no censorship.
@@ -268,60 +297,37 @@ Here is an example of a simple document:
 ]
 
 #pagebreak()
-#command("fhict-table",
+#command("ftable",
+  arg[style],
   arg[columns],
   arg[content],
-  arg[background-color-heading],
-  arg[background-color],
-  arg[text-color-heading],
-  arg[text-color],
-  arg[top-colored],
-  arg[left-colored],
 )[
   Renders a table in the style of the Fontys Hogeschool ICT.
 
-  #argument("columns", types:"array", default: ())[
-    The spacing of the columns.
+  #argument("style", types:"int", default: 2)[
+    The style of the table.
+    Can be `1`, `2`, `3` or `4`.
   ]
 
-  #argument("content", types:"array", default: ())[
-    A 2D array of the content of the table.
+  #argument("columns", types:"array", default: ())[
+    The spacing and the number of columns. Just like a normal table.
+    
     ```typst
-    (
-      (header1, header2, ...),
-      (row1, row2, ...),
-      ...
-    )
+    (size1, size2, ...)
     ```
   ]
 
-  #argument("background-color-heading", types:"color", default: fontys-purple-1)[
-    The background color of the heading row/column.
-  ]
+  #argument("content", types:"array", default: ())[
+    An array of contents for the table.
 
-  #argument("background-color", types:"color", default: white)[
-    The background color of the other rows/columns.
-  ]
+    Each element is a cell in the table.
 
-  #argument("text-color-heading", types:"color", default: white)[
-    The text color of the heading row/column.
-  ]
-
-  #argument("text-color", types:"color", default: black)[
-    The text color of the other rows/columns.
-  ]
-
-  #argument("top-colored", types:"bool", default: true)[
-    Whether the top row should be colored.
-  ]
-
-  #colbreak()
-  #argument("left-colored", types:"bool", default: false)[
-    Whether the left column should be colored.
+    ```typst
+    [], [], [], ...
+    ```
   ]
 ]
 
-#pagebreak()
 #command("sensitive", arg[textl])[
   Renders a sensitive text block.
 
@@ -345,6 +351,7 @@ Here is an example of a simple document:
   ]
 ]
 
+#pagebreak()
 #command("text-box",
   arg[background-color],
   arg[stroke-color],
@@ -370,7 +377,6 @@ Here is an example of a simple document:
   ]
 ]
 
-#pagebreak()
 #command("lined-box",
   arg[title],
   arg[body],
