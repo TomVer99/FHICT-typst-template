@@ -95,26 +95,22 @@ This is a citation #cite(<FHICT-typst-template>).
 == Tables
 #index[Tables]
 
-#fhict-table(
+#ftable(
   columns: (auto, auto, auto, 1fr),
-  content: (
-    ("Header 1", "Header 2", "Header 3", "Header 4"),
-    ("Cell 1", "Cell 2", "Cell 3", "Cell 4"),
-    ("Cell 1", "Cell 2", "", "Cell 4"),
-  ),
+  [Header 1],[Header 2],[Header 3],[Header 4],
+  [Cell 1],[Cell 2],[Cell 3],[Cell 4],
+  [Cell 1],[Cell 2],[],[Cell 4],
 )
 
 The table above is made with the following code:
 
 #figure(
   ```typst
-  #fhict-table(
+  #ftable(
     columns: (auto, auto, auto, 1fr),
-    content: (
-      ("Header 1", "Header 2", "Header 3", "Header 4"),
-      ("Cell 1", "Cell 2", "Cell 3", "Cell 4"),
-      ("Cell 1", "Cell 2", "", "Cell 4"),
-    ),
+    [Header 1],[Header 2],[Header 3],[Header 4],
+    [Cell 1],[Cell 2],[Cell 3],[Cell 4],
+    [Cell 1],[Cell 2],[],[Cell 4],
   )
   ```,
   caption: "Table example",
