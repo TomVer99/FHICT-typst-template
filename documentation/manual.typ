@@ -284,7 +284,7 @@ Here is an example of a simple document:
     ```
   ]
 
-  #argument("secondary-organisation-logo-height", types:"size", default: "6%")[
+  #argument("secondary-organisation-logo-height", types:"size", default: 6%)[
     The height of the secondary organisation logo.
   ]
 
