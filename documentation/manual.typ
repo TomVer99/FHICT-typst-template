@@ -80,10 +80,11 @@ Here is an example of a simple document:
   authors: (
     (name: "TomVer99"),
   ),
-)[
-  = Introduction
-  This is a simple document.
-]
+)
+
+= Introduction
+
+This is a simple document.
 ```
 
 = Available commands
