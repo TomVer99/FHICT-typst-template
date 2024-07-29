@@ -9,9 +9,9 @@
       name: "TomVer99",
     ),
   ),
-  // language: "nl",
+  language: "ja",
   // chapter-on-new-page: true,
-  available-languages: ("en", "nl", "de", "fr", "es"),
+  available-languages: ("en", "nl", "de", "fr", "es", "ja"),
   version-history: (
     (
       version: "1.0",
