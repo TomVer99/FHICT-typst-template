@@ -87,3 +87,21 @@ ES:
     glossary: "Glosario"
     index: "Índice"
     references: "Referencias"
+
+JA:
+  flag-file: JP-flag.svg
+  language-en: Japanese
+  language: 日本語
+  localization:
+    this-doc-is-avail: "本書は以下の言語でご覧いただけます"
+    version-history: "バージョン履歴"
+    version: "版"
+    date: "日付"
+    author: "著者"
+    changes: "変更点"
+    table-of-contents: "目次"
+    table-of-listings: "リスト表"
+    table-of-figures: "図表"
+    glossary: "用語集"
+    index: "索引"
+    references: "参考文献"
