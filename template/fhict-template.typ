@@ -268,7 +268,7 @@
         )
       )
       // Place flags
-      place(left + top, dy: 755pt, dx: 10pt,
+      place(left + top, dy: 760pt, dx: 10pt,
         box(width: 50%)[
           #for l-language in language-data.keys() {
             if lower(l-language) in available-languages {
@@ -285,7 +285,7 @@
         ]
       )
       // Place other flag covers
-      place(left + top, dy: 755pt, dx: 10pt,
+      place(left + top, dy: 760pt, dx: 10pt,
         box(width: 50%)[
           #for l-language in language-data.keys() {
             if lower(l-language) in available-languages {
