@@ -256,7 +256,7 @@
     #if available-languages != none {
       place(left + horizon, dy: 322pt, dx: -10pt,
         box(
-          width: 37%,
+          width: 37% + if (language == "ja") {3%} else {0%},
           height: 2em - 3pt,
           fill: fontys-pink-1,
           radius: 10pt,
@@ -268,32 +268,36 @@
         )
       )
       // Place flags
-      place(left + horizon, dy: 350pt, dx: 10pt,
-        for l-language in language-data.keys() {
-          if lower(l-language) in available-languages {
-            let path = ""
-            path = "assets/" + l-language + "-flag.svg"
-            box(height: 25pt + 5pt, width: 37.5pt + 5pt + 2.5pt, fill: fontys-pink-1.lighten(50%), radius: 1pt)[
-              #place(center + horizon,
-                image(path, height: 25pt, width: 37.5pt)
-              )
-            ]
-            h(5pt)
+      place(left + top, dy: 755pt, dx: 10pt,
+        box(width: 50%)[
+          #for l-language in language-data.keys() {
+            if lower(l-language) in available-languages {
+              let path = ""
+              path = "assets/" + l-language + "-flag.svg"
+              box(height: 25pt + 5pt, width: 37.5pt + 5pt + 2.5pt, fill: fontys-pink-1.lighten(50%), radius: 1pt)[
+                #place(center + horizon,
+                  image(path, height: 25pt, width: 37.5pt)
+                )
+              ]
+              h(5pt)
+            }
           }
-        }
+        ]
       )
       // Place other flag covers
-      place(left + horizon, dy: 350pt, dx: 10pt,
-        for l-language in language-data.keys() {
-          if lower(l-language) in available-languages {
-            if l-language == upper(language) {
-              box(height: 25pt + 5pt, width: 37.5pt + 5pt + 2.5pt, fill: rgb(255,255,255,0), radius: 1pt)
-            } else {
-              box(height: 25pt + 5pt, width: 37.5pt + 5pt + 2.5pt, fill: rgb(255,255,255,100), radius: 1pt)
+      place(left + top, dy: 755pt, dx: 10pt,
+        box(width: 50%)[
+          #for l-language in language-data.keys() {
+            if lower(l-language) in available-languages {
+              if l-language == upper(language) {
+                box(height: 25pt + 5pt, width: 37.5pt + 5pt + 2.5pt, fill: rgb(255,255,255,0), radius: 1pt)
+              } else {
+                box(height: 25pt + 5pt, width: 37.5pt + 5pt + 2.5pt, fill: rgb(255,255,255,100), radius: 1pt)
+              }
+              h(5pt)
             }
-            h(5pt)
           }
-        }
+        ]
       )
     }
 
@@ -380,12 +384,16 @@
     #if secondary-organisation-color == none {
       place(right + horizon, dy: 330pt,
         box(
-          width: 40%,
+          width: 40% + if (language == "ja") {10%} else {0%},
           height: 35pt,
           fill: fontys-pink-1,
           place(left + horizon, dx: 10pt,
             text(30pt, fill: white, font: "Roboto")[
-              *#datetime.today().display()*
+              #if language == "ja" {
+                strong(datetime.today().display("[year]年[month]月[day]日"))
+              } else {
+                strong(datetime.today().display())
+              }
             ]
           )
         )
@@ -393,12 +401,16 @@
     } else {
       place(right + horizon, dy: 330pt,
         box(
-          width: 40%,
+          width: 40% + if (language == "ja") {10%} else {0%},
           height: 35pt,
           fill: white,
           place(left + horizon, dx: 10pt,
             text(30pt, fill: secondary-organisation-color, font: "Roboto")[
-              *#datetime.today().display()*
+              #if language == "ja" {
+                strong(datetime.today().display("[year]年[month]月[day]日"))
+              } else {
+                strong(datetime.today().display())
+              }
             ]
           )
         )
