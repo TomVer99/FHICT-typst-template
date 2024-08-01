@@ -45,17 +45,21 @@
 // 2: Fill the top row
 // 3: Fill the left column
 // 4: No fill
+// 5: Fill the top row and left column w/ border
+// 6: Fill the top row w/ border
+// 7: Fill the left column w/ border
+// 8: Fill the top row w/ border
 #let ftable(style: 2, columns: none, ..tablec) = {
   set table(
-    inset: 8pt,
-    gutter: -1pt,
+    inset: 8pt - if (style > 4) {1pt} else {0pt},
+    gutter: -1pt + if (style > 4) {1pt} else {0pt},
     align: horizon,
-    stroke: none,
-    fill: (x, y) => if (x == 0 and (style == 1 or style == 3)) or (y == 0 and (style == 1 or style == 2)) { fontys-purple-1 } else if (calc.even(y)) {code-zebra-color} else {white},
+    stroke: if (style <= 4) {none} else {1pt + black},
+    fill: (x, y) => if (x == 0 and (style == 1 or style == 3 or style == 5 or style == 7)) or (y == 0 and (style == 1 or style == 2 or style == 5 or style == 6)) { fontys-purple-1 } else if (calc.even(y) and style <= 4) {code-zebra-color} else {white},
   )
 
   show table.cell: it => {
-    if (it.x == 0 and (style == 1 or style == 3)) or (it.y == 0 and (style == 1 or style == 2)) {
+    if (it.x == 0 and (style == 1 or style == 3 or style == 5 or style == 7)) or (it.y == 0 and (style == 1 or style == 2 or style == 5 or style == 6)) {
       set text(white)
       strong(it)
     } else {
