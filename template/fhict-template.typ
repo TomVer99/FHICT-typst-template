@@ -524,8 +524,8 @@
     show outline.entry: it => {
       let body = [#it.body #box(width: 1fr, it.fill) #it.page]
       if it.level == 1 {
-        if it.element.supplement == [Appendix] {
-          [Appendix #body]
+        if it.element.supplement == [#language-dict.at("appendix")] {
+          [#language-dict.at("appendix") #body]
         } else {
           body
         }
@@ -633,9 +633,9 @@
     // Set appendix page style
     counter(heading).update(0)
     set heading(numbering: "A.A", outlined: false)
-    show heading.where(level: 1): set heading(numbering: "A.A:", outlined: true, supplement: "Appendix")
+    show heading.where(level: 1): set heading(numbering: "A.A:", outlined: true, supplement: language-dict.at("appendix"))
     show heading.where(level: 1): it => block(text(strong[#upper[
-      #if it.numbering != none [ Appendix #counter(heading).display(it.numbering)]
+      #if it.numbering != none [ #language-dict.at("appendix") #counter(heading).display(it.numbering)]
       #it.body
     ]], size: 18pt, fill: fontys-purple-1))
 
