@@ -357,6 +357,18 @@ This is a simple document.
   ]
 ]
 
+#command("set-code-line-nr",
+  arg[start],
+)[
+  Sets the starting line number for code blocks.
+
+  #argument("start", types:"int", default: 1)[
+    The starting line number.
+
+    If `-1` is given, the line numbers will be hidden.
+  ]
+]
+
 #pagebreak()
 #command("text-box",
   arg[background-color],
