@@ -27,7 +27,7 @@ Creating well-structured and visually appealing documents is crucial in academic
 
 ## Features
 
-- Consistent formatting for titles, headings, subheadings, and paragraphs.
+- Consistent formatting for titles, headings, subheadings, paragraphs and other elements.
 - Clean and professional document layout.
 - FHICT Style.
 - Configurable document options.
