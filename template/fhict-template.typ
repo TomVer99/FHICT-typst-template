@@ -8,7 +8,8 @@
 #let fontys-pink-1   = rgb("E4047C")
 #let fontys-blue-1   = rgb("1F3763")
 #let fontys-blue-2   = rgb("2F5496")
-#let code-name-color = fontys-blue-2.lighten(35%)
+#let code-name-color = fontys-purple-1
+#let code-zebra-color = fontys-purple-1.lighten(85%)
 
 // States
 #let censored-state = state("style", "0")
@@ -64,6 +65,18 @@
     columns: columns,
     ..tablec
   )
+}
+
+#let set-code-line-nr(start: 1) = {
+  if (start == -1) {
+    codly(
+      number-format: none,
+    )
+  } else {
+    codly(
+      number-format: (number) => [ #(number + start - 1) ],
+    )
+  }
 }
 
 #let text-box(background-color: luma(240), stroke-color: black, text-color: black, content) = {
@@ -190,6 +203,9 @@
   // Set the document's style
   set text(font: "Roboto", size: 11pt, fill: black)
   set cite(style: citation-style)
+
+  // Set inline block style
+  show raw.where(block: false) : it => h(0.5em) + box(fill: code-zebra-color, radius: 0.2em, outset: 0.2em, it) + h(0.5em)
 
   // Set the header style
   let numbering-set = none
@@ -504,6 +520,8 @@
     ),
     number-format: none,
     display-icon: false,
+    zebra-fill: code-zebra-color,
+    stroke: 1pt + code-zebra-color,
   )
 
   if pre-toc != none {
