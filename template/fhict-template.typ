@@ -47,9 +47,11 @@
 // 4: No fill
 #let ftable(style: 2, columns: none, ..tablec) = {
   set table(
-    inset: 7pt,
+    inset: 8pt,
+    gutter: -1pt,
     align: horizon,
-    fill: (x, y) => if (x == 0 and (style == 1 or style == 3)) or (y == 0 and (style == 1 or style == 2)) { fontys-purple-1 },
+    stroke: none,
+    fill: (x, y) => if (x == 0 and (style == 1 or style == 3)) or (y == 0 and (style == 1 or style == 2)) { fontys-purple-1 } else if (calc.even(y)) {code-zebra-color} else {white},
   )
 
   show table.cell: it => {
