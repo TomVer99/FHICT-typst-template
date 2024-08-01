@@ -67,6 +67,18 @@
   )
 }
 
+#let set-code-line-nr(start: 1) = {
+  if (start == -1) {
+    codly(
+      number-format: none,
+    )
+  } else {
+    codly(
+      number-format: (number) => [ #(number + start - 1) ],
+    )
+  }
+}
+
 #let text-box(background-color: luma(240), stroke-color: black, text-color: black, content) = {
   rect(fill: background-color, width: 100%, stroke: (left: 0.25em + stroke-color))[
     #text(
