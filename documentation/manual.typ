@@ -312,7 +312,7 @@ This is a simple document.
 
   #argument("style", types:"int", default: 2)[
     The style of the table.
-    Can be `1`, `2`, `3` or `4`.
+    Can be `1` through `8`.
   ]
 
   #argument("columns", types:"array", default: ())[
