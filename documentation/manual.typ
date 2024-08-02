@@ -10,7 +10,7 @@
 	subtitle: [An unofficial template for FHICT document generation.],
 	authors:	"TomVer99",
 	url:		  "https://github.com/TomVer99/FHICT-typst-template",
-	version:	"0.11.1",
+	version:	"1.0.0",
 	date:		  datetime.today(),
 	abstract: [
     This template allows the user to easily generate documents in the style of the Fontys Hogeschool ICT.
@@ -111,6 +111,7 @@ This is a simple document.
   arg[pre-toc],
   arg[table-of-figures],
   arg[table-of-listings],
+  arg[table-of-tables],
   arg[appendix],
   arg[watermark],
   arg[censored],
@@ -255,11 +256,15 @@ This is a simple document.
     Whether to show a table of listings.
   ]
 
+  #argument("table-of-tables", types:"bool", default: false)[
+    Whether to show a table of tables.
+  ]
+
+  #colbreak()
   #argument("appendix", types:"content", default: none)[
     Content to show in the appendix.
   ]
 
-  #colbreak()
   #argument("watermark", types:"string", default: none)[
     The watermark to show on the document.
   ]
