@@ -173,7 +173,9 @@ The cover page in this document has a 'secondary organisation' added to it.
 
 === Lorem 3
 
-#lorem(30)
+$ a = (A_c + A_m dot sin(2 pi omega_m t)) dot sin(2 pi omega_c t) $
+
+$ x(t) = 4 / pi sum_(k=1)^infinity sin((2 k - 1) 2 pi f t) / (2 k - 1) $
 
 === Lorem 4
 
