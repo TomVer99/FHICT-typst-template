@@ -241,15 +241,15 @@
   background: [
     // Main background triangle
     #place(top + left, path(
-        fill: fontys-purple-2,
-        closed: true,
-        (0%, 0%),
-        (5%, 0%),
-        ((70%, 45%), (-20pt, -20pt)),
-        ((75%, 50%), (0%, -15pt)),
-        ((70%, 55%), (20pt, -20pt)),
-        (5%, 100%),
-        (0%, 100%)
+      fill: fontys-purple-2,
+      closed: true,
+      (0%, 0%),
+      (5%, 0%),
+      ((70%, 45%), (-20pt, -20pt)),
+      ((75%, 50%), (0%, -15pt)),
+      ((70%, 55%), (20pt, -20pt)),
+      (5%, 100%),
+      (0%, 100%)
     ))
     #if secondary-organisation-color != none {
       // Secondary organisation triangle
@@ -271,8 +271,8 @@
     }
     // For scociety image
     #place(top + left, dx: 70pt, dy: 70pt, image(
-        "assets/fontys-for-society.png",
-        height: 9%,
+      "assets/fontys-for-society.png",
+      height: 9%,
     ))
     // Language boxes
     #if available-languages != none {
@@ -430,9 +430,9 @@
   foreground: [
     #if watermark != none [
     #place(center + horizon, rotate(24deg,
-        text(60pt, fill: rgb(0, 0, 0, 70), font: "Roboto")[
-            *#upper(watermark)*
-        ]
+      text(60pt, fill: rgb(0, 0, 0, 70), font: "Roboto")[
+        *#upper(watermark)*
+      ]
     ))
     ]
   ]
@@ -509,25 +509,25 @@
 
   show: codly-init.with()
   codly(languages: (
-      rust: (name: "Rust", color: code-name-color),
-      rs: (name: "Rust", color: code-name-color),
-      cmake: (name: "CMake", color: code-name-color),
-      cpp: (name: "C++", color: code-name-color),
-      c: (name: "C", color: code-name-color),
-      py: (name: "Python", color: code-name-color),
-      java: (name: "Java", color: code-name-color),
-      js: (name: "JavaScript", color: code-name-color),
-      sh: (name: "Shell", color: code-name-color),
-      bash: (name: "Bash", color: code-name-color),
-      json: (name: "JSON", color: code-name-color),
-      xml: (name: "XML", color: code-name-color),
-      yaml: (name: "YAML", color: code-name-color),
-      typst: (name: "Typst", color: code-name-color),
-    ),
-    number-format: none,
-    display-icon: false,
-    zebra-fill: code-zebra-color,
-    stroke: 1pt + code-zebra-color,
+    rust: (name: "Rust", color: code-name-color),
+    rs: (name: "Rust", color: code-name-color),
+    cmake: (name: "CMake", color: code-name-color),
+    cpp: (name: "C++", color: code-name-color),
+    c: (name: "C", color: code-name-color),
+    py: (name: "Python", color: code-name-color),
+    java: (name: "Java", color: code-name-color),
+    js: (name: "JavaScript", color: code-name-color),
+    sh: (name: "Shell", color: code-name-color),
+    bash: (name: "Bash", color: code-name-color),
+    json: (name: "JSON", color: code-name-color),
+    xml: (name: "XML", color: code-name-color),
+    yaml: (name: "YAML", color: code-name-color),
+    typst: (name: "Typst", color: code-name-color),
+  ),
+  number-format: none,
+  display-icon: false,
+  zebra-fill: code-zebra-color,
+  stroke: 1pt + code-zebra-color,
   )
 
   if pre-toc != none {
