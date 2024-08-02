@@ -22,6 +22,7 @@
   ),
   // table-of-figures: true,
   // table-of-listings: true,
+  // table-of-tables: true,
   bibliography-file: bibliography("my-sources.bib"),
   glossary-terms: term-list,
   secondary-organisation-logo: read("Company.svg"),
