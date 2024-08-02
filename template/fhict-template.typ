@@ -489,8 +489,32 @@
   )
   counter(page).update(1)
 
+  show: codly-init.with()
+  codly(
+    languages: (
+      rust: (name: "Rust", color: code-name-color),
+      rs: (name: "Rust", color: code-name-color),
+      cmake: (name: "CMake", color: code-name-color),
+      cpp: (name: "C++", color: code-name-color),
+      c: (name: "C", color: code-name-color),
+      py: (name: "Python", color: code-name-color),
+      java: (name: "Java", color: code-name-color),
+      js: (name: "JavaScript", color: code-name-color),
+      sh: (name: "Shell", color: code-name-color),
+      bash: (name: "Bash", color: code-name-color),
+      json: (name: "JSON", color: code-name-color),
+      xml: (name: "XML", color: code-name-color),
+      yaml: (name: "YAML", color: code-name-color),
+      typst: (name: "Typst", color: code-name-color),
+    ),
+    number-format: none,
+    display-icon: false,
+    zebra-fill: code-zebra-color,
+    stroke: 1pt + code-zebra-color,
+  )
+
   if print-extra-white-page == true {
-    page-intentionally-left-blank(force: true)
+    page-intentionally-left-blank()
   }
 
   // Show the version history
@@ -504,31 +528,8 @@
       }
     )
     pagebreak()
-    if print-extra-white-page == true { page-intentionally-left-blank() }
+    if print-extra-white-page == true { page-intentionally-left-blank(newpage: false) }
   }
-
-  show: codly-init.with()
-  codly(languages: (
-    rust: (name: "Rust", color: code-name-color),
-    rs: (name: "Rust", color: code-name-color),
-    cmake: (name: "CMake", color: code-name-color),
-    cpp: (name: "C++", color: code-name-color),
-    c: (name: "C", color: code-name-color),
-    py: (name: "Python", color: code-name-color),
-    java: (name: "Java", color: code-name-color),
-    js: (name: "JavaScript", color: code-name-color),
-    sh: (name: "Shell", color: code-name-color),
-    bash: (name: "Bash", color: code-name-color),
-    json: (name: "JSON", color: code-name-color),
-    xml: (name: "XML", color: code-name-color),
-    yaml: (name: "YAML", color: code-name-color),
-    typst: (name: "Typst", color: code-name-color),
-  ),
-  number-format: none,
-  display-icon: false,
-  zebra-fill: code-zebra-color,
-  stroke: 1pt + code-zebra-color,
-  )
 
   if pre-toc != none {
     // Show the pre-toc
@@ -563,7 +564,7 @@
       indent: n => [#h(1em)] * n,
     )
     if (glossary-terms != none and glossary-front == true) or table-of-figures == true or table-of-listings == true {
-      pagebreak()
+      if print-extra-white-page == false { pagebreak() }
     }
     if print-extra-white-page == true { pagebreak(); page-intentionally-left-blank() }
   }
@@ -648,8 +649,10 @@
   if bibliography-file != none {
     set bibliography(title: language-dict.at("references"), style: "ieee")
     bibliography-file
-    pagebreak()
-    if print-extra-white-page == true and appendix != none { page-intentionally-left-blank(odd: false) }
+    if appendix != none or enable-index == true {
+      pagebreak()
+    }
+    if print-extra-white-page == true and (appendix != none or enable-index == true) { page-intentionally-left-blank(odd: false) }
   }
 
   // Show the appendix
