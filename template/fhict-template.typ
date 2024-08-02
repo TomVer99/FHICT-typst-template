@@ -48,7 +48,7 @@
 // 5: Fill the top row and left column w/ border
 // 6: Fill the top row w/ border
 // 7: Fill the left column w/ border
-// 8: Fill the top row w/ border
+// 8: No fill w/ border
 #let ftable(style: 2, columns: none, ..tablec) = {
   set table(
     inset: 8pt - if (style > 4) {1pt} else {0pt},
