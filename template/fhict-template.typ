@@ -514,7 +514,7 @@
   )
 
   if print-extra-white-page == true {
-    page-intentionally-left-blank(force: true)
+    page-intentionally-left-blank()
   }
 
   // Show the version history
@@ -528,7 +528,7 @@
       }
     )
     pagebreak()
-    if print-extra-white-page == true { page-intentionally-left-blank() }
+    if print-extra-white-page == true { page-intentionally-left-blank(newpage: false) }
   }
 
   if pre-toc != none {
@@ -564,7 +564,7 @@
       indent: n => [#h(1em)] * n,
     )
     if (glossary-terms != none and glossary-front == true) or table-of-figures == true or table-of-listings == true {
-      pagebreak()
+      if print-extra-white-page == false { pagebreak() }
     }
     if print-extra-white-page == true { pagebreak(); page-intentionally-left-blank() }
   }
