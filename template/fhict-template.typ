@@ -489,6 +489,30 @@
   )
   counter(page).update(1)
 
+  show: codly-init.with()
+  codly(
+    languages: (
+      rust: (name: "Rust", color: code-name-color),
+      rs: (name: "Rust", color: code-name-color),
+      cmake: (name: "CMake", color: code-name-color),
+      cpp: (name: "C++", color: code-name-color),
+      c: (name: "C", color: code-name-color),
+      py: (name: "Python", color: code-name-color),
+      java: (name: "Java", color: code-name-color),
+      js: (name: "JavaScript", color: code-name-color),
+      sh: (name: "Shell", color: code-name-color),
+      bash: (name: "Bash", color: code-name-color),
+      json: (name: "JSON", color: code-name-color),
+      xml: (name: "XML", color: code-name-color),
+      yaml: (name: "YAML", color: code-name-color),
+      typst: (name: "Typst", color: code-name-color),
+    ),
+    number-format: none,
+    display-icon: false,
+    zebra-fill: code-zebra-color,
+    stroke: 1pt + code-zebra-color,
+  )
+
   if print-extra-white-page == true {
     page-intentionally-left-blank(force: true)
   }
@@ -506,29 +530,6 @@
     pagebreak()
     if print-extra-white-page == true { page-intentionally-left-blank() }
   }
-
-  show: codly-init.with()
-  codly(languages: (
-    rust: (name: "Rust", color: code-name-color),
-    rs: (name: "Rust", color: code-name-color),
-    cmake: (name: "CMake", color: code-name-color),
-    cpp: (name: "C++", color: code-name-color),
-    c: (name: "C", color: code-name-color),
-    py: (name: "Python", color: code-name-color),
-    java: (name: "Java", color: code-name-color),
-    js: (name: "JavaScript", color: code-name-color),
-    sh: (name: "Shell", color: code-name-color),
-    bash: (name: "Bash", color: code-name-color),
-    json: (name: "JSON", color: code-name-color),
-    xml: (name: "XML", color: code-name-color),
-    yaml: (name: "YAML", color: code-name-color),
-    typst: (name: "Typst", color: code-name-color),
-  ),
-  number-format: none,
-  display-icon: false,
-  zebra-fill: code-zebra-color,
-  stroke: 1pt + code-zebra-color,
-  )
 
   if pre-toc != none {
     // Show the pre-toc
