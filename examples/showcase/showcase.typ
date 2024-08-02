@@ -20,6 +20,8 @@
       changes: "Initial version",
     ),
   ),
+  // table-of-figures: true,
+  // table-of-listings: true,
   bibliography-file: bibliography("my-sources.bib"),
   glossary-terms: term-list,
   secondary-organisation-logo: read("Company.svg"),
@@ -96,11 +98,14 @@ This is a citation #cite(<FHICT-typst-template>).
 == Tables
 #index[Tables]
 
-#ftable(
-  columns: (auto, auto, auto, 1fr),
-  [Header 1],[Header 2],[Header 3],[Header 4],
-  [Cell 1],[Cell 2],[Cell 3],[Cell 4],
-  [Cell 1],[Cell 2],[],[Cell 4],
+#figure(
+  ftable(
+    columns: (auto, auto, auto, 1fr),
+    [Header 1],[Header 2],[Header 3],[Header 4],
+    [Cell 1],[Cell 2],[Cell 3],[Cell 4],
+    [Cell 1],[Cell 2],[],[Cell 4],
+  ),
+  caption: "Table example",
 )
 
 The table above is made with the following code:
