@@ -233,6 +233,7 @@
   show figure.where(kind: raw): it => {
     set align(left)
     it.body
+    set align(center)
     it.caption
   }
 
