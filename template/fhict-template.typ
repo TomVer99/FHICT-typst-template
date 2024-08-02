@@ -648,7 +648,9 @@
   if bibliography-file != none {
     set bibliography(title: language-dict.at("references"), style: "ieee")
     bibliography-file
-    pagebreak()
+    if appendix != none and enable-index == true {
+      pagebreak()
+    }
     if print-extra-white-page == true and appendix != none { page-intentionally-left-blank(odd: false) }
   }
 
