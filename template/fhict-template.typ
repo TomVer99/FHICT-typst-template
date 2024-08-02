@@ -165,6 +165,7 @@
   pre-toc: none,
   table-of-figures: none,
   table-of-listings: none,
+  table-of-tables: none,
 
   appendix: none,
 
@@ -446,7 +447,7 @@
 
   let pre-toc-numbering = "1"
 
-  if (version-history != none) or (pre-toc != none) or (disable-toc == false) or (disable-toc == false) or (glossary-terms != none and glossary-front == true) or ((table-of-figures != none) and (table-of-figures != false)) or ((table-of-listings != none) and (table-of-listings != false)) {
+  if (version-history != none) or (pre-toc != none) or (disable-toc == false) or (disable-toc == false) or (glossary-terms != none and glossary-front == true) or ((table-of-figures != none) and (table-of-figures != false)) or ((table-of-listings != none) and (table-of-listings != false)) or (print-extra-white-page == true) {
     pre-toc-numbering = "I"
   }
 
@@ -515,7 +516,7 @@
   )
 
   if print-extra-white-page == true {
-    page-intentionally-left-blank()
+    page-intentionally-left-blank(newpage: false)
   }
 
   // Show the version history
@@ -564,7 +565,7 @@
       depth: toc-depth,
       indent: n => [#h(1em)] * n,
     )
-    if (glossary-terms != none and glossary-front == true) or table-of-figures == true or table-of-listings == true {
+    if (glossary-terms != none and glossary-front == true) or table-of-figures == true or table-of-listings == true or table-of-tables == true {
       if print-extra-white-page == false { pagebreak() }
     }
     if print-extra-white-page == true { pagebreak(); page-intentionally-left-blank() }
@@ -578,7 +579,7 @@
       glossary-terms
     ),
     )
-    if table-of-figures == true or table-of-listings == true {
+    if table-of-figures == true or table-of-listings == true or table-of-tables == true {
       pagebreak()
     }
     if print-extra-white-page == true { page-intentionally-left-blank() }
@@ -590,10 +591,10 @@
       title: language-dict.at("table-of-figures"),
       target: figure.where(kind: image),
     )
-    if table-of-listings == true {
+    if table-of-listings == true or table-of-tables == true {
       pagebreak()
     }
-    if print-extra-white-page == true { page-intentionally-left-blank() }
+    if print-extra-white-page == true { page-intentionally-left-blank(newpage: false) }
   }
   
   // Show the table of listings if requested
@@ -601,6 +602,18 @@
     outline(
       title: language-dict.at("table-of-listings"),
       target: figure.where(kind: raw),
+    )
+    if table-of-tables == true {
+      pagebreak()
+    }
+    if print-extra-white-page == true { page-intentionally-left-blank(newpage: false) }
+  }
+
+  // Show the table of tables if requested
+  if table-of-tables == true {
+    outline(
+      title: language-dict.at("table-of-tables"),
+      target: figure.where(kind: table),
     )
     if print-extra-white-page == true { pagebreak(); page-intentionally-left-blank(newpage: false) }
   }
