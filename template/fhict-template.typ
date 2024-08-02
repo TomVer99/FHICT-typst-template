@@ -110,7 +110,7 @@
 ]
 
 #let page-intentionally-left-blank-sub(newpage, force) = {
-  block(height: 95%, width: 100%)[
+  block(height: 100%, width: 100%)[
     #align(center + horizon)[
       #text(fill: black, font: "Arial", size: 12pt)[
         *This page is intentionally left blank.*
@@ -543,7 +543,7 @@
     // if disable-toc == false or (glossary-terms != none and glossary-front == true) or table-of-figures == true or table-of-listings == true {
     //   pagebreak()
     // }
-    if print-extra-white-page == true { page-intentionally-left-blank() }
+    if print-extra-white-page == true { page-intentionally-left-blank(newpage: false) }
   }
 
   if disable-toc == false {
@@ -568,7 +568,7 @@
     if (glossary-terms != none and glossary-front == true) or table-of-figures == true or table-of-listings == true or table-of-tables == true {
       if print-extra-white-page == false { pagebreak() }
     }
-    if print-extra-white-page == true { pagebreak(); page-intentionally-left-blank() }
+    if print-extra-white-page == true { pagebreak(); page-intentionally-left-blank(newpage: false) }
   }
 
   // Show the Glossary in the front
@@ -582,7 +582,7 @@
     if table-of-figures == true or table-of-listings == true or table-of-tables == true {
       pagebreak()
     }
-    if print-extra-white-page == true { page-intentionally-left-blank() }
+    if print-extra-white-page == true { page-intentionally-left-blank(newpage: false) }
   }
 
   // Show the table of figures if requested
