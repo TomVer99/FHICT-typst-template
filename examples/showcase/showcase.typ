@@ -142,3 +142,55 @@ Using terms for the first time will show the term with a 'long' variant if it is
 #index[Cover Page]
 
 The cover page in this document has a 'secondary organisation' added to it.
+
+#pagebreak()
+= Lorem
+#index[Lorem]
+
+== Lorem 1
+
+`Lorem` is a placeholder text commonly used to demonstrate the visual form of a document or a font without relying on meaningful content.
+
+#lorem(20)
+
+#ftable(
+  columns: (auto, auto, auto, 1fr),
+  [Header 1],[Header 2],[Header 3],[Header 4],
+  [Cell 1],[Cell 2],[Cell 3],[Cell 4],
+  [Cell 1],[Cell 2],[],[Cell 4],
+)
+
+```typst
+#ftable(
+  columns: (auto, auto, auto, 1fr),
+  [Header 1],[Header 2],[Header 3],[Header 4],
+  [Cell 1],[Cell 2],[Cell 3],[Cell 4],
+  [Cell 1],[Cell 2],[],[Cell 4],
+)
+```
+
+== Lorem 2
+
+=== Lorem 3
+
+#lorem(30)
+
+=== Lorem 4
+
+#figure(
+  image(
+    "./../../template/assets/fontys-for-society.png",
+    width: 50%,
+  ),
+  caption: "Figure example",
+)
+
+```typst
+#figure(
+  image(
+    "./../../template/assets/fontys-for-society.png",
+    width: 50%,
+  ),
+  caption: "Figure example",
+)
+```
