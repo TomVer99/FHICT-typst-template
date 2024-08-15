@@ -40,6 +40,17 @@ Creating well-structured and visually appealing documents is crucial in academic
 <!-- \/\/\/ not yet :( \/\/\/ ) -->
 <!-- - **Battle tested**: The template has been used by many students and faculty members at FHICT, ensuring its quality and reliability. -->
 
+<!-- This is for the typst universe page
+## Features
+
+- Consistent formatting for titles, headings, subheadings, paragraphs and other elements.
+- Clean and professional document layout.
+- FHICT Style.
+- Configurable document options.
+- Helper functions.
+- Multiple languages support (nl, en, de, fr, es).
+-->
+
 ## Requirements
 
 - Roboto font installed on your system.
