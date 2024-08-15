@@ -22,6 +22,7 @@ EN:
   flag-file: EN-flag.svg
   language-en: English
   language: English
+  label-size: 190pt
   localization:
     this-doc-is-avail: "This document is available in"
     version-history: "Version history"
