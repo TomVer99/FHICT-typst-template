@@ -292,8 +292,9 @@
         )
       )
       // Place flags
-      place(left + horizon, dy: 350pt, dx: 10pt,
-        for l-language in language-data.keys() {
+      place(left + top, dy: 760pt, dx: 10pt,
+        box(width: 50%)[
+          #for l-language in language-data.keys() {
           if lower(l-language) in available-languages {
             let path = ""
             path = "assets/" + l-language + "-flag.svg"
@@ -305,10 +306,12 @@
             h(5pt)
           }
         }
+        ]
       )
       // Place other flag covers
-      place(left + horizon, dy: 350pt, dx: 10pt,
-        for l-language in language-data.keys() {
+      place(left + top, dy: 760pt, dx: 10pt,
+        box(width: 50%)[
+          #for l-language in language-data.keys() {
           if lower(l-language) in available-languages {
             if l-language == upper(language) {
               box(height: 25pt + 5pt, width: 37.5pt + 5pt + 2.5pt, fill: rgb(255,255,255,0), radius: 1pt)
@@ -318,6 +321,7 @@
             h(5pt)
           }
         }
+        ]
       )
     }
 
