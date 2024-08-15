@@ -9,7 +9,7 @@
 ![Issues](https://img.shields.io/github/issues-raw/TomVer99/FHICT-typst-template?label=Issues&style=flat-square)
 ![GitHub commits since latest release](https://img.shields.io/github/commits-since/TomVer99/FHICT-typst-template/latest?style=flat-square)
 
-This is a document template for creating professional-looking documents with Typst, tailored for FHICT (Fontys Hogeschool ICT).
+This is a document template for creating professional-looking documents with Typst, tailored for FHICT (Fontys Hogeschool ICT). It can also be found on the [Typst Universe](https://typst.app/universe/package/unofficial-fhict-document-template).
 
 ## Introduction
 
@@ -20,11 +20,27 @@ Creating well-structured and visually appealing documents is crucial in academic
   <img src="./img/showcase-r.png" alt="Showcase" width="49%">
 </p>
 
-## Requirements
+## Why use this template (and Typst)?
 
-- Roboto font installed on your system.
-- Typst builder installed on your system (Explained in `Getting Started`).
+### Typst
 
+- **Easy to use**: Typst is a lightweight and easy-to-use document processor that allows you to write documents in a simple and structured way. You only need a browser or VSCode with just 1 extension to get started.
+- **Fast**: Typst is fast and efficient, allowing you to focus on writing without distractions. It also gives you a live preview of your document.
+- **Takes care of formatting**: Typst takes care of formatting your document, so you can focus on writing content.
+- **High quality PDF output**: Typst produces high-quality PDF documents that are suitable for academic and professional settings.
+
+### FHICT Document Template
+
+- **Consistent formatting**: The template provides consistent formatting for titles, headings, subheadings, paragraphs, and all other elements.
+- **Professional layout**: The template provides a clean and professional layout for your documents.
+- **FHICT Style**: The template follows the FHICT style guide, making it suitable for FHICT students and faculty.
+- **Configurable options**: The template provides configurable options for customizing the document to your needs.
+- **Helper functions**: The template provides helper functions for adding tables, sensitive content (that can be hidden), and more.
+- **Multiple languages support**: The template can be set to multiple languages (nl, en, de, fr, es), allowing you to write documents in different languages.
+<!-- \/\/\/ not yet :( \/\/\/ ) -->
+<!-- - **Battle tested**: The template has been used by many students and faculty members at FHICT, ensuring its quality and reliability. -->
+
+<!-- This is for the typst universe page
 ## Features
 
 - Consistent formatting for titles, headings, subheadings, paragraphs and other elements.
@@ -33,6 +49,12 @@ Creating well-structured and visually appealing documents is crucial in academic
 - Configurable document options.
 - Helper functions.
 - Multiple languages support (nl, en, de, fr, es).
+-->
+
+## Requirements
+
+- Roboto font installed on your system.
+- Typst builder installed on your system (Explained in `Getting Started`).
 
 ## Getting Started
 
@@ -40,7 +62,7 @@ To get started with this Typst document template, follow these steps:
 
 1. **Check for the roboto font**: Check if you have the roboto font installed on your system. If you don't, you can download it from [Google Fonts](https://fonts.google.com/specimen/Roboto).
 2. **Install Typst**: I recommend to use VSCode with the [Typst LSP Extension](https://marketplace.visualstudio.com/items?itemName=nvarner.typst-lsp) or [Tinymist Typst Extension](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist). You will also need a PDF viewer in VSCode if you want to view the document live.
-3. **Import the template**: Import the template into your own typst document. `#import "@preview/unofficial-fhict-document-template:0.11.0": *`
+3. **Import the template**: Import the template into your own typst document. `#import "@preview/unofficial-fhict-document-template:1.0.0": *`
 4. **Set the available options**: Set the available options in the template file to your liking.
 5. **Start writing**: Start writing your document.
 
