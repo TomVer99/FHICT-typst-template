@@ -2,6 +2,7 @@ NL:
   flag-file: NL-flag.svg
   language-en: Dutch
   language: Nederlands
+  label-size: 200pt
   localization:
     this-doc-is-avail: "Dit document is beschikbaar in"
     version-history: "Versiegeschiedenis"
@@ -22,6 +23,7 @@ EN:
   flag-file: EN-flag.svg
   language-en: English
   language: English
+  label-size: 190pt
   localization:
     this-doc-is-avail: "This document is available in"
     version-history: "Version history"
@@ -42,6 +44,7 @@ DE:
   flag-file: DE-flag.svg
   language-en: German
   language: Deutsch
+  label-size: 210pt
   localization:
     this-doc-is-avail: "Dieses Dokument ist verfügbar in"
     version-history: "Versionsgeschichte"
@@ -62,6 +65,7 @@ FR:
   flag-file: FR-flag.svg
   language-en: French
   language: Français
+  label-size: 200pt
   localization:
     this-doc-is-avail: "Ce document est disponible en"
     version-history: "Historique des versions"
@@ -82,6 +86,7 @@ ES:
   flag-file: ES-flag.svg
   language-en: Spanish
   language: Español
+  label-size: 220pt
   localization:
     this-doc-is-avail: "Este documento está disponible en"
     version-history: "Historial de versiones"
