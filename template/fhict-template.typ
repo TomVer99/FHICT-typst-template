@@ -653,6 +653,7 @@
   // Show the Glossary in the back
   if glossary-terms != none and glossary-front == false {
     heading(language-dict.at("glossary"), numbering: none)
+    set heading(numbering: none, outlined: false)
     print-glossary(
     (
       glossary-terms
