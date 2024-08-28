@@ -144,6 +144,8 @@
   language: "en",
   available-languages: none,
 
+  date: none,
+
   authors-title: none,
   authors: none,
   assessors-title: none,
@@ -415,7 +417,11 @@
           fill: fontys-pink-1,
           place(left + horizon, dx: 10pt,
             text(30pt, fill: white, font: "Roboto")[
-              *#datetime.today().display()*
+              #if (date != none) {
+                strong(date)
+              } else {
+                strong(datetime.today().display())
+              }
             ]
           )
         )
@@ -428,7 +434,11 @@
           fill: white,
           place(left + horizon, dx: 10pt,
             text(30pt, fill: secondary-organisation-color, font: "Roboto")[
-              *#datetime.today().display()*
+              #if (date != none) {
+                strong(upper(date))
+              } else {
+                strong(datetime.today().display())
+              }
             ]
           )
         )
