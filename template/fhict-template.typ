@@ -658,8 +658,10 @@
       glossary-terms
     ),
     )
-    pagebreak()
-    if print-extra-white-page == true and (bibliography-file != none or appendix != none) { page-intentionally-left-blank(odd: false) }
+    if (bibliography-file != none or appendix != none or enable-index == true) {
+      pagebreak()
+    }
+    if print-extra-white-page == true and (bibliography-file != none or appendix != none or enable-index == true) { page-intentionally-left-blank(odd: false) }
   }
 
   // Show the bibliography
