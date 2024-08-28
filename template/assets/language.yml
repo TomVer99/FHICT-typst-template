@@ -4,7 +4,6 @@ NL:
   language: Nederlands
   label-size: 200pt
   localization:
-    this-doc-is-avail: "Dit document is beschikbaar in"
     version-history: "Versiegeschiedenis"
     version: "Versie"
     date: "Datum"
@@ -25,7 +24,6 @@ EN:
   language: English
   label-size: 190pt
   localization:
-    this-doc-is-avail: "This document is available in"
     version-history: "Version history"
     version: "Version"
     date: "Date"
@@ -46,7 +44,6 @@ DE:
   language: Deutsch
   label-size: 210pt
   localization:
-    this-doc-is-avail: "Dieses Dokument ist verfügbar in"
     version-history: "Versionsgeschichte"
     version: "Version"
     date: "Datum"
@@ -67,7 +64,6 @@ FR:
   language: Français
   label-size: 200pt
   localization:
-    this-doc-is-avail: "Ce document est disponible en"
     version-history: "Historique des versions"
     version: "Version"
     date: "Date"
@@ -88,7 +84,6 @@ ES:
   language: Español
   label-size: 220pt
   localization:
-    this-doc-is-avail: "Este documento está disponible en"
     version-history: "Historial de versiones"
     version: "Versión"
     date: "Fecha"
