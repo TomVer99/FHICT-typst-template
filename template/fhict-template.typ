@@ -280,21 +280,22 @@
     ))
     // Language boxes
     #if available-languages != none {
-      place(left + horizon, dy: 322pt, dx: -10pt,
-        box(
-          width: eval(language-data.at(upper(language)).at("label-size")),
-          height: 2em - 3pt,
-          fill: fontys-pink-1,
-          radius: 10pt,
-          place(left + top, dx: 10pt + 10pt, dy: 5pt, [
-            #text(12pt, fill: white, font: "Roboto")[
-              *#language-dict.at("this-doc-is-avail"):*
-          ]])
-        )
+      place(right + top, dy: 0pt, dx: -10pt,
+        box[
+          #for l-language in language-data.keys() {
+            if lower(l-language) in available-languages {
+              if l-language == upper(language) {
+                box(height: 25pt + 5pt, width: 37.5pt + 5pt + 2.5pt, fill: fontys-pink-1.lighten(50%))
+              } else {
+                box(height: 25pt + 5pt, width: 37.5pt + 5pt + 2.5pt, fill: rgb("#ffffff00"), radius: 1pt)
+              }
+              h(5pt)
+            }
+          }
+        ]
       )
-      // Place flags
-      place(left + top, dy: 760pt, dx: 10pt,
-        box(width: 50%)[
+      place(right + top, dy: 15pt, dx: -10pt,
+        box[
           #for l-language in language-data.keys() {
             if lower(l-language) in available-languages {
               let path = ""
@@ -304,21 +305,6 @@
                   image(path, height: 25pt, width: 37.5pt)
                 )
               ]
-              h(5pt)
-            }
-          }
-        ]
-      )
-      // Place other flag covers
-      place(left + top, dy: 760pt, dx: 10pt,
-        box(width: 50%)[
-          #for l-language in language-data.keys() {
-            if lower(l-language) in available-languages {
-              if l-language == upper(language) {
-                box(height: 25pt + 5pt, width: 37.5pt + 5pt + 2.5pt, fill: rgb(255,255,255,0), radius: 1pt)
-              } else {
-                box(height: 25pt + 5pt, width: 37.5pt + 5pt + 2.5pt, fill: rgb(255,255,255,100), radius: 1pt)
-              }
               h(5pt)
             }
           }
