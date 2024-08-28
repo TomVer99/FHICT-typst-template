@@ -10,7 +10,7 @@
 	subtitle: [An unofficial template for FHICT document generation.],
 	authors:	"TomVer99",
 	url:		  "https://github.com/TomVer99/FHICT-typst-template",
-	version:	"1.0.0",
+	version:	"1.1.0",
 	date:		  datetime.today(),
 	abstract: [
     This template allows the user to easily generate documents in the style of the Fontys Hogeschool ICT.
@@ -95,6 +95,7 @@ This is a simple document.
   arg[subtitle],
   arg[language],
   arg[available-languages],
+  arg[date],
   arg[authors-title],
   arg[authors],
   arg[assessors-title],
@@ -142,6 +143,17 @@ This is a simple document.
     The available languages for the document.
     ```typst
     ("en", "nl", ...)
+    ```
+  ]
+
+  #argument("date", types:"string", default:none)[
+    Allows the user to manually specify a date to be displayed on the cover page.
+    ```typst
+    date: "28日8月24年"
+    ```
+    Can be any string.
+    ```typst
+    date: "I am not a date, but who cares?"
     ```
   ]
 
