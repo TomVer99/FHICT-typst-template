@@ -5,7 +5,7 @@
 
 #let fontys-purple-1 = rgb("663366")
 #let fontys-purple-2 = rgb("B59DB5")
-#let fontys-pink-1   = rgb("E4047C")
+#let fontys-pink-1   = rgb("E5007D")
 #let fontys-blue-1   = rgb("1F3763")
 #let fontys-blue-2   = rgb("2F5496")
 #let code-name-color = fontys-purple-1
