@@ -412,10 +412,9 @@
     #if secondary-organisation-color == none {
       place(right + horizon, dy: 330pt,
         box(
-          width: 40%,
-          height: 35pt,
+          height: 40pt,
+          inset: 10pt,
           fill: fontys-pink-1,
-          place(left + horizon, dx: 10pt,
             text(30pt, fill: white, font: "Roboto")[
               #if (date != none) {
                 strong(date)
@@ -423,16 +422,14 @@
                 strong(datetime.today().display())
               }
             ]
-          )
         )
       )
     } else {
       place(right + horizon, dy: 330pt,
         box(
-          width: 40%,
-          height: 35pt,
+          height: 40pt,
+          inset: 10pt,
           fill: white,
-          place(left + horizon, dx: 10pt,
             text(30pt, fill: secondary-organisation-color, font: "Roboto")[
               #if (date != none) {
                 strong(upper(date))
@@ -440,7 +437,6 @@
                 strong(datetime.today().display())
               }
             ]
-          )
         )
       )
     }
