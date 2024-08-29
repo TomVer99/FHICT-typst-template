@@ -616,8 +616,6 @@
     if print-extra-white-page == true { pagebreak(); page-intentionally-left-blank(newpage: false) }
   }
 
-  context counter("RomanCounter").update(counter(page).get())
-
   // Set the page style for body pages'
   // block()
   set page("a4",
@@ -643,75 +641,57 @@
   body
 
   if (glossary-terms != none and glossary-front == false) or bibliography-file != none or appendix != none or enable-index == true{
-     set page("a4",
-      background: [],
-      footer: [
-        #place(left + horizon, dy: -10pt, dx: -15pt,
-          image("assets/for-society.png", height: 200%)
-        )
-        #place(right + horizon, dy: -10pt,
-          text(15pt, fill: fontys-purple-1, font: "Roboto")[
-            *#counter(page).display("I")*
-          ]
-        )
-        #place(left + top,
-          line(length: 100%, stroke: 1pt + fontys-purple-1)
-        )
-      ],
-      numbering: "I"
+    pagebreak()
+  }
+  if print-extra-white-page == true { page-intentionally-left-blank(odd: false) }
+
+  // Show the Glossary in the back
+  if glossary-terms != none and glossary-front == false {
+    set heading(numbering: none, outlined: false)
+    heading(language-dict.at("glossary"))
+    print-glossary(
+    (
+      glossary-terms
+    ),
     )
-    context counter(page).update(counter("RomanCounter").get().at(0) + 1)
-
-    if print-extra-white-page == true { page-intentionally-left-blank(odd: false) }
-
-    // Show the Glossary in the back
-    if glossary-terms != none and glossary-front == false {
-      set heading(numbering: none, outlined: false)
-      heading(language-dict.at("glossary"), outlined: true)
-      print-glossary(
-      (
-        glossary-terms
-      ),
-      )
-      if (bibliography-file != none or appendix != none or enable-index == true) {
-        pagebreak()
-      }
-      if print-extra-white-page == true and (bibliography-file != none or appendix != none or enable-index == true) { page-intentionally-left-blank(odd: false) }
+    if (bibliography-file != none or appendix != none or enable-index == true) {
+      pagebreak()
     }
+    if print-extra-white-page == true and (bibliography-file != none or appendix != none or enable-index == true) { page-intentionally-left-blank(odd: false) }
+  }
 
-    // Show the bibliography
-    if bibliography-file != none {
-      set bibliography(title: language-dict.at("references"), style: "ieee")
-      bibliography-file
-      if appendix != none or enable-index == true {
-        pagebreak()
-      }
-      if print-extra-white-page == true and (appendix != none or enable-index == true) { page-intentionally-left-blank(odd: false) }
+  // Show the bibliography
+  if bibliography-file != none {
+    set bibliography(title: language-dict.at("references"), style: "ieee")
+    bibliography-file
+    if appendix != none or enable-index == true {
+      pagebreak()
     }
+    if print-extra-white-page == true and (appendix != none or enable-index == true) { page-intentionally-left-blank(odd: false) }
+  }
 
-    // Show the appendix
-    if appendix != none {
-      // Set appendix page style
-      counter(heading).update(0)
-      set heading(numbering: "A.A", outlined: false)
-      show heading.where(level: 1): set heading(numbering: "A.A:", outlined: true, supplement: language-dict.at("appendix"))
-      show heading.where(level: 1): it => block(text(strong[#upper[
-        #if it.numbering != none [ #language-dict.at("appendix") #counter(heading).display(it.numbering)]
-        #it.body
-      ]], size: 18pt, fill: fontys-purple-1))
+  // Show the appendix
+  if appendix != none {
+    // Set appendix page style
+    counter(heading).update(0)
+    set heading(numbering: "A.A", outlined: false)
+    show heading.where(level: 1): set heading(numbering: "A.A:", outlined: true, supplement: language-dict.at("appendix"))
+    show heading.where(level: 1): it => block(text(strong[#upper[
+      #if it.numbering != none [ #language-dict.at("appendix") #counter(heading).display(it.numbering)]
+      #it.body
+    ]], size: 18pt, fill: fontys-purple-1))
 
-      appendix
-      if enable-index == true { pagebreak() }
-      if print-extra-white-page == true and enable-index == true { page-intentionally-left-blank(odd: false) }
-    }
+    appendix
+    if enable-index == true { pagebreak() }
+    if print-extra-white-page == true and enable-index == true { page-intentionally-left-blank(odd: false) }
+  }
 
-    // Show the index
-    if enable-index == true {
-      show heading.where(level: 1): h => {text(strong(upper(h)), size: 18pt, fill: fontys-purple-1)}
-      heading(language-dict.at("index"), numbering: none)
-      columns(index-columns)[
-        #make-index()
-      ]
-    }
+  // Show the index
+  if enable-index == true {
+    show heading.where(level: 1): h => {text(strong(upper(h)), size: 18pt, fill: fontys-purple-1)}
+    heading(language-dict.at("index"), numbering: none)
+    columns(index-columns)[
+      #make-index()
+    ]
   }
 }
