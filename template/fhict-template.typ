@@ -643,10 +643,9 @@
   // Show the page's contents
   body
  
-  // context counter("RomanCounterWhitePage").update(counter(page).get())
+  context counter("RomanCounterWhitePage").update(counter(page).get())
 
   if (glossary-terms != none and glossary-front == false) or bibliography-file != none or appendix != none or enable-index == true{
-    context counter(page).update(counter("RomanCounter").get().at(0) + 1)
      set page("a4",
       background: [],
       footer: [
@@ -664,6 +663,7 @@
       ],
       numbering: "I"
     )
+    context counter(page).update(counter("RomanCounter").get().at(0) + 1)
 
     let count-odd = false
 
