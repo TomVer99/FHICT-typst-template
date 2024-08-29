@@ -13,6 +13,7 @@
 
 // States
 #let censored-state = state("style", "0")
+#let white-page-after-body-state = state("true", true)
 
 // Misc functions
 #let hlink(url, content: none) = {
@@ -641,8 +642,11 @@
 
   // Show the page's contents
   body
+ 
+  // context counter("RomanCounterWhitePage").update(counter(page).get())
 
   if (glossary-terms != none and glossary-front == false) or bibliography-file != none or appendix != none or enable-index == true{
+    context counter(page).update(counter("RomanCounter").get().at(0) + 1)
      set page("a4",
       background: [],
       footer: [
@@ -660,9 +664,12 @@
       ],
       numbering: "I"
     )
-    context counter(page).update(counter("RomanCounter").get().at(0) + 1)
 
-    if print-extra-white-page == true { page-intentionally-left-blank(odd: false) }
+    let count-odd = false
+
+    context white-page-after-body-state.update(not calc.even(counter("RomanCounterWhitePage").get().at(0)))
+
+    if print-extra-white-page == true { page-intentionally-left-blank(odd: true) }
 
     // Show the Glossary in the back
     if glossary-terms != none and glossary-front == false {
@@ -676,7 +683,7 @@
       if (bibliography-file != none or appendix != none or enable-index == true) {
         pagebreak()
       }
-      if print-extra-white-page == true and (bibliography-file != none or appendix != none or enable-index == true) { page-intentionally-left-blank(odd: false) }
+      if print-extra-white-page == true and (bibliography-file != none or appendix != none or enable-index == true) { page-intentionally-left-blank(odd: true) }
     }
 
     // Show the bibliography
@@ -686,7 +693,7 @@
       if appendix != none or enable-index == true {
         pagebreak()
       }
-      if print-extra-white-page == true and (appendix != none or enable-index == true) { page-intentionally-left-blank(odd: false) }
+      if print-extra-white-page == true and (appendix != none or enable-index == true) { page-intentionally-left-blank(odd: true) }
     }
 
     // Show the appendix
@@ -702,7 +709,7 @@
 
       appendix
       if enable-index == true { pagebreak() }
-      if print-extra-white-page == true and enable-index == true { page-intentionally-left-blank(odd: false) }
+      if print-extra-white-page == true and enable-index == true { page-intentionally-left-blank(odd: true) }
     }
 
     // Show the index
@@ -714,4 +721,6 @@
       ]
     }
   }
+  counter("RomanCounterWhitePage").display()
 }
+

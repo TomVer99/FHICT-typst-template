@@ -23,7 +23,7 @@
   table-of-figures: false,
   // table-of-listings: true,
   // table-of-tables: true,
-  // print-extra-white-page: true,
+  print-extra-white-page: true,
   bibliography-file: bibliography("my-sources.bib"),
   glossary-terms: term-list,
   secondary-organisation-logo: read("Company.svg"),
@@ -183,6 +183,8 @@ The cover page in this document has a 'secondary organisation' added to it.
 $ a = (A_c + A_m dot sin(2 pi omega_m t)) dot sin(2 pi omega_c t) $
 
 $ x(t) = 4 / pi sum_(k=1)^infinity sin((2 k - 1) 2 pi f t) / (2 k - 1) $
+
+// #pagebreak()
 
 === Lorem 4
 
