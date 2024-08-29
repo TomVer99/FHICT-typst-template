@@ -667,9 +667,9 @@
 
     let count-odd = false
 
-    context white-page-after-body-state.update(not calc.even(counter("RomanCounterWhitePage").get().at(0)))
+    context white-page-after-body-state.update(calc.even(counter("RomanCounterWhitePage").get().at(0)))
 
-    if print-extra-white-page == true { page-intentionally-left-blank(odd: true) }
+    context if print-extra-white-page == true { page-intentionally-left-blank(odd: white-page-after-body-state.get()) }
 
     // Show the Glossary in the back
     if glossary-terms != none and glossary-front == false {
@@ -683,7 +683,7 @@
       if (bibliography-file != none or appendix != none or enable-index == true) {
         pagebreak()
       }
-      if print-extra-white-page == true and (bibliography-file != none or appendix != none or enable-index == true) { page-intentionally-left-blank(odd: true) }
+      if print-extra-white-page == true and (bibliography-file != none or appendix != none or enable-index == true) { context page-intentionally-left-blank(odd: white-page-after-body-state.get()) }
     }
 
     // Show the bibliography
@@ -693,7 +693,9 @@
       if appendix != none or enable-index == true {
         pagebreak()
       }
-      if print-extra-white-page == true and (appendix != none or enable-index == true) { page-intentionally-left-blank(odd: true) }
+      context if print-extra-white-page == true and (appendix != none or enable-index == true) { 
+        page-intentionally-left-blank(odd: white-page-after-body-state.get())
+      }
     }
 
     // Show the appendix
@@ -709,7 +711,7 @@
 
       appendix
       if enable-index == true { pagebreak() }
-      if print-extra-white-page == true and enable-index == true { page-intentionally-left-blank(odd: true) }
+      context if print-extra-white-page == true and enable-index == true { page-intentionally-left-blank(odd: white-page-after-body-state.get()) }
     }
 
     // Show the index
@@ -721,6 +723,5 @@
       ]
     }
   }
-  counter("RomanCounterWhitePage").display()
 }
 
