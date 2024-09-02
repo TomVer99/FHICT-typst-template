@@ -2,7 +2,6 @@ NL:
   flag-file: NL-flag.svg
   language-en: Dutch
   language: Nederlands
-  label-size: 200pt
   localization:
     version-history: "Versiegeschiedenis"
     version: "Versie"
@@ -22,7 +21,6 @@ EN:
   flag-file: EN-flag.svg
   language-en: English
   language: English
-  label-size: 190pt
   localization:
     version-history: "Version history"
     version: "Version"
@@ -42,7 +40,6 @@ DE:
   flag-file: DE-flag.svg
   language-en: German
   language: Deutsch
-  label-size: 210pt
   localization:
     version-history: "Versionsgeschichte"
     version: "Version"
@@ -62,7 +59,6 @@ FR:
   flag-file: FR-flag.svg
   language-en: French
   language: Français
-  label-size: 200pt
   localization:
     version-history: "Historique des versions"
     version: "Version"
@@ -82,7 +78,6 @@ ES:
   flag-file: ES-flag.svg
   language-en: Spanish
   language: Español
-  label-size: 220pt
   localization:
     version-history: "Historial de versiones"
     version: "Versión"
