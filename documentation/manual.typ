@@ -5,22 +5,22 @@
 #import "../template/fhict-template.typ": *
 
 #show: mantys.with(
-	name:		  "FHICT-Template",
-	title:    [Unofficial FHICT Template],
-	subtitle: [An unofficial template for FHICT document generation.],
-	authors:	"TomVer99",
-	url:		  "https://github.com/TomVer99/FHICT-typst-template",
-	version:	"1.1.0",
-	date:		  datetime.today(),
-	abstract: [
+  name: "FHICT-Template",
+  title: [Unofficial FHICT Template],
+  subtitle: [An unofficial template for FHICT document generation.],
+  authors: "TomVer99",
+  url: "https://github.com/TomVer99/FHICT-typst-template",
+  version: "1.0.1",
+  date: datetime.today(),
+  abstract: [
     This template allows the user to easily generate documents in the style of the Fontys Hogeschool ICT.
     The template provides a set style and layout for the document.
     It also provides a set of commands and macros to help the user generate content.
-	],
+  ],
 )
 
 
-#let fontys-blue-2   = rgb("2F5496")
+#let fontys-blue-2 = rgb("2F5496")
 #let code-name-color = fontys-blue-2.lighten(35%)
 
 #show: codly-init.with()
@@ -90,7 +90,8 @@ This is a simple document.
 = Available commands
 
 <fhict-doc>
-#command("fhict-doc",
+#command(
+  "fhict-doc",
   arg[title],
   arg[subtitle],
   arg[language],
@@ -122,31 +123,31 @@ This is a simple document.
   arg[secondary-organisation-logo-height],
   arg[enable-index],
   arg[index-columns],
-  barg[body]
+  barg[body],
 )[
   Renders a document in the style of the Fontys Hogeschool ICT.
 
-  #argument("title", types:"string", default: "Document Title")[
+  #argument("title", types: "string", default: "Document Title")[
     The title of the document.
   ]
 
-  #argument("subtitle", types:"string", default: "Document Subtitle")[
+  #argument("subtitle", types: "string", default: "Document Subtitle")[
     The subtitle of the document.
   ]
 
   #colbreak()
-  #argument("language", types:"string", default: "en")[
+  #argument("language", types: "string", default: "en")[
     The language of the document.
   ]
 
-  #argument("available-languages", types:"array", default: none)[
+  #argument("available-languages", types: "array", default: none)[
     The available languages for the document.
     ```typst
     ("en", "nl", ...)
     ```
   ]
 
-  #argument("date", types:"string", default:none)[
+  #argument("date", types: "string", default: none)[
     Allows the user to manually specify a date to be displayed on the cover page.
     ```typst
     date: "28日8月24年"
@@ -157,11 +158,11 @@ This is a simple document.
     ```
   ]
 
-  #argument("authors-title", types:"string", default: none)[
+  #argument("authors-title", types: "string", default: none)[
     The title of the authors section.
   ]
 
-  #argument("authors", types:"dict", default: none)[
+  #argument("authors", types: "dict", default: none)[
     The author(s) of the document.
     Has the following structure:
     ```typst
@@ -182,11 +183,11 @@ This is a simple document.
   ]
 
   #colbreak()
-  #argument("assessors-title", types:"string", default: none)[
+  #argument("assessors-title", types: "string", default: none)[
     The title of the assessors section.
   ]
 
-  #argument("assessors", types:"dict", default: none)[
+  #argument("assessors", types: "dict", default: none)[
     The assessors of the document.
     Has the following structure:
     ```typst
@@ -202,7 +203,7 @@ This is a simple document.
     All fields need to be strings.
   ]
 
-  #argument("version-history", types:"dict", default: none)[
+  #argument("version-history", types: "dict", default: none)[
     The version history of the document.
     Has the following structure:
     ```typst
@@ -219,128 +220,129 @@ This is a simple document.
     All fields can be strings or content.
   ]
 
-  #argument("glossary-terms", types:"dict", default: none)[
+  #argument("glossary-terms", types: "dict", default: none)[
     A dictionary of glossary terms.
     For information on what fields are available, check the #hlink("https://typst.app/universe/package/glossarium", content: "Glossarium documentation").
   ]
 
-  #argument("glossary-front", types:"bool", default: false)[
+  #argument("glossary-front", types: "bool", default: false)[
     Whether to show the glossary at the front of the document.
   ]
 
   #colbreak()
-  #argument("bibliography-file", types:"bibliography", default: none)[
+  #argument("bibliography-file", types: "bibliography", default: none)[
     The bibliography element to include in the document.
     ```typst
     #bibliography("your file path")
     ```
   ]
 
-  #argument("citation-style", types:"string", default: "ieee")[
+  #argument("citation-style", types: "string", default: "ieee")[
     The citation style to use for the bibliography.
   ]
 
-  #argument("toc-depth", types:"int", default: 3)[
+  #argument("toc-depth", types: "int", default: 3)[
     The depth of the table of contents.
   ]
 
-  #argument("disable-toc", types:"bool", default: false)[
+  #argument("disable-toc", types: "bool", default: false)[
     Whether to disable the table of contents.
   ]
 
-  #argument("disable-chapter-numbering", types:"bool", default: false)[
+  #argument("disable-chapter-numbering", types: "bool", default: false)[
     Whether to disable chapter numbering.
   ]
 
-  #argument("chapter-on-new-page", types:"bool", default: false)[
+  #argument("chapter-on-new-page", types: "bool", default: false)[
     Whether to start each chapter on a new page.
   ]
 
-  #argument("pre-toc", types:"content", default: none)[
+  #argument("pre-toc", types: "content", default: none)[
     Content to show before the table of contents.
   ]
 
-  #argument("table-of-figures", types:"bool", default: false)[
+  #argument("table-of-figures", types: "bool", default: false)[
     Whether to show a table of figures.
   ]
 
-  #argument("table-of-listings", types:"bool", default: false)[
+  #argument("table-of-listings", types: "bool", default: false)[
     Whether to show a table of listings.
   ]
 
-  #argument("table-of-tables", types:"bool", default: false)[
+  #argument("table-of-tables", types: "bool", default: false)[
     Whether to show a table of tables.
   ]
 
   #colbreak()
-  #argument("appendix", types:"content", default: none)[
+  #argument("appendix", types: "content", default: none)[
     Content to show in the appendix.
   ]
 
-  #argument("watermark", types:"string", default: none)[
+  #argument("watermark", types: "string", default: none)[
     The watermark to show on the document.
   ]
 
-  #argument("censored", types:"int", default: 0)[
+  #argument("censored", types: "int", default: 0)[
     Whether to show a censored watermark on the document.
     `1` for censorship, `0` for no censorship.
   ]
 
-  #argument("print-extra-white-page", types:"bool", default: false)[
+  #argument("print-extra-white-page", types: "bool", default: false)[
     Wether to make sure the beginning of sections start on the 'right hand' page.
     This does not affect chapter headings.
   ]
 
-  #argument("secondary-organisation-color", types:"color", default: none)[
+  #argument("secondary-organisation-color", types: "color", default: none)[
     The color of the secondary organisation.
   ]
 
-  #argument("secondary-organisation-logo", types:"read", default: none)[
+  #argument("secondary-organisation-logo", types: "read", default: none)[
     The logo of the secondary organisation.
     ```typst
     #read("your file path")
     ```
   ]
 
-  #argument("secondary-organisation-logo-height", types:"size", default: 6%)[
+  #argument("secondary-organisation-logo-height", types: "size", default: 6%)[
     The height of the secondary organisation logo.
   ]
 
-  #argument("enable-index", types:"bool", default: false)[
+  #argument("enable-index", types: "bool", default: false)[
     Whether to enable the index.
   ]
 
-  #argument("index-columns", types:"int", default: 2)[
+  #argument("index-columns", types: "int", default: 2)[
     The number of columns in the index.
   ]
 
-  #argument("body", types:"content")[
+  #argument("body", types: "content")[
     The content of the document.
   ]
 ]
 
 #pagebreak()
-#command("ftable",
+#command(
+  "ftable",
   arg[style],
   arg[columns],
   arg[content],
 )[
   Renders a table in the style of the Fontys Hogeschool ICT.
 
-  #argument("style", types:"int", default: 2)[
+  #argument("style", types: "int", default: 2)[
     The style of the table.
     Can be `1` through `8`.
   ]
 
-  #argument("columns", types:"array", default: ())[
+  #argument("columns", types: "array", default: ())[
     The spacing and the number of columns. Just like a normal table.
-    
+
     ```typst
     (size1, size2, ...)
     ```
   ]
 
-  #argument("content", types:"array", default: ())[
+  #argument("content", types: "array", default: ())[
     An array of contents for the table.
 
     Each element is a cell in the table.
@@ -354,32 +356,34 @@ This is a simple document.
 #command("sensitive", arg[textl])[
   Renders a sensitive text block.
 
-  #argument("text", types:"string")[
+  #argument("text", types: "string")[
     The text to render.
   ]
 ]
 
-#command("hlink",
+#command(
+  "hlink",
   arg[url],
   arg[content],
 )[
   Renders a hyperlink.
 
-  #argument("url", types:"string")[
+  #argument("url", types: "string")[
     The URL to link to.
   ]
 
-  #argument("content", types:"string", default: none)[
+  #argument("content", types: "string", default: none)[
     The text that replaces the URL as the hyperlink.
   ]
 ]
 
-#command("set-code-line-nr",
+#command(
+  "set-code-line-nr",
   arg[start],
 )[
   Sets the starting line number for code blocks.
 
-  #argument("start", types:"int", default: 1)[
+  #argument("start", types: "int", default: 1)[
     The starting line number.
 
     If `-1` is given, the line numbers will be hidden.
@@ -387,7 +391,8 @@ This is a simple document.
 ]
 
 #pagebreak()
-#command("text-box",
+#command(
+  "text-box",
   arg[background-color],
   arg[stroke-color],
   arg[text-color],
@@ -395,39 +400,40 @@ This is a simple document.
 )[
   Renders a text box.
 
-  #argument("background-color", types:"color", default: luma(240))[
+  #argument("background-color", types: "color", default: luma(240))[
     The background color of the text box.
   ]
 
-  #argument("stroke-color", types:"color", default: black)[
+  #argument("stroke-color", types: "color", default: black)[
     The stroke color of the text box.
   ]
 
-  #argument("text-color", types:"color", default: black)[
+  #argument("text-color", types: "color", default: black)[
     The text color of the text box.
   ]
 
-  #argument("content", types:"content")[
+  #argument("content", types: "content")[
     The content of the text box.
   ]
 ]
 
-#command("lined-box",
+#command(
+  "lined-box",
   arg[title],
   arg[body],
   arg[line-color],
 )[
   Renders a box with a line on the left side.
 
-  #argument("title", types:"string")[
+  #argument("title", types: "string")[
     The title of the box.
   ]
 
-  #argument("body", types:"content")[
+  #argument("body", types: "content")[
     The content of the box.
   ]
 
-  #argument("line-color", types:"color", default: red)[
+  #argument("line-color", types: "color", default: red)[
     The color of the line.
   ]
 ]

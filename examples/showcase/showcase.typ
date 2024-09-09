@@ -103,9 +103,18 @@ This is a citation #cite(<FHICT-typst-template>).
 #figure(
   ftable(
     columns: (auto, auto, auto, 1fr),
-    [Header 1],[Header 2],[Header 3],[Header 4],
-    [Cell 1],[Cell 2],[Cell 3],[Cell 4],
-    [Cell 1],[Cell 2],[],[Cell 4],
+    [Header 1],
+    [Header 2],
+    [Header 3],
+    [Header 4],
+    [Cell 1],
+    [Cell 2],
+    [Cell 3],
+    [Cell 4],
+    [Cell 1],
+    [Cell 2],
+    [],
+    [Cell 4],
   ),
   caption: "Table example",
 )
@@ -162,9 +171,18 @@ The cover page in this document has a 'secondary organisation' added to it.
 
 #ftable(
   columns: (auto, auto, auto, 1fr),
-  [Header 1],[Header 2],[Header 3],[Header 4],
-  [Cell 1],[Cell 2],[Cell 3],[Cell 4],
-  [Cell 1],[Cell 2],[],[Cell 4],
+  [Header 1],
+  [Header 2],
+  [Header 3],
+  [Header 4],
+  [Cell 1],
+  [Cell 2],
+  [Cell 3],
+  [Cell 4],
+  [Cell 1],
+  [Cell 2],
+  [],
+  [Cell 4],
 )
 
 ```typst

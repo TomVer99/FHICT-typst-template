@@ -16,6 +16,6 @@
     key: "unused",
     short: [UNUSED],
     long: [Unused],
-    group: "unused"
-  )
+    group: "unused",
+  ),
 )
