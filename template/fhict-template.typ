@@ -513,7 +513,7 @@
       }
 
       // Version
-      #if secondary-organisation-color == none and version-history != none and disable-version-on-cover == false {
+      #if secondary-organisation-color == none and version-history != none and version-history.len() > 0 and disable-version-on-cover == false {
         place(
           right + horizon,
           dy: 370pt,
@@ -526,7 +526,7 @@
             ],
           ),
         )
-      } else if version-history != none and disable-version-on-cover == false {
+      } else if version-history != none and version-history.len() > 0 and disable-version-on-cover == false {
         place(
           right + horizon,
           dy: 370pt,
