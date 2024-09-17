@@ -178,6 +178,7 @@
   toc-depth: 3,
   disable-toc: false,
   disable-chapter-numbering: false,
+  disable-version-on-cover: false,
   chapter-on-new-page: false,
   pre-toc: none,
   table-of-figures: none,
@@ -506,6 +507,35 @@
               } else {
                 strong(datetime.today().display())
               }
+            ],
+          ),
+        )
+      }
+
+      // Version
+      #if secondary-organisation-color == none and version-history != none and disable-version-on-cover == false {
+        place(
+          right + horizon,
+          dy: 370pt,
+          box(
+            height: 30pt,
+            inset: 10pt,
+            fill: fontys-pink-1,
+            text(20pt, fill: white, font: "Roboto")[
+              #version-history.at(version-history.len() - 1).at("version")
+            ],
+          ),
+        )
+      } else if version-history != none and disable-version-on-cover == false {
+        place(
+          right + horizon,
+          dy: 370pt,
+          box(
+            height: 30pt,
+            inset: 10pt,
+            fill: white,
+            text(20pt, fill: secondary-organisation-color, font: "Roboto")[
+              #version-history.at(version-history.len() - 1).at("version")
             ],
           ),
         )
