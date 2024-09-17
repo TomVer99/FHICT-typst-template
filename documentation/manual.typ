@@ -10,7 +10,7 @@
   subtitle: [An unofficial template for FHICT document generation.],
   authors: "TomVer99",
   url: "https://github.com/TomVer99/FHICT-typst-template",
-  version: "1.0.1",
+  version: "1.0.2",
   date: datetime.today(),
   abstract: [
     This template allows the user to easily generate documents in the style of the Fontys Hogeschool ICT.
@@ -109,6 +109,7 @@ This is a simple document.
   arg[toc-depth],
   arg[disable-toc],
   arg[disable-chapter-numbering],
+  arg[disable-version-on-cover],
   arg[chapter-on-new-page],
   arg[pre-toc],
   arg[table-of-figures],
@@ -253,6 +254,10 @@ This is a simple document.
     Whether to disable chapter numbering.
   ]
 
+  #argument("disable-version-on-cover", types: "bool", default: false)[
+    Whether to display the latests version number on the cover page or not.
+  ]
+
   #argument("chapter-on-new-page", types: "bool", default: false)[
     Whether to start each chapter on a new page.
   ]
@@ -269,11 +274,11 @@ This is a simple document.
     Whether to show a table of listings.
   ]
 
+  #colbreak()
   #argument("table-of-tables", types: "bool", default: false)[
     Whether to show a table of tables.
   ]
 
-  #colbreak()
   #argument("appendix", types: "content", default: none)[
     Content to show in the appendix.
   ]
