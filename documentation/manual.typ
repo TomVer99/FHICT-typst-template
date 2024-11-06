@@ -10,7 +10,7 @@
   subtitle: [An unofficial template for FHICT document generation.],
   authors: "TomVer99",
   url: "https://github.com/TomVer99/FHICT-typst-template",
-  version: "1.0.2",
+  version: "1.1.0",
   date: datetime.today(),
   abstract: [
     This template allows the user to easily generate documents in the style of the Fontys Hogeschool ICT.
