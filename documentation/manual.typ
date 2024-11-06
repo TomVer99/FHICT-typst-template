@@ -455,7 +455,7 @@ This library improves the code rendering in the document. There are no additiona
 
 == Glossarium
 
-#emph[Current version: 0.4.1]
+#emph[Current version: 0.5.1]
 
 Library can be found at the #hlink("https://typst.app/universe/package/glossarium", content: "Typst Universe page").
 
@@ -463,7 +463,7 @@ This library provides functionality to manage and render and manage a glossary i
 
 == In-Dexter
 
-#emph[Current version: 0.4.2]
+#emph[Current version: 0.5.3]
 
 Library can be found at the #hlink("https://typst.app/universe/package/in-dexter", content: "Typst Universe page").
 
