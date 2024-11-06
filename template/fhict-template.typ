@@ -1,5 +1,5 @@
 #import "@preview/codly:1.0.0": *
-#import "@preview/glossarium:0.4.1": make-glossary, print-glossary, gls, glspl
+#import "@preview/glossarium:0.5.1": make-glossary, print-glossary, gls, glspl, register-glossary
 #import "@preview/in-dexter:0.4.2": *
 #import "@preview/hydra:0.5.1": hydra
 
@@ -196,6 +196,7 @@
   body,
 ) = {
   show: make-glossary
+  register-glossary(glossary-terms)
 
   let meta-authors = ""
   let index-main(..args) = index(fmt: strong, ..args)
@@ -713,7 +714,7 @@
   // Show the Glossary in the front
   if glossary-terms != none and glossary-front == true {
     heading(language-dict.at("glossary"), numbering: none, outlined: false)
-    print-glossary((glossary-terms))
+    print-glossary(glossary-terms)
     if table-of-figures == true or table-of-listings == true or table-of-tables == true {
       pagebreak()
     }
@@ -801,7 +802,7 @@
   if glossary-terms != none and glossary-front == false {
     set heading(numbering: none, outlined: false)
     heading(language-dict.at("glossary"))
-    print-glossary((glossary-terms))
+    print-glossary(glossary-terms)
     if (bibliography-file != none or appendix != none or enable-index == true) {
       pagebreak()
     }
