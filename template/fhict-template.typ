@@ -187,6 +187,8 @@
   appendix: none,
   watermark: none,
   censored: 0,
+  line-numbering: false,
+  line-numbering-scope: "page",
   print-extra-white-page: false,
   secondary-organisation-color: none,
   secondary-organisation-logo: none,
@@ -670,7 +672,12 @@
     // Show the pre-toc
     // Disable heading numbering and appearing in the TOC
     set heading(numbering: none, outlined: false)
-    pre-toc
+    if line-numbering == true {
+      set par.line(numbering: "1", numbering-scope: line-numbering-scope)
+      pre-toc
+    } else {
+      pre-toc
+    }
     pagebreak()
     set heading(numbering: numbering-set, outlined: true)
     // if disable-toc == false or (glossary-terms != none and glossary-front == true) or table-of-figures == true or table-of-listings == true {
@@ -791,7 +798,12 @@
   counter(page).update(1)
 
   // Show the page's contents
-  body
+  if line-numbering == true {
+    set par.line(numbering: "1", numbering-scope: line-numbering-scope)
+    body
+  } else {
+    body
+  }
 
   if (
     glossary-terms != none and glossary-front == false

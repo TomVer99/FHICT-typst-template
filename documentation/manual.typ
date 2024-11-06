@@ -118,6 +118,8 @@ This is a simple document.
   arg[appendix],
   arg[watermark],
   arg[censored],
+  arg[line-numbering],
+  arg[line-numbering-scope],
   arg[print-extra-white-page],
   arg[secondary-organisation-color],
   arg[secondary-organisation-logo],
@@ -292,6 +294,14 @@ This is a simple document.
     `1` for censorship, `0` for no censorship.
   ]
 
+  #argument("line-numbering", types: "bool", default: false)[
+    Controls if lines are numbered in the document. Only the pre-toc and body content will be numbered.
+  ]
+
+  #argument("line-numbering-scope", types: "string", default: "page")[
+    If set to "page", the counter will reset on each page. If set to "document", the counter will not reset on each page, and will keep counting.
+  ]
+
   #argument("print-extra-white-page", types: "bool", default: false)[
     Wether to make sure the beginning of sections start on the 'right hand' page.
     This does not affect chapter headings.
@@ -308,6 +318,7 @@ This is a simple document.
     ```
   ]
 
+  #colbreak()
   #argument("secondary-organisation-logo-height", types: "size", default: 6%)[
     The height of the secondary organisation logo.
   ]
