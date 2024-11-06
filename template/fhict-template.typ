@@ -605,7 +605,9 @@
         right + horizon,
         dy: -10pt,
         text(15pt, fill: fontys-purple-1, font: "Roboto")[
-          *#counter(page).display(pre-toc-numbering)*
+          #context [
+            *#counter(page).display(pre-toc-numbering)*
+          ]
         ],
       )
       #place(
@@ -774,7 +776,9 @@
         right + horizon,
         dy: -10pt,
         text(15pt, fill: fontys-purple-1, font: "Roboto")[
-          *#counter(page).display()*
+          #context [
+            *#counter(page).display()*
+          ]
         ],
       )
       #place(
