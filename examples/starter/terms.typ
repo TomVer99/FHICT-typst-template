@@ -3,8 +3,8 @@
 
 #let term-list = (
   (
-    key: "",
-    short: [],
+    key: "tmp",
+    short: "tmp",
     long: [],
     desc: [],
   ),
