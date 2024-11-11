@@ -724,7 +724,8 @@
 
   // Show the Glossary in the front
   if glossary-terms != none and glossary-front == true {
-    heading(language-dict.at("glossary"), numbering: none, outlined: false)
+    set heading(numbering: none, outlined: false)
+    heading(language-dict.at("glossary"))
     print-glossary(glossary-terms)
     if table-of-figures == true or table-of-listings == true or table-of-tables == true {
       pagebreak()
