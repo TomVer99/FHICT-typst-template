@@ -1,4 +1,5 @@
-#import "@preview/codly:1.0.0": *
+#import "@preview/codly:1.1.1": *
+#import "@preview/codly-languages:0.1.3": *
 #import "@preview/glossarium:0.5.1": make-glossary, print-glossary, gls, glspl, register-glossary
 #import "@preview/in-dexter:0.5.3": *
 #import "@preview/hydra:0.5.1": hydra
@@ -625,27 +626,13 @@
 
   show: codly-init.with()
   codly(
-    languages: (
-      rust: (name: "Rust", color: code-name-color),
-      rs: (name: "Rust", color: code-name-color),
-      cmake: (name: "CMake", color: code-name-color),
-      cpp: (name: "C++", color: code-name-color),
-      c: (name: "C", color: code-name-color),
-      py: (name: "Python", color: code-name-color),
-      java: (name: "Java", color: code-name-color),
-      js: (name: "JavaScript", color: code-name-color),
-      sh: (name: "Shell", color: code-name-color),
-      bash: (name: "Bash", color: code-name-color),
-      json: (name: "JSON", color: code-name-color),
-      xml: (name: "XML", color: code-name-color),
-      yaml: (name: "YAML", color: code-name-color),
-      typst: (name: "Typst", color: code-name-color),
-    ),
     number-format: none,
-    display-icon: false,
+    display-icon: true,
     zebra-fill: code-zebra-color,
     stroke: 1pt + code-zebra-color,
+    languages: codly-languages,
   )
+  
 
   if print-extra-white-page == true {
     page-intentionally-left-blank(newpage: false)
