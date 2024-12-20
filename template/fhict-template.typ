@@ -55,25 +55,28 @@
 // 8: No fill w/ border
 #let ftable(style: 2, columns: none, ..tablec) = {
   set table(
-    inset: 8pt - if (style > 4) {
-      1pt
-    } else {
-      0pt
-    },
-    gutter: -1pt + if (style > 4) {
-      1pt
-    } else {
-      0pt
-    },
+    inset: 8pt
+      - if (style > 4) {
+        1pt
+      } else {
+        0pt
+      },
+    gutter: -1pt
+      + if (style > 4) {
+        1pt
+      } else {
+        0pt
+      },
     align: horizon,
     stroke: if (style <= 4) {
       none
     } else {
       1pt + black
     },
-    fill: (x, y) => if (x == 0 and (style == 1 or style == 3 or style == 5 or style == 7)) or (
-      y == 0 and (style == 1 or style == 2 or style == 5 or style == 6)
-    ) {
+    fill: (x, y) => if (x == 0 and (style == 1 or style == 3 or style == 5 or style == 7))
+      or (
+        y == 0 and (style == 1 or style == 2 or style == 5 or style == 6)
+      ) {
       fontys-purple-1
     } else if (calc.even(y) and style <= 4) {
       code-zebra-color
@@ -83,8 +86,11 @@
   )
 
   show table.cell: it => {
-    if (it.x == 0 and (style == 1 or style == 3 or style == 5 or style == 7)) or (
-      it.y == 0 and (style == 1 or style == 2 or style == 5 or style == 6)
+    if (
+      (it.x == 0 and (style == 1 or style == 3 or style == 5 or style == 7))
+        or (
+          it.y == 0 and (style == 1 or style == 2 or style == 5 or style == 6)
+        )
     ) {
       set text(white)
       strong(it)
@@ -247,9 +253,10 @@
   show heading.where(level: 1): h => (
     if (chapter-on-new-page == true) {
       pagebreak(weak: true)
-    } + {
-      text(strong(upper(h)), size: 18pt, fill: fontys-purple-1)
     }
+      + {
+        text(strong(upper(h)), size: 18pt, fill: fontys-purple-1)
+      }
   )
   show heading.where(level: 2): h => {
     text(strong(upper(h)), size: 14pt, fill: fontys-pink-1)
@@ -377,7 +384,7 @@
         dx: 40pt,
         grid(
           columns: (25%, 60%),
-          rows: (auto),
+          rows: auto,
           stroke: none,
           gutter: 5pt,
           if (title != none) {
@@ -431,18 +438,22 @@
                 if type(authors.at(0).name) == dictionary {
                   authors
                     .map(author => (
-                        strong(author.name.content) + linebreak() + text(size: 6pt)[#{
+                      strong(author.name.content)
+                        + linebreak()
+                        + text(size: 6pt)[#{
                             "   " * 4
                           }#link("mailto:" + author.email)[#author.email]]
-                      ))
+                    ))
                     .join("\n")
                 } else {
                   authors
                     .map(author => (
-                        author.name + linebreak() + text(size: 7pt)[#{
+                      author.name
+                        + linebreak()
+                        + text(size: 7pt)[#{
                             "   " * 4
                           }#link("mailto:" + author.email)[#author.email]]
-                      ))
+                    ))
                     .join("\n")
                 }
               } else {
@@ -519,7 +530,12 @@
       }
 
       // Version
-      #if secondary-organisation-color == none and version-history != none and version-history.len() > 0 and disable-version-on-cover == false {
+      #if (
+        secondary-organisation-color == none
+          and version-history != none
+          and version-history.len() > 0
+          and disable-version-on-cover == false
+      ) {
         place(
           right + horizon,
           dy: 370pt,
@@ -569,11 +585,20 @@
 
   let pre-toc-numbering = "1"
 
-  if (version-history != none) or (pre-toc != none) or (disable-toc == false) or (disable-toc == false) or (
-    glossary-terms != none and glossary-front == true
-  ) or ((table-of-figures != none) and (table-of-figures != false)) or (
-    (table-of-listings != none) and (table-of-listings != false)
-  ) or (print-extra-white-page == true) {
+  if (
+    (version-history != none)
+      or (pre-toc != none)
+      or (disable-toc == false)
+      or (disable-toc == false)
+      or (
+        glossary-terms != none and glossary-front == true
+      )
+      or ((table-of-figures != none) and (table-of-figures != false))
+      or (
+        (table-of-listings != none) and (table-of-listings != false)
+      )
+      or (print-extra-white-page == true)
+  ) {
     pre-toc-numbering = "I"
   }
 
@@ -632,7 +657,7 @@
     stroke: 1pt + code-zebra-color,
     languages: codly-languages,
   )
-  
+
 
   if print-extra-white-page == true {
     page-intentionally-left-blank(newpage: false)
@@ -697,8 +722,13 @@
       indent: n => [#h(1em)] * n,
     )
     if (
-      glossary-terms != none and glossary-front == true
-    ) or table-of-figures == true or table-of-listings == true or table-of-tables == true {
+      (
+        glossary-terms != none and glossary-front == true
+      )
+        or table-of-figures == true
+        or table-of-listings == true
+        or table-of-tables == true
+    ) {
       if print-extra-white-page == false {
         pagebreak()
       }
@@ -796,8 +826,13 @@
   }
 
   if (
-    glossary-terms != none and glossary-front == false
-  ) or bibliography-file != none or appendix != none or enable-index == true {
+    (
+      glossary-terms != none and glossary-front == false
+    )
+      or bibliography-file != none
+      or appendix != none
+      or enable-index == true
+  ) {
     pagebreak()
   }
   if print-extra-white-page == true {
@@ -819,7 +854,7 @@
 
   // Show the bibliography
   if bibliography-file != none {
-    set bibliography(title: language-dict.at("references"), style: "ieee")
+    set bibliography(title: language-dict.at("references"), style: citation-style)
     bibliography-file
     if appendix != none or enable-index == true {
       pagebreak()
