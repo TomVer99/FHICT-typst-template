@@ -5,7 +5,7 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/TomVer99/FHICT-typst-template?style=flat-square)
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/TomVer99/FHICT-typst-template?style=flat-square)
 
-![Maintenance](https://img.shields.io/maintenance/Yes/2024?style=flat-square)
+![Maintenance](https://img.shields.io/maintenance/Yes/2025?style=flat-square)
 ![Issues](https://img.shields.io/github/issues-raw/TomVer99/FHICT-typst-template?label=Issues&style=flat-square)
 ![GitHub commits since latest release](https://img.shields.io/github/commits-since/TomVer99/FHICT-typst-template/latest?style=flat-square)
 
