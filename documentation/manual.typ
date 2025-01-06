@@ -464,6 +464,14 @@ Library can be found at the #hlink("https://typst.app/universe/package/codly", c
 
 This library improves the code rendering in the document. There are no additional commands to use this library. More information can be found on the Typst Universe page.
 
+== Codly languages
+
+#emph[Current version: 0.1.3]
+
+Library can be found at the #hlink("https://typst.app/universe/package/codly-languages", content: "Typst Universe page").
+
+This library implements a set number of programming languages for styling on code blocks. More information can be found on the Typst Universe page.
+
 == Glossarium
 
 #emph[Current version: 0.5.1]
