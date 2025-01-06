@@ -1,4 +1,4 @@
-#import "../../fhict-template.typ": *
+#import "../../lib.typ": *
 #import "./terms.typ": term-list
 
 #show: fhict-doc.with(

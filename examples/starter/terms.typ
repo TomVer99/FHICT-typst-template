@@ -1,5 +1,5 @@
 // CHANGE THIS TO THE CORRECT PATH
-#import "../../fhict-template.typ": *
+#import "../../lib.typ": *
 
 #let term-list = (
   (
