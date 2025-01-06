@@ -1,5 +1,5 @@
 // CHANGE THIS TO THE CORRECT PATH
-#import "./../../template/fhict-template.typ": *
+#import "../../lib.typ": *
 #import "./terms.typ": term-list
 
 #show: fhict-doc.with(

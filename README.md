@@ -37,19 +37,7 @@ Creating well-structured and visually appealing documents is crucial in academic
 - **Configurable options**: The template provides configurable options for customizing the document to your needs.
 - **Helper functions**: The template provides helper functions for adding tables, sensitive content (that can be hidden), and more.
 - **Multiple languages support**: The template can be set to multiple languages (nl, en, de, fr, es), allowing you to write documents in different languages.
-<!-- \/\/\/ not yet :( \/\/\/ ) -->
-<!-- - **Battle tested**: The template has been used by many students and faculty members at FHICT, ensuring its quality and reliability. -->
-
-<!-- This is for the typst universe page
-## Features
-
-- Consistent formatting for titles, headings, subheadings, paragraphs and other elements.
-- Clean and professional document layout.
-- FHICT Style.
-- Configurable document options.
-- Helper functions.
-- Multiple languages support (nl, en, de, fr, es).
--->
+- **Battle tested**: The template has been used without issue at FHICT, indicating its quality and reliability.
 
 ## Requirements
 

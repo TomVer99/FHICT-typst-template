@@ -1,4 +1,4 @@
-#import "./../../template/fhict-template.typ": *
+#import "../../lib.typ": *
 #import "./terms.typ": term-list
 
 #show: fhict-doc.with(
@@ -64,7 +64,7 @@ This is a figure with an image. This will be shown in the list of figures if ena
 
 #figure(
   image(
-    "./../../template/assets/fontys-for-society.png",
+    "./../../assets/fontys-for-society.png",
     width: 50%,
   ),
   caption: "Figure example",
@@ -208,7 +208,7 @@ $ x(t) = 4 / pi sum_(k=1)^infinity sin((2 k - 1) 2 pi f t) / (2 k - 1) $
 
 #figure(
   image(
-    "./../../template/assets/fontys-for-society.png",
+    "./../../assets/fontys-for-society.png",
     width: 50%,
   ),
   caption: "Figure example",
@@ -217,7 +217,7 @@ $ x(t) = 4 / pi sum_(k=1)^infinity sin((2 k - 1) 2 pi f t) / (2 k - 1) $
 ```typst
 #figure(
   image(
-    "./../../template/assets/fontys-for-society.png",
+    "./../../assets/fontys-for-society.png",
     width: 50%,
   ),
   caption: "Figure example",
