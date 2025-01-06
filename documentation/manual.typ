@@ -458,7 +458,7 @@ This is a simple document.
 
 == Codly
 
-#emph[Current version: 1.0.0]
+#emph[Current version: 1.1.1]
 
 Library can be found at the #hlink("https://typst.app/universe/package/codly", content: "Typst Universe page").
 
@@ -474,7 +474,7 @@ This library provides functionality to manage and render and manage a glossary i
 
 == In-Dexter
 
-#emph[Current version: 0.5.3]
+#emph[Current version: 0.7.0]
 
 Library can be found at the #hlink("https://typst.app/universe/package/in-dexter", content: "Typst Universe page").
 
