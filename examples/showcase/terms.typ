@@ -1,4 +1,4 @@
-#import "./../../template/fhict-template.typ": *
+#import "../../fhict-template.typ": *
 
 #let term-list = (
   (

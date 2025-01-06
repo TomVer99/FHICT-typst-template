@@ -1,8 +1,8 @@
 #import "@preview/mantys:0.1.4": *
 #import "@preview/codly:1.0.0": *
 
-#import "../template/fhict-template.typ"
-#import "../template/fhict-template.typ": *
+#import "../fhict-template.typ"
+#import "../fhict-template.typ": *
 
 #show: mantys.with(
   name: "FHICT-Template",
