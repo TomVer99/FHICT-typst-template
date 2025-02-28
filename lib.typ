@@ -1,8 +1,8 @@
-#import "@preview/codly:1.1.1": *
-#import "@preview/codly-languages:0.1.3": *
-#import "@preview/glossarium:0.5.1": make-glossary, print-glossary, gls, glspl, register-glossary
+#import "@preview/codly:1.2.0": *
+#import "@preview/codly-languages:0.1.7": *
+#import "@preview/glossarium:0.5.3": make-glossary, print-glossary, gls, glspl, register-glossary
 #import "@preview/in-dexter:0.7.0": *
-#import "@preview/hydra:0.5.1": hydra
+#import "@preview/hydra:0.6.0": hydra
 
 #let fontys-purple-1 = rgb("663366")
 #let fontys-purple-2 = rgb("B59DB5")
@@ -14,6 +14,7 @@
 
 // States
 #let censored-state = state("style", "0")
+#let appendices-state = state("separator", "0")
 
 // Misc functions
 #let hlink(url, content: none) = {
@@ -199,11 +200,14 @@
   print-extra-white-page: false,
   secondary-organisation-color: none,
   secondary-organisation-logo: none,
-  secondary-organisation-logo-height: 6%,
   enable-index: false,
   index-columns: 2,
   body,
 ) = {
+  // Init states
+  appendices-state.update(0)
+  censored-state.update(censored)
+
   show: make-glossary
   if glossary-terms != none {
     register-glossary(glossary-terms)
@@ -286,28 +290,35 @@
       // Main background triangle
       #place(
         top + left,
-        path(
+        curve(
           fill: fontys-purple-2,
-          closed: true,
-          (0%, 0%),
-          (5%, 0%),
-          ((70%, 45%), (-20pt, -20pt)),
-          ((75%, 50%), (0%, -15pt)),
-          ((70%, 55%), (20pt, -20pt)),
-          (5%, 100%),
-          (0%, 100%),
+          stroke: none,
+          curve.move((0%, 0%)),
+          curve.line((5%, 0%)),
+          curve.line((70%, 45%)),
+          curve.cubic(
+            (70%, 45%),
+            (78%, 50%),
+            (70%, 55%),
+          ),
+          curve.line((70%, 55%)),
+          curve.line((5%, 100%)),
+          curve.line((0%, 100%)),
+          curve.close(),
         ),
       )
       #if secondary-organisation-color != none {
         // Secondary organisation triangle
         place(
           top + left,
-          path(
+          curve(
             fill: secondary-organisation-color,
-            closed: true,
-            (10%, 100%),
-            (101%, 37%),
-            (101%, 100%),
+            stroke: none,
+            curve.move((100%, 100%)),
+            curve.line((10%, 100%), relative: false),
+            curve.line((101%, 37%), relative: false),
+            curve.line((101%, 100%), relative: false),
+            curve.close(),
           ),
         )
       }
@@ -318,10 +329,7 @@
           bottom + right,
           dx: -30pt,
           dy: -120pt,
-          image.decode(
-            secondary-organisation-logo,
-            height: secondary-organisation-logo-height,
-          ),
+          secondary-organisation-logo,
         )
       }
       // For scociety image
@@ -376,7 +384,6 @@
       }
 
       // Title, Subtitle, Authors, Assessors
-      #censored-state.update(censored)
       #set text(fill: fontys-purple-1)
       #place(
         left + top,
@@ -704,22 +711,26 @@
 
   if disable-toc == false {
     // Show the table of contents
-    show outline.entry: it => {
-      let body = [#it.body #box(width: 1fr, it.fill) #it.page]
-      if it.level == 1 {
-        if it.element.supplement == [#language-dict.at("appendix")] {
-          [#language-dict.at("appendix") #body]
+    show outline.entry.where(level: 1): it => {
+      context [
+        #if it.element.supplement == [#language-dict.at("appendix")] {
+          if (appendices-state.at(here()) == 0) {
+            [#language-dict.at("appendix")]
+            appendices-state.update(1)
+          }
+          it
+        } else if (appendices-state.at(here()) == 1) {
+          par[]
+          it
         } else {
-          body
+          it
         }
-      } else {
-        body
-      }
+      ]
     }
     outline(
       title: language-dict.at("table-of-contents"),
       depth: toc-depth,
-      indent: n => [#h(1em)] * n,
+      indent: n => 1em * n,
     )
     if (
       (

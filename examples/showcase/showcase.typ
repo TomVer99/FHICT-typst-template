@@ -28,9 +28,8 @@
   // citation-style: "apa",
   bibliography-file: bibliography("my-sources.bib"),
   glossary-terms: term-list,
-  secondary-organisation-logo: read("Company.svg"),
+  secondary-organisation-logo: image("Company.svg", height: 3.5cm),
   secondary-organisation-color: rgb("184471"),
-  secondary-organisation-logo-height: 3.5cm,
   enable-index: true,
 )
 
