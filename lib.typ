@@ -291,28 +291,35 @@
       // Main background triangle
       #place(
         top + left,
-        path(
+        curve(
           fill: fontys-purple-2,
-          closed: true,
-          (0%, 0%),
-          (5%, 0%),
-          ((70%, 45%), (-20pt, -20pt)),
-          ((75%, 50%), (0%, -15pt)),
-          ((70%, 55%), (20pt, -20pt)),
-          (5%, 100%),
-          (0%, 100%),
+          stroke: none,
+          curve.move((0%, 0%)),
+          curve.line((5%, 0%)),
+          curve.line((70%, 45%)),
+          curve.cubic(
+            (70%, 45%),
+            (78%, 50%),
+            (70%, 55%),
+          ),
+          curve.line((70%, 55%)),
+          curve.line((5%, 100%)),
+          curve.line((0%, 100%)),
+          curve.close(),
         ),
       )
       #if secondary-organisation-color != none {
         // Secondary organisation triangle
         place(
-          top + left,
-          path(
+          top + right,
+          curve(
             fill: secondary-organisation-color,
-            closed: true,
-            (10%, 100%),
-            (101%, 37%),
-            (101%, 100%),
+            stroke: none,
+            curve.move((100%, 100%)),
+            curve.line((10%, 100%), relative: false),
+            curve.line((101%, 37%), relative: false),
+            curve.line((101%, 100%), relative: false),
+            curve.close(),
           ),
         )
       }
