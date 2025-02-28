@@ -15,7 +15,7 @@ NL:
     glossary: "Woordenlijst"
     index: "Index"
     references: "Referenties"
-    appendix: "Bijlage"
+    appendix: "Bijlagen"
 
 EN:
   flag-file: EN-flag.svg
@@ -34,7 +34,8 @@ EN:
     glossary: "Glossary"
     index: "Index"
     references: "References"
-    appendix: "Appendix"
+    # appendix: "Appendix"
+    appendix: "Appendices"
 
 DE:
   flag-file: DE-flag.svg
@@ -53,7 +54,7 @@ DE:
     glossary: "Glossar"
     index: "Inhaltsverzeichnis"
     references: "Referenzen"
-    appendix: "Anhang"
+    appendix: "Anhänge"
 
 FR:
   flag-file: FR-flag.svg
@@ -72,7 +73,7 @@ FR:
     glossary: "Glossaire"
     index: "Index"
     references: "Références"
-    appendix: "Annexe"
+    appendix: "Annexes"
 
 ES:
   flag-file: ES-flag.svg
@@ -91,4 +92,4 @@ ES:
     glossary: "Glosario"
     index: "Índice"
     references: "Referencias"
-    appendix: "Apéndice"
+    appendix: "Apéndices"

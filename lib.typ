@@ -14,6 +14,7 @@
 
 // States
 #let censored-state = state("style", "0")
+#let appendices-state = state("separator", "0")
 
 // Misc functions
 #let hlink(url, content: none) = {
@@ -204,6 +205,10 @@
   index-columns: 2,
   body,
 ) = {
+  // Init states
+  appendices-state.update(0)
+  censored-state.update(censored)
+
   show: make-glossary
   if glossary-terms != none {
     register-glossary(glossary-terms)
@@ -376,7 +381,6 @@
       }
 
       // Title, Subtitle, Authors, Assessors
-      #censored-state.update(censored)
       #set text(fill: fontys-purple-1)
       #place(
         left + top,
@@ -704,22 +708,26 @@
 
   if disable-toc == false {
     // Show the table of contents
-    show outline.entry: it => {
-      let body = [#it.body #box(width: 1fr, it.fill) #it.page]
-      if it.level == 1 {
-        if it.element.supplement == [#language-dict.at("appendix")] {
-          [#language-dict.at("appendix") #body]
+    show outline.entry.where(level: 1): it => {
+      context [
+        #if it.element.supplement == [#language-dict.at("appendix")] {
+          if (appendices-state.at(here()) == 0) {
+            [#language-dict.at("appendix")]
+            appendices-state.update(1)
+          }
+          it
+        } else if (appendices-state.at(here()) == 1) {
+          par[]
+          it
         } else {
-          body
+          it
         }
-      } else {
-        body
-      }
+      ]
     }
     outline(
       title: language-dict.at("table-of-contents"),
       depth: toc-depth,
-      indent: n => [#h(1em)] * n,
+      indent: n => 1em * n,
     )
     if (
       (
