@@ -200,7 +200,6 @@
   print-extra-white-page: false,
   secondary-organisation-color: none,
   secondary-organisation-logo: none,
-  secondary-organisation-logo-height: 6%,
   enable-index: false,
   index-columns: 2,
   body,
@@ -330,10 +329,7 @@
           bottom + right,
           dx: -30pt,
           dy: -120pt,
-          image.decode(
-            secondary-organisation-logo,
-            height: secondary-organisation-logo-height,
-          ),
+          secondary-organisation-logo,
         )
       }
       // For scociety image
