@@ -50,7 +50,7 @@ To get started with this Typst document template, follow these steps:
 
 1. **Check for the roboto font**: Check if you have the roboto font installed on your system. If you don't, you can download it from [Google Fonts](https://fonts.google.com/specimen/Roboto).
 2. **Install Typst**: I recommend to use VSCode with [Tinymist Typst Extension](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist). You will also need a PDF viewer in VSCode if you want to view the document live.
-3. **Import the template**: Import the template into your own typst document. `#import "@preview/unofficial-fhict-document-template:1.1.2": *`
+3. **Import the template**: Import the template into your own typst document. `#import "@preview/unofficial-fhict-document-template:1.1.3": *`
 4. **Set the available options**: Set the available options in the template file to your liking.
 5. **Start writing**: Start writing your document.
 

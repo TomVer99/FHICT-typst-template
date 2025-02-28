@@ -5,7 +5,7 @@
     key: "fhict",
     short: [FHICT],
     long: [Fontys Hogeschool ICT],
-    desc: [Fontys University of Applied Sciences],
+    description: [Fontys University of Applied Sciences],
   ),
   (
     key: "wip",

@@ -1,8 +1,8 @@
-#import "@preview/codly:1.1.1": *
-#import "@preview/codly-languages:0.1.3": *
-#import "@preview/glossarium:0.5.1": make-glossary, print-glossary, gls, glspl, register-glossary
+#import "@preview/codly:1.2.0": *
+#import "@preview/codly-languages:0.1.7": *
+#import "@preview/glossarium:0.5.3": make-glossary, print-glossary, gls, glspl, register-glossary
 #import "@preview/in-dexter:0.7.0": *
-#import "@preview/hydra:0.5.1": hydra
+#import "@preview/hydra:0.6.0": hydra
 
 #let fontys-purple-1 = rgb("663366")
 #let fontys-purple-2 = rgb("B59DB5")
@@ -310,7 +310,7 @@
       #if secondary-organisation-color != none {
         // Secondary organisation triangle
         place(
-          top + right,
+          top + left,
           curve(
             fill: secondary-organisation-color,
             stroke: none,

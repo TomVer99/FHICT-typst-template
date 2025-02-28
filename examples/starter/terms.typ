@@ -6,6 +6,6 @@
     key: "tmp",
     short: "tmp",
     long: [],
-    desc: [],
+    description: [],
   ),
 )
