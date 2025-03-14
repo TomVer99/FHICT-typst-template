@@ -62,6 +62,10 @@ This document template is licensed under the MIT License. You are free to use, m
 
 For more details, refer to the LICENSE file included in the repository.
 
+Please not that not all content in the template is licensed under the MIT License. For example, the Roboto font used in the template is subject to its own licensing terms.
+
+When copying content from this template, make sure to respect the licenses of any third-party resources used in the template.
+
 = Versioning
 
 This template follows semantic versioning. The version number is composed of three parts: major, minor, and patch. For example, in version 1.2.3:
