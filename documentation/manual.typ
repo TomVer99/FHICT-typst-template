@@ -49,9 +49,12 @@
 
 Welcome to the FHICT Typst Document Template manual. This manual is designed to help you understand and utilize the features of the Typst document template tailored for FHICT (Fontys Hogeschool ICT). Whether you are a student or faculty member, this template will assist you in creating professional-looking documents with ease.
 
-In this manual, you will find detailed explanations of the template's features, instructions on how to customize it to your needs, and examples to guide you through the process. The goal is to make document creation as straightforward and efficient as possible, allowing you to focus on your content rather than formatting.
+In this manual, you will find detailed information on the parameters available in the FHICT Typst Document Template, along with examples of how to use them. The template provides a range of customization options to suit your specific needs, from setting the document title and authors to enabling line numbering and generating a table of contents.
 
-We hope you find this manual helpful and that it enhances your document creation experience with Typst.
+I hope you find this manual helpful and that it enhances your document creation experience with Typst.
+
+Even if you are not specifically from the ICT course, this template may still be useful to you. It is designed to be flexible and can be adapted to suit various document types and purposes.
+FHICT is never named specifically in the template, so it can be used for any Fontys course.
 
 = License
 
@@ -81,6 +84,7 @@ In that case the import statement would look like this:
 #import "path/to/lib.typ": *
 ```
 
+#pagebreak()
 = Requirements
 
 To use the FHICT Typst Document Template, you need the `Roboto` font installed on your system. This font is used for the text in the document.
