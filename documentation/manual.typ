@@ -85,6 +85,10 @@ In that case the import statement would look like this:
 
 To use the FHICT Typst Document Template, you need the `Roboto` font installed on your system. This font is used for the text in the document.
 
+Version #current_version of the template is compatible with Typst version(s) 0.13.
+
+It may work with other versions of Typst, but it is recommended to use the specified version for optimal compatibility.
+
 #pagebreak()
 
 = Main Function
