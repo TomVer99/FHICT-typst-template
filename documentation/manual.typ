@@ -962,6 +962,25 @@ Which will look like this:
 
 #hlink("https://typst.app/", content: [Typst])
 
+== refhlink
+
+#box(
+  stroke: 1pt + rgb("2F5496"),
+  fill: rgb("2F5496").lighten(90%),
+  inset: 0.35em,
+  [#icon-ty\Parameters: #print_type("ref")\(reference\)],
+)
+
+This function is used to created a styled hyperlink for in-document references. The `reference` parameter specifies the reference to link to. The text to display will be derived from the reference.
+
+#codly(header: [ #strong[Example code] ])
+```typ
+= A header
+#label("foo")
+Some text
+#refhlink(ref(<foo>))
+```
+
 == sensitive
 <sensitive>
 

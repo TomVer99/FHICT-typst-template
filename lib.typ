@@ -32,6 +32,14 @@
   ]
 }
 
+#let refhlink(reference) = {
+  hlink(reference.target, content: reference)
+}
+
+#let tdisplay(time) = {
+  time.display("[day]-[month]-[year]")
+}
+
 #let sensitive(textl) = {
   context [
     #if (censored-state.at(here()) == 1) {
