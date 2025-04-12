@@ -614,27 +614,36 @@
     "a4",
     background: [],
     header: [
-      #place(right + horizon, dy: 15pt)[
-        #text(10pt, fill: fontys-purple-1, font: "Roboto")[
-          #upper[*#title*]
+      #set par(justify: false)
+      #box(width: 100%)[
+        #pad(top: 2em)[
+          #grid(
+            columns: (3fr, 1fr),
+            rows: (1fr, 1fr),
+            align: alignment.bottom,
+            grid.cell(align: alignment.left)[
+              #context [
+                #let chapter = hydra(1)
+                #if chapter != none {
+                  text(10pt, fill: fontys-purple-1, font: "Roboto")[
+                    *#upper(chapter)*
+                  ]
+                }
+              ]
+            ],
+            grid.cell(align: alignment.right)[
+              #text(10pt, fill: fontys-purple-1, font: "Roboto")[
+                #upper[*#title*]
+              ]
+            ],
+            grid.cell(colspan: 2, align: alignment.top)[
+              #pad(y: 0.5em)[
+                #line(length: 100%, stroke: 1pt + fontys-purple-1)
+              ]
+            ]
+          )
         ]
       ]
-      #place(
-        left + horizon,
-        dy: 15pt,
-        [#context [
-            #let chapter = hydra(1)
-            #if chapter != none {
-              text(10pt, fill: fontys-purple-1, font: "Roboto")[
-                *#upper(chapter)*
-              ]
-            }
-          ]],
-      )
-      #place(
-        left + bottom,
-        line(length: 100%, stroke: 1pt + fontys-purple-1),
-      )
     ],
     footer: [
       #place(left + horizon, dy: -10pt, dx: -15pt, image("assets/for-society.png", height: 200%))
