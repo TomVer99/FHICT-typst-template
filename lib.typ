@@ -32,7 +32,7 @@
   ]
 }
 
-#let hllink(reference) = {
+#let refhlink(reference) = {
   hlink(reference.target, content: reference)
 }
 
