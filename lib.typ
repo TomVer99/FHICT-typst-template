@@ -32,6 +32,10 @@
   ]
 }
 
+#let hllink(reference) = {
+  hlink(reference.target, content: reference)
+}
+
 #let tdisplay(time) = {
   time.display("[day]-[month]-[year]")
 }
