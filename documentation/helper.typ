@@ -37,6 +37,10 @@
     "https://typst.app/docs/reference/foundations/int/"
   } else if ty == "label" {
     "https://typst.app/docs/reference/foundations/label/"
+  } else if ty == "ref" {
+    "https://typst.app/docs/reference/model/ref/"
+  } else if ty == "datetime" {
+    "https://typst.app/docs/reference/foundations/datetime/"
   } else {
     panic("unknown type: " + ty)
   }

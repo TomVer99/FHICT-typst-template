@@ -971,7 +971,7 @@ Which will look like this:
   [#icon-ty\Parameters: #print_type("ref")\(reference\)],
 )
 
-This function is used to created a styled hyperlink for in-document references. The `reference` parameter specifies the reference to link to. The text to display will be derived from the reference.
+This function is used to create a styled hyperlink for in-document references. The `reference` parameter specifies the reference to link to. The text to display will be derived from the reference.
 
 #codly(header: [ #strong[Example code] ])
 ```typ
@@ -1121,3 +1121,14 @@ The `lined-box` function is used to create a styled box with a title and body. T
 Which will look like this:
 
 #lined-box("Title", [Content])
+
+== tdisplay
+
+#box(
+  stroke: 1pt + rgb("2F5496"),
+  fill: rgb("2F5496").lighten(90%),
+  inset: 0.35em,
+  [#icon-ty\Parameters: #print_type("datetime")\(time\)],
+)
+
+The `tdisplay` function is used to create a pre-formatted time display. The `time` parameter specifies the time to be formatted and displayed.
