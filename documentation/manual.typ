@@ -939,6 +939,27 @@ The `index-columns` parameter is used to specify the number of columns in the in
 index-columns: 3
 ```
 
+== header-content-spacing
+#box(
+  stroke: 1pt + rgb("2F5496"),
+  fill: rgb("2F5496").lighten(90%),
+  inset: 0.35em,
+  [#icon-ty\Type: #print_type("array") of 2 #math.times #print_type("length")],
+)
+#box(
+  stroke: 1pt + rgb("2F5496"),
+  fill: rgb("2F5496").lighten(90%),
+  inset: 0.35em,
+  [#icon-val\Default: `(50%, 50%)`],
+)
+
+The `header-content-spacing` parameter is used to specify the spacing between the current page heading and the document title inside of the page header.
+It is an array of two lengths, the first length is used for the left side of the header, and the second length is used for the right side of the header.
+#codly(header: [ #strong[Example code] ])
+```typ
+header-content-spacing: (50%, 50%)
+```
+
 #pagebreak()
 = Helper functions
 
