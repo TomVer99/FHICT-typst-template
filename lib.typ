@@ -202,6 +202,7 @@
   secondary-organisation-logo: none,
   enable-index: false,
   index-columns: 2,
+  header-content-spacing: (50%, 50%),
   body,
 ) = {
   // Init states
@@ -618,7 +619,7 @@
       #box(width: 100%)[
         #pad(top: 2em)[
           #grid(
-            columns: (3fr, 1fr),
+            columns: header-content-spacing,
             rows: (1fr, 1fr),
             align: alignment.bottom,
             grid.cell(align: alignment.left)[
