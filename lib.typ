@@ -1,6 +1,6 @@
 #import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.8": *
-#import "@preview/glossarium:0.5.4": make-glossary, print-glossary, gls, glspl, register-glossary
+#import "@preview/glossarium:0.5.4": gls, glspl, make-glossary, print-glossary, register-glossary
 #import "@preview/in-dexter:0.7.0": *
 #import "@preview/hydra:0.6.0": hydra
 
@@ -20,15 +20,15 @@
 #let hlink(url, content: none) = {
   link(url)[
     #underline[#text(
-        [
-          #if content == none {
-            url
-          } else {
-            content
-          }
-        ],
-        fill: fontys-blue-2,
-      )]
+      [
+        #if content == none {
+          url
+        } else {
+          content
+        }
+      ],
+      fill: fontys-blue-2,
+    )]
   ]
 }
 
@@ -898,15 +898,20 @@
     show heading.where(level: 1): it => block(
       text(
         strong[#upper[
-            #if it.numbering != none [ #language-dict.at("appendix") #counter(heading).display(it.numbering)]
-            #it.body
-          ]],
+          #if it.numbering != none [ #language-dict.at("appendix") #counter(heading).display(it.numbering)]
+          #it.body
+        ]],
         size: 18pt,
         fill: fontys-purple-1,
       ),
     )
 
-    appendix
+    if line-numbering == true {
+      set par.line(numbering: "1", numbering-scope: line-numbering-scope)
+      appendix
+    } else {
+      appendix
+    }
     if enable-index == true {
       pagebreak()
     }
