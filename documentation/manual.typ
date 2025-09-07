@@ -4,7 +4,7 @@
 #import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.8": *
 
-#import "./helper.typ": print_type
+#import "./helper.typ": print-type
 
 #import "./../lib.typ": *
 
@@ -128,7 +128,7 @@ My amazing content
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("string") or #print_type("none")],
+  [#icon-ty\Type: #print-type("string") or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -137,7 +137,7 @@ My amazing content
   [#icon-val\Default: `"Document Title"`],
 )
 
-The `title` parameter is used to set the title of the document. If it is set to #print_type("none"), the title will not be displayed.
+The `title` parameter is used to set the title of the document. If it is set to #print-type("none"), the title will not be displayed.
 
 #codly(header: [ #strong[Example code] ])
 ```typ
@@ -150,7 +150,7 @@ title: "FHICT Typst Document Template Manual"
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("string") or #print_type("none")],
+  [#icon-ty\Type: #print-type("string") or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -159,7 +159,7 @@ title: "FHICT Typst Document Template Manual"
   [#icon-val\Default: `none`],
 )
 
-The `subtitle` parameter is used to set the subtitle of the document. If it is set to #print_type("none"), the subtitle will not be displayed.
+The `subtitle` parameter is used to set the subtitle of the document. If it is set to #print-type("none"), the subtitle will not be displayed.
 
 #codly(header: [ #strong[Example code] ])
 ```typ
@@ -173,7 +173,7 @@ subtitle: "A Detailed Guide to Typst Template"
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("string")],
+  [#icon-ty\Type: #print-type("string")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -196,7 +196,7 @@ language: "nl"
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("array") of #print_type("string") or #print_type("none")],
+  [#icon-ty\Type: #print-type("array") of #print-type("string") or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -207,7 +207,7 @@ language: "nl"
 
 The `available-languages` parameter is used to specify the languages in which the document is available. It is an array of strings representing the language codes.
 If more than one language is specified, a language indicator will be displayed on the cover page to indicate the available languages.
-If it is set to #print_type("none"), the language indicator will not be displayed.
+If it is set to #print-type("none"), the language indicator will not be displayed.
 
 #codly(header: [ #strong[Example code] ])
 ```typ
@@ -220,7 +220,7 @@ available-languages: ("en", "nl")
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("string") or #print_type("none")],
+  [#icon-ty\Type: #print-type("string") or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -229,7 +229,7 @@ available-languages: ("en", "nl")
   [#icon-val\Default: `none`],
 )
 
-The `date` parameter is used to set the date of the document. If it is set to #print_type("none"), the date will be automatically generated based on the current date.
+The `date` parameter is used to set the date of the document. If it is set to #print-type("none"), the date will be automatically generated based on the current date.
 
 #codly(header: [ #strong[Example code] ])
 ```typ
@@ -242,7 +242,7 @@ date: "2022-01-01"
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("string") or #print_type("none")],
+  [#icon-ty\Type: #print-type("string") or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -251,7 +251,7 @@ date: "2022-01-01"
   [#icon-val\Default: `none`],
 )
 
-The `authors-title` parameter is used to set the title of the authors section. If it is set to #print_type("none"), the authors section will not have a title.
+The `authors-title` parameter is used to set the title of the authors section. If it is set to #print-type("none"), the authors section will not have a title.
 
 #codly(header: [ #strong[Example code] ])
 ```typ
@@ -264,7 +264,7 @@ authors-title: "Authors"
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: (#print_type("array") of (#print_type("string") or #print_type("content")) and #print_type("string")) or #print_type("none")],
+  [#icon-ty\Type: (#print-type("array") of (#print-type("string") or #print-type("content")) and #print-type("string")) or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -274,7 +274,7 @@ authors-title: "Authors"
 )
 
 The `authors` parameter is used to specify the authors of the document. It is an array of strings or content blocks representing the authors' names and emails.
-If the array is set, the names are required, and emails are optional. If it is set to #print_type("none"), the authors section will not be displayed.
+If the array is set, the names are required, and emails are optional. If it is set to #print-type("none"), the authors section will not be displayed.
 
 #codly(header: [ #strong[Example code] ])
 ```typ
@@ -295,7 +295,7 @@ authors: (
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("string") or #print_type("none")],
+  [#icon-ty\Type: #print-type("string") or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -304,7 +304,7 @@ authors: (
   [#icon-val\Default: `none`],
 )
 
-The `assessors-title` parameter is used to set the title of the assessors section. If it is set to #print_type("none"), the assessors section will not have a title.
+The `assessors-title` parameter is used to set the title of the assessors section. If it is set to #print-type("none"), the assessors section will not have a title.
 
 #codly(header: [ #strong[Example code] ])
 ```typ
@@ -317,7 +317,7 @@ assessors-title: "Helpful People"
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: (#print_type("array") of (#print_type("string") or #print_type("content")) and #print_type("string")) or #print_type("none")],
+  [#icon-ty\Type: (#print-type("array") of (#print-type("string") or #print-type("content")) and #print-type("string")) or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -327,7 +327,7 @@ assessors-title: "Helpful People"
 )
 
 The `assessors` parameter is used to specify the assessors of the document. It is an array of strings or content blocks representing the assessors' names and emails.
-If the array is set, the names are required, and emails are optional. If it is set to #print_type("none"), the assessors section will not be displayed.
+If the array is set, the names are required, and emails are optional. If it is set to #print-type("none"), the assessors section will not be displayed.
 
 #codly(header: [ #strong[Example code] ])
 ```typ
@@ -348,7 +348,7 @@ assessors: (
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: (#print_type("array") of 4 #math.times (#print_type("string") or #print_type("content"))) or #print_type("none")],
+  [#icon-ty\Type: (#print-type("array") of 4 #math.times (#print-type("string") or #print-type("content"))) or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -358,7 +358,7 @@ assessors: (
 )
 
 The `version-history` parameter is used to specify the version history of the document. It is an array of strings or content blocks representing the version number, data, author, and changes for each version.
-If the array is set, all four fields are required. If it is set to #print_type("none"), the version history section will not be displayed.
+If the array is set, all four fields are required. If it is set to #print-type("none"), the version history section will not be displayed.
 
 The top entry is the array is the oldest version, and the bottom entry is the newest version.
 The version number of the most recent version will be displayed on the cover page if @disable-version-on-cover is set to `true`.
@@ -392,7 +392,7 @@ version-history: (
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("dictionary") or #print_type("none")],
+  [#icon-ty\Type: #print-type("dictionary") or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -429,7 +429,7 @@ glossary-terms: term-list
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("bool")],
+  [#icon-ty\Type: #print-type("bool")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -451,7 +451,7 @@ glossary-front: true
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #link("https://typst.app/docs/reference/model/bibliography/", underline(text(fill: blue)[bibliography])) or #print_type("none")],
+  [#icon-ty\Type: #link("https://typst.app/docs/reference/model/bibliography/", underline(text(fill: blue)[bibliography])) or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -476,7 +476,7 @@ bibliography-file: bibliography("my-sources.bib")
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("string")],
+  [#icon-ty\Type: #print-type("string")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -498,7 +498,7 @@ citation-style: "apa"
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("int")],
+  [#icon-ty\Type: #print-type("int")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -520,7 +520,7 @@ toc-depth: 2
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("bool")],
+  [#icon-ty\Type: #print-type("bool")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -542,7 +542,7 @@ disable-toc: true
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("bool")],
+  [#icon-ty\Type: #print-type("bool")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -565,7 +565,7 @@ disable-chapter-numbering: true
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("bool")],
+  [#icon-ty\Type: #print-type("bool")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -588,7 +588,7 @@ disable-version-on-cover: true
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("bool")],
+  [#icon-ty\Type: #print-type("bool")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -610,7 +610,7 @@ chapter-on-new-page: true
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("content") or #print_type("none")],
+  [#icon-ty\Type: #print-type("content") or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -637,7 +637,7 @@ pre-toc: [
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("bool")],
+  [#icon-ty\Type: #print-type("bool")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -659,7 +659,7 @@ table-of-figures: true
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("bool")],
+  [#icon-ty\Type: #print-type("bool")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -682,7 +682,7 @@ table-of-listings: true
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("bool")],
+  [#icon-ty\Type: #print-type("bool")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -704,7 +704,7 @@ table-of-tables: true
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("content") or #print_type("none")],
+  [#icon-ty\Type: #print-type("content") or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -731,7 +731,7 @@ appendix: [
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("string") or #print_type("none")],
+  [#icon-ty\Type: #print-type("string") or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -740,7 +740,7 @@ appendix: [
   [#icon-val\Default: `none`],
 )
 
-The `watermark` parameter is used to set a watermark text that will be displayed on each page of the document. If it is set to #print_type("none"), no watermark will be displayed.
+The `watermark` parameter is used to set a watermark text that will be displayed on each page of the document. If it is set to #print-type("none"), no watermark will be displayed.
 
 #codly(header: [ #strong[Example code] ])
 ```typ
@@ -753,7 +753,7 @@ watermark: "DRAFT"
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("int")],
+  [#icon-ty\Type: #print-type("int")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -777,7 +777,7 @@ censored: 1
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("bool")],
+  [#icon-ty\Type: #print-type("bool")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -799,7 +799,7 @@ line-numbering: true
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("string")],
+  [#icon-ty\Type: #print-type("string")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -828,7 +828,7 @@ line-numbering-scope: "document"
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("bool")],
+  [#icon-ty\Type: #print-type("bool")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -852,7 +852,7 @@ print-extra-white-page: true
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("color") or #print_type("none")],
+  [#icon-ty\Type: #print-type("color") or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -877,7 +877,7 @@ secondary-organisation-color: rgb("FF0000")
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #link("https://typst.app/docs/reference/visualize/image/", underline(text(fill: blue)[image])) or #print_type("none")],
+  [#icon-ty\Type: #link("https://typst.app/docs/reference/visualize/image/", underline(text(fill: blue)[image])) or #print-type("none")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -899,7 +899,7 @@ secondary-organisation-logo: image("secondary-logo.png", width: 100px)
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("bool")],
+  [#icon-ty\Type: #print-type("bool")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -923,7 +923,7 @@ enable-index: true
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("int")],
+  [#icon-ty\Type: #print-type("int")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -944,7 +944,7 @@ index-columns: 3
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Type: #print_type("array") of 2 #math.times #print_type("length")],
+  [#icon-ty\Type: #print-type("array") of 2 #math.times #print-type("length")],
 )
 #box(
   stroke: 1pt + rgb("2F5496"),
@@ -969,7 +969,7 @@ header-content-spacing: (50%, 50%)
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Parameters: #print_type("string")\(url\), #print_type("content")\(text\)],
+  [#icon-ty\Parameters: #print-type("string")\(url\), #print-type("content")\(text\)],
 )
 
 This function is used to create a styled hyperlink. The `url` parameter specifies the URL to link to, and the `text` parameter specifies the text to display as the link.
@@ -990,7 +990,7 @@ Which will look like this:
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Parameters: #print_type("string")\(text\)],
+  [#icon-ty\Parameters: #print-type("string")\(text\)],
 )
 
 This function is used to mark content as sensitive. The content will be censored if the `censored` parameter is set to `1`.
@@ -1018,7 +1018,7 @@ It will end up looking like this:
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Parameters: #print_type("int")\(style\), #print_type("array")\(columns\), #print_type("content")\(content\)],
+  [#icon-ty\Parameters: #print-type("int")\(style\), #print-type("array")\(columns\), #print-type("content")\(content\)],
 )
 
 The `ftable` function is the same as a normal table function, except it only takes 2 parameters and one custom parameter.
@@ -1059,7 +1059,7 @@ Which will look like this:
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Parameters: #print_type("int")\(line\)],
+  [#icon-ty\Parameters: #print-type("int")\(line\)],
 )
 
 This function is a helper function for the `codly` function. It is intended to simplify the process of setting the line number for code blocks.
@@ -1088,7 +1088,7 @@ It does not reset the line number for the next code block.
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Parameters: #print_type("color")\(background-color\), #print_type("color")\(stroke-color\), #print_type("color")\(text-color\), #print_type("content")\(content\)],
+  [#icon-ty\Parameters: #print-type("color")\(background-color\), #print-type("color")\(stroke-color\), #print-type("color")\(text-color\), #print-type("content")\(content\)],
 )
 
 All values except for the `content` parameter are optional.
@@ -1110,7 +1110,7 @@ Which will look like this:
   stroke: 1pt + rgb("2F5496"),
   fill: rgb("2F5496").lighten(90%),
   inset: 0.35em,
-  [#icon-ty\Parameters: #print_type("string")\(title\), #print_type("content")\(body\), #print_type("color")\(line-color\)],
+  [#icon-ty\Parameters: #print-type("string")\(title\), #print-type("content")\(body\), #print-type("color")\(line-color\)],
 )
 
 The `lined-box` function is used to create a styled box with a title and body. The `title` parameter specifies the title of the box, the `body` parameter specifies the content of the box, and the `line-color` parameter specifies the color of the line surrounding the box, as well as the text color.

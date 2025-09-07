@@ -1,0 +1,65 @@
+template-version: 1.1.3
+compatible-typst-versions:
+  - 0.13
+functions:
+  hlink:
+    description: "This function is used to create a styled hyperlink."
+    url:
+      types: 
+        - "string"
+      description: "The URL the link points to."
+    content:
+      types:
+        - "string"
+        - "none"
+      description: "The text which is displayed in the document. If set to none the link itself will be displayed."
+      default: none
+    return:
+      types:
+        - "content"
+      description: "The styled text."
+  sensitive:
+    description: "This function is used to mark content as sensitive. It will print special characters instead of the provided content if active. It will only censor the text if the correct option has been set in the main function."
+    textl:
+      types:
+        - "string"
+      description: "The content to censor."
+    return:
+      types:
+        - "content"
+      description: "The text or special characters."
+  ftable:
+    description: "The `ftable` function is the same as a normal table function, except it only takes 2 parameters and one custom parameter. TODO."
+    style:
+      types:
+        - "int"
+      description: "Used to set the style of the table. The available styles are 1 through 7."
+      default: "2"
+    columns:
+      types:
+        - "array"
+        - "none"
+      description: "Amount of columns and how wide they are."
+      default: "none"
+      example: "(1fr, 1fr)"
+    tablec:
+      types:
+        - "content"
+      description: "Cells to put in the table."
+      example: "[A], [B]"
+    return:
+      types:
+        - "content"
+      description: "Returns a table."
+  set-code-line-nr:
+    description: "This function is a helper function for the codly function.\nIt is intended to simplify the process of setting the line number for code blocks. You will need to call this function again if you want to change the line number. It does not reset the line number for the next code block."
+    start:
+      types:
+        - "int"
+      description: "The line number to start at."
+      default: "1"
+    return:
+      types:
+        - "none"
+
+
