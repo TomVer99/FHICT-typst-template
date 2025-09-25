@@ -1,8 +1,8 @@
 #import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.8": *
-#import "@preview/glossarium:0.5.4": gls, glspl, make-glossary, print-glossary, register-glossary
-#import "@preview/in-dexter:0.7.0": *
-#import "@preview/hydra:0.6.0": hydra
+#import "@preview/glossarium:0.5.9": gls, glspl, make-glossary, print-glossary, register-glossary
+#import "@preview/in-dexter:0.7.2": *
+#import "@preview/hydra:0.6.2": hydra
 
 #let fontys-purple-1 = rgb("663366")
 #let fontys-purple-2 = rgb("B59DB5")

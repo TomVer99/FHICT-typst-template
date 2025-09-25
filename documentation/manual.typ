@@ -73,7 +73,7 @@ When copying content from this template, make sure to respect the licenses of an
 
 This template follows semantic versioning. The version number is composed of three parts: major, minor, and patch. For example, in version 1.2.3:
 - The first number (1) is the major version, which changes when there are significant updates that may include breaking changes.
-- The second number (2) is the minor version, which changes when small updates are added in a backward-compatible manner.
+- The second number (2) is the minor version, which changes when small updates are added.
 - The third number (3) is the patch version, which changes when backward-compatible bug fixes or small updates to documentation are made.
 
 = Importing
