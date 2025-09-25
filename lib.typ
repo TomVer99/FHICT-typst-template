@@ -722,7 +722,16 @@
     // Disable heading numbering and appearing in the TOC
     set heading(numbering: none, outlined: false)
     if line-numbering == true {
-      set par.line(numbering: "1", numbering-scope: line-numbering-scope)
+      set par.line(
+        numbering: num => {
+          if (calc.rem(num, 5) == 0) {
+            num
+          } else if (num == 1) {
+            num
+          }
+        },
+        numbering-scope: line-numbering-scope,
+      )
       pre-toc
     } else {
       pre-toc
@@ -872,7 +881,16 @@
 
   // Show the page's contents
   if line-numbering == true {
-    set par.line(numbering: "1", numbering-scope: line-numbering-scope)
+    set par.line(
+      numbering: num => {
+        if (calc.rem(num, 5) == 0) {
+          num
+        } else if (num == 1) {
+          num
+        }
+      },
+      numbering-scope: line-numbering-scope,
+    )
     body
   } else {
     body
@@ -939,7 +957,16 @@
     )
 
     if line-numbering == true {
-      set par.line(numbering: "1", numbering-scope: line-numbering-scope)
+      set par.line(
+        numbering: num => {
+          if (calc.rem(num, 5) == 0) {
+            num
+          } else if (num == 1) {
+            num
+          }
+        },
+        numbering-scope: line-numbering-scope,
+      )
       appendix
     } else {
       appendix
