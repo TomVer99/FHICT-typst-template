@@ -25,8 +25,6 @@
     "https://typst.app/docs/reference/visualize/color/"
   } else if ty == "gradient" {
     "https://typst.app/docs/reference/visualize/gradient/"
-  } else if ty == "pattern" {
-    "https://typst.app/docs/reference/visualize/pattern/"
   } else if ty == "length" {
     "https://typst.app/docs/reference/layout/length/"
   } else if ty == "stroke" {
@@ -42,6 +40,76 @@
   }
 }
 
-#let print_type(type) = {
-  link(link-to-typst-doc(type), underline(text(fill: blue)[#raw(lang: "typ", type)]))
+#let determine-color(ty) = {
+  if ty == "array" {
+    rgb("#f9dfff")
+  } else if ty == "string" or ty == "str" {
+    rgb("#d1ffe2")
+  } else if ty == "dictionary" {
+    rgb("#f9dfff")
+  } else if ty == "type(none)" or ty == "none" {
+    rgb("#ffcbc4")
+  } else if ty == "type(auto)" {
+    rgb("#ffcbc4")
+  } else if ty == "content" {
+    rgb("#a6ebe6")
+  } else if ty == "bool" {
+    rgb("#ffedc1")
+  } else if ty == "arguments" {
+    rgb("#f9dfff")
+  } else if ty == "function" {
+    rgb("#d1d4fd")
+  } else if ty == "color" {
+    gradient.linear(rgb("#7CD5FF"), rgb("#A6FBCA"), rgb("#FFF37C"), rgb("#FFA49D"))
+  } else if ty == "gradient" {
+    gradient.linear(rgb("#7CD5FF"), rgb("#A6FBCA"), rgb("#FFF37C"), rgb("#FFA49D"))
+  } else if ty == "length" {
+    rgb("#ffedc1")
+  } else if ty == "stroke" {
+    gradient.linear(rgb("#7CD5FF"), rgb("#A6FBCA"), rgb("#FFF37C"), rgb("#FFA49D"))
+  } else if ty == "alignment" {
+    rgb("#a6eaff")
+  } else if ty == "int" {
+    rgb("#ffedc1")
+  } else if ty == "label" {
+    rgb("#c6d6ec")
+  } else {
+    panic("unknown type: " + ty)
+  }
+}
+
+#let print-type(type) = {
+  // link(link-to-typst-doc(type), underline(text(fill: blue)[#raw(lang: "typ", type)]))
+  link(
+    link-to-typst-doc(type),
+    box(radius: 4pt, outset: 3pt, fill: determine-color(type))[#underline(text(
+      fill: blue,
+    )[#raw(
+      lang: "typ",
+      type,
+    )])]
+      + [ ],
+  )
+}
+
+#let print-param(border: teal, name: "N/A", types: none, description: none, default-val: none, example: none) = {
+  block(width: 95%, fill: luma(255), stroke: 1pt + border, inset: 10pt, breakable: false)[
+    #strong[#raw(name)]
+    #h(2em)
+    #for parameter-type in types {
+      (
+        print-type(parameter-type) + [#if (parameter-type != types.at(-1)) { h(0.15em) + sub[or] + h(0.4em) }]
+      )
+    }
+
+    #if default-val != none {
+      "Default: " + raw(default-val, lang: "typc")
+    }
+
+    #description
+
+    #if example != none {
+      "Example: " + raw(example, lang: "typc")
+    }
+  ]
 }

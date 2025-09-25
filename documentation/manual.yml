@@ -1,0 +1,317 @@
+template-version: 1.1.3
+compatible-typst-versions:
+  - 0.13
+functions:
+  hlink:
+    description: "This function is used to create a styled hyperlink."
+    url:
+      types: 
+        - "string"
+      description: "The URL the link points to."
+      example: "\"https://www.fontys.nl\""
+    content:
+      types:
+        - "string"
+        - "none"
+      description: "The text which is displayed in the document. If set to none the link itself will be displayed."
+      default: none
+      example: "\"Visit Fontys website\""
+    return:
+      types:
+        - "content"
+      description: "The styled text."
+  sensitive:
+    description: "This function is used to mark content as sensitive. It will print special characters instead of the provided content if active. It will only censor the text if the correct option has been set in the main function."
+    textl:
+      types:
+        - "string"
+      description: "The content to censor."
+    return:
+      types:
+        - "content"
+      description: "The text or special characters."
+  ftable:
+    description: "The `ftable` function is the same as a normal table function, except it only takes 2 parameters and one custom parameter. TODO."
+    style:
+      types:
+        - "int"
+      description: "Used to set the style of the table. The available styles are 1 through 7."
+      default: "2"
+    columns:
+      types:
+        - "array"
+        - "none"
+      description: "Amount of columns and how wide they are."
+      default: "none"
+      example: "(1fr, 1fr)"
+    tablec:
+      types:
+        - "content"
+      description: "Cells to put in the table."
+      example: "[A], [B]"
+    return:
+      types:
+        - "content"
+      description: "Returns a table."
+  set-code-line-nr:
+    description: "This function is a helper function for the codly function.\nIt is intended to simplify the process of setting the line number for code blocks. You will need to call this function again if you want to change the line number. It does not reset the line number for the next code block."
+    start:
+      types:
+        - "int"
+      description: "The line number to start at."
+      default: "1"
+    return:
+      types:
+        - "none"
+  text-box:
+    description: "This function creates a styled text box with a customizable background color, stroke color, and text color."
+    background-color:
+      types:
+        - "color"
+      description: "The background color of the text box."
+      default: "luma(240)"
+    stroke-color:
+      types:
+        - "color"
+      description: "The color of the left border stroke."
+      default: "black"
+    text-color:
+      types:
+        - "color"
+      description: "The color of the text inside the box."
+      default: "black"
+    content:
+      types:
+        - "content"
+      description: "The content to display inside the text box."
+    return:
+      types:
+        - "content"
+      description: "A styled rectangular box containing the content."
+  lined-box:
+    description: "This function creates a bordered box with a title positioned at the top-left corner outside the border."
+    title:
+      types:
+        - "string"
+        - "content"
+      description: "The title to display at the top-left corner of the box."
+    body:
+      types:
+        - "content"
+      description: "The content to display inside the box."
+    line-color:
+      types:
+        - "color"
+      description: "The color of the border and title text."
+      default: "red"
+    return:
+      types:
+        - "content"
+      description: "A bordered box with title and content."
+  fhict-doc:
+    description: "The main document function that sets up the FHICT document template with all styling, layout, and structure. This function configures the entire document including cover page, table of contents, headers, footers, and content styling."
+    title:
+      types:
+        - "string"
+      description: "The main title of the document."
+      default: "\"Document Title\""
+    subtitle:
+      types:
+        - "string"
+        - "none"
+      description: "Optional subtitle for the document."
+      default: "none"
+    language:
+      types:
+        - "string"
+      description: "The language code for the document (e.g., 'en', 'nl', 'de', 'fr', 'es')."
+      default: "\"en\""
+    available-languages:
+      types:
+        - "array"
+        - "none"
+      description: "List of available language codes to show language flags on cover page."
+      default: "none"
+      example: "(\"en\", \"nl\", \"de\")"
+    date:
+      types:
+        - "string"
+        - "none"
+      description: "Date to display on cover page. If none, uses current date."
+      default: "none"
+    authors-title:
+      types:
+        - "string"
+        - "none"
+      description: "Title for the authors section on cover page."
+      default: "none"
+    authors:
+      types:
+        - "array"
+        - "none"
+      description: "Array of author objects with 'name' and optionally 'email' fields."
+      default: "none"
+      example: "((name: \"John Doe\", email: \"john.doe@example.com\"), (name: \"Jane Smith\", email: \"jane.smith@example.com\"))"
+    assessors-title:
+      types:
+        - "string"
+        - "none"
+      description: "Title for the assessors section on cover page."
+      default: "none"
+    assessors:
+      types:
+        - "array"
+        - "none"
+      description: "Array of assessor objects with 'name', 'email', and optionally 'title' fields."
+      default: "none"
+      example: "((title: \"Supervisor\", name: \"Dr. Smith\", email: \"dr.smith@fontys.nl\"), (title: \"Co-assessor\", name: \"Prof. Johnson\", email: \"prof.johnson@fontys.nl\"))"
+    version-history:
+      types:
+        - "array"
+        - "none"
+      description: "Array of version objects with 'version', 'date', 'author', and 'changes' fields."
+      default: "none"
+      example: "((version: \"1.0\", date: \"2025-01-01\", author: \"John Doe\", changes: \"Initial version\"), (version: \"1.1\", date: \"2025-02-01\", author: \"Jane Smith\", changes: \"Added new chapters\"))"
+    glossary-terms:
+      types:
+        - "array"
+        - "none"
+      description: "Array of glossary term objects for generating a glossary."
+      default: "none"
+      example: "((key: \"API\", short: \"API\", long: \"Application Programming Interface\"), (key: \"URL\", short: \"URL\", long: \"Uniform Resource Locator\"))"
+    glossary-front:
+      types:
+        - "bool"
+      description: "Whether to place glossary at the front of the document (after TOC) instead of at the back."
+      default: "false"
+    bibliography-file:
+      types:
+        - "content"
+        - "none"
+      description: "Bibliography content or file reference."
+      default: "none"
+      example: "bibliography(\"references.bib\")"
+    citation-style:
+      types:
+        - "string"
+      description: "Citation style to use (e.g., 'ieee', 'apa', 'chicago')."
+      default: "\"ieee\""
+    toc-depth:
+      types:
+        - "int"
+      description: "Maximum depth of headings to include in table of contents."
+      default: "3"
+    disable-toc:
+      types:
+        - "bool"
+      description: "Whether to disable the table of contents."
+      default: "false"
+    disable-chapter-numbering:
+      types:
+        - "bool"
+      description: "Whether to disable automatic chapter numbering."
+      default: "false"
+    disable-version-on-cover:
+      types:
+        - "bool"
+      description: "Whether to hide version number from cover page."
+      default: "false"
+    chapter-on-new-page:
+      types:
+        - "bool"
+      description: "Whether to start each chapter on a new page."
+      default: "false"
+    pre-toc:
+      types:
+        - "content"
+        - "none"
+      description: "Content to include before the table of contents."
+      default: "none"
+    table-of-figures:
+      types:
+        - "bool"
+        - "none"
+      description: "Whether to include a table of figures."
+      default: "none"
+    table-of-listings:
+      types:
+        - "bool"
+        - "none"
+      description: "Whether to include a table of code listings."
+      default: "none"
+    table-of-tables:
+      types:
+        - "bool"
+        - "none"
+      description: "Whether to include a table of tables."
+      default: "none"
+    appendix:
+      types:
+        - "content"
+        - "none"
+      description: "Content to include as appendices."
+      default: "none"
+    watermark:
+      types:
+        - "string"
+        - "none"
+      description: "Text to display as a watermark on all pages."
+      default: "none"
+      example: "\"DRAFT\""
+    censored:
+      types:
+        - "int"
+      description: "Whether to censor sensitive content (0 = no censoring, 1 = censor)."
+      default: "0"
+    line-numbering:
+      types:
+        - "bool"
+      description: "Whether to enable line numbering in the document."
+      default: "false"
+    line-numbering-scope:
+      types:
+        - "string"
+      description: "Scope for line numbering ('page' or 'document')."
+      default: "\"page\""
+    print-extra-white-page:
+      types:
+        - "bool"
+      description: "Whether to print extra blank pages for proper double-sided printing.\nNOTE: Can be buggy."
+      default: "false"
+    secondary-organisation-color:
+      types:
+        - "color"
+        - "none"
+      description: "Color for secondary organization branding."
+      default: "none"
+      example: "rgb(\"#1F3763\")"
+    secondary-organisation-logo:
+      types:
+        - "content"
+        - "none"
+      description: "Logo image for secondary organization."
+      default: "none"
+      example: "image(\"company-logo.png\", height: 3cm)"
+    enable-index:
+      types:
+        - "bool"
+      description: "Whether to enable document index generation."
+      default: "false"
+    index-columns:
+      types:
+        - "int"
+      description: "Number of columns for the index layout."
+      default: "2"
+    header-content-spacing:
+      types:
+        - "array"
+      description: "Array defining spacing for header content (left and right sections)."
+      default: "(50%, 50%)"
+    body:
+      types:
+        - "content"
+      description: "The main content of the document."
+    return:
+      types:
+        - "content"
+      description: "A fully formatted FHICT document."
