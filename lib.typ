@@ -200,6 +200,10 @@
   print-extra-white-page: false,
   secondary-organisation-color: none,
   secondary-organisation-logo: none,
+  secondary-organisation-footer-logo: none,
+  secondary-organisation-logo-cover-size: 3.5cm,
+  secondary-organisation-logo-footer-size: 0.6cm,
+  disable-secondary-organisation-logo-footer: false,
   enable-index: false,
   index-columns: 2,
   header-content-spacing: (50%, 50%),
@@ -330,7 +334,7 @@
           bottom + right,
           dx: -30pt,
           dy: -120pt,
-          secondary-organisation-logo,
+          image(secondary-organisation-logo, height: secondary-organisation-logo-cover-size),
         )
       }
       // For scociety image
@@ -647,9 +651,23 @@
       ]
     ],
     footer: [
-      #place(left + horizon, dy: -10pt, dx: -15pt, image("assets/for-society.png", height: 200%))
+      #place(left + horizon, dy: -10pt, dx: -15pt, image("assets/for-society.png", height: 3.5cm))
+      #if (
+        (secondary-organisation-logo != none or secondary-organisation-footer-logo != none)
+          and (disable-secondary-organisation-logo-footer == false)
+      ) {
+        place(right + horizon, dy: -6pt, image(
+          if (secondary-organisation-footer-logo != none) { secondary-organisation-footer-logo } else {
+            secondary-organisation-logo
+          },
+          height: secondary-organisation-logo-footer-size,
+        ))
+      }
       #place(
-        right + horizon,
+        if (secondary-organisation-logo == none and secondary-organisation-footer-logo == none)
+          or (disable-secondary-organisation-logo-footer == true) {
+          right + horizon
+        } else { center + horizon },
         dy: -10pt,
         text(15pt, fill: fontys-purple-1, font: "Roboto")[
           #context [
@@ -819,9 +837,23 @@
     "a4",
     background: [],
     footer: [
-      #place(left + horizon, dy: -10pt, dx: -15pt, image("assets/for-society.png", height: 200%))
+      #place(left + horizon, dy: -10pt, dx: -15pt, image("assets/for-society.png", height: 3.5cm))
+      #if (
+        (secondary-organisation-logo != none or secondary-organisation-footer-logo != none)
+          and (disable-secondary-organisation-logo-footer == false)
+      ) {
+        place(right + horizon, dy: -6pt, image(
+          if (secondary-organisation-footer-logo != none) { secondary-organisation-footer-logo } else {
+            secondary-organisation-logo
+          },
+          height: secondary-organisation-logo-footer-size,
+        ))
+      }
       #place(
-        right + horizon,
+        if (secondary-organisation-logo == none and secondary-organisation-footer-logo == none)
+          or (disable-secondary-organisation-logo-footer == true) {
+          right + horizon
+        } else { center + horizon },
         dy: -10pt,
         text(15pt, fill: fontys-purple-1, font: "Roboto")[
           #context [
