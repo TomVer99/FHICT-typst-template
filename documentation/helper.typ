@@ -35,6 +35,8 @@
     "https://typst.app/docs/reference/foundations/int/"
   } else if ty == "label" {
     "https://typst.app/docs/reference/foundations/label/"
+  } else if ty == "bytes" {
+    "https://typst.app/docs/reference/foundations/bytes/"
   } else {
     panic("unknown type: " + ty)
   }
@@ -73,6 +75,8 @@
     rgb("#ffedc1")
   } else if ty == "label" {
     rgb("#c6d6ec")
+  } else if ty == "bytes" {
+    rgb("#f9dfff")
   } else {
     panic("unknown type: " + ty)
   }
