@@ -3,6 +3,7 @@ import shutil
 import os
 import tarfile
 import toml
+import fileinput
 
 __TEMP_LOCATION = "./local/"
 __PACKAGES = []
@@ -12,31 +13,82 @@ __PACKAGE_VERSION_INDEX = 1
 # ##############################################################################################################
 # Parsing
 
+def extract_preview_package_info(line:str):
+    slash_index = line.find("/")
+    quotation_index = line.find("\"", line.find("\"") + 1)
+    first_colon_index = line.find(":")
+    second_colon_index = line.find(":", line.find(":") + 1)
+
+    package_name = line[slash_index+1:first_colon_index]
+    package_version = line[first_colon_index+1:quotation_index]
+    package_options = line[second_colon_index:]
+
+    return package_name, package_version, package_options.rstrip()
+
 def parse_file_for_external_packages_recursively(path:str, toml_dir_ref_path:str):
     external_packages = []
+    files_to_change = []
     with open(path, "r") as file:
         for line in file:
             if line.startswith("#import \"@preview/"): # External package
-                line = line.replace("#import \"@preview/", "")
-                if line.count(":") > 1:
-                    line = line.split("\":", 1)[0]
-                else:
-                    line = line.split("\"", 1)[0]
-                package, version = line.split(":", 1)
-                external_packages.append((package, version))
+                package_name, package_version, _ = extract_preview_package_info(line)
+                external_packages.append((package_name, package_version))
+                files_to_change.append((path, toml_dir_ref_path))
             elif line.startswith("#import \"/"): # Internal package with path relative to toml file dir
                 line = line.rstrip().replace("#import \"/", "")
                 line = line.split("\"", 1)[0]
-                sub_packages = parse_file_for_external_packages_recursively(toml_dir_ref_path + line, toml_dir_ref_path)
+                sub_packages, sub_files = parse_file_for_external_packages_recursively(toml_dir_ref_path + line, toml_dir_ref_path)
                 if sub_packages != []:
-                    external_packages = external_packages + sub_packages
+                    external_packages += sub_packages
+                if sub_files != []:
+                    files_to_change += sub_files
+                files_to_change.append((path, toml_dir_ref_path))
             elif line.startswith("#import \"./"): # Internal package with path relative to current file
                 line = line.rstrip().replace("#import \"./", "")
                 line = line.split("\"", 1)[0]
-                sub_packages = parse_file_for_external_packages_recursively(toml_dir_ref_path + line, toml_dir_ref_path)
+                sub_packages, sub_files = parse_file_for_external_packages_recursively(toml_dir_ref_path + line, toml_dir_ref_path)
                 if sub_packages != []:
-                    external_packages = external_packages + sub_packages
-    return external_packages
+                    external_packages += sub_packages
+                if sub_files != []:
+                    files_to_change += sub_files
+            # elif line.startswith("#import \""): # Internal package with path relative to current file
+            #     line = line.rstrip().replace("#import \"", "")
+            #     line = line.split("\"", 1)[0]
+            #     line = "./" + line 
+            #     sub_packages = parse_file_for_external_packages_recursively(toml_dir_ref_path + line, toml_dir_ref_path)
+            #     if sub_packages != []:
+            #         external_packages = external_packages + sub_packages
+    return external_packages, files_to_change
+
+def change_paths(path:str, toml_dir_ref_path:str):
+    for line in fileinput.input(path, inplace=True, backup=".bak"):
+        og_line = line
+        if line.startswith("#import \"@preview/"): # External package
+            package_name, package_version, package_options = extract_preview_package_info(line)
+            if toml_dir_ref_path != "":
+                levels = path.count("/") - toml_dir_ref_path.count("/") + 1
+            else:
+                levels = 0
+            package_path = ""
+
+            for package in __PACKAGES:
+                if package[__PACKAGE_PACKAGE_INDEX] == package_name and package[__PACKAGE_VERSION_INDEX] == package_version:
+                    package_path = package[2]
+
+            print("#import \"./" + ("../" * levels) + package_path.removeprefix("./local/") + "\"" + package_options,end="\n")
+            # print("./" + ("../" * levels) + package_path,end="\n")
+        elif line.startswith("#import \"/"): # Internal package with path relative to toml file dir
+            line = line.rstrip().replace("#import \"/", "")
+            line = line.split("\"", 1)[0]
+            print("Internal package with path relative to toml file dir" ,end="")
+        elif line.startswith("#import \"./"): # Internal package with path relative to current file
+            line = line.rstrip().replace("#import \"./", "")
+            line = line.split("\"", 1)[0]
+            print("Internal package with path relative to current file" ,end="")
+        elif line.startswith("#import \""): # Internal package with path relative to current file
+            print(og_line ,end="")
+        else:
+            print(og_line ,end="")
 
 def parse_toml(path:str):
     data = toml.load(path)
@@ -57,6 +109,13 @@ def check_if_packages_are_missing(packages, toml_files):
         if f"{__TEMP_LOCATION}{package[__PACKAGE_PACKAGE_INDEX]}-{package[__PACKAGE_VERSION_INDEX]}/typst.toml" not in toml_files:
             return True
     return False
+
+def assign_lib_path_to_lib():
+    toml_files = scan_for_toml_files()
+    for package in __PACKAGES:
+        if f"{__TEMP_LOCATION}{package[__PACKAGE_PACKAGE_INDEX]}-{package[__PACKAGE_VERSION_INDEX]}/typst.toml" in toml_files:
+            tmp = parse_toml(f"{__TEMP_LOCATION}{package[__PACKAGE_PACKAGE_INDEX]}-{package[__PACKAGE_VERSION_INDEX]}/typst.toml")
+            __PACKAGES[__PACKAGES.index(package)] = package + (tmp,)
 
 # ##############################################################################################################
 # Downloading
@@ -84,18 +143,26 @@ if __name__ == "__main__":
     os.mkdir(__TEMP_LOCATION)
     shutil.copyfile("lib.typ", __TEMP_LOCATION + "lib.typ")
 
-    packages = parse_file_for_external_packages_recursively(__TEMP_LOCATION + "lib.typ", "")
+    packages, files_to_change = parse_file_for_external_packages_recursively(__TEMP_LOCATION + "lib.typ", "")
     download_missing_packages(packages)
 
     while True:
         toml_files = scan_for_toml_files()
         for file in toml_files:
-            packages = parse_file_for_external_packages_recursively(parse_toml(file), file.removesuffix("typst.toml"))
+            packages, sub_files_to_change = parse_file_for_external_packages_recursively(parse_toml(file), file.removesuffix("typst.toml"))
+            files_to_change += sub_files_to_change
             download_missing_packages(packages)
 
         if check_if_packages_are_missing(__PACKAGES, scan_for_toml_files()) is False:
             break
 
-    shutil.copytree("assets/", __TEMP_LOCATION + "assets/")
+    assign_lib_path_to_lib()
+    unique_files_to_change = list(dict.fromkeys(files_to_change))
 
-    shutil.rmtree(__TEMP_LOCATION)
+    print(unique_files_to_change)
+    for file in unique_files_to_change:
+        change_paths(file[0], file[1])
+
+    # shutil.copytree("assets/", __TEMP_LOCATION + "assets/")
+
+    # shutil.rmtree(__TEMP_LOCATION)
