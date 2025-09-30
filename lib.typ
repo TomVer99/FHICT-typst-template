@@ -713,11 +713,9 @@
         ([#entry.version], [#entry.date], [#entry.author], [#entry.changes])
       },
     )
-    if distribution-history == none {
-      pagebreak()
-      if print-extra-white-page == true {
-        page-intentionally-left-blank(newpage: false)
-      }
+    pagebreak()
+    if print-extra-white-page == true {
+      page-intentionally-left-blank(newpage: false)
     }
   }
 
