@@ -172,6 +172,13 @@ functions:
       description: "Array of version objects with 'version', 'date', 'author', and 'changes' fields."
       default: "none"
       example: "((version: \"1.0\", date: \"2025-01-01\", author: \"John Doe\", changes: \"Initial version\"), (version: \"1.1\", date: \"2025-02-01\", author: \"Jane Smith\", changes: \"Added new chapters\"))"
+    distribution-history:
+      types:
+        - "array"
+        - "none"
+      description: "Array of distribution objects tracking who received the document, when, and how. Each entry contains 'recipient', 'organisation', 'date', 'method', and 'version' fields."
+      default: "none"
+      example: "((recipient: \"John Doe\", organisation: \"Company A\", date: \"2025-09-30\", method: \"Email\", version: \"1.0\"), (recipient: \"Jane Smith\", organisation: \"Company B\", date: \"2025-10-01\", method: \"Portal\", version: \"1.1\"))"
     glossary-terms:
       types:
         - "array"
