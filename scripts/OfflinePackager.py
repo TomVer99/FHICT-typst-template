@@ -5,7 +5,7 @@ import tarfile
 import toml
 import fileinput
 
-__TEMP_LOCATION = "./local/"
+__TEMP_LOCATION = "./fhict-document-template-local/"
 __PACKAGES = []
 __PACKAGE_PACKAGE_INDEX = 0
 __PACKAGE_VERSION_INDEX = 1
@@ -21,7 +21,11 @@ def extract_preview_package_info(line:str):
 
     package_name = line[slash_index+1:first_colon_index]
     package_version = line[first_colon_index+1:quotation_index]
-    package_options = line[second_colon_index:]
+
+    if line.count(":") > 1:
+        package_options = line[second_colon_index:]
+    else:
+        package_options = ""
 
     return package_name, package_version, package_options.rstrip()
 
@@ -51,13 +55,14 @@ def parse_file_for_external_packages_recursively(path:str, toml_dir_ref_path:str
                     external_packages += sub_packages
                 if sub_files != []:
                     files_to_change += sub_files
-            # elif line.startswith("#import \""): # Internal package with path relative to current file
-            #     line = line.rstrip().replace("#import \"", "")
-            #     line = line.split("\"", 1)[0]
-            #     line = "./" + line 
-            #     sub_packages = parse_file_for_external_packages_recursively(toml_dir_ref_path + line, toml_dir_ref_path)
-            #     if sub_packages != []:
-            #         external_packages = external_packages + sub_packages
+            elif line.startswith("#import \""): # Internal package with path relative to current file
+                line = line.rstrip().replace("#import \"", "")
+                line = line.split("\"", 1)[0]
+                sub_packages, sub_files = parse_file_for_external_packages_recursively(os.path.dirname(path) + "/" + line, toml_dir_ref_path)
+                if sub_packages != []:
+                    external_packages += sub_packages
+                if sub_files != []:
+                    files_to_change += sub_files
     return external_packages, files_to_change
 
 def change_paths(path:str, toml_dir_ref_path:str):
@@ -75,18 +80,24 @@ def change_paths(path:str, toml_dir_ref_path:str):
                 if package[__PACKAGE_PACKAGE_INDEX] == package_name and package[__PACKAGE_VERSION_INDEX] == package_version:
                     package_path = package[2]
 
+            # Otherwise importing this package does not work (seemingly)
+            if package_name == "oxifmt":
+                package_options += " as oxifmt"
+
             print("#import \"./" + ("../" * levels) + package_path.removeprefix("./local/") + "\"" + package_options,end="\n")
-            # print("./" + ("../" * levels) + package_path,end="\n")
         elif line.startswith("#import \"/"): # Internal package with path relative to toml file dir
             line = line.rstrip().replace("#import \"/", "")
             line = line.split("\"", 1)[0]
-            print("Internal package with path relative to toml file dir" ,end="")
-        elif line.startswith("#import \"./"): # Internal package with path relative to current file
-            line = line.rstrip().replace("#import \"./", "")
-            line = line.split("\"", 1)[0]
-            print("Internal package with path relative to current file" ,end="")
-        elif line.startswith("#import \""): # Internal package with path relative to current file
-            print(og_line ,end="")
+            if og_line.count(":") > 0:
+                options = og_line.rfind(":")
+                options = og_line[options:].rstrip()
+            elif og_line.count(" as "):
+                options = og_line.rfind(" as ")
+                options = og_line[options:].rstrip()
+            else:
+                options = ""
+            rel_path = os.path.relpath(toml_dir_ref_path + line, os.path.dirname(path))
+            print(f"#import \"./{rel_path}\"{options}", end="\n")
         else:
             print(og_line ,end="")
 
@@ -159,10 +170,12 @@ if __name__ == "__main__":
     assign_lib_path_to_lib()
     unique_files_to_change = list(dict.fromkeys(files_to_change))
 
-    print(unique_files_to_change)
+    # print(unique_files_to_change)
     for file in unique_files_to_change:
         change_paths(file[0], file[1])
 
-    # shutil.copytree("assets/", __TEMP_LOCATION + "assets/")
+    shutil.copytree("assets/", __TEMP_LOCATION + "assets/")
 
-    # shutil.rmtree(__TEMP_LOCATION)
+    shutil.make_archive("fhict-document-template-local", 'zip', os.getcwd(), __TEMP_LOCATION)
+
+    shutil.rmtree(__TEMP_LOCATION)
