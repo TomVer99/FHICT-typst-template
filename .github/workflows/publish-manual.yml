@@ -1,0 +1,23 @@
+name: Publish Manual
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish-manual:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Upload manual
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: documentation/manual.pdf
+          asset_name: manual-${{ github.event.release.tag_name }}.pdf
+          tag: ${{ github.ref }}
+          overwrite: true
