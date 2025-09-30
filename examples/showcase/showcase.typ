@@ -20,6 +20,15 @@
       changes: "Initial version",
     ),
   ),
+  distribution-history: (
+    (
+      recipient: "GitHub Repo Users",
+      organisation: "GitHub",
+      date: "2025-09-30",
+      method: "Repo",
+      version: "1.0",
+    ),
+  ),
   table-of-figures: false,
   // table-of-listings: true,
   // table-of-tables: true,
