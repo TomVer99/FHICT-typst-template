@@ -23,7 +23,7 @@ jobs:
         run: python scripts/OfflinePackager.py
         
       - name: Upload ZIP to release
-        uses: actions/upload-release-asset@v2
+        uses: actions/upload-release-asset@v1
         with:
             file: fhict-document-template-local.zip
             asset_name: offline release zip
