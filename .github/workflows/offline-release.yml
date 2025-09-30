@@ -23,8 +23,10 @@ jobs:
         run: python scripts/OfflinePackager.py
         
       - name: Upload ZIP to release
-        uses: actions/upload-release-asset@v1
+        uses: svenstaro/upload-release-action@v2
         with:
-            file: fhict-document-template-local.zip
-            asset_name: offline release zip
-            overwrite: true
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: fhict-document-template-local.zip
+          asset_name: fhict-template-offline-${{ github.event.release.tag_name }}.zip
+          tag: ${{ github.ref }}
+          overwrite: true
