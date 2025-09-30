@@ -179,6 +179,7 @@
   assessors-title: none,
   assessors: none,
   version-history: none,
+  distribution-history: none,
   glossary-terms: none,
   glossary-front: false,
   bibliography-file: none,
@@ -599,6 +600,7 @@
 
   if (
     (version-history != none)
+      or (distribution-history != none)
       or (pre-toc != none)
       or (disable-toc == false)
       or (disable-toc == false)
@@ -709,6 +711,28 @@
       [#language-dict.at("changes")],
       ..for entry in version-history {
         ([#entry.version], [#entry.date], [#entry.author], [#entry.changes])
+      },
+    )
+    if distribution-history == none {
+      pagebreak()
+      if print-extra-white-page == true {
+        page-intentionally-left-blank(newpage: false)
+      }
+    }
+  }
+
+  // Show the distribution history
+  if distribution-history != none {
+    heading(language-dict.at("distribution-history"), outlined: false, numbering: none)
+    ftable(
+      columns: (1fr, auto, auto, auto, auto),
+      [#language-dict.at("recipient")],
+      [#language-dict.at("organisation")],
+      [#language-dict.at("date")],
+      [#language-dict.at("method")],
+      [#language-dict.at("version")],
+      ..for entry in distribution-history {
+        ([#entry.recipient], [#entry.organisation], [#entry.date], [#entry.method], [#entry.version])
       },
     )
     pagebreak()
