@@ -66,7 +66,7 @@ def parse_file_for_external_packages_recursively(path:str, toml_dir_ref_path:str
     return external_packages, files_to_change
 
 def change_paths(path:str, toml_dir_ref_path:str):
-    for line in fileinput.input(path, inplace=True, backup=".bak"):
+    for line in fileinput.input(path, inplace=True):
         og_line = line
         if line.startswith("#import \"@preview/"): # External package
             package_name, package_version, package_options = extract_preview_package_info(line)
