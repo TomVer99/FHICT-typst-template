@@ -1,0 +1,30 @@
+name: Offline Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  offline-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Python dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Create offline package zip
+        run: python scripts/OfflinePackager.py
+        
+      - name: Upload ZIP to release
+        uses: actions/upload-release-asset@v2
+        with:
+            file: fhict-document-template-local.zip
+            asset_name: offline release zip
+            overwrite: true
