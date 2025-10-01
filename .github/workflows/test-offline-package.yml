@@ -27,6 +27,9 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r scripts/requirements.txt
 
+      - name: Install roboto for the Typst fod compilation
+        run: sudo apt install fonts-roboto
+
       - name: Create offline package zip
         run: python scripts/OfflinePackager.py
 
@@ -39,11 +42,7 @@ jobs:
           echo "✓ Zip file created successfully"
 
       - name: Extract offline package
-        run: |
-          unzip fhict-document-template-local.zip
-          ls -la
-          echo "Contents of extracted folder:"
-          ls -la fhict-document-template-local/
+        run: unzip fhict-document-template-local.zip
 
       - name: Setup Typst
         uses: typst-community/setup-typst@v4

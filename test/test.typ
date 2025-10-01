@@ -132,7 +132,7 @@ The table above is made with the following code:
 
 Using terms for the first time will show the term with a 'long' variant if it is set. If it is not set, the 'short' variant will be shown. If the term is used again, only the 'short' variant will be shown.
 
-`@wip` will be shown as @wip. But the second time you use it, it will be shown as @wip.
+`wip` will be shown as wip. But the second time you use it, it will be shown as wip.
 
 #pagebreak()
 == Links
