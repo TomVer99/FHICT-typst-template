@@ -1,0 +1,105 @@
+name: Test Offline Package
+
+# This workflow tests that the OfflinePackager script works correctly
+# It runs whenever the script or related files are modified
+# Steps:
+# 1. Run OfflinePackager.py to create the offline zip
+# 2. Extract the zip
+# 3. Create and compile a test document using the offline package
+# 4. Verify the PDF is generated successfully
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/OfflinePackager.py'
+      - 'scripts/requirements.txt'
+      - 'lib.typ'
+  push:
+    paths:
+      - 'scripts/OfflinePackager.py'
+      - 'scripts/requirements.txt'
+      - 'lib.typ'
+
+jobs:
+  test-offline-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Python dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Create offline package zip
+        run: python scripts/OfflinePackager.py
+
+      - name: Verify zip file was created
+        run: |
+          if [ ! -f fhict-document-template-local.zip ]; then
+            echo "Error: fhict-document-template-local.zip was not created"
+            exit 1
+          fi
+          echo "✓ Zip file created successfully"
+
+      - name: Extract offline package
+        run: |
+          mkdir -p test-offline
+          unzip fhict-document-template-local.zip -d test-offline
+          ls -la test-offline/fhict-document-template-local/
+
+      - name: Install Typst
+        run: |
+          wget -q https://github.com/typst/typst/releases/download/v0.13.0/typst-x86_64-unknown-linux-musl.tar.xz
+          tar -xf typst-x86_64-unknown-linux-musl.tar.xz
+          sudo mv typst-x86_64-unknown-linux-musl/typst /usr/local/bin/
+          typst --version
+
+      - name: Create test document
+        run: |
+          cd test-offline/fhict-document-template-local
+          cat > test-doc.typ << 'EOF'
+          #import "./lib.typ": *
+          
+          #show: fhict-doc.with(
+            title: "Test Document",
+            authors: (
+              (
+                name: "Test Author",
+              ),
+            ),
+          )
+          
+          = Test Chapter
+          
+          This is a test document to verify the offline package works correctly.
+          
+          == Test Section
+          
+          The offline package should correctly import all dependencies without errors.
+          EOF
+
+      - name: Compile test document
+        run: |
+          cd test-offline/fhict-document-template-local
+          typst compile test-doc.typ test-doc.pdf
+
+      - name: Verify PDF was created
+        run: |
+          if [ ! -f test-offline/fhict-document-template-local/test-doc.pdf ]; then
+            echo "Error: PDF was not created"
+            exit 1
+          fi
+          echo "✓ PDF created successfully"
+          ls -lh test-offline/fhict-document-template-local/test-doc.pdf
+
+      - name: Upload test PDF as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-offline-package-pdf
+          path: test-offline/fhict-document-template-local/test-doc.pdf
+          retention-days: 7
