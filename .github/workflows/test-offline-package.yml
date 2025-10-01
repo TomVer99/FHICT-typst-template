@@ -6,11 +6,6 @@ on:
       - 'scripts/OfflinePackager.py'
       - 'scripts/requirements.txt'
       - 'lib.typ'
-  push:
-    paths:
-      - 'scripts/OfflinePackager.py'
-      - 'scripts/requirements.txt'
-      - 'lib.typ'
 
 jobs:
   test-offline-package:
@@ -39,7 +34,6 @@ jobs:
             echo "Error: fhict-document-template-local.zip was not created"
             exit 1
           fi
-          echo "✓ Zip file created successfully"
 
       - name: Extract offline package
         run: unzip fhict-document-template-local.zip
@@ -58,4 +52,3 @@ jobs:
             echo "Error: PDF was not created"
             exit 1
           fi
-          echo "✓ PDF created successfully"
