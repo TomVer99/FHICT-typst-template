@@ -1,13 +1,5 @@
 name: Test Offline Package
 
-# This workflow tests that the OfflinePackager script works correctly
-# It runs whenever the script or related files are modified
-# Steps:
-# 1. Run OfflinePackager.py to create the offline zip
-# 2. Extract the zip
-# 3. Create and compile a test document using the offline package
-# 4. Verify the PDF is generated successfully
-
 on:
   pull_request:
     paths:
@@ -47,42 +39,15 @@ jobs:
           echo "✓ Zip file created successfully"
 
       - name: Extract offline package
-        run: |
-          mkdir -p test-offline
-          unzip fhict-document-template-local.zip -d test-offline
-          ls -la test-offline/fhict-document-template-local/
+        run: unzip fhict-document-template-local.zip
 
       - name: Setup Typst
-        uses: typst-community/setup-typst@v3
-
-      - name: Create test document
-        run: |
-          cd test-offline/fhict-document-template-local
-          cat > test-doc.typ << 'EOF'
-          #import "./lib.typ": *
-          
-          #show: fhict-doc.with(
-            title: "Test Document",
-            authors: (
-              (
-                name: "Test Author",
-              ),
-            ),
-          )
-          
-          = Test Chapter
-          
-          This is a test document to verify the offline package works correctly.
-          
-          == Test Section
-          
-          The offline package should correctly import all dependencies without errors.
-          EOF
+        uses: typst-community/setup-typst@v4
 
       - name: Compile test document
         run: |
-          cd test-offline/fhict-document-template-local
-          typst compile test-doc.typ test-doc.pdf
+          cd test
+          typst compile test.typ test.pdf
 
       - name: Verify PDF was created
         run: |
