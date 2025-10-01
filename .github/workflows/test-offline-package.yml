@@ -46,7 +46,8 @@ jobs:
 
       - name: Compile test document
         run: |
-          typst compile test/test.typ test/test.pdf
+          cd test
+          typst compile test.typ test.pdf --root ../
 
       - name: Verify PDF was created
         run: |
