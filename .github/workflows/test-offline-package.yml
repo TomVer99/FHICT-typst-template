@@ -52,12 +52,8 @@ jobs:
           unzip fhict-document-template-local.zip -d test-offline
           ls -la test-offline/fhict-document-template-local/
 
-      - name: Install Typst
-        run: |
-          wget -q https://github.com/typst/typst/releases/download/v0.13.0/typst-x86_64-unknown-linux-musl.tar.xz
-          tar -xf typst-x86_64-unknown-linux-musl.tar.xz
-          sudo mv typst-x86_64-unknown-linux-musl/typst /usr/local/bin/
-          typst --version
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v3
 
       - name: Create test document
         run: |
@@ -96,10 +92,3 @@ jobs:
           fi
           echo "✓ PDF created successfully"
           ls -lh test-offline/fhict-document-template-local/test-doc.pdf
-
-      - name: Upload test PDF as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: test-offline-package-pdf
-          path: test-offline/fhict-document-template-local/test-doc.pdf
-          retention-days: 7
