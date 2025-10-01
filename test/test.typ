@@ -1,4 +1,4 @@
-#import "../fhict-template-offline-v1.2.0/fhict-document-template-local/lib.typ": *
+#import "../fhict-document-template-local/fhict-document-template-local/lib.typ": *
 
 #show: fhict-doc.with(
   title: "Showcase",
