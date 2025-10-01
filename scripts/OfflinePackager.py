@@ -70,10 +70,6 @@ def change_paths(path:str, toml_dir_ref_path:str):
         og_line = line
         if line.startswith("#import \"@preview/"): # External package
             package_name, package_version, package_options = extract_preview_package_info(line)
-            if toml_dir_ref_path != "":
-                levels = path.count("/") - toml_dir_ref_path.count("/") + 1
-            else:
-                levels = 0
             package_path = ""
 
             for package in __PACKAGES:
@@ -84,7 +80,8 @@ def change_paths(path:str, toml_dir_ref_path:str):
             if package_name == "oxifmt":
                 package_options += " as oxifmt"
 
-            print("#import \"./" + ("../" * levels) + package_path.removeprefix("./local/") + "\"" + package_options,end="\n")
+            rel_path = os.path.relpath(package_path, os.path.dirname(path))
+            print(f"#import \"./{rel_path}\"{package_options}",end="\n")
         elif line.startswith("#import \"/"): # Internal package with path relative to toml file dir
             line = line.rstrip().replace("#import \"/", "")
             line = line.split("\"", 1)[0]

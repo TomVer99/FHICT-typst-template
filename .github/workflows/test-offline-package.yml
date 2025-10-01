@@ -1,0 +1,54 @@
+name: Test Offline Package
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/OfflinePackager.py'
+      - 'scripts/requirements.txt'
+      - 'lib.typ'
+
+jobs:
+  test-offline-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Python dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Install roboto for the Typst fod compilation
+        run: sudo apt install fonts-roboto
+
+      - name: Create offline package zip
+        run: python scripts/OfflinePackager.py
+
+      - name: Verify zip file was created
+        run: |
+          if [ ! -f fhict-document-template-local.zip ]; then
+            echo "Error: fhict-document-template-local.zip was not created"
+            exit 1
+          fi
+
+      - name: Extract offline package
+        run: unzip fhict-document-template-local.zip
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v4
+
+      - name: Compile test document
+        run: |
+          cd test
+          typst compile test.typ test.pdf --root ../
+
+      - name: Verify PDF was created
+        run: |
+          if [ ! -f test/test.pdf ]; then
+            echo "Error: PDF was not created"
+            exit 1
+          fi
