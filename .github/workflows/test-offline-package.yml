@@ -46,14 +46,12 @@ jobs:
 
       - name: Compile test document
         run: |
-          cd test
-          typst compile test.typ test.pdf
+          typst compile test/test.typ test/test.pdf
 
       - name: Verify PDF was created
         run: |
-          if [ ! -f test-offline/fhict-document-template-local/test-doc.pdf ]; then
+          if [ ! -f test/test.pdf ]; then
             echo "Error: PDF was not created"
             exit 1
           fi
           echo "✓ PDF created successfully"
-          ls -lh test-offline/fhict-document-template-local/test-doc.pdf
