@@ -1008,7 +1008,7 @@
     }
     heading(language-dict.at("index"), numbering: none)
     columns(index-columns)[
-      #make-index()
+      #make-index(use-page-counter: true)
     ]
   }
 }
