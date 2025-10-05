@@ -5,11 +5,11 @@
 ![GitHub Repo stars](https://img.shields.io/github/stars/TomVer99/FHICT-typst-template?style=flat-square)
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/TomVer99/FHICT-typst-template?style=flat-square)
 
-![Maintenance](https://img.shields.io/maintenance/Yes/2025?style=flat-square)
+![Maintenance](https://img.shields.io/badge/Maintained-Yes-green?style=flat-square)
 ![Issues](https://img.shields.io/github/issues-raw/TomVer99/FHICT-typst-template?label=Issues&style=flat-square)
 ![GitHub commits since latest release](https://img.shields.io/github/commits-since/TomVer99/FHICT-typst-template/latest?style=flat-square)
 
-This is a document template for creating professional-looking documents with Typst, tailored for FHICT (Fontys Hogeschool ICT). It can also be found on the [Typst Universe](https://typst.app/universe/package/unofficial-fhict-document-template).
+This is a document template for creating professional-looking documents with Typst, tailored for FHICT (Fontys Hogeschool ICT). It can also be used for other studies within Fontys It can also be found on the [Typst Universe](https://typst.app/universe/package/unofficial-fhict-document-template).
 
 ## Introduction
 
