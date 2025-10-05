@@ -772,7 +772,7 @@
     // Show the table of contents
     show outline.entry.where(level: 1): it => {
       context [
-        #if it.element.supplement == [#language-dict.at("appendix-pl")] {
+        #if it.element.supplement == [#language-dict.at("appendix")] {
           if (appendices-state.at(here()) == 0) {
             [#language-dict.at("appendix-pl")]
             appendices-state.update(1)
@@ -965,7 +965,7 @@
     show heading.where(level: 1): set heading(
       numbering: "A.A:",
       outlined: true,
-      supplement: language-dict.at("appendix-pl"),
+      supplement: language-dict.at("appendix"),
     )
     show heading.where(level: 1): it => block(
       text(
