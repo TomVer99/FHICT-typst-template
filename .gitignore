@@ -1,6 +1,5 @@
 *.pdf
 !showcase.pdf
 !starter.pdf
-!manual.pdf
 __pycache__/
 *.pyc
