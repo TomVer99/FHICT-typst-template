@@ -56,7 +56,7 @@ To get started with this Typst document template, follow these steps:
 
 ## Helpful Links / Resources
 
-- The manual contains a list of all available options and helper functions. It can be found [here](https://github.com/TomVer99/FHICT-typst-template/blob/main/documentation/manual.pdf) or attached to the latest release.
+- The manual contains a list of all available options and helper functions. It can be found attached to the latest release.
 - The [Typst Documentation](https://typst.app/docs/) is a great resource for learning how to use Typst.
 - The bibliography file is written in [BibTeX](http://www.bibtex.org/Format/). You can use [BibTeX Editor](https://truben.no/latex/bibtex/) to easily create and edit your bibliography.
 - You can use sub files to split your document into multiple files. This is especially useful for large documents.
