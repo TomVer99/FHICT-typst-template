@@ -12,6 +12,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v4
+
+      - name: Compile manual
+        run: |
+          cd documentation
+          typst compile manual.typ manual.pdf
         
       - name: Upload manual
         uses: svenstaro/upload-release-action@v2
