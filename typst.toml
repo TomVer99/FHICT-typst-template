@@ -1,6 +1,6 @@
 [package]
 name = "unofficial-fhict-document-template"
-version = "1.2.0"
+version = "1.2.1"
 compiler = "0.13.0"
 entrypoint = "lib.typ"
 authors = ["TomVer99"]
