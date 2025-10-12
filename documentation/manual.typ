@@ -6,9 +6,6 @@
 
 #import "./helper.typ": print-param, print-type
 
-#import "./../lib.typ": *
-
-
 #let data = yaml("manual.yml")
 #let current-version = data.at("template-version")
 #let supported-typst-versions = data.at("compatible-typst-versions")
