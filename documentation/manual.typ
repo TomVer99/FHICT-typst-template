@@ -21,7 +21,13 @@
   title: "For FHICT Reports That Actually Look Good",
   top-text: "Because formatting should be easy, not a research project.",
   subtitle: [A Typst Template to Save Your Sanity - Version #current-version],
-  // pic: image("chomskydoz.png", width: 100%, fit: "contain"),
+  pic: [
+    #block(height: 300pt)
+    #place(horizon + center, dy: 20pt)[#image(
+      "assets/Flying_fooking_Fish_bo_back_crop.png",
+      width: 100%,
+      fit: "contain",
+    )]],
   signature: "TomVer99",
 )
 
@@ -42,15 +48,12 @@
 // #set text(font: "Roboto", size: 12pt)
 #set heading(numbering: "1.")
 
-// Photo by <a href="https://unsplash.com/@johncobb?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">John Cobb</a> on <a href="https://unsplash.com/photos/gray-fish-in-body-of-water-6btEyS3AJrI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-
-
 #outline()
 #pagebreak()
 
 = Introduction
 
-Welcome to the FHICT Typst Document Template manual. This manual is designed to help you understand and utilize the features of the Typst document template tailored for FHICT (Fontys Hogeschool ICT). Whether you are a student or faculty member, this template will assist you in creating professional-looking documents with ease.
+    Welcome to the FHICT Typst Document Template manual. This manual is designed to help you understand and utilize the features of the Typst document template tailored for FHICT (Fontys Hogeschool ICT). Whether you are a student or faculty member, this template will assist you in creating professional-looking documents with ease.
 
 In this manual, you will find detailed information on the parameters available in the FHICT Typst Document Template, along with examples of how to use them. The template provides a range of customization options to suit your specific needs, from setting the document title and authors to enabling line numbering and generating a table of contents.
 
@@ -101,6 +104,15 @@ Version #current-version of the template is compatible with Typst version#if (su
 }.
 
 It may work with other versions of Typst, but it is recommended to use the specified version(s) for optimal compatibility.
+
+= Cover image
+
+The image on the cover was made by "unheeding_heathen" for this project.
+
+Copyright © 2025 unheeding_heathen.
+Licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0).
+You may share this image for non-commercial purposes, with credit, and without modification.
+Full licence text: #link("https://creativecommons.org/licenses/by-nc-nd/4.0/")[#text(fill: blue)[https://creativecommons.org/licenses/by-nc-nd/4.0/]]
 
 #pagebreak()
 = Functions
