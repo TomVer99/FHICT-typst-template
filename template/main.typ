@@ -1,4 +1,4 @@
-#import "@preview/unofficial-fhict-document-template:1.2.0": *
+#import "@preview/unofficial-fhict-document-template:1.2.1": *
 
 // #import "./terms.typ": term-list
 

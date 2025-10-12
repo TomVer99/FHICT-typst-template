@@ -1,4 +1,4 @@
-template-version: 1.2.0
+template-version: 1.2.1
 compatible-typst-versions:
   - 0.13
 functions:
