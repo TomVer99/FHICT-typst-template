@@ -53,7 +53,24 @@
 
 = Introduction
 
+#import "@preview/tiaoma:0.3.0"
+
+
+#table(
+  columns: (2fr, 2fr),
+  stroke: none,
+  [
     Welcome to the FHICT Typst Document Template manual. This manual is designed to help you understand and utilize the features of the Typst document template tailored for FHICT (Fontys Hogeschool ICT). Whether you are a student or faculty member, this template will assist you in creating professional-looking documents with ease.
+  ],
+  [
+    #place(center)[
+      #tiaoma.barcode("https://github.com/TomVer99/FHICT-typst-template", "QRCode", options: (
+        scale: 2.0,
+      ))
+      Repository link
+    ]
+  ],
+)
 
 In this manual, you will find detailed information on the parameters available in the FHICT Typst Document Template, along with examples of how to use them. The template provides a range of customization options to suit your specific needs, from setting the document title and authors to enabling line numbering and generating a table of contents.
 
@@ -66,12 +83,13 @@ FHICT is never named specifically in the template, so it can be used for any Fon
 
 This document template is licensed under the MIT License. You are free to use, modify, and distribute this template, provided that the original copyright notice and this permission notice are included in all copies or substantial portions of the template.
 
-For more details, refer to the LICENSE file included in the repository.
+For more details, refer to the LICENSE file(s) included in the repository.
 
 Please not that not all content in the template is licensed under the MIT License. For example, the Roboto font used in the template is subject to its own licensing terms.
 
 When copying content from this template, make sure to respect the licenses of any third-party resources used in the template.
 
+#pagebreak()
 = Versioning
 
 This template follows semantic versioning. The version number is composed of three parts: major, minor, and patch. For example, in version 1.2.3:
@@ -94,7 +112,6 @@ In that case the import statement would look like this:
 #import "path/to/lib.typ": *
 ```
 
-#pagebreak()
 = Requirements
 
 To use the FHICT Typst Document Template, you need the `Roboto` font installed on your system. This font is used for the text in the document.
