@@ -97,6 +97,8 @@ This template follows semantic versioning. The version number is composed of thr
 - The second number (2) is the minor version, which changes when small updates are added.
 - The third number (3) is the patch version, which changes when backward-compatible bug fixes or small updates to documentation are made.
 
+Any version postfixed with a `-rc` is a release candidate.
+
 = Importing
 
 To use the FHICT Typst Document Template, you need to import it into your Typst document. You can do this by including the following line at the beginning of your document:
