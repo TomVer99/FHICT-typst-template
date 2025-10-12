@@ -128,7 +128,7 @@ The image on the cover was made by "unheeding_heathen" for this project.
 
 Copyright © 2025 unheeding_heathen.
 Licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License (CC BY-NC-ND 4.0).
-You may share this image for non-commercial purposes, with credit, and without modification.
+You may share this image for non-commercial purposes, with credit, and without modification.\
 Full licence text: #link("https://creativecommons.org/licenses/by-nc-nd/4.0/")[#text(fill: blue)[https://creativecommons.org/licenses/by-nc-nd/4.0/]]
 
 #pagebreak()
