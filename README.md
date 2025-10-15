@@ -2,24 +2,16 @@
 
 # FHICT Typst Document Template
 
-<div>
-  <!-- Project Status & Quality -->
-  <img src="https://img.shields.io/badge/Maintained-Yes-green?style=flat-square" alt="Maintenance">
-  <img src="https://img.shields.io/github/v/release/TomVer99/FHICT-typst-template?style=flat-square" alt="GitHub release (with filter)">
-  <img src="https://img.shields.io/github/license/TomVer99/FHICT-typst-template?style=flat-square" alt="GitHub License">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./documentation/assets/Flying_fooking_Fish_bo_back_crop_inv.png">
-    <source media="(prefers-color-scheme: light)" srcset="./documentation/assets/Flying_fooking_Fish_bo_back_crop.png">
-    <img src="./documentation/assets/Flying_fooking_Fish_bo_back_crop.png" height="155" alt="Logo" align="right" style="margin-left: 10px;">
-  </picture>
-  <br>
-  
-  <!-- Community & Activity -->
-  <img src="https://img.shields.io/github/stars/TomVer99/FHICT-typst-template?style=flat-square" alt="GitHub Repo stars">
-  <img src="https://img.shields.io/github/issues-raw/TomVer99/FHICT-typst-template?label=Issues&style=flat-square" alt="Issues">
-  <img src="https://img.shields.io/github/commits-since/TomVer99/FHICT-typst-template/latest?style=flat-square" alt="GitHub commits since latest release">
-  <img src="https://img.shields.io/date/1699009200?style=flat-square&label=In%20development%20since" alt="Relative date">
-</div>
+<!-- Project Status & Quality -->
+![Maintenance](https://img.shields.io/badge/Maintained-Yes-green?style=flat-square)
+![GitHub release (with filter)](https://img.shields.io/github/v/release/TomVer99/FHICT-typst-template?style=flat-square)
+![GitHub License](https://img.shields.io/github/license/TomVer99/FHICT-typst-template?style=flat-square)
+
+<!-- Community & Activity -->
+![GitHub Repo stars](https://img.shields.io/github/stars/TomVer99/FHICT-typst-template?style=flat-square)
+![Issues](https://img.shields.io/github/issues-raw/TomVer99/FHICT-typst-template?label=Issues&style=flat-square)
+![GitHub commits since latest release](https://img.shields.io/github/commits-since/TomVer99/FHICT-typst-template/latest?style=flat-square)
+![Relative date](https://img.shields.io/date/1699009200?style=flat-square&label=In%20development%20since)
 
 ---
 
