@@ -2,28 +2,23 @@
 
 # FHICT Typst Document Template
 
-<!-- <div align="center">
-  <img src="./documentation/assets/Flying_fooking_Fish_bo_back_crop.png" alt="drawing of a flying fish" width="49%" style="filter: invert(1) contrast(1.2); mix-blend-mode: difference;">
-</div>
-
-<style>
-@media (prefers-color-scheme: light) {
-  img[alt="drawing of a flying fish"] {
-    filter: none !important;
-  }
-}
-</style> -->
-
-![GitHub Repo stars](https://img.shields.io/github/stars/TomVer99/FHICT-typst-template?style=flat-square)
-![GitHub release (with filter)](https://img.shields.io/github/v/release/TomVer99/FHICT-typst-template?style=flat-square)
-![Relative date](https://img.shields.io/date/1699009200?style=flat-square&label=In%20development%20since)
-
+<!-- Project Status & Quality -->
 ![Maintenance](https://img.shields.io/badge/Maintained-Yes-green?style=flat-square)
+![GitHub release (with filter)](https://img.shields.io/github/v/release/TomVer99/FHICT-typst-template?style=flat-square)
+![GitHub License](https://img.shields.io/github/license/TomVer99/FHICT-typst-template?style=flat-square)
+
+<!-- Community & Activity -->
+![GitHub Repo stars](https://img.shields.io/github/stars/TomVer99/FHICT-typst-template?style=flat-square)
 ![Issues](https://img.shields.io/github/issues-raw/TomVer99/FHICT-typst-template?label=Issues&style=flat-square)
 ![GitHub commits since latest release](https://img.shields.io/github/commits-since/TomVer99/FHICT-typst-template/latest?style=flat-square)
+![Relative date](https://img.shields.io/date/1699009200?style=flat-square&label=In%20development%20since)
 
-Support this project by buying me a coffee!\
+---
+
+**Support this project:** If you find this template valuable, please consider leaving a star to help others discover it or buy me a coffee to support its development!\
 [![BuyMeACoffee](https://raw.githubusercontent.com/pachadotdev/buymeacoffee-badges/main/bmc-yellow.svg)](https://www.buymeacoffee.com/tomver)
+
+---
 
 This is a document template for creating professional-looking documents with Typst, tailored for FHICT (Fontys Hogeschool ICT). It can also be used for other studies within Fontys. It can also be found on the [Typst Universe](https://typst.app/universe/package/unofficial-fhict-document-template).
 
