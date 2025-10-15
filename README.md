@@ -2,7 +2,7 @@
 
 # FHICT Typst Document Template
 
-<div align="center">
+<!-- <div align="center">
   <img src="./documentation/assets/Flying_fooking_Fish_bo_back_crop.png" alt="drawing of a flying fish" width="49%" style="filter: invert(1) contrast(1.2); mix-blend-mode: difference;">
 </div>
 
@@ -12,7 +12,7 @@
     filter: none !important;
   }
 }
-</style>
+</style> -->
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/TomVer99/FHICT-typst-template?style=flat-square)
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/TomVer99/FHICT-typst-template?style=flat-square)
