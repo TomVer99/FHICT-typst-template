@@ -16,7 +16,7 @@
 ---
 
 **Support this project:** If you find this template valuable, please consider leaving a star to help others discover it or buy me a coffee to support its development!\
-[![BuyMeACoffee](https://raw.githubusercontent.com/pachadotdev/buymeacoffee-badges/main/bmc-yellow.svg)](https://www.buymeacoffee.com/tomver)
+<a href="https://www.buymeacoffee.com/tomver" target="_blank"><img src="https://raw.githubusercontent.com/pachadotdev/buymeacoffee-badges/main/bmc-yellow.svg" alt="Buy Me A Coffee"></a>
 
 ---
 
