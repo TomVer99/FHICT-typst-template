@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
         matrix:
-            version: [^0.13.1, latest]
+            version: [^0.13.0, latest]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,6 +20,9 @@ jobs:
         uses: typst-community/setup-typst@v4
         with:
             typst-version: ${{ matrix.version }}
+
+      - name: Install roboto for the Typst doc compilation
+        run: sudo apt install fonts-roboto
 
       - name: Get actual Typst version
         id: get-version
