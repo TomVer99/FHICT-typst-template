@@ -101,6 +101,38 @@ jobs:
           done
           
           echo "" >> comment.md
+          
+          # Generate badge info
+          PASSING_VERSIONS=""
+          FAILING_VERSIONS=""
+          
+          for file in results/result-*.txt; do
+            if [ -f "$file" ]; then
+              VERSION=$(cat "$file" | cut -d'|' -f1)
+              STATUS=$(cat "$file" | cut -d'|' -f2)
+              if [[ "$STATUS" == *"Success"* ]]; then
+                PASSING_VERSIONS="${PASSING_VERSIONS}${VERSION}, "
+              else
+                FAILING_VERSIONS="${FAILING_VERSIONS}${VERSION}, "
+              fi
+            fi
+          done
+          
+          # Remove trailing commas
+          PASSING_VERSIONS=${PASSING_VERSIONS%, }
+          FAILING_VERSIONS=${FAILING_VERSIONS%, }
+          
+          if [ -n "$PASSING_VERSIONS" ]; then
+            echo "" >> comment.md
+            echo "✅ **Passing versions:** $PASSING_VERSIONS" >> comment.md
+          fi
+          
+          if [ -n "$FAILING_VERSIONS" ]; then
+            echo "" >> comment.md
+            echo "❌ **Failing versions:** $FAILING_VERSIONS" >> comment.md
+          fi
+          
+          echo "" >> comment.md
           echo "_Last updated: $(date -u '+%Y-%m-%d %H:%M:%S UTC')_" >> comment.md
           echo "" >> comment.md
           echo "---" >> comment.md

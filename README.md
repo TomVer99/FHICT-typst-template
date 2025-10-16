@@ -7,6 +7,10 @@
 ![GitHub release (with filter)](https://img.shields.io/github/v/release/TomVer99/FHICT-typst-template?style=flat-square)
 ![GitHub License](https://img.shields.io/github/license/TomVer99/FHICT-typst-template?style=flat-square)
 
+<!-- Typst Version Support -->
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/TomVer99/FHICT-typst-template/regression-test.yml?style=flat-square&logo=github&label=Regression%20Test)
+[![Typst Versions](https://img.shields.io/badge/dynamic/yaml?url=https://raw.githubusercontent.com/TomVer99/FHICT-typst-template/main/.github/workflows/regression-test.yml&query=%24.jobs.test-version-compatibility.strategy.matrix.version%5B*%5D&label=Typst%20Tested&logo=typst&style=flat-square&color=blue)](https://github.com/TomVer99/FHICT-typst-template/actions/workflows/regression-test.yml)
+
 <!-- Community & Activity -->
 ![GitHub Repo stars](https://img.shields.io/github/stars/TomVer99/FHICT-typst-template?style=flat-square)
 ![Issues](https://img.shields.io/github/issues-raw/TomVer99/FHICT-typst-template?label=Issues&style=flat-square)
