@@ -55,8 +55,6 @@
 == Headings Example
 #index-main[Headings]
 
-#panic("Test workflow for failed compile")
-
 === level 3
 
 ==== level 4
