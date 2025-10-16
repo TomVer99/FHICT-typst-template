@@ -1,4 +1,4 @@
-<!-- markdownlint-disable MD033 MD059 -->
+<!-- markdownlint-disable MD033 MD059 MD031 -->
 
 # FHICT Typst Document Template
 
@@ -57,20 +57,28 @@ Creating well-structured and visually appealing documents is crucial in academic
 ## Requirements
 
 - **Roboto font** installed on your system.
-- **Typst builder** installed (explained in [Getting Started](#getting-started)).
+- **Typst builder** installed. _You can use the [Typst CLI](https://typst.app/download/) or set up [VSCode with the Tinymist Typst Extension](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist)._
 
 That’s it!  
 Typst is OS-agnostic, so it works seamlessly on **Windows**, **macOS**, and **Linux**.
 
-## Getting Started
+## Quick Start (5 minutes)
 
-To get started with this Typst document template, follow these steps:
-
-1. **Check for the roboto font**: Check if you have the roboto font installed on your system. If you don't, you can download it from [Google Fonts](https://fonts.google.com/specimen/Roboto).
-2. **Install Typst**: I recommend to use VSCode with [Tinymist Typst Extension](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist). You will also need a PDF viewer in VSCode if you want to view the document live.
-3. **Import the template**: Import the template into your own typst document. `#import "@preview/unofficial-fhict-document-template:1.2.1": *`
-4. **Set the available options**: Set the available options in the template file to your liking.
-5. **Start writing**: Start writing your document.
+1. **Install Roboto font**: Download from [Google Fonts](https://fonts.google.com/specimen/Roboto) and install on your system
+2. **Set up VSCode**: Install [Tinymist Typst Extension](https://marketplace.visualstudio.com/items?itemName=myriad-dreamin.tinymist)
+3. **Create your first document**:
+    ```typ
+    #import "@preview/unofficial-fhict-document-template:1.2.1": *
+    
+    #show: fhict-doc.with(
+      title: "My Document",
+      authors: ((name: "your_name")),
+      // ... other options
+    )
+    
+    = Introduction
+    Start writing your content here!
+    ```
 
 ## Helpful Links / Resources
 
