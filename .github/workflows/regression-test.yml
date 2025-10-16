@@ -37,12 +37,16 @@ jobs:
           if typst compile regression.typ regression.pdf --root ./../ 2>&1; then
             echo "result=✅ Success" >> $GITHUB_OUTPUT
             echo "status=success" >> $GITHUB_OUTPUT
+            echo "compilation_failed=false" >> $GITHUB_OUTPUT
           else
             echo "result=❌ Failed" >> $GITHUB_OUTPUT
             echo "status=failed" >> $GITHUB_OUTPUT
+            echo "compilation_failed=true" >> $GITHUB_OUTPUT
           fi
 
       - name: Save result to file
+        # Always save results, even if compilation failed
+        if: always()
         run: |
           mkdir -p results
           # Use matrix version as identifier
@@ -50,10 +54,19 @@ jobs:
           echo "${{ steps.get-version.outputs.actual-version }}|${{ steps.test-compile.outputs.result }}" > results/result-${VERSION_CLEAN}.txt
 
       - name: Upload results
+        # Always upload results, even if compilation failed
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-results-${{ strategy.job-index }}
           path: results/
+
+      - name: Fail job if compilation failed
+        if: steps.test-compile.outputs.compilation_failed == 'true'
+        run: |
+          echo "❌ Compilation failed for Typst version ${{ matrix.version }}"
+          echo "This will block the PR from being merged until the compilation issue is resolved."
+          exit 1
 
   generate-report:
     needs: test-version-compatibility
