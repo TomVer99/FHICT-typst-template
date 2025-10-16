@@ -10,6 +10,7 @@ jobs:
   test-version-compatibility:
     runs-on: ubuntu-latest
     strategy:
+        fail-fast: false
         matrix:
             version: [^0.13.0, latest]
     steps:
