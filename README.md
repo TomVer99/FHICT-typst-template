@@ -15,12 +15,16 @@
 
 ---
 
-**Support this project:** If you find this template valuable, please consider leaving a star to help others discover it or buy me a coffee to support its development!\
+**Support this project:** If you find this template valuable, please consider leaving a star to help others discover it,\
+or buy me a coffee to support its development!\
 [![BuyMeACoffee](https://raw.githubusercontent.com/pachadotdev/buymeacoffee-badges/main/bmc-yellow.svg)](https://www.buymeacoffee.com/tomver)
 
 ---
 
-This is a document template for creating professional-looking documents with Typst, tailored for FHICT (Fontys Hogeschool ICT). It can also be used for other studies within Fontys. It can also be found on the [Typst Universe](https://typst.app/universe/package/unofficial-fhict-document-template).
+This is a document template for creating professional-looking documents with Typst, tailored for FHICT (Fontys Hogeschool ICT), but it can also be used across other Fontys programs.\
+It can also be found on the [Typst Universe](https://typst.app/universe/package/unofficial-fhict-document-template).
+
+Looking for a template for Fontys themed research papers? Check out the [FHICT Research Paper Template](https://github.com/TomVer99/Fontys-paper-template).
 
 ## Introduction
 
@@ -46,14 +50,17 @@ Creating well-structured and visually appealing documents is crucial in academic
 - **Professional layout**: The template provides a clean and professional layout for your documents.
 - **FHICT Style**: The template follows the FHICT style guide, making it suitable for FHICT students and faculty.
 - **Configurable options**: The template provides configurable options for customizing the document to your needs.
-- **Helper functions**: The template provides helper functions for adding tables, sensitive content (that can be hidden), and more.
+- **Helper functions**: The template provides Helper functions for adding tables, hiding sensitive content, and more.
 - **Multiple languages support**: The template can be set to multiple languages (nl, en, de, fr, es), allowing you to write documents in different languages.
 - **Battle tested**: The template has been used without issue at FHICT, indicating its quality and reliability.
 
 ## Requirements
 
-- Roboto font installed on your system.
-- Typst builder installed on your system (Explained in `Getting Started`).
+- **Roboto font** installed on your system.
+- **Typst builder** installed (explained in [Getting Started](#getting-started)).
+
+That’s it!  
+Typst is OS-agnostic, so it works seamlessly on **Windows**, **macOS**, and **Linux**.
 
 ## Getting Started
 
@@ -78,7 +85,7 @@ I welcome contributions to improve and expand this document template. If you hav
 
 ### Adding a new language
 
-Currently, the template supports the following languages: `Dutch` `(nl)`, `English` `(en)`, `German` `(de)`, `French` `(fr)`, and `Spanish` `(es)`. If you want to add a new language, you can do so by following these steps:
+Currently, the template includes support for the following languages: `Dutch` `(nl)`, `English` `(en)`, `German` `(de)`, `French` `(fr)`, and `Spanish` `(es)`. If you want to add a new language, you can do so by following these steps:
 
 1. Add the language to the `language.yml` file in the `assets` folder. Copy the `en` section and replace the values with the new language.
 2. Add a flag `XX-flag.svg` to the `assets` folder.
