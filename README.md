@@ -31,8 +31,8 @@ Looking for a template for Fontys themed research papers? Check out the [FHICT R
 Creating well-structured and visually appealing documents is crucial in academic and professional settings. This template is designed to help FHICT students and faculty produce professional looking documents.
 
 <p>
-  <img src="./img/showcase-l.png" alt="Showcase" width="49%">
-  <img src="./img/showcase-r.png" alt="Showcase" width="49%">
+  <img src="./img/showcase-l.png" alt="FHICT Typst template document cover page preview" width="49%">
+  <img src="./img/showcase-r.png" alt="FHICT Typst template document content preview" width="49%">
 </p>
 
 ## Why use this template (and Typst)?
