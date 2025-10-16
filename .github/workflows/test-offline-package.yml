@@ -22,7 +22,7 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r scripts/requirements.txt
 
-      - name: Install roboto for the Typst fod compilation
+      - name: Install roboto for the Typst doc compilation
         run: sudo apt install fonts-roboto
 
       - name: Create offline package zip

@@ -1,0 +1,181 @@
+name: Regression Test
+
+on:
+    pull_request:
+        types: [opened, reopened, synchronize]
+        branches:
+            - main
+    schedule:
+        # Run monthly
+        - cron: '0 9 1 * *'
+    workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  test-version-compatibility:
+    runs-on: ubuntu-latest
+    strategy:
+        fail-fast: false
+        matrix:
+            version: [^0.13.0, latest]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v4
+        with:
+            typst-version: ${{ matrix.version }}
+
+      - name: Install roboto for the Typst doc compilation
+        run: sudo apt install fonts-roboto
+
+      - name: Get actual Typst version
+        id: get-version
+        run: |
+          ACTUAL_VERSION=$(typst --version | cut -d' ' -f2)
+          echo "actual-version=$ACTUAL_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Test compilation
+        id: test-compile
+        run: |
+          cd test
+          if typst compile regression.typ regression.pdf --root ./../ 2>&1; then
+            echo "result=✅ Success" >> $GITHUB_OUTPUT
+            echo "status=success" >> $GITHUB_OUTPUT
+            echo "compilation_failed=false" >> $GITHUB_OUTPUT
+          else
+            echo "result=❌ Failed" >> $GITHUB_OUTPUT
+            echo "status=failed" >> $GITHUB_OUTPUT
+            echo "compilation_failed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Save result to file
+        # Always save results, even if compilation failed
+        if: always()
+        run: |
+          mkdir -p results
+          # Use matrix version as identifier
+          VERSION_CLEAN=$(echo "${{ matrix.version }}" | tr '^' '_' | tr '.' '_')
+          echo "${{ steps.get-version.outputs.actual-version }}|${{ steps.test-compile.outputs.result }}" > results/result-${VERSION_CLEAN}.txt
+
+      - name: Upload results
+        # Always upload results, even if compilation failed
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ strategy.job-index }}
+          path: results/
+
+      - name: Fail job if compilation failed
+        if: steps.test-compile.outputs.compilation_failed == 'true'
+        run: |
+          exit 1
+
+  generate-report:
+    needs: test-version-compatibility
+    runs-on: ubuntu-latest
+    if: always()
+    permissions:
+      pull-requests: write
+      issues: write  # For creating issues on scheduled runs
+    steps:
+      - name: Download all results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: test-results-*
+          merge-multiple: true
+          path: results/
+
+      - name: Generate results table
+        id: generate-table
+        run: |
+          echo "## 📊 Typst Version Compatibility Test Results" > comment.md
+          echo "" >> comment.md
+          echo "| Typst Version | Compilation Status |" >> comment.md
+          echo "|---------------|-------------------|" >> comment.md
+          
+          # Sort results by version
+          for file in results/result-*.txt; do
+            if [ -f "$file" ]; then
+              cat "$file"
+            fi
+          done | sort -V | while IFS='|' read -r version status; do
+            echo "| $version | $status |" >> comment.md
+          done
+          
+          echo "" >> comment.md
+          
+          # Generate badge info
+          PASSING_VERSIONS=""
+          FAILING_VERSIONS=""
+          
+          for file in results/result-*.txt; do
+            if [ -f "$file" ]; then
+              VERSION=$(cat "$file" | cut -d'|' -f1)
+              STATUS=$(cat "$file" | cut -d'|' -f2)
+              if [[ "$STATUS" == *"Success"* ]]; then
+                PASSING_VERSIONS="${PASSING_VERSIONS}${VERSION}, "
+              else
+                FAILING_VERSIONS="${FAILING_VERSIONS}${VERSION}, "
+              fi
+            fi
+          done
+          
+          # Remove trailing commas
+          PASSING_VERSIONS=${PASSING_VERSIONS%, }
+          FAILING_VERSIONS=${FAILING_VERSIONS%, }
+          
+          if [ -n "$PASSING_VERSIONS" ]; then
+            echo "" >> comment.md
+            echo "✅ **Passing versions:** $PASSING_VERSIONS" >> comment.md
+          fi
+          
+          if [ -n "$FAILING_VERSIONS" ]; then
+            echo "" >> comment.md
+            echo "❌ **Failing versions:** $FAILING_VERSIONS" >> comment.md
+          fi
+          
+          echo "" >> comment.md
+          echo "_Last updated: $(date -u '+%Y-%m-%d %H:%M:%S UTC')_" >> comment.md
+          echo "" >> comment.md
+          echo "---" >> comment.md
+
+      - name: Find existing comment (PR only)
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/find-comment@v3
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: '## 📊 Typst Version Compatibility Test Results'
+
+      - name: Create or update PR comment
+        if: github.event_name == 'pull_request'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: comment.md
+          edit-mode: replace
+
+      - name: Create issue for scheduled run failures
+        if: github.event_name == 'schedule' && contains(needs.test-version-compatibility.result, 'failure')
+        uses: peter-evans/create-issue-from-file@v5
+        with:
+          title: '🚨 Scheduled Typst Version Compatibility Test Failed'
+          content-filepath: comment.md
+          labels: |
+            bug
+            automated
+
+      - name: Log scheduled run results
+        if: github.event_name == 'schedule'
+        run: |
+          echo "## Scheduled Test Results"
+          cat comment.md
+          if grep -q "❌ Failed" comment.md; then
+            echo "⚠️ Some versions failed - issue created automatically"
+            exit 1
+          else
+            echo "✅ All versions passed!"
+          fi
