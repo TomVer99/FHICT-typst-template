@@ -1,0 +1,105 @@
+name: Regression Test
+
+on:
+    pull_request:
+        types: [opened, reopened, synchronize]
+        branches:
+            - main
+
+jobs:
+  test-version-compatibility:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            version: [^0.13.1, latest]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v4
+        with:
+            typst-version: ${{ matrix.version }}
+
+      - name: Get actual Typst version
+        id: get-version
+        run: |
+          ACTUAL_VERSION=$(typst --version | cut -d' ' -f2)
+          echo "actual-version=$ACTUAL_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Test compilation
+        id: test-compile
+        run: |
+          cd test
+          if typst compile regression.typ regression.pdf --root ./../ 2>&1; then
+            echo "result=✅ Success" >> $GITHUB_OUTPUT
+            echo "status=success" >> $GITHUB_OUTPUT
+          else
+            echo "result=❌ Failed" >> $GITHUB_OUTPUT
+            echo "status=failed" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Save result to file
+        run: |
+          mkdir -p results
+          # Use matrix version as identifier
+          VERSION_CLEAN=$(echo "${{ matrix.version }}" | tr '^' '_' | tr '.' '_')
+          echo "${{ steps.get-version.outputs.actual-version }}|${{ steps.test-compile.outputs.result }}" > results/result-${VERSION_CLEAN}.txt
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ strategy.job-index }}
+          path: results/
+
+  generate-report:
+    needs: test-version-compatibility
+    runs-on: ubuntu-latest
+    if: always()
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Download all results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: test-results-*
+          merge-multiple: true
+          path: results/
+
+      - name: Generate results table
+        id: generate-table
+        run: |
+          echo "## 📊 Typst Version Compatibility Test Results" > comment.md
+          echo "" >> comment.md
+          echo "| Typst Version | Compilation Status |" >> comment.md
+          echo "|---------------|-------------------|" >> comment.md
+          
+          # Sort results by version
+          for file in results/result-*.txt; do
+            if [ -f "$file" ]; then
+              cat "$file"
+            fi
+          done | sort -V | while IFS='|' read -r version status; do
+            echo "| $version | $status |" >> comment.md
+          done
+          
+          echo "" >> comment.md
+          echo "_Last updated: $(date -u '+%Y-%m-%d %H:%M:%S UTC')_" >> comment.md
+          echo "" >> comment.md
+          echo "---" >> comment.md
+
+      - name: Find existing comment
+        uses: peter-evans/find-comment@v3
+        id: find-comment
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: '## 📊 Typst Version Compatibility Test Results'
+
+      - name: Create or update comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          comment-id: ${{ steps.find-comment.outputs.comment-id }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body-path: comment.md
+          edit-mode: replace
