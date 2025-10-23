@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run Typst Dependency Checker
-        uses: TomVer99/typst-check-deps@v0.1.0
+        uses: TomVer99/typst-check-deps@v0.1
         id: deps
         with:
           fail-on-newer-version: false
