@@ -4,13 +4,13 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
-permissions:
-  contents: read
-  issues: write
-  pull-requests: write
+# permissions:
+#   contents: read
 
 jobs:
   check-deps:
+    permissions:
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
