@@ -2,7 +2,8 @@ name: Regression Test
 
 on:
     pull_request:
-        types: [opened, reopened, synchronize]
+        # types: [opened, reopened, synchronize]
+        types: [opened]
         branches:
             - main
     schedule:

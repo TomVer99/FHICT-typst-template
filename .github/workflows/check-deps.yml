@@ -1,0 +1,29 @@
+name: Check Typst deps
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+# permissions:
+#   contents: read
+
+jobs:
+  check-deps:
+    permissions:
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Typst Dependency Checker
+        uses: TomVer99/typst-check-deps@v0.1.0
+        id: deps
+        with:
+          fail-on-newer-version: false
+
+      - name: Post results as PR comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.repository }}
+          issue-number: ${{ github.event.pull_request.number }}
+          body: ${{ steps.deps.outputs.table }}
