@@ -967,15 +967,20 @@
       outlined: true,
       supplement: language-dict.at("appendix"),
     )
-    show heading.where(level: 1): it => block(
-      text(
-        strong[#upper[
-          #if it.numbering != none [ #language-dict.at("appendix") #counter(heading).display(it.numbering)]
-          #it.body
-        ]],
-        size: 18pt,
-        fill: fontys-purple-1,
-      ),
+    show heading.where(level: 1): it => (
+      if (chapter-on-new-page == true) {
+        pagebreak(weak: true)
+      }
+        + block(
+          text(
+            strong[#upper[
+              #if it.numbering != none [ #language-dict.at("appendix") #counter(heading).display(it.numbering)]
+              #it.body
+            ]],
+            size: 18pt,
+            fill: fontys-purple-1,
+          ),
+        )
     )
 
     if line-numbering == true {
